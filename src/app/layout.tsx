@@ -25,9 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${sarabun.className} ${sarabun.variable} ${tajawal.variable} antialiased`}
+        className={`${sarabun.className} ${sarabun.variable} ${tajawal.variable} antialiased dark:bg-zinc-800`}
       >
         <Providers>{children}</Providers>
       </body>
