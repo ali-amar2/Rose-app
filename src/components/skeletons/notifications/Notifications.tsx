@@ -1,31 +1,8 @@
-'use client'
+"use client"
 
-// //  start notifications skeleton
-
-// /*
-// -لما اخلص التاسك بتاعتي المفروض باستخدم 
-// git pull dev 
-// علشان اجيب كل الكود بتاعي زمايلي عندي في البروجيكت بتاعي واركب
-// اي جزء في ال ui بتاعي ناقص
-// بعد كده بعمل
-// git add .
-// git commit -m "my message"
-// git push origin my branch-name not on dev
-// then ask for review or pull request to dev
-// -
-
-// */ 
+// dynamic version with dummy data + scrollable
 
 
-import { Bell } from "lucide-react";
-import { BrushCleaning } from "lucide-react";
-import { CheckCheck } from "lucide-react";
-import { Check } from "lucide-react";
-import { Trash2 } from "lucide-react";
-import { EllipsisVertical} from "lucide-react";
-
-
-import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,168 +11,228 @@ import {
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+import { Button } from "@/components/ui/button"
+import {
+  Bell,
+  BrushCleaning,
+  CheckCheck,
+  Check,
+  Trash2,
+  EllipsisVertical,
+  BellOff
+} from "lucide-react"
+
+import { useInfiniteQuery } from "@tanstack/react-query"
+
+
+
 export default function Notifications() {
+
+// ==========================
+// Mock API
+// ==========================
+const PAGE_SIZE = 5
+// simulate fetching notifications from an APIc with delay
+const fetchNotifications = async ({ pageParam = 0 }) => {
+  await new Promise((res) => setTimeout(res, 500))
+
+  const allNotifications = Array.from({ length: 15 }, (_, index) => ({
+    id: index + 1,
+    title: "Your Order Has Been Shipped",
+    description:
+      "Your order #12345 has been shipped and will arrive in 2-3 business days. We’ll send you another update once it’s out for delivery...",
+  }))
+
+  const start = pageParam * PAGE_SIZE
+  const end = start + PAGE_SIZE
+
+  return {
+    data: allNotifications.slice(start, end),
+    nextPage: end < allNotifications.length ? pageParam + 1 : undefined,
+  }
+}
+
+
+
+  // start infinite query
+  const {data,fetchNextPage,hasNextPage,isFetchingNextPage,} =
+   useInfiniteQuery({
+    queryKey: ["notifications"],
+    queryFn: fetchNotifications,
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => lastPage.nextPage,
+  })
+
+  const notifications = data?.pages.flatMap((page) => page.data) ?? [] ;
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const target = e.currentTarget
+    const reachedBottom =
+      target.scrollTop + target.clientHeight >=
+      target.scrollHeight - 10
+
+    if (reachedBottom && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage()
+    }
+  }
+
+  // TODO: handle clear all notification function 
+
+  function clearAllNotifications() {
+    console.log("clear all notifications");
+  }
+
+  // TODO: handle mark all as read function 
+
+  function markAllAsRead() {
+    console.log("mark all as read");
+  }
+
+  // Todo: Mark single notification as read function
+
+  function markAsRead(id: number) {
+    console.log(`mark notification ${id} as read`);
+  }
+
+  // Todo: delete single notification
+   
+  function deleteSingleNotifcation(id: number) {
+    console.log(`delete notification ${id}`);
+  }
+
   return (
-    <>
+    // dropdown menu
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        
-        <Button variant="outline"><Bell size={24} className="text-red-500"/></Button>
+
+        {/* Bell icon button */}
+        <Button variant="outline">
+          <Bell size={24} className="text-red-500" />
+        </Button>
+
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-80 m-0 p-0 " align="start">
-        <DropdownMenuLabel className="bg-maroon-700 p-4 text-white dark:bg-soft-pink-200 dark:text-zinc-800">Notifications (5)</DropdownMenuLabel>
+
+      {/* start menu content */}
+      <DropdownMenuContent
+        align="start"
+        onScroll={handleScroll}
+        className="w-80 p-0 max-h-[420px] overflow-y-auto"
+      >
+        {/* Header */}
+        <DropdownMenuLabel className="bg-maroon-700 p-4 text-white dark:bg-soft-pink-200 dark:text-zinc-800">
+          Notifications ({notifications.length})
+        </DropdownMenuLabel>
+
+        {/* menu items */}
         <DropdownMenuGroup>
-          <DropdownMenuItem className="p-2 dark:bg-zinc-700"> 
+          <DropdownMenuItem className="p-2 dark:bg-zinc-700">
             <div className="flex justify-between items-center w-full">
               <div className="flex items-center gap-1">
-                <BrushCleaning size={18} className="dark:text-zinc-500"/> <span className="dark:text-zinc-50">Clear all notifications</span>
-             </div>
-             <div className="flex items-center gap-1">
-                 <CheckCheck size={18} className="dark:text-zinc-500"/> <span className="dark:text-zinc-50">Mark all as read</span>
+                <BrushCleaning size={18} className="dark:text-zinc-500" />
+                <span className="dark:text-zinc-50">
+
+                  {/* clear all notifications */}
+                 <button onClick={clearAllNotifications}>Clear all notifications</button> 
+
+                </span>
+              </div>
+              <div className="flex items-center gap-1">
+                <CheckCheck size={18} className="dark:text-zinc-500" />
+                <span className="dark:text-zinc-50">
+
+                  {/* mark all as read */}
+                 <button onClick={markAllAsRead}>Mark all as read</button>
+
+                </span>
               </div>
             </div>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator className='bg-zinc-300'/>
-
-          
-        
-        </DropdownMenuGroup>
-        {/* first group */}
-        <DropdownMenuGroup className="p-4 gap-2 dark:bg-zinc-900">
-          
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>
-              <div className="flex justify-between items-center w-full ">
-                <h5 className="text-zinc-800 font-semibold text-base dark:text-zinc-50">Your Order Has Been Shipped</h5>
-              <EllipsisVertical size={18} className='dark:text-zinc-400'/>
-              </div>
-              </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent className="gap-2 ml-2">
-                <DropdownMenuItem> <Check size={18} className="text-zinc-500 dark:text-zinc-400"/> <span className="text-zinc-800 text-sm font-medium dark:text-zinc-50">Mark as read</span></DropdownMenuItem>
-                <DropdownMenuItem> <Trash2 size={18} className="text-red-500"/> <span className="text-zinc-800 text-sm font-medium dark:text-zinc-50">Delete notificatione</span></DropdownMenuItem>
-                
-                
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          <DropdownMenuItem>
-            <p className="text-sm text-zinc-500 font-normal dark:text-zinc-400">Your order #12345 has been shipped and will arrive in 2-3 business days. We’ll send you another update once it’s out for delivery. In th...</p>
           </DropdownMenuItem>
+          <DropdownMenuSeparator className="bg-zinc-300 dark:bg-zinc-600" />
         </DropdownMenuGroup>
-        <DropdownMenuSeparator className='bg-zinc-300 dark:bg-zinc-600'/>
 
+        {/* display Notifications data dynamic */}
+        {notifications.map((item, index) => (
+          <div key={item.id}>
+            <DropdownMenuGroup
+              className={`p-4 gap-2 ${
+                index === 2 || index === 4 || index === 7 || index === 10 || index === 13
+                  ? "bg-zinc-200 dark:bg-zinc-800"
+                  : "dark:bg-zinc-900"
+              }`}
+            >
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  <div className="flex justify-between items-center w-full">
+                    <h5 className="text-zinc-800 font-semibold text-base dark:text-zinc-50">
+                      {item.title}
+                    </h5>
+                    <EllipsisVertical
+                      size={18}
+                      className="dark:text-zinc-400"
+                    />
+                  </div>
+                </DropdownMenuSubTrigger>
 
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent className="gap-2 ml-2">
+                    <DropdownMenuItem>
+                      <Check
+                        size={18}
+                        className="text-zinc-500 dark:text-zinc-400"
+                      />
+                      <span className="text-sm font-medium dark:text-zinc-50">
 
-        {/* second */}
-        <DropdownMenuGroup className="p-4 gap-2 dark:bg-zinc-900">
-          
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>
-              <div className="flex justify-between items-center w-full">
-                <h5 className="text-zinc-800 font-semibold text-base dark:text-zinc-50">Your Order Has Been Shipped</h5>
-              <EllipsisVertical size={18} className='dark:text-zinc-400'/>
-              </div>
-              </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent className="gap-2 ml-2">
-                <DropdownMenuItem> <Check size={18} className="text-zinc-500 dark:text-zinc-400 "/> <span className="text-zinc-800 text-sm font-medium dark:text-zinc-50">Mark as read</span></DropdownMenuItem>
-                <DropdownMenuItem> <Trash2 size={18} className="text-red-500"/> <span className="text-zinc-800 text-sm font-medium dark:text-zinc-50">Delete notificatione</span></DropdownMenuItem>
-                
-                
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          <DropdownMenuItem>
-            <p className="text-sm text-zinc-500 font-normal dark:text-zinc-400">Your order #12345 has been shipped and will arrive in 2-3 business days. We’ll send you another update once it’s out for delivery. In th...</p>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator  className='bg-zinc-300 dark:bg-zinc-600'/> 
+                        {/* mark single notification as read */}
+                        <button onClick={() => markAsRead(index)}>Mark as read</button>
 
-        {/* third */}
-        <DropdownMenuGroup className="bg-zinc-200 gap-2 p-4 dark:bg-zinc-800 ">
-          
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>
-              <div className="flex justify-between items-center w-full">
-                <h5 className="text-zinc-800 font-semibold text-base dark:text-zinc-50 ">Your Order Has Been Shipped</h5>
-              <EllipsisVertical size={18} className='dark:text-zinc-400' />
-              </div>
-              </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent className="gap-2 ml-2">
-                <DropdownMenuItem> <Check size={18} className="text-zinc-500 dark:text-zinc-400"/> <span className="text-zinc-800 text-sm font-medium dark:text-zinc-50">Mark as read</span></DropdownMenuItem>
-                <DropdownMenuItem> <Trash2 size={18} className="text-red-500"/> <span className="text-zinc-800 text-sm font-medium dark:text-zinc-50">Delete notificatione</span></DropdownMenuItem>
-                
-                
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          <DropdownMenuItem>
-            <p className="text-sm text-zinc-500 font-normal dark:text-zinc-400">Your order #12345 has been shipped and will arrive in 2-3 business days. We’ll send you another update once it’s out for delivery. In th...</p>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator  className='bg-zinc-300 dark:bg-zinc-600'/>
-       
-         {/* fourth */}
-         <DropdownMenuGroup className='p-4 gap-2 dark:bg-zinc-900'>
-          
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>
-              <div className="flex justify-between items-center w-full">
-                <h5 className="text-zinc-800 font-semibold text-base dark:text-zinc-50">Your Order Has Been Shipped</h5>
-              <EllipsisVertical size={18} className='dark:text-zinc-400'/>
-              </div>
-              </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent className="gap-2 ml-2">
-                <DropdownMenuItem> <Check size={18} className="text-zinc-500 dark:text-zinc-400"/> <span className="text-zinc-800 text-sm font-medium dark:text-zinc-50">Mark as read</span></DropdownMenuItem>
-                <DropdownMenuItem> <Trash2 size={18} className="text-red-500"/> <span className="text-zinc-800 text-sm font-medium dark:text-zinc-50">Delete notificatione</span></DropdownMenuItem>
-                
-                
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          <DropdownMenuItem>
-            <p className="text-sm text-zinc-500 font-normal dark:text-zinc-400 ">Your order #12345 has been shipped and will arrive in 2-3 business days. We’ll send you another update once it’s out for delivery. In th...</p>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator  className='bg-zinc-300 dark:text-zinc-600'/>
+                      </span>
+                    </DropdownMenuItem>
 
-        {/* fifth */}
-        <DropdownMenuGroup className="bg-zinc-200 gap-2 p-4 dark:bg-zinc-800">
-          
-          <DropdownMenuSub  >
-            <DropdownMenuSubTrigger >
-              <div className="flex justify-between items-center w-full">
-                <h5 className="text-zinc-800 font-semibold text-base dark:text-zinc-50">Your Order Has Been Shipped</h5>
-              <EllipsisVertical size={18} className='dark:text-zinc-400'/>
-              </div>
-              </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent className=" ml-2">
-                <DropdownMenuItem> <Check size={18} className="text-zinc-500 dark:text-zinc-400"/> <span className="text-zinc-400 text-sm font-medium dark:text-zinc-50">Mark as read</span></DropdownMenuItem>
-                <DropdownMenuItem> <Trash2 size={18} className="text-red-500"/> <span className="text-zinc-800 text-sm font-medium dark:text-zinc-50">Delete notificatione</span></DropdownMenuItem>
-                
-                
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          <DropdownMenuItem >
-            <p className="text-sm text-zinc-500 font-normal dark:text-zinc-400">Your order #12345 has been shipped and will arrive in 2-3 business days. We’ll send you another update once it’s out for delivery. In th...</p>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator  className='bg-zinc-300 dark:text-zinc-600'/>
+                    <DropdownMenuItem>
+                      <Trash2 size={18} className="text-red-500" />
+                      <span className="text-sm font-medium dark:text-zinc-50">
 
+                        {/* delete single notification */}
+                        <button onClick={() => deleteSingleNotifcation(index)}>Delete notification</button>
+
+                      </span>
+                    </DropdownMenuItem>
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+
+              <DropdownMenuItem>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                  {item.description}
+                </p>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+
+            <DropdownMenuSeparator className="bg-zinc-300 dark:bg-zinc-600" />
+          </div>
+        ))}
+
+        {/* Loading */}
+        {isFetchingNextPage && (
+          <div className="p-4 text-center text-sm text-zinc-500 dark:text-zinc-400">
+            Loading more...
+          </div>
+        )}
+
+        {/* No more data */}
+        {!hasNextPage && notifications.length > 0 && (
+          <div className="p-4 mx-auto flex flex-col items-center justify-center gap-2 text-sm text-zinc-400 dark:bg-zinc-700">
+            <BellOff  size={50} className="dark:text-zinc-400" />
+            <span className="text-zinc-500 text-sm font-medium dark:text-zinc-400">No notifications to display.</span>
+          </div>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
-    </>
   )
 }

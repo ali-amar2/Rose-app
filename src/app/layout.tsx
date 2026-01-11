@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" >
+    <html lang="en"  >
       <body
         className={`${sarabun.className} ${sarabun.variable} ${tajawal.variable} antialiased`}
       >
