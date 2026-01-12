@@ -15,9 +15,10 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge"
 import {
   Bell,
   BrushCleaning,
@@ -112,8 +113,14 @@ const fetchNotifications = async ({ pageParam = 0 }) => {
       <DropdownMenuTrigger asChild>
 
         {/* Bell icon button */}
-        <Button variant="outline">
+        <Button variant="outline" className="relative p-2 rounded-full">
           <Bell size={24} className="text-red-500" />
+          <Badge
+          className="h-4 min-w-4 rounded-full p-1  absolute -top-1 -right-0"
+          variant="destructive"
+        >
+          15
+        </Badge>
         </Button>
 
       </DropdownMenuTrigger>
@@ -127,6 +134,7 @@ const fetchNotifications = async ({ pageParam = 0 }) => {
         {/* Header */}
         <DropdownMenuLabel className="bg-maroon-700 p-4 text-white dark:bg-soft-pink-200 dark:text-zinc-800">
           Notifications ({notifications.length})
+          
         </DropdownMenuLabel>
 
         {/* menu items */}
