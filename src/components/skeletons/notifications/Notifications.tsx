@@ -2,7 +2,6 @@
 
 // dynamic version with dummy data + scrollable
 
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,15 +30,14 @@ import {
 
 import { useInfiniteQuery } from "@tanstack/react-query"
 
-
-
 export default function Notifications() {
 
-// ==========================
+
 // Mock API
-// ==========================
-const PAGE_SIZE = 5
 // simulate fetching notifications from an APIc with delay
+
+const PAGE_SIZE = 5
+
 const fetchNotifications = async ({ pageParam = 0 }) => {
   await new Promise((res) => setTimeout(res, 500))
 
@@ -58,8 +56,6 @@ const fetchNotifications = async ({ pageParam = 0 }) => {
     nextPage: end < allNotifications.length ? pageParam + 1 : undefined,
   }
 }
-
-
 
   // start infinite query
   const {data,fetchNextPage,hasNextPage,isFetchingNextPage,} =
@@ -129,7 +125,7 @@ const fetchNotifications = async ({ pageParam = 0 }) => {
       <DropdownMenuContent
         align="start"
         onScroll={handleScroll}
-        className="w-80 p-0 max-h-[420px] overflow-y-auto"
+        className="w-80 p-0 max-h-[26.25rem] hide-scrollbar"
       >
         {/* Header */}
         <DropdownMenuLabel className="bg-maroon-700 p-4 text-white dark:bg-soft-pink-200 dark:text-zinc-800">
@@ -177,7 +173,7 @@ const fetchNotifications = async ({ pageParam = 0 }) => {
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
                   <div className="flex justify-between items-center w-full">
-                    <h5 className="text-zinc-800 font-semibold text-base dark:text-zinc-50">
+                    <h5 className="text-zinc-800 font-semibold text-base capitalize dark:text-zinc-50">
                       {item.title}
                     </h5>
                     <EllipsisVertical
@@ -189,18 +185,23 @@ const fetchNotifications = async ({ pageParam = 0 }) => {
 
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent className="gap-2 ml-2">
-                    <DropdownMenuItem>
-                      <Check
-                        size={18}
-                        className="text-zinc-500 dark:text-zinc-400"
-                      />
-                      <span className="text-sm font-medium dark:text-zinc-50">
+                    <DropdownMenuItem
+                        onClick={() => markAsRead(index)}
+                        className={`flex items-center gap-2 rounded-md  ${
+                          index === 2 || index === 4 || index === 7 || index === 10 || index === 13
+                            ? "text-zinc-400 dark:text-zinc-700"
+                            : "text-zinc-800 dark:text-zinc-500"
+                        }`}
+                        >
+                        <Check
+                          size={18}
+                          className="text-zinc-200 dark:text-zinc-300 "
+                        />
+                        <span className="text-sm font-medium cursor-pointer">
+                          Mark as read
+                        </span>
+                      </DropdownMenuItem>
 
-                        {/* mark single notification as read */}
-                        <button onClick={() => markAsRead(index)}>Mark as read</button>
-
-                      </span>
-                    </DropdownMenuItem>
 
                     <DropdownMenuItem>
                       <Trash2 size={18} className="text-red-500" />
@@ -228,7 +229,7 @@ const fetchNotifications = async ({ pageParam = 0 }) => {
 
         {/* Loading */}
         {isFetchingNextPage && (
-          <div className="p-4 text-center text-sm text-zinc-500 dark:text-zinc-400">
+          <div className="p-4 text-center text-sm text-zinc-500 capitalize dark:text-zinc-400">
             Loading more...
           </div>
         )}
