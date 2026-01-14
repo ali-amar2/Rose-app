@@ -13,7 +13,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils/tailwind-merge";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 // section dummy data
 const carouselItems = [
