@@ -13,6 +13,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils/tailwind-merge";
+import { useRouter } from "next/router";
 
 // section dummy data
 const carouselItems = [
@@ -42,6 +43,9 @@ const img = "/assets/banner.png";
 //component
 export default function CarouselComponent() {
   //TODO: Translation
+
+  // navigation 
+const router = useRouter()
 
   //state
   const [api, setApi] = useState<CarouselApi>();
@@ -77,7 +81,7 @@ export default function CarouselComponent() {
             <h2 className="text-2xl font-semibold mb-3 pb-4">
               Special Gifts For The People You Love
             </h2>
-            <Button className="w-fit bg-pink-50 text-rose-900 px-5 py-2 rounded-xl flex items-center">
+            <Button onClick={()=>router.push("/products")} className="w-fit bg-pink-50 text-rose-900 px-5 py-2 rounded-xl flex items-center">
               Shop Now <ArrowRight />
             </Button>
           </div>
@@ -101,7 +105,7 @@ export default function CarouselComponent() {
                 <div className="absolute inset-0 z-10 flex flex-col justify-end text-white p-8 bg-gradient-to-r from-black/80 to-transparent">
                   <h1 className="text-4xl font-bold mb-2">{item.title}</h1>
                   <p className="mb-8">{item.sub}</p>
-                  <Button className="w-fit bg-pink-50 text-rose-900 px-5 py-2 rounded-xl">
+                  <Button onClick={()=>router.push("/products")} className="w-fit bg-pink-50 text-rose-900 px-5 py-2 rounded-xl">
                     I'm buying!
                   </Button>
                 </div>
