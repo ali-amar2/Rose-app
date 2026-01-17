@@ -1,8 +1,9 @@
 import Image from "next/image";
 import logo from "../../../../public/images/logo 1.svg";
 import { Bell, Heart, ShoppingCart, User } from "lucide-react";
-import InputField from "@/components/shared/input-field";
 import Navbar from "./navbar";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils/tailwind-merge";
 
 const headerList = [
   {
@@ -49,8 +50,7 @@ export default function Header() {
           <Image src={logo} alt="Rose Logo" width={85} height={80} />
         </div>
         <div className="flex-1 flex items-center">
-          <InputField
-            label=""
+          <Input
             type="text"
             search={true}
             placeholder="What awesome gift are you looking for?"
@@ -59,7 +59,10 @@ export default function Header() {
             {headerList.map((item, index) => (
               <li
                 key={index}
-                className={`flex items-center gap-1 px-3 ${index === 1 ? "border-x h-12 dark:border-x-zinc-700 " : ""} cursor-pointer `}
+                className={cn(
+                  "flex items-center gap-1 px-3 cursor-pointer",
+                  index === 1 && "border-x h-12 dark:border-x-zinc-700"
+                )}
               >
                 {item.icons
                   ? item.icons.map((icon, iconIndex) => (

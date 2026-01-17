@@ -1,22 +1,46 @@
+"use client";
+
 import * as React from "react";
-
 import { cn } from "@/lib/utils/tailwind-merge";
+import { Search } from "lucide-react";
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-  ({ className, type, ...props }, ref) => {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  error?: boolean;
+  search?: boolean;
+}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type = "text", error, search, ...props }, ref) => {
     return (
-      <input
-        type={type}
-        className={cn(
-          " dark:bg-zinc-700 dark:text-zinc-50 dark:placeholder:text-zinc-400 dark:border-zinc-600 dark:hover:border-zinc-700 dark:focus:border-softPink-300 flex h-12 w-full text-zinc-800 outline-none rounded-lg border border-zinc-300 hover:border-zinc-400 focus:border-maroon-600  bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-zinc-400 focus-visible:outline-none  disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:border-none md:text-sm",
-          className
+      <div className="relative w-full">
+        {search && (
+          <Search
+            size={18}
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none"
+          />
         )}
-        ref={ref}
-        {...props}
-      />
+
+        <input
+          ref={ref}
+          type={type}
+          className={cn(
+            "flex h-12 w-full rounded-lg border bg-transparent px-3 py-1 text-base shadow-sm transition-colors outline-none",
+            "text-zinc-800 placeholder:text-zinc-400",
+            "hover:border-zinc-400 focus:border-maroon-600",
+            "dark:bg-zinc-700 dark:text-zinc-50 dark:placeholder:text-zinc-400 dark:border-zinc-600 dark:hover:border-zinc-700 dark:focus:border-softPink-300",
+            "disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:border-none",
+            search && "pl-10",
+            error &&
+              "border-red-600 hover:border-red-600 focus:border-red-600 dark:border-red-500",
+            className
+          )}
+          {...props}
+        />
+      </div>
     );
   }
 );
+
 Input.displayName = "Input";
 
 export { Input };
