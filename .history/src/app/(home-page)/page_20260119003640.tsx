@@ -1,7 +1,15 @@
 import Header from "./components/header";
 import Footer from "./components/footer";
-import BestSellingSection from "./components/BestSellingSection";
-import MostPopularSection from "./components/MostPopularSection";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Field, FieldLabel } from "@/components/ui/field";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Home() {
   return (

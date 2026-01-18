@@ -1,6 +1,13 @@
 "use client";
 import { cn } from "@/lib/utils/tailwind-merge";
-import { ClipboardList, Gift, Headset, Home, Info, PartyPopper, } from "lucide-react";
+import {
+  ClipboardList,
+  Gift,
+  Headset,
+  Home,
+  Info,
+  PartyPopper,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -51,7 +58,7 @@ export default function Navbar() {
               className={cn(
                 "hover:border-b-2 hover:border-zinc-50 dark:hover:border-zinc-800 hover:font-semibold transition-all pb-1",
                 isActive &&
-                "border-b-2 border-zinc-50 dark:border-zinc-800 font-semibold"
+                  "border-b-2 border-zinc-50 dark:border-zinc-800 font-semibold"
               )}
             >
               <Link className="flex items-center gap-2" href={item.href}>

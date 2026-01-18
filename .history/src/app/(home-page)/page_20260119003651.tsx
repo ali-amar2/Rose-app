@@ -1,8 +1,7 @@
 import Header from "./components/header";
 import Footer from "./components/footer";
-import BestSellingSection from "./components/BestSellingSection";
-import MostPopularSection from "./components/MostPopularSection";
-
+import BestSellingSection from "@/app/(homepage)/_components/BestSellingSection";
+import MostPopularSection from "@/app/(homepage)/_components/MostPopularSection";
 export default function Home() {
   return (
     <>
