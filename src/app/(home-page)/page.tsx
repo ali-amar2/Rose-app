@@ -10,6 +10,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import CarouselComponent from "./components/carousel-component";
+import SecondSection from "./components/second-section";
+import SpecificationsComponent from "./components/specifications-component";
 
 export default function Home() {
   return (
@@ -54,8 +57,11 @@ export default function Home() {
           </Button>
         </form>
 
-        {/* Add more content here as needed */}
       </main>
+        {/* Add more content here as needed */}
+        <CarouselComponent />
+        <SecondSection />
+        <SpecificationsComponent />
       <Footer />
     </>
   );
