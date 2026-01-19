@@ -69,7 +69,6 @@ export default function Header() {
                 {item.text ? <span>{item.text}</span> : null}
               </li>
             ))}
-
             <li className="px-3">
               <ToggleLanguage />
             </li>
