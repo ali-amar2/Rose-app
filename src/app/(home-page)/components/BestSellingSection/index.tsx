@@ -17,7 +17,7 @@ export default function BestSellingSection() {
                     {/* Description paragraph */}
                     <p className="text-sm text-zinc-500">
                         Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for.
-                        Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.
+                        Whether you&apos;re celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.
                     </p>
 
                 </div>

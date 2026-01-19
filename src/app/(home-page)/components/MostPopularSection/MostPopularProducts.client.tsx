@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import MostPopularTabs from "./MostPopularTabs";
 import ProductCard from "@/components/shared/ProductCard";
-import Loading from "@/app/loading";
 import { useProducts } from "@/hooks/use-products";
+import { LoaderCircle } from "lucide-react";
 
 export default function MostPopularProducts({ initialOccasion, occasions, }: MostPopularProductsProps) {
 
@@ -12,18 +12,19 @@ export default function MostPopularProducts({ initialOccasion, occasions, }: Mos
     const searchParams = useSearchParams();
 
     // Determine the currently selected occasion
-    const [selectedOccasion, setSelectedOccasion] = useState(searchParams.get("occasion") || initialOccasion);
+    const [selectedOccasion, setSelectedOccasion] = useState(initialOccasion);
 
     // Fetch products for the currently selected occasion using React Query
     const { data: products, isLoading } = useProducts({ limit: 12, sort: "-rateCount", occasion: selectedOccasion, });
 
     // Update the URL search params whenever the selected occasion changes
     useEffect(() => {
-        const params = new URLSearchParams();
+        const params = new URLSearchParams(searchParams.toString());
         params.set("occasion", selectedOccasion);
 
-        router.replace(`${window.location.pathname}?${params.toString()}`, { scroll: false });
-    }, [selectedOccasion, router]);
+        router.replace(`?${params.toString()}`, { scroll: false });
+    }, [selectedOccasion, router, searchParams]);
+
 
 
     //  Handle occasion changes
@@ -44,7 +45,10 @@ export default function MostPopularProducts({ initialOccasion, occasions, }: Mos
                 />
             </div>
 
-            {isLoading && <Loading />}
+            {isLoading && (
+                <p className="flex justify-center items-center text-center text-lg text-maroon-600">
+                    <LoaderCircle className="h-10 w-10 animate-spin" />
+                </p>)}
 
             {/* Products grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">

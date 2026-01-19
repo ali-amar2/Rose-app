@@ -5,8 +5,8 @@ import Rating from "@/components/ui/rating"
 
 export default function ProductCard({ img, title, price, priceAfterDiscount, }: ProductCardProps) {
     return (
-        <Card className="border-none shadow-none">
-            <CardContent className="flex aspect-square flex-col h-full p-1 pt-0">
+        <Card className="border-none shadow-none h-full">
+            <CardContent className="flex flex-col h-full px-1 p-0">
 
                 {/* Product image */}
                 <div className="relative w-full h-72">
