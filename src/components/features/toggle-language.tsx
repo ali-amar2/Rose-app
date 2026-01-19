@@ -27,10 +27,7 @@ export default function ToggleLanguage() {
   }
   return (
     // #TODO: Style the button
-    <button
-      onClick={toggleLocale}
-      className="text-white bg-red-600 px-5 flex justify-center items-center "
-    >
+    <button onClick={toggleLocale} className="text-zinc-700 dark:text-zinc-50">
       {locale === "ar" ? "English" : "العربية"}
     </button>
   );

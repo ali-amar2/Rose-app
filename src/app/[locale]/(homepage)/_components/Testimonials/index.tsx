@@ -9,7 +9,6 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import TestimonialCard from "./testimonial-card";
-import ToggleLanguage from "@/components/features/toggle-language";
 import TitleOfSection from "@/components/shared/title-of-section";
 
 type TestimonialsResponse = {
@@ -75,11 +74,9 @@ export function Testimonials() {
 
   return (
     <section className="">
-      {/* TODO: Waiting for header to add toggle button */}
-      <ToggleLanguage />
+
       <TitleOfSection title={t("title")} subtitle={t("sub-title")} />
-      {/* TODO: Waiting for disgin system for background color*/}
-      <div className="bg-[#FBEAEA] px-4 py-14  overflow-hidden">
+      <div className="bg-maroon-50 dark:bg-zinc-700 px-4 py-14 overflow-hidden">
         {/* carousel section */}
         <Carousel
           plugins={[autoplay.current]} // plugins for autoplay functionality
@@ -105,7 +102,7 @@ export function Testimonials() {
                 className="basis-1/3"
               >
                 <div className="p-0 h-full">
-                  <div className="flex l items-center justify-center">
+                  <div className="flex items-center justify-center">
                     {/* call dynamic testimonial card  */}
                     <TestimonialCard
                       _id={item._id}
