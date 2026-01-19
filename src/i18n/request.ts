@@ -6,9 +6,11 @@ import { CURRENCY } from "@/lib/constants/global.constant";
 export default getRequestConfig(async ({ requestLocale }) => {
   // Static for now, we'll change this later
   const requested = await requestLocale;
+  // Validate requested locale
   const locale = hasLocale(routing.locales, requested)
     ? requested
     : routing.defaultLocale;
+  // Determine numbering system based on locale
   const numberingSystem = locale === "ar" ? "arab" : "latn";
 
   return {

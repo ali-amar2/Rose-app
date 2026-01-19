@@ -1,22 +1,7 @@
 {
     "home": "Home",
     "testimonials": {
-        "title" : "Testimonials",
-        "sub-title" : "Real Words from Happy Customers",
-        "user1": {
-            "name": "Jake Miller",
-            "description": "I've been ordering from this flower shop for years and they never disappoint. The quality and service are exceptional!",
-            "date": "January 12, 2025"
-        },
-        "user2": {
-            "name": "Tyler Brooks",
-            "description": "Customer service is top-notch and the flowers last longer than any others I've bought. Highly recommend!",
-            "date": "January 12, 2025"
-        },
-        "user3": {
-            "name": "Max Turner",
-            "description": "The team truly cares about every order. I always feel confident when I buy flowers from here. The checkout process was sup...",
-            "date": "January 12, 2025"
-        }
+        "title": "Testimonials",
+        "sub-title": "Real Words from Happy Customers"
     }
 }

@@ -29,7 +29,7 @@ export default function ToggleLanguage() {
     // #TODO: Style the button
     <button
       onClick={toggleLocale}
-      className="text-white bg-red-600 px-5 py-2 rounded-lg mx-96"
+      className="text-white bg-red-600 px-5 flex justify-center items-center "
     >
       {locale === "ar" ? "English" : "العربية"}
     </button>
