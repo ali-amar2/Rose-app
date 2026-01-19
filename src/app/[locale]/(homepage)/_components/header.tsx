@@ -1,9 +1,10 @@
 import Image from "next/image";
-import logo from "../../../../public/images/logo 1.svg";
+import logo from "../../../../../public/images/logo 1.svg";
 import { Bell, Heart, ShoppingCart, User } from "lucide-react";
 import Navbar from "./navbar";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils/tailwind-merge";
+import ToggleLanguage from "@/components/features/toggle-language";
 
 const headerList = [
   {
@@ -39,7 +40,6 @@ const headerList = [
       />,
     ],
   },
-  { text: "العربية" },
 ];
 
 export default function Header() {
@@ -72,6 +72,9 @@ export default function Header() {
                 {item.text ? <span>{item.text}</span> : null}
               </li>
             ))}
+            <li className="px-3">
+              <ToggleLanguage />
+            </li>
           </ul>
         </div>
       </header>

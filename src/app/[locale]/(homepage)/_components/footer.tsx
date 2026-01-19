@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../../../public/images/logo 1.svg";
+import logo from "../../../../../public/images/logo 1.svg";
 import { ArrowBigRight, ArrowRight } from "lucide-react";
 
 const footerItems = [
@@ -13,6 +13,7 @@ const footerItems = [
   { title: "Privacy Policy" },
   { title: "FAQs" },
 ];
+
 export default function Footer() {
   return (
     <footer className="bg-zinc-800 dark:bg-zinc-900 ">

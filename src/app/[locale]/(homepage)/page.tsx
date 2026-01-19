@@ -1,5 +1,7 @@
-import Header from "./components/header";
-import Footer from "./components/footer";
+import { RouteProps } from "@/lib/types/global";
+import { getTranslations } from "next-intl/server";
+import { Testimonials } from "./_components/Testimonials";
+import Header from "./_components/header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Field, FieldLabel } from "@/components/ui/field";
@@ -10,9 +12,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import CarouselComponent from "./components/carousel-component";
-import SecondSection from "./components/second-section";
-import SpecificationsComponent from "./components/specifications-component";
+import CarouselComponent from "./_components/carousel-component";
+import SecondSection from "./_components/second-section";
+import SpecificationsComponent from "./_components/specifications-component";
+import Footer from "./_components/footer";
+
+export async function generateMetadata({ params: { locale } }: RouteProps) {
+  // translation function
+  const t = await getTranslations({ locale });
+
+  return {
+    title: t("home"),
+  };
+}
 
 export default function Home() {
   return (
@@ -56,12 +68,12 @@ export default function Home() {
             Submit
           </Button>
         </form>
-
       </main>
-        {/* Add more content here as needed */}
-        <CarouselComponent />
-        <SecondSection />
-        <SpecificationsComponent />
+      {/* Add more content here as needed */}
+      <CarouselComponent />
+      <SecondSection />
+      <SpecificationsComponent />
+      <Testimonials />
       <Footer />
     </>
   );
