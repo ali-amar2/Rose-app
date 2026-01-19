@@ -1,9 +1,11 @@
-export async function getProducts(params: ProductsParams = {}) {
+export async function getProducts(params: Record<string, any> = {}) {
   const query = new URLSearchParams();
 
-  if (params.sort) query.append("sort", params.sort);
-  if (params.limit) query.append("limit", params.limit.toString());
-  if (params.occasion) query.append("occasion", params.occasion);
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      query.append(key, value.toString());
+    }
+  });
 
   const res = await fetch(`${process.env.API}/products?${query}`, {
     cache: "no-store",

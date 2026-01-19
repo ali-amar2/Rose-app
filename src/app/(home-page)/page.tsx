@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="px-20 py-10 space-y-[8.625rem]">
+      <main className="flex flex-col px-20 py-10 gap-y-20">
         <BestSellingSection />
         <MostPopularSection />
       </main>
