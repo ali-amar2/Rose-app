@@ -5,6 +5,7 @@ import Navbar from "./navbar";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils/tailwind-merge";
 import ToggleLanguage from "@/components/features/toggle-language";
+import Notifications from "@/components/skeletons/notifications/Notifications";
 
 const headerList = [
   {
@@ -32,12 +33,8 @@ const headerList = [
         width={24}
         height={24}
       />,
-      <Bell
-        key="bell-icon"
-        className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50"
-        width={24}
-        height={24}
-      />,
+      // noftification feat
+      <Notifications />,
     ],
   },
 ];

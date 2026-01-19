@@ -8,6 +8,15 @@
   }
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; 
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;     
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -35,6 +44,16 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --maroon-50: 354 60% 96%;
+    --maroon-100: 354 60% 90%;
+    --maroon-200: 354 58% 78%;
+    --maroon-300: 354 56% 65%;
+    --maroon-400: 354 55% 50%;
+    --maroon-500: 354 54% 40%;
+    --maroon-600: 354 55% 32%;
+    --maroon-700: 354 56% 28%; 
+    --maroon-800: 354 58% 22%;
+    --maroon-900: 354 60% 16%;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -61,6 +80,16 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --maroon-50: 354 35% 20%;
+    --maroon-100: 354 38% 24%;
+    --maroon-200: 354 40% 30%;
+    --maroon-300: 354 42% 38%;
+    --maroon-400: 354 45% 45%;
+    --maroon-500: 354 48% 55%;
+    --maroon-600: 354 50% 65%;
+    --maroon-700: 354 52% 72%;
+    --maroon-800: 354 55% 78%;
+    --maroon-900: 354 58% 85%;
   }
 }
 
@@ -72,3 +101,4 @@
     @apply bg-background text-foreground;
   }
 }
+
