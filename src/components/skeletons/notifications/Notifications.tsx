@@ -104,7 +104,7 @@ export default function Notifications() {
     // dropdown menu
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        {/* Bell icon button */}
+        {/*  icon button */}
         <Button
           variant="ghost"
           className="relative p-2 rounded-full border-none outline-none"
