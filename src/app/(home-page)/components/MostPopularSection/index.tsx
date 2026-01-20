@@ -1,7 +1,6 @@
 import { getOccasions } from "@/lib/services/occasions.service";
 import { getProducts } from "@/lib/services/products.service";
 import MostPopular from "./most-popular";
-import { HomePageProps } from "@/lib/types/pages-props";
 import { OccProps } from "@/lib/types/occasion";
 
 export default async function MostPopularSection({
