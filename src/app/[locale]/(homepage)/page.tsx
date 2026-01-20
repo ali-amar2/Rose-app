@@ -16,6 +16,7 @@ import CarouselComponent from "./_components/carousel-component";
 import SecondSection from "./_components/second-section";
 import SpecificationsComponent from "./_components/specifications-component";
 import Footer from "./_components/footer";
+import VerifyOtp from "../(auth)/forget-password/_components/verify-otp";
 
 export async function generateMetadata({ params: { locale } }: RouteProps) {
   // translation function
@@ -75,6 +76,9 @@ export default function Home() {
       <SpecificationsComponent />
       <Testimonials />
       <Footer />
+      <div className="my-44">
+        <VerifyOtp />
+      </div>
     </>
   );
 }
