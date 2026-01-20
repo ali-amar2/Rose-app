@@ -2,12 +2,15 @@ import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Rating from "@/components/ui/rating";
+import ProductBadge from "./product-badge";
 
 export default function ProductCard({
     img,
     title,
     price,
     priceAfterDiscount,
+    quantity,
+    sold,
 }: ProductCardProps) {
     return (
         <Card className="border-none shadow-none h-full">
@@ -21,11 +24,12 @@ export default function ProductCard({
                         style={{ objectFit: "cover", objectPosition: "center" }}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
+                    <ProductBadge
+                        quantity={quantity}
+                        sold={sold}
+                    />
                 </div>
 
-
-
-                {/* TODO: Waiting for system design to implement the product badge  */}
 
                 <div className="flex flex-col space-y-1 mt-2">
                     {/* Product title */}

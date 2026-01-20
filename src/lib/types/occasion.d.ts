@@ -8,8 +8,14 @@ declare type Occasion = {
   isSuperAdmin: boolean;
   productsCount: number;
 };
-declare type MostPopularTabsProps = {
+
+export type MostPopularTabsProps = {
   occasions: Occasion[];
-  selected: string;
-  onChange: (id: string) => void;
+  activeOccasion: string;
+};
+
+export type OccProps = {
+  searchParams?: {
+    occasion?: string;
+  };
 };

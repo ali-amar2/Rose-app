@@ -1,25 +1,29 @@
-import { getProducts } from "@/lib/services/products.service";
 import { getOccasions } from "@/lib/services/occasions.service";
-import MostPopularProducts from "./most-popular-products";
+import { getProducts } from "@/lib/services/products.service";
+import MostPopular from "./most-popular";
+import { HomePageProps } from "@/lib/types/pages-props";
+import { OccProps } from "@/lib/types/occasion";
 
-export default async function MostPopularSection() {
-  // occassions Query
-  const occasionsData = await getOccasions();
-  const occasions = occasionsData.occasions || [];
-  const defaultOccasion = occasions[0]?._id || "";
+export default async function MostPopularSection({
+  searchParams,
+}: OccProps) {
+  const occasionsResponse = await getOccasions();
+  const occasions = occasionsResponse.occasions.slice(0, 4);
 
-  // products Query
-  const initialProducts = await getProducts({
+  const activeOccasion =
+    searchParams?.occasion || occasions[0]?._id;
+
+  const products = await getProducts({
+    occasion: activeOccasion,
     limit: 12,
-    sort: "-rateCount",
-    occasion: defaultOccasion,
+    sort: "-sold",
   });
 
   return (
-    <MostPopularProducts
-      initialProducts={initialProducts}
-      initialOccasion={defaultOccasion}
-      occasions={occasions.slice(0, 4)}
+    <MostPopular
+      occasions={occasions}
+      initialOccasion={activeOccasion}
+      initialProducts={products}
     />
   );
 }

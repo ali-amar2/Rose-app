@@ -26,6 +26,8 @@ type ProductCardProps = {
   title: string;
   price: number;
   priceAfterDiscount: number;
+  quantity: number;
+  sold: number;
 };
 type ProductsParams = {
   sort?: string;

@@ -44,7 +44,6 @@ export default function BestSellingSection() {
                     </Suspense>
                 </div>
             </div>
-            <Link href={`/products`} className='flex gap-2 justify-end text-maroon-700 font-bold'>View More <MoveRight /></Link>
         </section>
     )
 }

@@ -27,6 +27,8 @@ export async function BestSellingCarousel() {
                             title={product.title}
                             price={product.price}
                             priceAfterDiscount={product.priceAfterDiscount}
+                            quantity={product.quantity}
+                            sold={product.sold}
                         />
                     </CarouselItem>
                 ))}
