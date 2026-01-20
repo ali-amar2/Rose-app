@@ -1,11 +1,11 @@
 import Image from "next/image";
-import logo from "../../../../../public/images/logo 1.svg";
-import { Bell, Heart, ShoppingCart, User } from "lucide-react";
+import logo from "../../../../../public/images/logo1.svg";
+import { Heart, ShoppingCart, User } from "lucide-react";
 import Navbar from "./navbar";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils/tailwind-merge";
-import ToggleLanguage from "@/components/features/toggle-language";
 import Notifications from "@/components/skeletons/notifications/Notifications";
+import ToggleLanguage from "@/components/features/toggle-language";
 
 const headerList = [
   {
@@ -63,8 +63,8 @@ export default function Header() {
               >
                 {item.icons
                   ? item.icons.map((icon, iconIndex) => (
-                      <span key={iconIndex}>{icon}</span>
-                    ))
+                    <span key={iconIndex}>{icon}</span>
+                  ))
                   : null}
                 {item.text ? <span>{item.text}</span> : null}
               </li>

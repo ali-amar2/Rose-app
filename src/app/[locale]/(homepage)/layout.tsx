@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Providers from "@/components/providers";
 import { Sarabun, Tajawal } from "next/font/google";
-import {  setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 
 const sarabun = Sarabun({
   subsets: ["latin"],
@@ -37,7 +37,7 @@ export default function LocaleLayout({ children, params }: LayoutProps) {
   setRequestLocale(locale);
 
   return (
-    <html lang="{locale}" dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body
         className={`${sarabun.className} ${sarabun.variable} ${tajawal.variable} antialiased`}
       >

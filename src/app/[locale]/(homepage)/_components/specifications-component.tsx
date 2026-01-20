@@ -31,7 +31,7 @@ export default function SpecificationsComponent() {
 
   return (
     // TODO: colors to be changed
-    <section className="w-full px-20">
+    <section className="w-full">
       <div className="bg-[#FDF0F0] dark:bg-zinc-700 rounded-xl p-10 flex items-center justify-between w-full">
         {specs.map((item, index) => (
           <div

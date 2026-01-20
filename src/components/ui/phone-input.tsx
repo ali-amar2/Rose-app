@@ -89,20 +89,34 @@ const CountrySelect = ({
   const [searchValue, setSearchValue] = React.useState("");
   const [isOpen, setIsOpen] = React.useState(false);
 
+  const handleValueChange = (value: string) => {
+    setSearchValue(value);
+    setTimeout(() => {
+      if (scrollAreaRef.current) {
+        const viewportElement = scrollAreaRef.current.querySelector(
+          "[data-radix-scroll-area-viewport]"
+        );
+        if (viewportElement) {
+          viewportElement.scrollTop = 0;
+        }
+      }
+    }, 0);
+  };
+
   return (
     <Popover
       open={isOpen}
       modal
       onOpenChange={(open) => {
         setIsOpen(open);
-        open && setSearchValue("");
+        if (open) setSearchValue("");
       }}
     >
       <PopoverTrigger asChild>
         <Button
           type="button"
           variant="outline"
-          className="flex gap-1 h-12 rounded-e-none rounded-s-lg border-r-0 px-3 focus:z-10   dark:bg-zinc-700 dark:text-zinc-50 dark:placeholder:text-zinc-400 dark:border-zinc-600 dark:hover:border-zinc-700 dark:focus:border-softPink-300"
+          className="flex gap-1 h-12 rounded-e-none rounded-s-lg border-r-0 px-3 focus:z-10 dark:bg-zinc-700 dark:text-zinc-50 dark:placeholder:text-zinc-400 dark:border-zinc-600 dark:hover:border-zinc-700 dark:focus:border-softPink-300"
           disabled={disabled}
         >
           <FlagComponent
@@ -121,36 +135,25 @@ const CountrySelect = ({
         <Command>
           <CommandInput
             value={searchValue}
-            onValueChange={(value) => {
-              setSearchValue(value);
-              setTimeout(() => {
-                if (scrollAreaRef.current) {
-                  const viewportElement = scrollAreaRef.current.querySelector(
-                    "[data-radix-scroll-area-viewport]"
-                  );
-                  if (viewportElement) {
-                    viewportElement.scrollTop = 0;
-                  }
-                }
-              }, 0);
-            }}
+            onValueChange={handleValueChange}
             placeholder="Search country..."
           />
           <CommandList>
             <ScrollArea ref={scrollAreaRef} className="h-72">
               <CommandEmpty>No country found.</CommandEmpty>
               <CommandGroup>
-                {countryList.map(({ value, label }) =>
-                  value ? (
-                    <CountrySelectOption
-                      key={value}
-                      country={value}
-                      countryName={label}
-                      selectedCountry={selectedCountry}
-                      onChange={onChange}
-                      onSelectComplete={() => setIsOpen(false)}
-                    />
-                  ) : null
+                {countryList.map(
+                  ({ value, label }) =>
+                    value && (
+                      <CountrySelectOption
+                        key={value}
+                        country={value}
+                        countryName={label}
+                        selectedCountry={selectedCountry}
+                        onChange={onChange}
+                        onSelectComplete={() => setIsOpen(false)}
+                      />
+                    )
                 )}
               </CommandGroup>
             </ScrollArea>
