@@ -8,7 +8,7 @@
   "verify": {
     "title": "Enter the OTP Code",
     "send-to": "We have sent a 6-digit code to",
-    "edit-email": "edit",
+    "edit-email": "Edit",
     "send-code": "send a new code",
     "verify-otp": "Verify Otp",
     "help": "Need help?",
