@@ -48,8 +48,8 @@ export default function CarouselComponent() {
   return (
     // TODO: colors to be changed
 
-    <section className="w-full my-5 flex justify-center">
-      <div className="flex flex-row items-stretch gap-6 w-full px-20">
+    <section className="w-full flex justify-center">
+      <div className="flex flex-row items-stretch gap-6 w-full">
         {/* side card  */}
         <div className="relative min-w-80  flex-shrink-0 overflow-hidden rounded-xl bg-[#4A1010]">
           <Image

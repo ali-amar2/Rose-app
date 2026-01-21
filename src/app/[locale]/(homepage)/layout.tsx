@@ -40,7 +40,7 @@ export default function LocaleLayout({ children, params }: LayoutProps) {
       <body
         className={`${sarabun.className} ${sarabun.variable} ${tajawal.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers locale={locale}>{children}</Providers>
       </body>
     </html>
   );

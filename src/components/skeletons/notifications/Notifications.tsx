@@ -107,10 +107,10 @@ export default function Notifications() {
         {/*  icon button */}
         <Button
           variant="ghost"
-          className="relative p-2 rounded-full border-none outline-none"
+          className="relative rounded-full border-none outline-none px-0"
         >
-          <Bell size={24} className="text-red-500" />
-          <Badge className="h-4 min-w-4 rounded-full p-1 bg-red-600 absolute -top-0 -right-0">
+          <Bell size={24} />
+          <Badge className="h-4 min-w-4 rounded-full p-1 bg-red-600 text-white absolute -top-0 -right-0">
             15
           </Badge>
         </Button>
@@ -156,15 +156,14 @@ export default function Notifications() {
         {notifications.map((item, index) => (
           <div key={item.id}>
             <DropdownMenuGroup
-              className={`p-4 gap-2 ${
-                index === 2 ||
+              className={`p-4 gap-2 ${index === 2 ||
                 index === 4 ||
                 index === 7 ||
                 index === 10 ||
                 index === 13
-                  ? "bg-zinc-200 dark:bg-zinc-800"
-                  : "dark:bg-zinc-900"
-              }`}
+                ? "bg-zinc-200 dark:bg-zinc-800"
+                : "dark:bg-zinc-900"
+                }`}
             >
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
@@ -183,15 +182,14 @@ export default function Notifications() {
                   <DropdownMenuSubContent className="gap-2 ml-2">
                     <DropdownMenuItem
                       onClick={() => markAsRead(index)}
-                      className={`flex items-center gap-2 rounded-md  ${
-                        index === 2 ||
+                      className={`flex items-center gap-2 rounded-md  ${index === 2 ||
                         index === 4 ||
                         index === 7 ||
                         index === 10 ||
                         index === 13
-                          ? "text-zinc-400 dark:text-zinc-700"
-                          : "text-zinc-800 dark:text-zinc-500"
-                      }`}
+                        ? "text-zinc-400 dark:text-zinc-700"
+                        : "text-zinc-800 dark:text-zinc-500"
+                        }`}
                     >
                       <Check
                         size={18}

@@ -73,7 +73,7 @@ export function Testimonials() {
   }
 
   return (
-    <section className="">
+    <section>
 
       <TitleOfSection title={t("title")} subtitle={t("sub-title")} />
       <div className="bg-maroon-50 dark:bg-zinc-700 px-4 py-14 overflow-hidden">

@@ -1,7 +1,17 @@
 {
-    "home": "Home",
-    "testimonials": {
-        "title": "Testimonials",
-        "sub-title": "Real Words from Happy Customers"
-    }
+  "home": "Home",
+  "testimonials": {
+    "title": "Testimonials",
+    "sub-title": "Real Words from Happy Customers"
+  },
+
+  "verify": {
+    "title": "Enter the OTP Code",
+    "send-to": "We have sent a 6-digit code to",
+    "edit-email": "edit",
+    "send-code": "send a new code",
+    "verify-otp": "Verify Otp",
+    "help": "Need help?",
+    "contact": "Contact-us"
+  }
 }
