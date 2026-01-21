@@ -1,11 +1,22 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { InputOTP, InputOTPSlot } from "@/components/ui/input-otp";
-
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import useVerifyOtp from "../_hooks/use-verify-otp";
 
 export default function VerifyOtp() {
+  // translations
   const t = useTranslations("verify");
+
+  // mutation hook
+  const { verifyOtp, isPending } = useVerifyOtp();
+
+  // handle verify otp
+  const handleVerifyOtp = () => {
+    verifyOtp();
+  };
 
   return (
     <>
@@ -45,7 +56,10 @@ export default function VerifyOtp() {
 
         {/* Verify otp button  */}
         <div className="py-3 px-4 border-b border-zinc-200 dark:border-zinc-600 ">
-          <Button className="w-full my-9 bg-maroon-600 text-white font-medium text-base capitalize dark:bg-softPink-300 dark:text-zinc-800">
+          <Button
+            onClick={handleVerifyOtp}
+            className="w-full my-9 bg-maroon-600 text-white font-medium text-base capitalize dark:bg-softPink-300 dark:text-zinc-800"
+          >
             {t("verify-otp")}
           </Button>
         </div>

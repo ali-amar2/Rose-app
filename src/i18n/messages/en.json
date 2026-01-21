@@ -12,6 +12,8 @@
     "send-code": "send a new code",
     "verify-otp": "Verify Otp",
     "help": "Need help?",
-    "contact": "Contact-us"
+    "contact": "Contact-us",
+    "success-toast": "A new OTP code has been sent to your email.",
+    "error-toast": "Rest code is invalid or has expired"
   }
 }
