@@ -3,5 +3,13 @@
     "testimonials": {
         "title": "الشهادات",
         "sub-title": "كلمات حقيقية من العملاء السعداء"
+    },
+    "forgot-password": {
+        "step-one-title": "هل نسيت كلمة المرور؟",
+        "step-one-subtitle": "لا تقلق، سنرسل لك تعليمات لمساعدتك في إعادة تعيينها.",
+        "step-two-title": "أدخل رمز التحقق",
+        "step-two-subtitle": "لقد أرسلنا رمزًا مكوّنًا من 6 أرقام إلى {email} <button>تعديل</button>",
+        "step-three-title": "إنشاء كلمة مرور جديدة",
+        "step-three-subtitle": "قم بتعيين كلمة مرور قوية لحماية حسابك."
     }
 }

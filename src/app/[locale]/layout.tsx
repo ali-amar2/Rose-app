@@ -39,11 +39,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const messages = await getMessages();
 
   return (
-    <body
-      className={`${sarabun.className} ${sarabun.variable} ${tajawal.variable} antialiased`}
-      dir={locale === "ar" ? "rtl" : "ltr"}
-    >
-      <Providers messages={messages}>{children}</Providers>
-    </body>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+      <body
+        className={`${sarabun.className} ${sarabun.variable} ${tajawal.variable} antialiased`}
+      >
+        <Providers messages={messages}>{children}</Providers>
+      </body>
+    </html>
   );
 }

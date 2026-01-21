@@ -3,5 +3,13 @@
     "testimonials": {
         "title": "Testimonials",
         "sub-title": "Real Words from Happy Customers"
+    },
+    "forgot-password": {
+        "step-one-title": "Forgot Password?",
+        "step-one-subtitle": "Worry not, we’ll send you instructions to help you reset it.",
+        "step-two-title": "Enter the OTP Code",
+        "step-two-subtitle": "We have sent a 6-digit code to {email} <button >Edit</button>",
+        "step-three-title": "Create a new password",
+        "step-three-subtitle": "Set a strong password to secure your account."
     }
 }
