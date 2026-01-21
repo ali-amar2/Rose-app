@@ -1,7 +1,28 @@
 {
-    "home": "Home",
-    "testimonials": {
-        "title": "Testimonials",
-        "sub-title": "Real Words from Happy Customers"
-    }
+  "home": "Home",
+  "testimonials": {
+    "title": "Testimonials",
+    "sub-title": "Real Words from Happy Customers"
+  },
+  "email-lablel": "Email",
+  "forgot-password-heading": "Forgot Password?",
+  "forget-password-text": "Worry not, we’ll send you instructions to help you reset it.",
+  "email-placeholder": "Enter your email",
+  "continue": "continue",
+  "non-email-error": "Please Enter Your Email",
+  "email-not-valid": "Enter a valid email",
+  "required-email": "Email is required",
+  "dont-have-an-account": "Don’t have an account yet? <a>Create one now!</a>",
+  "create-new-password-label": "Create a new password",
+  "create-new-password-text": "Set a strong password to secure your account.",
+  "password-label": "Password",
+  "confirm-password-label": "Confirm Password",
+  "reset-password-btn": "Reset Password",
+  "need-help": "Need help? <a>Contact us</a>",
+  "password-is-required": "Password is required",
+  "password-at-least-8-characters": "Password must be at least 8 characters",
+  "password-contain-uppercase-letter": "Password must contain at least one uppercase letter",
+  "password-contain-lowercase-letter": "Password must contain at least one lowercase letter",
+  "password-contain--one-number": "Password must contain at least one number",
+  "passwords-do-not-match": "Passwords do not match"
 }
