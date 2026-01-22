@@ -1,5 +1,6 @@
 export async function verifyOtpAction() {
-  //simulating static payload for testing purpose
+  //simulating static payload for testing verify otp api
+  //incase code dosn't work please change the code value below
   const staticPayload = {
     resetCode: "311038",
   };

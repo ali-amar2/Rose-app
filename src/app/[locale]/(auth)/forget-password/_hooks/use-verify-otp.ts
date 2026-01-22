@@ -8,7 +8,7 @@ export default function useVerifyOtp() {
   const t = useTranslations("verify");
 
   // mutation
-  const { isPending, error, mutate } = useMutation({
+  const { isPending, mutate, error } = useMutation({
     mutationFn: async () => {
       const payload = await verifyOtpAction();
       return payload;
