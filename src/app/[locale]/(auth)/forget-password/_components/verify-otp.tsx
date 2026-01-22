@@ -1,5 +1,7 @@
 "use client";
 
+// NOTE: you will need to import this component in some where
+
 // resend timer localStorage key
 const RESEND_TIMER_KEY = "resend_otp_expire_at";
 

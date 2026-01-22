@@ -24,10 +24,6 @@ export default function Home({ searchParams }: OccProps) {
         <Testimonials />
       </main>
       <Footer />
-
-      <div className="my-44">
-        <VerifyOtp />
-      </div>
     </>
   );
 }
