@@ -1,6 +1,6 @@
 import Image from "next/image";
-import logo from "../../../../public/images/logo 1.svg";
-import { ArrowBigRight, ArrowRight } from "lucide-react";
+import logo from "../../../../../public/images/logo1.svg";
+import { ArrowRight } from "lucide-react";
 
 const footerItems = [
   { title: "Home" },
@@ -13,6 +13,7 @@ const footerItems = [
   { title: "Privacy Policy" },
   { title: "FAQs" },
 ];
+
 export default function Footer() {
   return (
     <footer className="bg-zinc-800 dark:bg-zinc-900 ">
@@ -63,7 +64,7 @@ export default function Footer() {
               className="mt-5 h-9 bg-zinc-600 py-2 px-4 rounded-full w-80 z-0  focus:outline-none  placeholder:text-zinc-400 text-sm"
             />
             <button className="dark:bg-softPink-300 absolute right-0 top-1  mt-4 bg-maroon-50 text-maroon-700 py-2 px-4 w-32 h-9   rounded-full flex items-center gap-2 justify-center hover:bg-softPink-200 hover:text-zinc-800 transition-all">
-              Sunscribe <ArrowRight />{" "}
+              Subscribe <ArrowRight />{" "}
             </button>
           </div>
         </div>

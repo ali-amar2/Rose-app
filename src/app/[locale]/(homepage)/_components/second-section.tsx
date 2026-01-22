@@ -22,7 +22,7 @@ const cards = [
 
 export default function SecondSection() {
   return (
-    <section className="mx-20 my-6 flex items-center justify-between gap-6">
+    <section className="flex items-center justify-between gap-6">
       {cards.map((item, idx) => (
         <div
           key={idx}

@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils/tailwind-merge";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -18,7 +18,7 @@ const buttonVariants = cva(
         outline:
           "border dark:border-softPink-300 dark:bg-zinc-800 dark:text-softPink-300 dark:hover:bg-zinc-700 dark:disabled:border-zinc-600 dark:disabled:text-zinc-600 dark:disabled:bg-zinc-800  border-maroon-600 bg-white text-maroon-600 shadow-sm hover:border-maroon-300 hover:bg-maroon-50 disabled:border-zinc-300 disabled:text-zinc-400 disabled:bg-zinc-100",
         ghost:
-          "dark:text-zinc-50 dark:hover:bg-zinc-700 dark:disabled:bg-zinc-700 dark:disabled:text-zinc-600 text-zinc-800 hover:bg-zinc-100 disabled:bg-zinc-100 disabled:text-zinc-400",
+          "dark:text-zinc-50 dark:hover:bg-zinc-700 dark:disabled:bg-zinc-700 dark:disabled:text-zinc-600 text-zinc-800  disabled:bg-zinc-100 disabled:text-zinc-400",
         link: "dark:border-zinc-500 dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-700 dark:disabled:border-zinc-600 dark:disabled:text-zinc-600 dark:disabled:bg-zinc-800 text-zinc-800 bg-zinc-50 border border-zinc-400 hover:bg-zinc-100 disabled:bg-zinc-300 disabled:text-zinc-400 disabled:border-zinc-300",
       },
       size: {
