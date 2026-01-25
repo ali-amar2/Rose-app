@@ -4,18 +4,17 @@ import { routing } from "@/i18n/routing";
 import Providers from "@/components/providers";
 import { Sarabun, Tajawal } from "next/font/google";
 import { setRequestLocale } from "next-intl/server";
-import { getMessages } from 'next-intl/server';
 
-// const sarabun = Sarabun({
-//   subsets: ["latin"],
-//   variable: "--font-sarabun",
-//   weight: ["400", "500", "600", "700"],
-// });
-// const tajawal = Tajawal({
-//   subsets: ["latin"],
-//   variable: "--font-tajawal",
-//   weight: ["400", "500", "700", "800", "900"],
-// });
+const sarabun = Sarabun({
+  subsets: ["latin"],
+  variable: "--font-sarabun",
+  weight: ["400", "500", "600", "700"],
+});
+const tajawal = Tajawal({
+  subsets: ["latin"],
+  variable: "--font-tajawal",
+  weight: ["400", "500", "700", "800", "900"],
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -26,7 +25,7 @@ type LayoutProps = {
   params: { locale: string };
 };
 
-export default async function LocaleLayout({ children, params }: LayoutProps) {
+export default function LocaleLayout({ children, params }: LayoutProps) {
   // Ensure that the incoming `locale` is valid
   const { locale } = params;
   if (!hasLocale(routing.locales, locale)) {
@@ -36,13 +35,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   // Enable static rendering
   setRequestLocale(locale);
 
-  const messages = await getMessages();
-
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body
+        className={`${sarabun.className} ${sarabun.variable} ${tajawal.variable} antialiased`}
       >
-        <Providers messages={messages}>{children}</Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

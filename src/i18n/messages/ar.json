@@ -1,7 +1,53 @@
 {
-    "home": "الرئيسية",
-    "testimonials": {
-        "title": "الشهادات",
-        "sub-title": "كلمات حقيقية من العملاء السعداء"
+  "home": "الرئيسية",
+  "testimonials": {
+    "title": "الشهادات",
+    "sub-title": "كلمات حقيقية من العملاء السعداء"
+  },
+
+  "product": {
+    "currency": "ج.م",
+    "badge": {
+      "new": "جديد",
+      "hot": "الأكثر مبيعًا",
+      "outOfStock": "نفدت الكمية"
     }
+  },
+
+  "best-selling": {
+    "title": "الأكثر مبيعًا",
+    "subtitle": {
+      "checkOut": "اكتشف",
+      "restBeforeBuying": "ما يشتريه الجميع ",
+      "buying": "",
+      "restAfterBuying": "حاليًا"
+    },
+    "description": "غير متأكد مما تختار؟ ابدأ بأكثر منتجاتنا مبيعًا، فهي الهدايا التي يعود عملاؤنا لشرائها مرارًا. سواء كنت تحتفل بعيد ميلاد، ذكرى سنوية، أو زفاف، فإن اختياراتنا الأفضل مضمونة لترك انطباع لا يُنسى.",
+    "button": "استكشف الهدايا"
+  },
+
+  "most-popular": {
+    "title": "الأكثر شيوعًا",
+    "empty": "لا توجد منتجات لهذه المناسبة",
+    "viewMore": "عرض المزيد"
+  },
+
+  "login": {
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "emailPlaceholder": "user@example.com",
+    "passwordPlaceholder": "********",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "rememberMe": "تذكرني",
+    "loginBtn": "تسجيل الدخول",
+    "genericError": "حدث خطأ ما",
+    "passwordPatternError": "يجب أن تكون كلمة المرور 8 أحرف على الأقل وتحتوي على حرف كبير، حرف صغير، رقم و رمز خاص.",
+    "noAccount": "ليس لديك حساب بعد؟",
+    "createAccount": "أنشئ حسابًا الآن",
+    "schema": {
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "invalidEmail": "الرجاء إدخال بريد إلكتروني صالح",
+      "passwordRequired": "كلمة المرور مطلوبة"
+    }
+  }
 }

@@ -1,10 +1,14 @@
+// auth.schema.ts
 import z from "zod";
+import { Translations } from "../types/global";
 
-export const loginSchema = z.object({
-  email: z
-    .email("Please enter a valid email address")
-    .nonempty("Email is required"),
-  password: z.string().nonempty("Password is required"),
-});
+export const loginSchema = (t: Translations) =>
+  z.object({
+    email: z
+      .string()
+      .email(t("schema.invalidEmail"))
+      .nonempty(t("schema.emailRequired")),
+    password: z.string().nonempty(t("schema.passwordRequired")),
+  });
 
-export type loginValues = z.infer<typeof loginSchema>;
+export type loginValues = z.infer<ReturnType<typeof loginSchema>>;
