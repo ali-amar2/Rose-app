@@ -2,18 +2,18 @@
 
 // NOTE: you will need to import this component in some where
 
-// resend timer localStorage key
-const RESEND_TIMER_KEY = "resend_otp_expire_at";
-
-// intial resend duration in seconds
-const RESEND_DURATION = 60; // seconds
-
 import { Button } from "@/components/ui/button";
 import { InputOTP, InputOTPSlot } from "@/components/ui/input-otp";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import useVerifyOtp from "../_hooks/use-verify-otp";
 import { useEffect, useState } from "react";
+
+// resend timer localStorage key
+const RESEND_TIMER_KEY = "resend_otp_expire_at";
+
+// intial resend duration in seconds
+const RESEND_DURATION = 60; // seconds
 
 export default function VerifyOtp() {
   // translations
@@ -28,7 +28,6 @@ export default function VerifyOtp() {
   // TODO: resend code action
   const handleResendCode = () => {
     // call resend otp API here
-    console.log("resend code");
 
     const expireAt = Date.now() + RESEND_DURATION * 1000;
     localStorage.setItem(RESEND_TIMER_KEY, expireAt.toString());
