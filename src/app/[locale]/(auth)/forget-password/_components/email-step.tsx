@@ -22,7 +22,7 @@ export default function EmailStep() {
   const t = useTranslations();
 
   // Mutations
-  const { isPending, error, forgoPassword } = useForgotPassword();
+  const { isPending, error, forgotPassword } = useForgotPassword();
 
   //Form
   const form = useForm<ForgetPasswordField>({
@@ -34,7 +34,7 @@ export default function EmailStep() {
 
   // Functions
   const onSubmit: SubmitHandler<ForgetPasswordField> = (values) => {
-    forgoPassword(values);
+    forgotPassword(values);
   };
   return (
     <div className="w-[25.5rem] dark:text-zinc-50 text-zinc-800">
@@ -49,6 +49,7 @@ export default function EmailStep() {
           className="border-y border-y-zinc-200 dark:border-y-zinc-600 pt-6 pb-9 space-y-7"
         >
           <FormField
+            control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>

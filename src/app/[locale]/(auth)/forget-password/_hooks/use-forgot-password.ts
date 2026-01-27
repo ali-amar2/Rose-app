@@ -25,6 +25,7 @@ export default function useForgotPassword() {
       return payload;
     },
     onSuccess: (_, variables) => {
+      // TODO: Store email in useState after workflow task is done (out of current scope).
       queryClient.setQueryData(["forgot-password-email"], variables.email);
       toast({
         title: "OTP Sended",
@@ -33,5 +34,5 @@ export default function useForgotPassword() {
     },
   });
 
-  return { isPending, error, forgoPassword: mutate };
+  return { isPending, error, forgotPassword: mutate };
 }

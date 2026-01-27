@@ -53,6 +53,7 @@ export default function NewPasswordStep() {
           className="border-y border-y-zinc-200 dark:border-y-zinc-600 pt-6 pb-9 space-y-7"
         >
           <FormField
+            control={form.control}
             name="newPassword"
             render={({ field }) => (
               <FormItem>
@@ -66,6 +67,7 @@ export default function NewPasswordStep() {
           />
 
           <FormField
+            control={form.control}
             name="rePassword"
             render={({ field }) => (
               <FormItem>

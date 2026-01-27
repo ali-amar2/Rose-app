@@ -5,7 +5,7 @@ import NewPasswordStep from "./new-password-step";
 
 export default function ForgetPasswordSteps() {
   return (
-    <div>
+    <div className="flex items-center justify-center">
       <EmailStep />
       <OTPStep />
       <NewPasswordStep />
