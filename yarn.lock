@@ -180,6 +180,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookform/resolvers@npm:^5.2.2":
+  version: 5.2.2
+  resolution: "@hookform/resolvers@npm:5.2.2"
+  dependencies:
+    "@standard-schema/utils": "npm:^0.3.0"
+  peerDependencies:
+    react-hook-form: ^7.55.0
+  checksum: 10c0/0692cd61dcc2a70cbb27b88a37f733c39e97f555c036ba04a81bd42b0467461cfb6bafacb46c16f173672f9c8a216bd7928a2330d4e49c700d130622bf1defaf
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.13.0":
   version: 0.13.0
   resolution: "@humanwhocodes/config-array@npm:0.13.0"
@@ -1352,6 +1363,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@standard-schema/utils@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@standard-schema/utils@npm:0.3.0"
+  checksum: 10c0/6eb74cd13e52d5fc74054df51e37d947ef53f3ab9e02c085665dcca3c38c60ece8d735cebbdf18fbb13c775fbcb9becb3f53109b0e092a63f0f7389ce0993fd0
+  languageName: node
+  linkType: hard
+
 "@swc/core-darwin-arm64@npm:1.15.10":
   version: 1.15.10
   resolution: "@swc/core-darwin-arm64@npm:1.15.10"
@@ -2373,7 +2391,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:^3.1.3, csstype@npm:^3.2.2":
+"csstype@npm:^3.2.2":
   version: 3.2.3
   resolution: "csstype@npm:3.2.3"
   checksum: 10c0/cd29c51e70fa822f1cecd8641a1445bed7063697469d35633b516e60fe8c1bde04b08f6c5b6022136bb669b64c63d4173af54864510fbb4ee23281801841a3ce
@@ -3369,15 +3387,6 @@ __metadata:
     define-properties: "npm:^1.2.1"
     gopd: "npm:^1.0.1"
   checksum: 10c0/9d156f313af79d80b1566b93e19285f481c591ad6d0d319b4be5e03750d004dde40a39a0f26f7e635f9007a3600802f53ecd85a759b86f109e80a5f705e01846
-  languageName: node
-  linkType: hard
-
-"goober@npm:^2.1.16":
-  version: 2.1.18
-  resolution: "goober@npm:2.1.18"
-  peerDependencies:
-    csstype: ^3.0.10
-  checksum: 10c0/de9bf7b6f57417900afac81a479b85d8c0bcb0322ba8b174f9287d10e7891ba7e33db5fe2b0cdd75281c69130e76eb0c694345acf45ea57e4e4a2db8e4c4f021
   languageName: node
   linkType: hard
 
@@ -4906,16 +4915,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hot-toast@npm:^2.6.0":
-  version: 2.6.0
-  resolution: "react-hot-toast@npm:2.6.0"
-  dependencies:
-    csstype: "npm:^3.1.3"
-    goober: "npm:^2.1.16"
+"react-hook-form@npm:^7.71.1":
+  version: 7.71.1
+  resolution: "react-hook-form@npm:7.71.1"
   peerDependencies:
-    react: ">=16"
-    react-dom: ">=16"
-  checksum: 10c0/c25652e0a477ab501b365a6a2d20b314275a1d9963dd56a9803972d602845f0d44ade2c3345cd66ccd251d62e2e5a10001a55fd80fa183c0e41343f3780ffa9f
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10c0/6c8fc0fa740d299481de3ed32bae98f7c6331240822c602363e5cd221746d875dc3c5e65d0039902b7f7a44dc9ac9a4932e00e9ad9af3051bed1987858ce78c7
   languageName: node
   linkType: hard
 
@@ -5145,6 +5150,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "rose-app@workspace:."
   dependencies:
+    "@hookform/resolvers": "npm:^5.2.2"
     "@radix-ui/react-dialog": "npm:^1.1.15"
     "@radix-ui/react-dropdown-menu": "npm:^2.1.16"
     "@radix-ui/react-label": "npm:^2.1.8"
@@ -5175,12 +5181,13 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.7.2"
     react: "npm:^18"
     react-dom: "npm:^18"
-    react-hot-toast: "npm:^2.6.0"
+    react-hook-form: "npm:^7.71.1"
     react-phone-number-input: "npm:^3.4.14"
     tailwind-merge: "npm:^3.4.0"
     tailwindcss: "npm:^3.4.1"
     tailwindcss-animate: "npm:^1.0.7"
     typescript: "npm:^5"
+    zod: "npm:^4.3.6"
   languageName: unknown
   linkType: soft
 
@@ -6152,5 +6159,12 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 10c0/dceb44c28578b31641e13695d200d34ec4ab3966a5729814d5445b194933c096b7ced71494ce53a0e8820685d1d010df8b2422e5bf2cdea7e469d97ffbea306f
+  languageName: node
+  linkType: hard
+
+"zod@npm:^4.3.6":
+  version: 4.3.6
+  resolution: "zod@npm:4.3.6"
+  checksum: 10c0/860d25a81ab41d33aa25f8d0d07b091a04acb426e605f396227a796e9e800c44723ed96d0f53a512b57be3d1520f45bf69c0cb3b378a232a00787a2609625307
   languageName: node
   linkType: hard

@@ -15,6 +15,7 @@
     "help": "Need help?",
     "contact": "Contact-us",
     "success-toast": "A new OTP code has been sent to your email.",
-    "error-toast": "Rest code is invalid or has expired"
+    "error-toast": "Rest code is invalid or has expired",
+    "otp-validation": "OTP must be 6 digits"
   }
 }
