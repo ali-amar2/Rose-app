@@ -2,7 +2,7 @@
 
 import { RegistrationSchemaType } from "@/lib/schemes/register.scheama";
 
-export async function registerService({
+export async function registerAction({
   values,
 }: {
   values: RegistrationSchemaType;

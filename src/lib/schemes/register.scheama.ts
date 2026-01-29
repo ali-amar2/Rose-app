@@ -1,52 +1,50 @@
 import z from "zod";
 
-export const RegistrationSchema = z
-    .object({
+export const RegistrationSchema = (t: any) =>
+    z.object({
         firstName: z
             .string()
-            .nonempty({ error: "Please enter your first name" })
-            .regex(/^[a-zA-Z]+$/, "Name must contain only letters")
-            .min(3, "Name must be at least 3 characters long")
-            .max(12, "Name must be at most 15 characters long"),
+            .nonempty({ message: t("validation.firstName.required") })
+            .regex(/^[a-zA-Z]+$/, t("validation.firstName.pattern"))
+            .min(3, t("validation.firstName.min"))
+            .max(15, t("validation.firstName.max")),
+
         lastName: z
             .string()
-            .nonempty({ error: "Please enter your last name" })
-            .regex(/^[a-zA-Z]+$/, "Name must contain only letters")
-            .min(3, "Name must be at least 3 characters long")
-            .max(12, "Name must be at most 15 characters long"),
-        email: z.email(),
+            .nonempty({ message: t("validation.lastName.required") })
+            .regex(/^[a-zA-Z]+$/, t("validation.lastName.pattern"))
+            .min(3, t("validation.lastName.min"))
+            .max(15, t("validation.lastName.max")),
+
+        email: z
+            .string()
+            .email(t("validation.email.invalid")),
+
         phone: z
             .string()
-            .regex(/^\+201[0125][0-9]{8}$/, "Please enter a valid phone number starting with +20")
-            .length(13, "Phone number must be 10 digits long"),
-        gender: z.enum(["male", "female"] as const, {
-            error: "Please select your gender",
-        }),
+            .regex(/^\+201[0125][0-9]{8}$/, t("validation.phone.pattern"))
+            .length(13, t("validation.phone.length")),
+
+        gender: z.enum(["male", "female"] as const,
+            { error: t("validation.gender.required") }
+        ),
+
         password: z
             .string()
-            .nonempty({ error: "Please enter your password" })
-            .min(8, "Password must be at least 8 characters long")
-            .regex(/[0-9]/, "Password must contain at least 1 number")
-            .regex(/[a-z]/, "Password must contain at least 1 lowercase letter")
-            .regex(/[A-Z]/, "Password must contain at least 1 uppercase letter")
-            .regex(
-                /[#!?@$%^&*-]/,
-                "Password must contain at least 1 special character (#?!@$%^&*-)"
-            ),
+            .nonempty({ message: t("validation.password.required") })
+            .min(8, t("validation.password.min"))
+            .regex(/[0-9]/, t("validation.password.number"))
+            .regex(/[a-z]/, t("validation.password.lowercase"))
+            .regex(/[A-Z]/, t("validation.password.uppercase"))
+            .regex(/[#!?@$%^&*-]/, t("validation.password.special")),
 
         rePassword: z
-            .string({ error: "Please re-enter your password" })
-            .nonempty({ error: "Please re-enter your password" }),
-
+            .string()
+            .nonempty({ message: t("validation.rePassword.required") }),
     })
-    .refine(
-        function (object) {
-            if (object.password === object.rePassword) {
-                return true;
-            }
-            return false;
-        },
-        { path: ["rePassword"], message: "Passwords does not match" }
-    );
+        .refine((data) => data.password === data.rePassword, {
+            path: ["rePassword"],
+            message: t("validation.rePassword.mismatch"),
+        });
 
-export type RegistrationSchemaType = z.infer<typeof RegistrationSchema>;
+export type RegistrationSchemaType = z.infer<ReturnType<typeof RegistrationSchema>>;

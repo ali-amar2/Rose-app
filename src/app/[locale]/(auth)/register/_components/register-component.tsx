@@ -28,12 +28,15 @@ import Link from "next/link";
 import { PasswordInput } from "@/components/ui/password-input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRegister } from "../_hooks/use-register";
+import { useTranslations } from "next-intl";
 
 export default function RegisterComponent() {
-  // TODO: Translation
+  //  Translation
+  const t = useTranslations("register");
 
   // Mutation
   const { isPending, error, signup } = useRegister();
+
   // Form
   const form = useForm<RegistrationSchemaType>({
     defaultValues: {
@@ -45,13 +48,12 @@ export default function RegisterComponent() {
       password: "",
       rePassword: "",
     },
-    resolver: zodResolver(RegistrationSchema),
+    resolver: zodResolver(RegistrationSchema(t)),
   });
 
   // functions
   const onSubmit = () => {
     signup(form.getValues());
-    console.log(form.getValues());
   };
 
   return (
@@ -59,7 +61,7 @@ export default function RegisterComponent() {
       <div className="w-full">
         <div className="mb-10">
           <h3 className="font-edwardian text-4xl text-maroon-700 text-center dark:text-softPink-300">
-            Become part of our family!
+            {t("heading")}
           </h3>
         </div>
 
@@ -74,7 +76,7 @@ export default function RegisterComponent() {
                   name="firstName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>First name</FormLabel>
+                      <FormLabel>{t("fields.firstName")}</FormLabel>
                       <FormControl>
                         <Input type="text" placeholder="Fady" {...field} />
                       </FormControl>
@@ -87,7 +89,7 @@ export default function RegisterComponent() {
                   name="lastName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Last name</FormLabel>
+                      <FormLabel>{t("fields.lastName")}</FormLabel>
                       <FormControl>
                         <Input type="text" placeholder="Refaat" {...field} />
                       </FormControl>
@@ -104,7 +106,7 @@ export default function RegisterComponent() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>{t("fields.email")}</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
@@ -122,7 +124,7 @@ export default function RegisterComponent() {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone</FormLabel>
+                    <FormLabel>{t("fields.phone")}</FormLabel>
                     <div className="grid grid-cols-1 !mt-0 ">
                       <FormControl>
                         <div className="flex">
@@ -145,7 +147,7 @@ export default function RegisterComponent() {
                 name="gender"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Gender</FormLabel>
+                    <FormLabel>{t("fields.gender.gender")}</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
@@ -156,8 +158,12 @@ export default function RegisterComponent() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="male">Male</SelectItem>
-                        <SelectItem value="female">Female</SelectItem>
+                        <SelectItem value="male">
+                          {t("fields.gender.male")}
+                        </SelectItem>
+                        <SelectItem value="female">
+                          {t("fields.gender.female")}
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -171,7 +177,7 @@ export default function RegisterComponent() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>{t("fields.password")}</FormLabel>
                     <FormControl>
                       <PasswordInput placeholder="*********" {...field} />
                     </FormControl>
@@ -185,7 +191,7 @@ export default function RegisterComponent() {
                 name="rePassword"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Confirm Password</FormLabel>
+                    <FormLabel>{t("fields.confirmPassword")}</FormLabel>
                     <FormControl>
                       <PasswordInput placeholder="*********" {...field} />
                     </FormControl>
@@ -204,18 +210,18 @@ export default function RegisterComponent() {
                 type="submit"
                 className="mt-6 w-full"
               >
-                {isPending ? <Skeleton /> : "Create Account"}
+                {isPending ? <Skeleton /> : t("fields.createAccount")}
               </Button>
             </form>
           </Form>
         </div>
         <p className="text-center text-sm mt-9 dark:text-white">
-          Already have an account?{" "}
+          {t("alreadyHaveAccount")}{" "}
           <Link
             href={"/login"}
             className="text-maroon-700 hover:underline dark:text-softPink-300"
           >
-            Login
+            {t("login")}
           </Link>
         </p>
       </div>

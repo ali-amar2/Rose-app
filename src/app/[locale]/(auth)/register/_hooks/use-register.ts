@@ -1,19 +1,18 @@
 import { useMutation } from "@tanstack/react-query";
-import { registerService } from "../_services/register.service";
+import { registerAction } from "../_actions/register.action";
+import { useRouter } from "next/navigation";
 
 export function useRegister() {
+  const router = useRouter();
   const { isPending, error, mutate } = useMutation({
     mutationFn: async (values: any) => {
-      const response = await registerService({ values });
+      const response = await registerAction({ values });
 
       if (response?.error) {
         throw new Error(response?.error || "Sign up failed");
       }
 
-      // redirect to callbackUrl
-      const callbackUrl =
-        new URLSearchParams(window.location.search).get("callbackUrl") || "/";
-      window.location.href = callbackUrl;
+      router.push("/login");
 
       return response;
     },
