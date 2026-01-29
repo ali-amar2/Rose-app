@@ -101,7 +101,7 @@ export default function LoginForm() {
                     {/* Navigation */}
                     <div className="flex justify-end">
                         <Link
-                            href="/forget-password"
+                            href="/forgot-password"
                             className="text-maroon-700 font-medium mt-2"
                         >
                             {t("forgotPassword")}
