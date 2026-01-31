@@ -28,6 +28,7 @@ type ProductCardProps = {
   priceAfterDiscount: number;
   quantity: number;
   sold: number;
+  rateAvg: number;
 };
 type ProductsParams = {
   sort?: string;
@@ -47,4 +48,8 @@ type MostPopularProductsProps = {
 type ProductBadgeProps = {
   quantity: number;
   sold?: number;
+};
+
+type ProductRatingProps = {
+  rate: number;
 };

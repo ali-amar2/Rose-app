@@ -45,6 +45,7 @@ export default function MostPopular({
               priceAfterDiscount={product.priceAfterDiscount}
               quantity={product.quantity}
               sold={product.sold}
+              rateAvg={product.rateAvg}
             />
           ))}
         </div>

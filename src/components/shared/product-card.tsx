@@ -12,6 +12,7 @@ export default function ProductCard({
   priceAfterDiscount,
   quantity,
   sold,
+  rateAvg,
 }: ProductCardProps) {
   // translation
   const t = useTranslations("product");
@@ -40,7 +41,7 @@ export default function ProductCard({
           <div className="flex justify-between items-center">
             {/* Rating and price */}
             <div className="flex flex-col">
-              <Rating />
+              <Rating rate={rateAvg} />
               <span className="text-maroon-600 font-semibold">
                 {priceAfterDiscount} {t("currency")}{" "}
                 <span className="text-zinc-500 line-through">
