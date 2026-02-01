@@ -1,4 +1,5 @@
-import NextAuth from "next-auth";
+import z from "zod";
+import { ForgotPasswordSchema, NewPasswordSchema } from "../schems/auth.schema";
 
 declare module "next-auth" {
   interface Session {
@@ -36,3 +37,21 @@ export type ResetPasswordPayload = {
   email: string;
   newPassword: string;
 };
+
+// ForgotPassword
+export type ForgotPasswordResponse = {
+  message: string;
+  info: string;
+};
+
+export type ForgetPasswordField = z.infer<
+  ReturnType<typeof ForgotPasswordSchema>
+>;
+
+// NewPassword
+export type NewPasswordResponse = {
+  message: string;
+  token: string;
+};
+
+export type NewPasswordField = z.infer<ReturnType<typeof NewPasswordSchema>>;
