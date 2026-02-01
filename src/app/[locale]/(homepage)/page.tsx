@@ -14,6 +14,8 @@ export default function Home({ searchParams }: OccProps) {
     <>
       <Header />
       <main className="flex flex-col py-10 gap-y-10">
+        <h1 className="text-center text-5xl">Just for testing</h1>
+
         <div className="px-20 flex flex-col gap-y-10">
           <CarouselComponent />
           <SecondSection />
