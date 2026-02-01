@@ -63,8 +63,8 @@ export default function Header() {
               >
                 {item.icons
                   ? item.icons.map((icon, iconIndex) => (
-                    <span key={iconIndex}>{icon}</span>
-                  ))
+                      <span key={iconIndex}>{icon}</span>
+                    ))
                   : null}
                 {item.text ? <span>{item.text}</span> : null}
               </li>

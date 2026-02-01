@@ -9,12 +9,12 @@
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
 .hide-scrollbar {
-  -ms-overflow-style: none;  
-  scrollbar-width: none;     
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @layer base {
@@ -51,7 +51,7 @@
     --maroon-400: 354 55% 50%;
     --maroon-500: 354 54% 40%;
     --maroon-600: 354 55% 32%;
-    --maroon-700: 354 56% 28%; 
+    --maroon-700: 354 56% 28%;
     --maroon-800: 354 58% 22%;
     --maroon-900: 354 60% 16%;
   }
@@ -101,4 +101,3 @@
     @apply bg-background text-foreground;
   }
 }
-

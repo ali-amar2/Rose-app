@@ -1,9 +1,13 @@
-declare type ErrorResponse = {
+import { User } from "./user";
+
+export type ApiSuccessResponse = {
+  message: "success";
+  user: User;
+  token: string;
+};
+
+export type ApiErrorResponse = {
   error: string;
 };
 
-declare type SuccessResponse<T> = {
-  message: string;
-} & T;
-
-declare type APIResponse<T> = SuccessResponse<T> | ErrorResponse;
+export type ApiResponse = ApiSuccessResponse | ApiErrorResponse;
