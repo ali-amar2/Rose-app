@@ -7,7 +7,7 @@ import BestSellingSection from "./_components/BestSellingSection";
 import MostPopularSection from "./_components/MostPopularSection";
 import SpecificationsComponent from "./_components/specifications-component";
 import { Testimonials } from "./_components/Testimonials";
-import VerifyOtp from "../(auth)/forgot-password/_components/verify-otp";
+import LoginPopup from "@/components/skeletons/login-popup/login-popup";
 
 export default function Home({ searchParams }: OccProps) {
   return (
@@ -26,6 +26,8 @@ export default function Home({ searchParams }: OccProps) {
         <Testimonials />
       </main>
       <Footer />
+
+      <LoginPopup />
     </>
   );
 }

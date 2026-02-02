@@ -36,7 +36,7 @@ export default function LocaleLayout({ children, params }: LayoutProps) {
   setRequestLocale(locale);
 
   return (
-    <html lang="{locale}" dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body
         className={`${sarabun.className} ${sarabun.variable} ${tajawal.variable} antialiased dark:bg-zinc-800`}
       >
