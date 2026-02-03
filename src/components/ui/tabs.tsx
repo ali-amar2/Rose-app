@@ -29,9 +29,22 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "inline-flex w-full items-center justify-center whitespace-nowrap rounded-lg px-4 py-3 gap-2 text-base font-medium transition-all",
-      "bg-muted text-muted-foreground",
-      "data-[state=active]:bg-maroon-600 data-[state=active]:text-white",
+      "inline-flex w-full items-center justify-center whitespace-nowrap  px-4 py-3 gap-2 text-base font-medium transition-all capitalize",
+
+      // default active styles
+      " data-[state=active]:rounded-lg data-[state=active]:rounded-r-none data-[state=active]:border-r-none data-[state=active]:border-t data-[state=active]:border-b data-[state=active]:border-maroon-600 data-[state=active]:bg-maroon-600 data-[state=active]:text-white",
+      // default inactive styles
+      "data-[state=inactive]:rounded-lg data-[state=inactive]:rounded-l-none data-[state=inactive]:border-l-none  data-[state=inactive]:border-zinc-300  data-[state=inactive]:bg-zinc-50 data-[state=inactive]:text-zinc-800",
+
+      // hover
+      "  hover:data-[state=active]:bg-maroon-700",
+
+      // focus (inherit default styles + add shadow only)
+      "focus:data-[state=active]:shadow-[0_0_0_4px_#741C2140]",
+      "focus:data-[state=inactive]:shadow-[0_0_0_4px_#741C2140]",
+
+      // disabled
+      " disabled:data-[state=active]:bg-zinc-300 disabled:data-[state=active]:rounded-tl-[0.625rem] disabled:data-[state=active]:rounded-bl-[0.625rem] disabled:data-[state=active]:text-zinc-800",
       className
     )}
     {...props}

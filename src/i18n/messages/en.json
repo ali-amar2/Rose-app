@@ -70,5 +70,10 @@
       "invalidEmail": "Please enter a valid email address",
       "passwordRequired": "Password is required"
     }
+  },
+
+  "login-popup": {
+    "loginTab": "Login",
+    "registerTab": "Register"
   }
 }
