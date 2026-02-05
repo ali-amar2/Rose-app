@@ -1,9 +1,9 @@
-import Link from "next/link";
 import OccasionsTabs from "./occasions-tabs";
 import ProductCard from "@/components/shared/product-card";
 import { MoveRight } from "lucide-react";
 import TitleOfSection from "@/components/shared/title-of-section";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function MostPopular({
   occasions,

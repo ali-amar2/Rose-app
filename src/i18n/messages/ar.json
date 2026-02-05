@@ -70,5 +70,19 @@
       "invalidEmail": "الرجاء إدخال بريد إلكتروني صالح",
       "passwordRequired": "كلمة المرور مطلوبة"
     }
-  }
+  },
+  
+   "categoryFilter": {
+    "title": "الفئة",
+    "reset": "إعادة",
+    "loadingMore": "... تحميل المزيد",
+    "loadingCategories": "... جاري تحميل الفئات"
+  },
+  
+  "ratingFilter": {
+    "title": "التقييم",
+    "reset": "إعادة"
+  },
+  
+  "resetAll": "مسح جميع الفلاتر"
 }

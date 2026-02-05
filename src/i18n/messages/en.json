@@ -70,5 +70,20 @@
       "invalidEmail": "Please enter a valid email address",
       "passwordRequired": "Password is required"
     }
-  }
+  },
+  
+  "categoryFilter": {
+    "title": "Category",
+    "reset": "Reset",
+    "loadingMore": "Loading more...",
+    "loadingCategories": "Loading categories..."
+  },
+  
+  "ratingFilter": {
+    "title": "Rating",
+    "reset": "Reset"
+  },
+  
+  "resetAll": "Reset All"
+
 }
