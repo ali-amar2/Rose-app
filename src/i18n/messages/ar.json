@@ -17,8 +17,8 @@
       "createAccount": "إنشاء حساب"
     },
     "alreadyHaveAccount": "هل لديك حساب بالفعل؟ ",
-    "login": "تسجيل الدخول",
-
+    "login": "تسجيل الدخول"
+  },
     "validation": {
       "firstName": {
         "required": "يرجى إدخال الاسم الأول",
@@ -54,7 +54,7 @@
         "required": "يرجى تأكيد كلمة المرور",
         "mismatch": "كلمتا المرور غير متطابقتين"
       }
-    }
+    },
   "email-lablel": "البريد الالكترونى",
   "forgot-password-heading": "هل نسيت كلمة المرور؟",
   "forget-password-text": "لا تقلق سنساعدك فى استعادة كلمة المرور الخاصة بك\n",

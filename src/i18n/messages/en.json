@@ -17,8 +17,8 @@
       "createAccount": "Create Account"
     },
     "alreadyHaveAccount": "Already have an account? ",
-    "login": "Login",
-
+    "login": "Login"
+  },
     "validation": {
       "firstName": {
         "required": "Please enter your first name",
@@ -54,7 +54,7 @@
         "required": "Please re-enter your password",
         "mismatch": "Passwords does not match"
       }
-    }
+    },
   "email-lablel": "Email",
   "forgot-password-heading": "Forgot Password?",
   "forget-password-text": "Worry not, we’ll send you instructions to help you reset it.",
