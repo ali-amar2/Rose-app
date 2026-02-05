@@ -55,5 +55,71 @@
         "mismatch": "كلمتا المرور غير متطابقتين"
       }
     }
+  "email-lablel": "البريد الالكترونى",
+  "forgot-password-heading": "هل نسيت كلمة المرور؟",
+  "forget-password-text": "لا تقلق سنساعدك فى استعادة كلمة المرور الخاصة بك\n",
+  "email-placeholder": "ادخل بريدك الالكترونى\n",
+  "continue": "استمرار\n",
+  "non-email-error": "من فضلك ادخل بريدك الالكترونى",
+  "email-not-valid": "من فضلك ادخل البريد الالكترونى بشكل صحيح",
+  "required-email": "البريد الالكترونى مطلوب",
+  "dont-have-an-account": "ليس لديك حساب؟ <a>انشاء حساب الان!</a>",
+  "create-new-password-label": "انشاء كلمة سر جديدة",
+  "create-new-password-text": "ضع كلمة سر قوية لحماية ملفك الشخصى",
+  "password-label": "كلمة السر",
+  "confirm-password-label": "تأكيد كلمة السر",
+  "reset-password-btn": "إعادة تعيين كلمة المرور",
+  "need-help": "تحتاج مساعدة؟ <a>اتصل بنا!</a>",
+  "password-is-required": "كلمة المرور مطلوبة",
+  "password-at-least-8-characters": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+  "password-contain-uppercase-letter": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل",
+  "password-contain-lowercase-letter": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
+  "password-contain--one-number": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
+  "passwords-do-not-match": "كلمات المرور غير متطابقة",
+
+  "product": {
+    "currency": "ج.م",
+    "badge": {
+      "new": "جديد",
+      "hot": "الأكثر مبيعًا",
+      "outOfStock": "نفدت الكمية"
+    }
+  },
+
+  "best-selling": {
+    "title": "الأكثر مبيعًا",
+    "subtitle": {
+      "checkOut": "اكتشف",
+      "restBeforeBuying": "ما يشتريه الجميع ",
+      "buying": "",
+      "restAfterBuying": "حاليًا"
+    },
+    "description": "غير متأكد مما تختار؟ ابدأ بأكثر منتجاتنا مبيعًا، فهي الهدايا التي يعود عملاؤنا لشرائها مرارًا. سواء كنت تحتفل بعيد ميلاد، ذكرى سنوية، أو زفاف، فإن اختياراتنا الأفضل مضمونة لترك انطباع لا يُنسى.",
+    "button": "استكشف الهدايا"
+  },
+
+  "most-popular": {
+    "title": "الأكثر شيوعًا",
+    "empty": "لا توجد منتجات لهذه المناسبة",
+    "viewMore": "عرض المزيد"
+  },
+
+  "login": {
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "emailPlaceholder": "user@example.com",
+    "passwordPlaceholder": "********",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "rememberMe": "تذكرني",
+    "loginBtn": "تسجيل الدخول",
+    "genericError": "حدث خطأ ما",
+    "passwordPatternError": "يجب أن تكون كلمة المرور 8 أحرف على الأقل وتحتوي على حرف كبير، حرف صغير، رقم و رمز خاص.",
+    "noAccount": "ليس لديك حساب بعد؟",
+    "createAccount": "أنشئ حسابًا الآن",
+    "schema": {
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "invalidEmail": "الرجاء إدخال بريد إلكتروني صالح",
+      "passwordRequired": "كلمة المرور مطلوبة"
+    }
   }
 }

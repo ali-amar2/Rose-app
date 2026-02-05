@@ -17,14 +17,11 @@ const badgeVariants = cva(
         subtle:
           "border-transparent dark:bg-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-600 bg-zinc-50 text-zinc-700 hover:bg-zinc-200",
 
-        new:
-          "bg-zinc-100 text-zinc-700",
+        new: "bg-zinc-100 text-zinc-700",
 
-        hot:
-          "bg-maroon-50 text-maroon-600",
+        hot: "bg-maroon-50 text-maroon-600",
 
-        outOfStock:
-          "bg-red-600 text-softPink-50",
+        outOfStock: "bg-red-600 text-softPink-50",
       },
     },
     defaultVariants: {
@@ -35,8 +32,8 @@ const badgeVariants = cva(
 
 export interface BadgeProps
   extends
-  React.HTMLAttributes<HTMLDivElement>,
-  VariantProps<typeof badgeVariants> { }
+    React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof badgeVariants> {}
 
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
