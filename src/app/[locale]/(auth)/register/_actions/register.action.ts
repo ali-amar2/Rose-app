@@ -1,6 +1,6 @@
 "use server";
 
-import { RegistrationSchemaType } from "@/lib/schemes/register.scheama";
+import { RegistrationSchemaType } from "@/lib/schemas/auth.schema";
 
 export async function registerAction({
   values,
