@@ -1,6 +1,6 @@
 import { useToast } from "@/hooks/use-toast";
 import { forgotPasswordAction } from "@/lib/actions/auth.action";
-import { ForgetPasswordField } from "@/lib/types/auth";
+import { ForgotPasswordField } from "@/lib/types/auth";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function useForgotPassword() {
@@ -14,12 +14,16 @@ export default function useForgotPassword() {
   //Mutations
   const { isPending, error, mutate } = useMutation({
     mutationKey: ["forgot-password"],
-    mutationFn: async (fields: ForgetPasswordField) => {
+    mutationFn: async (fields: ForgotPasswordField) => {
       const payload = await forgotPasswordAction(fields);
 
       // Error
       if ("error" in payload) {
-        throw new Error(payload.error);
+        if (typeof payload.error === "string") {
+          throw new Error(payload.error);
+        } else {
+          throw new Error("Unknown error occurred");
+        }
       }
 
       return payload;

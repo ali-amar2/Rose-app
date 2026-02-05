@@ -23,7 +23,11 @@ export default function useNewPassword() {
       const payload = await newPasswordAction({ email, fields });
 
       if ("error" in payload) {
-        throw new Error(payload.error);
+        if (typeof payload.error === "string") {
+          throw new Error(payload.error);
+        } else {
+          throw new Error("Unknown error occurred");
+        }
       }
 
       return payload;

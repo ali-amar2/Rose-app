@@ -4,6 +4,8 @@ import { routing } from "@/i18n/routing";
 import Providers from "@/components/providers";
 import { Sarabun, Tajawal } from "next/font/google";
 import { setRequestLocale } from "next-intl/server";
+import Header from "./(homepage)/_components/header";
+import Footer from "./(homepage)/_components/footer";
 
 const sarabun = Sarabun({
   subsets: ["latin"],
@@ -40,7 +42,11 @@ export default function LocaleLayout({ children, params }: LayoutProps) {
       <body
         className={`${sarabun.className} ${sarabun.variable} ${tajawal.variable} antialiased dark:bg-zinc-800`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

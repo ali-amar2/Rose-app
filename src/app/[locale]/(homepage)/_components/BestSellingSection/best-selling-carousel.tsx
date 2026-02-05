@@ -19,6 +19,7 @@ export async function BestSellingCarousel() {
           <CarouselItem key={product._id} className="md:basis-1/2 lg:basis-1/3">
             {/* Single product card For each item*/}
             <ProductCard
+              id={product._id}
               img={product.imgCover}
               title={product.title}
               price={product.price}

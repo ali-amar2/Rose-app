@@ -13,9 +13,9 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
-import { ForgetPasswordField } from "@/lib/types/auth";
-import { ForgotPasswordSchema } from "@/lib/schems/auth.schema";
+import { ForgotPasswordSchema } from "@/lib/schemas/auth.schema";
 import useForgotPassword from "../_hooks/use-forgot-password";
+import { ForgotPasswordField } from "@/lib/types/auth";
 
 export default function EmailStep() {
   // Translations
@@ -25,7 +25,7 @@ export default function EmailStep() {
   const { isPending, error, forgotPassword } = useForgotPassword();
 
   //Form
-  const form = useForm<ForgetPasswordField>({
+  const form = useForm<ForgotPasswordField>({
     defaultValues: {
       email: "",
     },
@@ -33,7 +33,7 @@ export default function EmailStep() {
   });
 
   // Functions
-  const onSubmit: SubmitHandler<ForgetPasswordField> = (values) => {
+  const onSubmit: SubmitHandler<ForgotPasswordField> = (values) => {
     forgotPassword(values);
   };
   return (

@@ -18,7 +18,7 @@ export async function forgotPasswordAction(fields: ForgetPasswordField) {
     body: JSON.stringify(fields),
   });
 
-  const payload: APIResponse<ForgotPasswordResponse> = await response.json();
+  const payload: ForgotPasswordResponse = await response.json();
   return payload;
 }
 
@@ -44,7 +44,7 @@ export async function newPasswordAction({
     }),
   });
 
-  const payload: APIResponse<NewPasswordResponse> = await response.json();
+  const payload: NewPasswordResponse = await response.json();
   console.log(payload);
 
   return payload;
