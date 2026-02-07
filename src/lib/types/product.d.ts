@@ -22,6 +22,7 @@ declare type Product = {
 };
 
 type ProductCardProps = {
+  id?: string;
   img: string;
   title: string;
   price: number;

@@ -4,8 +4,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import Rating from "@/components/ui/rating";
 import ProductBadge from "./product-badge";
 import { useTranslations } from "next-intl";
+import AddToWishlist from "./add-to-wishlist";
 
 export default function ProductCard({
+  id = '',
   img,
   title,
   price,
@@ -18,7 +20,7 @@ export default function ProductCard({
   const t = useTranslations("product");
 
   return (
-    <Card className="border-none shadow-none h-full">
+    <Card className="border-none shadow-none h-full" key={id}>
       <CardContent className="flex flex-col h-full px-1 p-0">
         {/* Product image */}
         <div className="relative w-full h-72 overflow-hidden rounded-md">
@@ -30,6 +32,7 @@ export default function ProductCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <ProductBadge quantity={quantity} sold={sold} />
+          <AddToWishlist id={id} />
         </div>
 
         <div className="flex flex-col space-y-1 mt-2">
