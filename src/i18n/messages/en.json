@@ -11,14 +11,16 @@
       "lastName": "Last Name",
       "email": "Email",
       "phone": "Phone",
-      "gender": { "gender": "Gender", "male": "Male", "female": "Female" },
+      "gender": {
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female"
+      },
       "password": "Password",
       "confirmPassword": "Confirm Password",
       "createAccount": "Create Account"
     },
     "alreadyHaveAccount": "Already have an account? ",
-    "login": "Login",
-
     "validation": {
       "firstName": {
         "required": "Please enter your first name",
@@ -55,6 +57,7 @@
         "mismatch": "Passwords does not match"
       }
     }
+  },
   "email-lablel": "Email",
   "forgot-password-heading": "Forgot Password?",
   "forget-password-text": "Worry not, we’ll send you instructions to help you reset it.",
@@ -76,16 +79,15 @@
   "password-contain-lowercase-letter": "Password must contain at least one lowercase letter",
   "password-contain--one-number": "Password must contain at least one number",
   "passwords-do-not-match": "Passwords do not match",
-
   "product": {
     "currency": "EGP",
     "badge": {
       "new": "NEW",
       "hot": "HOT",
       "outOfStock": "OUT OF STOCK"
-    }
+    },
+    "error-loading-product-details": "Error loading product details"
   },
-
   "best-selling": {
     "title": "Best Selling",
     "subtitle": {
@@ -97,13 +99,11 @@
     "description": "Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for. Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.",
     "button": "Explore gifts"
   },
-
   "most-popular": {
     "title": "Most Popular",
     "empty": "No products found for this occasion",
     "viewMore": "View More"
   },
-
   "login": {
     "email": "Email",
     "password": "Password",
@@ -121,5 +121,7 @@
       "invalidEmail": "Please enter a valid email address",
       "passwordRequired": "Password is required"
     }
-  }
+  },
+  "in-stock": "left in stock",
+  "out-of-stock": "Out of stock"
 }

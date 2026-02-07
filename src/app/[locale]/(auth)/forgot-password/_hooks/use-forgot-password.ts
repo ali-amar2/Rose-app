@@ -1,5 +1,5 @@
 import { useToast } from "@/hooks/use-toast";
-import { forgotPasswordAction } from "@/lib/actions/auth.action";
+import { forgotPasswordAction } from "@/lib/actions/auth.actions";
 import { ForgotPasswordField } from "@/lib/types/auth";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 

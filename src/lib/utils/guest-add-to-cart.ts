@@ -16,5 +16,5 @@ export function guestAddToCart(item: AddToCartItem) {
   }
 
   localStorage.setItem("guest-cart", JSON.stringify(guestCart));
-  return { message: "success", cartItems: guestCart }; // mock server respons
+  return { message: "success", cartItems: guestCart };
 }

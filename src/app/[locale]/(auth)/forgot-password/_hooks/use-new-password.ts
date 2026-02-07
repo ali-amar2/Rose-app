@@ -1,6 +1,6 @@
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "@/i18n/navigation";
-import { newPasswordAction } from "@/lib/actions/auth.action";
+import { newPasswordAction } from "@/lib/actions/auth.actions";
 import { NewPasswordField } from "@/lib/types/auth";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 

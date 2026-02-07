@@ -1,12 +1,15 @@
 import { CURRENCY } from "@/lib/constants/global.constant";
 import { HeartPlus, Package, ShoppingCart, Star } from "lucide-react";
 import AddToCartButton from "@/components/shared/add-to-cart-button";
+import { cn } from "@/lib/utils/tailwind-merge";
+import { useTranslations } from "next-intl";
 
 type ProductInfoProps = {
   product?: Product;
 };
 
 export default function ProductInfo({ product }: ProductInfoProps) {
+  const t = useTranslations();
   return (
     <div className="flex flex-col h-full">
       {/* Title */}
@@ -19,15 +22,22 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         </p>
         {/* Stock */}
         <div
-          className={`flex items-center gap-2 mt-1 ms-3 font-medium text-sm ${product && product.quantity > 0 ? "bg-zinc-100 " : "bg-red-50 text-red-600"}   rounded-xl w-fit px-3 py-1.5 `}
+          className={cn(
+            "flex items-center gap-2 mt-1 ms-3 font-medium text-sm  rounded-xl w-fit px-3 py-1.5 ",
+            product && product.quantity > 0
+              ? "bg-zinc-100 "
+              : "bg-red-50 text-red-600"
+          )}
         >
           <Package
-            className={`${product && product.quantity > 0 ? "text-zinc-400" : "text-red-600"}`}
+            className={cn(
+              product && product.quantity > 0 ? "text-zinc-400" : "text-red-600"
+            )}
           />
           <span>
             {product && product.quantity > 0
-              ? `${product.quantity} left in stock`
-              : "Out of stock"}{" "}
+              ? `${product.quantity} ${t("in-stock")}`
+              : t("out-of-stock")}{" "}
           </span>
         </div>
       </div>

@@ -12,12 +12,10 @@ export function useAddToCart() {
   const session = useSession();
   const { mutate, isPending } = useMutation({
     mutationFn: async (item: AddToCartItem) => {
-      // addToCartAction(item)
-
       if (session.status === "authenticated") {
-        return await addToCartAction(item); // server action
+        return await addToCartAction(item);
       } else {
-        return guestAddToCart(item); // client localStorage
+        return guestAddToCart(item);
       }
     },
     onSuccess: () => {

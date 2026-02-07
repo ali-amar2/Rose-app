@@ -9,8 +9,11 @@ import {
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 import ProductInfo from "./product-info";
+import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils/tailwind-merge";
 
 export default function ProductDetails({ id }: { id: string }) {
+  const t = useTranslations();
   const { productDetails, error } = useFetchProductDetails(id);
   const [mainImage, setMainImage] = useState(productDetails?.product?.imgCover);
 
@@ -37,8 +40,7 @@ export default function ProductDetails({ id }: { id: string }) {
     }
   }, [productDetails]);
 
-  // if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading product details.</div>;
+  if (error) return <div>{t("product.error-loading-product-details")}</div>;
 
   return (
     <div className="grid grid-cols-2 gap-16 p-10 h-[32.7rem] w-[80rem] mx-auto my-10">
@@ -64,7 +66,7 @@ export default function ProductDetails({ id }: { id: string }) {
             <CarouselContent className="flex gap-0.5 mt-2 w-full">
               {carouselImages.map((img, index) => (
                 <CarouselItem
-                  key={index}
+                  key={img}
                   className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6"
                 >
                   <Image
@@ -73,8 +75,10 @@ export default function ProductDetails({ id }: { id: string }) {
                     width={120}
                     height={120}
                     onClick={() => setMainImage(img)}
-                    className={`w-[91px] h-[111px] object-cover rounded-xl border shadow-lg cursor-pointer
-                    ${mainImage === img ? "border-maroon-600 border-2" : ""}`}
+                    className={cn(
+                      "w-[91px] h-[111px] object-cover rounded-xl border shadow-lg cursor-pointer",
+                      mainImage === img && "border-maroon-600 border-2"
+                    )}
                   />
                 </CarouselItem>
               ))}
