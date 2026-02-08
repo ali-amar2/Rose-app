@@ -7,8 +7,10 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "@/components/skeletons/notifications/Notifications";
 import ToggleLanguage from "@/components/features/toggle-language";
-import { Link } from "@/i18n/navigation";
 import { useGetCart } from "../products/[id]/_hooks/use-get-cart";
+import LoginPopup from "@/components/skeletons/login-popup/login-popup";
+import { useState } from "react";
+import { Link } from "@/i18n/navigation";
 
 export default function Header() {
   const { cart } = useGetCart();
@@ -48,6 +50,9 @@ export default function Header() {
       ],
     },
   ];
+  // state to manage login popup visibility
+  const [isLoginHovered, setIsLoginHovered] = useState(false);
+
   return (
     <>
       <header className="px-5 flex items-center justify-between py-2 text-sm ">
@@ -65,18 +70,44 @@ export default function Header() {
               <li
                 key={index}
                 className={cn(
-                  "flex items-center gap-1 px-3 cursor-pointer",
-                  index === 1 && "border-x h-12 dark:border-x-zinc-700"
+                  "flex items-center gap-1 px-3 cursor-pointer ",
+                  index === 1 && "border-x h-12 relative dark:border-x-zinc-700"
                 )}
               >
-                {item.icons
-                  ? item.icons.map((icon, iconIndex) => (
-                      <span key={iconIndex}>{icon}</span>
-                    ))
-                  : null}
-                {item.text ? (
-                  <Link href={`/${item.text}`}>{item.text}</Link>
-                ) : null}
+                {item.text === "login" ? (
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setIsLoginHovered(true)}
+                    onMouseLeave={() => setIsLoginHovered(false)}
+                  >
+                    {/* Login link */}
+                    <Link
+                      href="/login"
+                      className="flex items-center gap-1 cursor-pointer"
+                    >
+                      {item.icons?.map((icon, i) => (
+                        <span key={i}>{icon}</span>
+                      ))}
+                      <span>{item.text}</span>
+                    </Link>
+
+                    {/* Popup */}
+                    {isLoginHovered && (
+                      <div className="absolute top-full end-0  z-50">
+                        <LoginPopup />
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <>
+                    {item.icons
+                      ? item.icons.map((icon, iconIndex) => (
+                          <span key={iconIndex}>{icon}</span>
+                        ))
+                      : null}
+                    {item.text ? <span>{item.text}</span> : null}
+                  </>
+                )}
               </li>
             ))}
             <li className="px-3">

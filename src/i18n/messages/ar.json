@@ -123,6 +123,11 @@
       "passwordRequired": "كلمة المرور مطلوبة"
     }
   },
+
+  "login-popup": {
+    "loginTab": "تسجيل الدخول",
+    "registerTab": "إنشاء حساب"
+  },
   "in-stock": "متبقي في المخزون",
   "out-of-stock": "غير متوفر حالياً"
 }
