@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import logo from "../../../../../public/images/logo1.svg";
 import { Heart, ShoppingCart, User } from "lucide-react";
@@ -6,40 +7,47 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "@/components/skeletons/notifications/Notifications";
 import ToggleLanguage from "@/components/features/toggle-language";
-
-const headerList = [
-  {
-    icons: [
-      <User
-        key="user-icon"
-        className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50"
-        width={24}
-        height={24}
-      />,
-    ],
-    text: "login",
-  },
-  {
-    icons: [
-      <Heart
-        key="heart-icon"
-        className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50"
-        width={24}
-        height={24}
-      />,
-      <ShoppingCart
-        key="cart-icon"
-        className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50 mx-2"
-        width={24}
-        height={24}
-      />,
-      // noftification feat
-      <Notifications />,
-    ],
-  },
-];
+import { Link } from "@/i18n/navigation";
+import { useGetCart } from "../products/[id]/_hooks/use-get-cart";
 
 export default function Header() {
+  const { cart } = useGetCart();
+  const headerList = [
+    {
+      icons: [
+        <User
+          key="user-icon"
+          className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50"
+          width={24}
+          height={24}
+        />,
+      ],
+      text: "login",
+    },
+    {
+      icons: [
+        <Heart
+          key="heart-icon"
+          className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50"
+          width={24}
+          height={24}
+        />,
+        <div className="relative" key={"cart"}>
+          <ShoppingCart
+            key="cart-icon"
+            className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50 mx-2"
+            width={24}
+            height={24}
+          ></ShoppingCart>
+          <p className="absolute w-5 h-5 rounded-full bg-red-600 text-center text-white -top-2.5 right-0">
+            {cart?.numOfCartItems}
+          </p>
+        </div>,
+        // noftification feat
+        <Notifications />,
+      ],
+    },
+  ];
   return (
     <>
       <header className="px-5 flex items-center justify-between py-2 text-sm ">
@@ -66,7 +74,9 @@ export default function Header() {
                       <span key={iconIndex}>{icon}</span>
                     ))
                   : null}
-                {item.text ? <span>{item.text}</span> : null}
+                {item.text ? (
+                  <Link href={`/${item.text}`}>{item.text}</Link>
+                ) : null}
               </li>
             ))}
             <li className="px-3">

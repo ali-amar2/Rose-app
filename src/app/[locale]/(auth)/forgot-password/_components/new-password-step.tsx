@@ -12,7 +12,7 @@ import { NewPasswordField } from "@/lib/types/auth";
 import { useTranslations } from "next-intl";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { NewPasswordSchema } from "@/lib/schems/auth.schema";
+import { NewPasswordSchema } from "@/lib/schemas/auth.schema";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import useNewPassword from "../_hooks/use-new-password";

@@ -1,11 +1,13 @@
 import Image from "next/image";
-import { ShoppingCart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Rating from "@/components/ui/rating";
 import ProductBadge from "./product-badge";
 import { useTranslations } from "next-intl";
+import AddToCartButton from "./add-to-cart-button";
+import { ShoppingCart } from "lucide-react";
 
 export default function ProductCard({
+  id,
   img,
   title,
   price,
@@ -51,9 +53,13 @@ export default function ProductCard({
             </div>
 
             {/* Add to cart button */}
-            <div className="flex justify-center items-center w-9 h-9 text-white bg-maroon-600 hover:bg-maroon-700 rounded-full cursor-pointer transition-colors duration-200">
-              <ShoppingCart />
-            </div>
+            <AddToCartButton
+              className="flex justify-center items-center w-11 h-11 rounded-full"
+              productId={id!}
+              quantityInStock={quantity}
+            >
+              <ShoppingCart size={24} />
+            </AddToCartButton>
           </div>
         </div>
       </CardContent>
