@@ -64,26 +64,30 @@ export default function Header() {
               <li
                 key={index}
                 className={cn(
-                  "flex items-center gap-1 px-3 cursor-pointer",
+                  "flex items-center gap-1 px-3 cursor-pointer ",
                   index === 1 && "border-x h-12 relative dark:border-x-zinc-700"
                 )}
               >
                 {item.text === "login" ? (
                   <div
+                    className="relative"
                     onMouseEnter={() => setIsLoginHovered(true)}
                     onMouseLeave={() => setIsLoginHovered(false)}
-                    className="relative"
                   >
-                    <Link href="/login" className="flex items-center gap-1">
-                      {item.icons
-                        ? item.icons.map((icon, iconIndex) => (
-                            <span key={iconIndex}>{icon}</span>
-                          ))
-                        : null}
-                      {item.text ? <span>{item.text}</span> : null}
+                    {/* Login link */}
+                    <Link
+                      href="/login"
+                      className="flex items-center gap-1 cursor-pointer"
+                    >
+                      {item.icons?.map((icon, i) => (
+                        <span key={i}>{icon}</span>
+                      ))}
+                      <span>{item.text}</span>
                     </Link>
+
+                    {/* Popup */}
                     {isLoginHovered && (
-                      <div className="absolute  mt-2 w-72 -translate-y-[14%] top-0 end-0 z-50">
+                      <div className="absolute top-full end-0  z-50">
                         <LoginPopup />
                       </div>
                     )}
