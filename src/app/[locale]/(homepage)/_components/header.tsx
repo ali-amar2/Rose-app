@@ -7,43 +7,49 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "@/components/skeletons/notifications/Notifications";
 import ToggleLanguage from "@/components/features/toggle-language";
+import { useGetCart } from "../products/[id]/_hooks/use-get-cart";
 import LoginPopup from "@/components/skeletons/login-popup/login-popup";
 import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 
-const headerList = [
-  {
-    icons: [
-      <User
-        key="user-icon"
-        className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50"
-        width={24}
-        height={24}
-      />,
-    ],
-    text: "login",
-  },
-  {
-    icons: [
-      <Heart
-        key="heart-icon"
-        className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50"
-        width={24}
-        height={24}
-      />,
-      <ShoppingCart
-        key="cart-icon"
-        className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50 mx-2"
-        width={24}
-        height={24}
-      />,
-      // noftification feat
-      <Notifications />,
-    ],
-  },
-];
-
 export default function Header() {
+  const { cart } = useGetCart();
+  const headerList = [
+    {
+      icons: [
+        <User
+          key="user-icon"
+          className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50"
+          width={24}
+          height={24}
+        />,
+      ],
+      text: "login",
+    },
+    {
+      icons: [
+        <Heart
+          key="heart-icon"
+          className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50"
+          width={24}
+          height={24}
+        />,
+        <div className="relative" key={"cart"}>
+          <ShoppingCart
+            key="cart-icon"
+            className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50 mx-2"
+            width={24}
+            height={24}
+          ></ShoppingCart>
+          <p className="absolute w-5 h-5 rounded-full bg-red-600 text-center text-white -top-2.5 right-0">
+            {cart?.numOfCartItems}
+          </p>
+        </div>,
+        // noftification feat
+        <Notifications />,
+      ],
+    },
+  ];
   // state to manage login popup visibility
   const [isLoginHovered, setIsLoginHovered] = useState(false);
 

@@ -1,11 +1,11 @@
-import VerifyOtp from "./_components/verify-otp";
+import EmailStep from "./_components/email-step";
 
 export default function page() {
   return (
     <>
       <h1>forgot password</h1>
 
-      <VerifyOtp />
+      <EmailStep />
     </>
   );
 }

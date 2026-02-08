@@ -1,5 +1,8 @@
 import z from "zod";
-import { ForgotPasswordSchema, NewPasswordSchema } from "../schems/auth.schema";
+import {
+  ForgotPasswordSchema,
+  NewPasswordSchema,
+} from "../schemas/auth.schema";
 
 declare module "next-auth" {
   interface Session {
@@ -44,7 +47,7 @@ export type ForgotPasswordResponse = {
   info: string;
 };
 
-export type ForgetPasswordField = z.infer<
+export type ForgotPasswordField = z.infer<
   ReturnType<typeof ForgotPasswordSchema>
 >;
 

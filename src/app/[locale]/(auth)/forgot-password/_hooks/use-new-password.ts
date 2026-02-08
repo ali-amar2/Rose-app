@@ -1,6 +1,6 @@
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "@/i18n/navigation";
-import { newPasswordAction } from "@/lib/actions/auth.action";
+import { newPasswordAction } from "@/lib/actions/auth.actions";
 import { NewPasswordField } from "@/lib/types/auth";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -23,7 +23,11 @@ export default function useNewPassword() {
       const payload = await newPasswordAction({ email, fields });
 
       if ("error" in payload) {
-        throw new Error(payload.error);
+        if (typeof payload.error === "string") {
+          throw new Error(payload.error);
+        } else {
+          throw new Error("Unknown error occurred");
+        }
       }
 
       return payload;

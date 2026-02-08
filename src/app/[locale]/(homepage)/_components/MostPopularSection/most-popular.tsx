@@ -39,6 +39,7 @@ export default function MostPopular({
           {initialProducts.products.map((product) => (
             <ProductCard
               key={product._id}
+              id={product._id}
               img={product.imgCover}
               title={product.title}
               price={product.price}

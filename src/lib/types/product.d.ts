@@ -22,6 +22,7 @@ declare type Product = {
 };
 
 type ProductCardProps = {
+  id?: string;
   img: string;
   title: string;
   price: number;
@@ -52,4 +53,9 @@ type ProductBadgeProps = {
 
 type ProductRatingProps = {
   rate: number;
+};
+
+declare type ProductDetailsResponse = {
+  message: string;
+  product: Product;
 };

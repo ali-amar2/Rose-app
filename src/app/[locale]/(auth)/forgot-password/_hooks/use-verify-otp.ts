@@ -1,9 +1,9 @@
 "use client";
 
-import { verifyOtpAction } from "@/lib/actions/auth.actions";
 import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "next-intl";
+import { verifyOtpAction } from "@/lib/actions/auth.actions";
 
 export default function useVerifyOtp() {
   //   translations

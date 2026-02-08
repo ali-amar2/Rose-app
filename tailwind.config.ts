@@ -13,6 +13,13 @@ const config: Config = {
         "100": "27.5rem",
         "68": "17rem",
       },
+      width: {
+        "175": "43.75rem",
+        "100": "25.375rem",
+      },
+      fontFamily: {
+        edwardian: ["var(--font-edwardian)", "cursive"],
+      },
       colors: {
         maroon: {
           50: "#fbeaea",

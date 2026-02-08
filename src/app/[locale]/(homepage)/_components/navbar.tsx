@@ -51,7 +51,11 @@ export default function Navbar() {
     <nav className="dark:bg-softPink-200 dark:text-zinc-800 bg-maroon-700 text-zinc-50 h-11 py-3 px-5 shadow-md mb-4 text-base">
       <ul className="flex items-center justify-center gap-8 ">
         {navItems.map((item, index) => {
-          const isActive = pathname === item.href;
+          const cleanPath = pathname.replace(/^\/(en|ar)/, "") || "/";
+          const isActive =
+            item.href === "/"
+              ? cleanPath === "/"
+              : cleanPath.startsWith(item.href);
           return (
             <li
               key={index}
