@@ -21,6 +21,7 @@
       "createAccount": "Create Account"
     },
     "alreadyHaveAccount": "Already have an account? ",
+    "login": "Login",
     "validation": {
       "firstName": {
         "required": "Please enter your first name",
@@ -50,20 +51,19 @@
         "number": "Password must contain at least 1 number",
         "lowercase": "Password must contain at least 1 lowercase letter",
         "uppercase": "Password must contain at least 1 uppercase letter",
-        "special": "Password must contain at least 1 special character (#?!@$%^&*-)"
+        "special": "Password must contain at least 1 special character (#?!@$%^&-)"
       },
       "rePassword": {
         "required": "Please re-enter your password",
-        "mismatch": "Passwords does not match"
+        "mismatch": "Passwords do not match"
       }
     }
   },
-  "email-lablel": "Email",
   "email-label": "Email",
   "forgot-password-heading": "Forgot Password?",
   "forget-password-text": "Worry not, we’ll send you instructions to help you reset it.",
   "email-placeholder": "Enter your email",
-  "continue": "continue",
+  "continue": "Continue",
   "non-email-error": "Please Enter Your Email",
   "email-not-valid": "Enter a valid email",
   "required-email": "Email is required",
@@ -123,27 +123,21 @@
       "password-required": "Password is required"
     }
   },
-
   "login-popup": {
     "loginTab": "Login",
     "registerTab": "Register"
   },
   "in-stock": "left in stock",
-  "out-of-stock": "Out of stock"
-  },
-  
+  "out-of-stock": "Out of stock",
   "category-filter": {
     "title": "Category",
     "reset": "Reset",
     "loading-more": "Loading more...",
     "loading-categories": "Loading categories..."
   },
-  
   "rating-filter": {
     "title": "Rating",
     "reset": "Reset"
   },
-  
   "reset-all": "Reset All"
-
 }

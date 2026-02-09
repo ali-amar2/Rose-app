@@ -7,10 +7,10 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "@/components/skeletons/notifications/Notifications";
 import ToggleLanguage from "@/components/features/toggle-language";
-import { useGetCart } from "../products/[id]/_hooks/use-get-cart";
 import LoginPopup from "@/components/skeletons/login-popup/login-popup";
 import { useState } from "react";
 import { Link } from "@/i18n/navigation";
+import { useGetCart } from "../../products/[id]/_hooks/use-get-cart";
 
 export default function Header() {
   const { cart } = useGetCart();
