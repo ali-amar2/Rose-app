@@ -11,7 +11,7 @@ const MAX_RATING = 5;
 
 const RatingFilter = forwardRef((props, ref) => {
   // Translation
-  const t = useTranslations("ratingFilter");
+  const t = useTranslations("rating-filter");
 
   // Navigation
   const router = useRouter();
@@ -78,7 +78,7 @@ const RatingFilter = forwardRef((props, ref) => {
           return (
             <Star
               key={starIndex}
-              size={30}
+              size={28}
               onClick={() => handleSelect(starIndex)}
               className={`cursor-pointer transition-colors ${
                 isFilled ? "fill-amber-500 text-amber-500" : "text-amber-500"

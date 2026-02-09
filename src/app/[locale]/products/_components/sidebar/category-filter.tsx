@@ -9,12 +9,14 @@ import { updateSearchParams } from "@/lib/utils/url";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
+import { cn } from "@/lib/utils/tailwind-merge";
+import Image from "next/image";
 
 const ITEMS_PER_LOAD = 5;
 
 const CategoryFilter = forwardRef((props, ref) => {
   // Translation
-  const t = useTranslations("categoryFilter");
+  const t = useTranslations("category-filter");
 
   // Navigation
   const router = useRouter();
@@ -58,7 +60,7 @@ const CategoryFilter = forwardRef((props, ref) => {
 
   // Loading state
   if (isLoading) {
-    return <p className="text-sm text-zinc-500">{t("loadingCategories")}</p>;
+    return <p className="text-sm text-zinc-500">{t("loading-categories")}</p>;
   }
 
   return (
@@ -87,7 +89,7 @@ const CategoryFilter = forwardRef((props, ref) => {
           scrollableTarget="category-scroll"
           loader={
             <p className="text-center text-sm py-2 text-zinc-400">
-              {t("loadingMore")}
+              {t("loading-more")}
             </p>
           }
         >
@@ -98,20 +100,21 @@ const CategoryFilter = forwardRef((props, ref) => {
                 <li
                   key={cat._id}
                   onClick={() => handleSelect(cat._id)}
-                  className={`h-12 flex items-center gap-3 rounded-lg cursor-pointer transition
-                    ${
-                      isActive
-                        ? "bg-maroon-50 text-zinc-800"
-                        : "bg-zinc-200 hover:bg-zinc-300"
-                    }
-                  `}
+                  className={cn(
+                    "h-12 flex items-center gap-3 rounded-lg cursor-pointer transition",
+                    isActive
+                      ? "bg-maroon-50 text-zinc-800"
+                      : "bg-zinc-200 hover:bg-zinc-300"
+                  )}
                 >
                   <div
                     className={`w-12 h-12 flex items-center justify-center rounded-md
                       ${isActive ? "bg-maroon-600" : "bg-zinc-500"}
                     `}
                   >
-                    <img
+                    <Image
+                      width={300}
+                      height={0}
                       src={cat.image}
                       alt={cat.name}
                       className="w-6 h-6 object-contain filter brightness-[10]"

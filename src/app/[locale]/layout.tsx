@@ -1,26 +1,23 @@
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import Providers from "@/components/providers";
 import { Sarabun, Tajawal } from "next/font/google";
 import { setRequestLocale } from "next-intl/server";
 import Header from "./(homepage)/_components/header";
 import Footer from "./(homepage)/_components/footer";
+import { cn } from "@/lib/utils/tailwind-merge";
 
 const sarabun = Sarabun({
   subsets: ["latin"],
   variable: "--font-sarabun",
   weight: ["400", "500", "600", "700"],
 });
+
 const tajawal = Tajawal({
   subsets: ["latin"],
   variable: "--font-tajawal",
   weight: ["400", "500", "700", "800", "900"],
 });
-
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -28,26 +25,27 @@ type LayoutProps = {
 };
 
 export default function LocaleLayout({ children, params }: LayoutProps) {
-  // Ensure that the incoming `locale` is valid
   const { locale } = params;
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
-  // Enable static rendering
   setRequestLocale(locale);
 
   return (
-    <html lang="{locale}" dir={locale === "ar" ? "rtl" : "ltr"}>
-      <body
-        className={`${sarabun.className} ${sarabun.variable} ${tajawal.variable} antialiased dark:bg-zinc-800`}
-      >
-        <Providers>
-          <Header />
-          {children}
-          <Footer />
-        </Providers>
-      </body>
-    </html>
+    <div
+      dir={locale === "ar" ? "rtl" : "ltr"}
+      className={cn(
+        sarabun.className,
+        sarabun.variable,
+        tajawal.variable,
+        "antialiased dark:bg-zinc-800 min-h-screen flex flex-col"
+      )}
+    >
+      <Header />
+      {children}
+      <Footer />
+    </div>
   );
 }

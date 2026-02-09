@@ -55,7 +55,7 @@ export default function MostPopular({
           href={`/products`}
           className="flex gap-2 justify-end text-maroon-700 font-bold"
         >
-          {t("viewMore")} <MoveRight />
+          {t("view-more")} <MoveRight />
         </Link>
       )}
     </section>

@@ -4,7 +4,7 @@
     "title": "Testimonials",
     "sub-title": "Real Words from Happy Customers"
   },
-  "email-lablel": "Email",
+  "email-label": "Email",
   "forgot-password-heading": "Forgot Password?",
   "forget-password-text": "Worry not, we’ll send you instructions to help you reset it.",
   "email-placeholder": "Enter your email",
@@ -23,7 +23,7 @@
   "password-at-least-8-characters": "Password must be at least 8 characters",
   "password-contain-uppercase-letter": "Password must contain at least one uppercase letter",
   "password-contain-lowercase-letter": "Password must contain at least one lowercase letter",
-  "password-contain--one-number": "Password must contain at least one number",
+  "password-contain-one-number": "Password must contain at least one number",
   "passwords-do-not-match": "Passwords do not match",
 
   "product": {
@@ -31,17 +31,17 @@
     "badge": {
       "new": "NEW",
       "hot": "HOT",
-      "outOfStock": "OUT OF STOCK"
+      "out-of-stock": "OUT OF STOCK"
     }
   },
 
   "best-selling": {
     "title": "Best Selling",
     "subtitle": {
-      "checkOut": "Check Out",
-      "restBeforeBuying": "What Everyone’s ",
+      "check-out": "Check Out",
+      "rest-before-buying": "What Everyone’s ",
       "buying": "Buying",
-      "restAfterBuying": "Right Now"
+      "rest-after-buying": "Right Now"
     },
     "description": "Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for. Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.",
     "button": "Explore gifts"
@@ -50,40 +50,40 @@
   "most-popular": {
     "title": "Most Popular",
     "empty": "No products found for this occasion",
-    "viewMore": "View More"
+    "view-more": "View More"
   },
 
   "login": {
     "email": "Email",
     "password": "Password",
-    "emailPlaceholder": "user@example.com",
-    "passwordPlaceholder": "********",
-    "forgotPassword": "Forgot your password?",
-    "rememberMe": "Remember me",
-    "loginBtn": "Login",
-    "genericError": "Something went wrong",
-    "passwordPatternError": "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
-    "noAccount": "Don’t have an account yet?",
-    "createAccount": "Create one now!",
+    "email-placeholder": "user@example.com",
+    "password-placeholder": "********",
+    "forgot-password": "Forgot your password?",
+    "remember-me": "Remember me",
+    "login-btn": "Login",
+    "generic-error": "Something went wrong",
+    "password-pattern-error": "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
+    "no-account": "Don’t have an account yet?",
+    "create-account": "Create one now!",
     "schema": {
-      "emailRequired": "Email is required",
-      "invalidEmail": "Please enter a valid email address",
-      "passwordRequired": "Password is required"
+      "email-required": "Email is required",
+      "invalid-email": "Please enter a valid email address",
+      "password-required": "Password is required"
     }
   },
   
-  "categoryFilter": {
+  "category-filter": {
     "title": "Category",
     "reset": "Reset",
-    "loadingMore": "Loading more...",
-    "loadingCategories": "Loading categories..."
+    "loading-more": "Loading more...",
+    "loading-categories": "Loading categories..."
   },
   
-  "ratingFilter": {
+  "rating-filter": {
     "title": "Rating",
     "reset": "Reset"
   },
   
-  "resetAll": "Reset All"
+  "reset-all": "Reset All"
 
 }

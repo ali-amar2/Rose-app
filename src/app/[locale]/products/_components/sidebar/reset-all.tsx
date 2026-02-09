@@ -36,7 +36,7 @@ export default function ResetAllButton({ onResetAll }: ResetAllButtonProps) {
         `}
       >
         <RotateCcw size={20} />
-        {t("resetAll")}
+        {t("reset-all")}
       </button>
     </div>
   );

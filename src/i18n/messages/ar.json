@@ -4,7 +4,7 @@
     "title": "الشهادات",
     "sub-title": "كلمات حقيقية من العملاء السعداء"
   },
-  "email-lablel": "البريد الالكترونى",
+  "email-label": "البريد الالكترونى",
   "forgot-password-heading": "هل نسيت كلمة المرور؟",
   "forget-password-text": "لا تقلق سنساعدك فى استعادة كلمة المرور الخاصة بك\n",
   "email-placeholder": "ادخل بريدك الالكترونى\n",
@@ -23,7 +23,7 @@
   "password-at-least-8-characters": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
   "password-contain-uppercase-letter": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل",
   "password-contain-lowercase-letter": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
-  "password-contain--one-number": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
+  "password-contain-one-number": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
   "passwords-do-not-match": "كلمات المرور غير متطابقة",
 
   "product": {
@@ -31,17 +31,17 @@
     "badge": {
       "new": "جديد",
       "hot": "الأكثر مبيعًا",
-      "outOfStock": "نفدت الكمية"
+      "out-of-stock": "نفدت الكمية"
     }
   },
 
   "best-selling": {
     "title": "الأكثر مبيعًا",
     "subtitle": {
-      "checkOut": "اكتشف",
-      "restBeforeBuying": "ما يشتريه الجميع ",
+      "check-out": "اكتشف",
+      "rest-before-buying": "ما يشتريه الجميع ",
       "buying": "",
-      "restAfterBuying": "حاليًا"
+      "rest-after-buying": "حاليًا"
     },
     "description": "غير متأكد مما تختار؟ ابدأ بأكثر منتجاتنا مبيعًا، فهي الهدايا التي يعود عملاؤنا لشرائها مرارًا. سواء كنت تحتفل بعيد ميلاد، ذكرى سنوية، أو زفاف، فإن اختياراتنا الأفضل مضمونة لترك انطباع لا يُنسى.",
     "button": "استكشف الهدايا"
@@ -50,39 +50,39 @@
   "most-popular": {
     "title": "الأكثر شيوعًا",
     "empty": "لا توجد منتجات لهذه المناسبة",
-    "viewMore": "عرض المزيد"
+    "view-more": "عرض المزيد"
   },
 
   "login": {
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
-    "emailPlaceholder": "user@example.com",
-    "passwordPlaceholder": "********",
-    "forgotPassword": "هل نسيت كلمة المرور؟",
-    "rememberMe": "تذكرني",
-    "loginBtn": "تسجيل الدخول",
-    "genericError": "حدث خطأ ما",
-    "passwordPatternError": "يجب أن تكون كلمة المرور 8 أحرف على الأقل وتحتوي على حرف كبير، حرف صغير، رقم و رمز خاص.",
-    "noAccount": "ليس لديك حساب بعد؟",
-    "createAccount": "أنشئ حسابًا الآن",
+    "email-placeholder": "user@example.com",
+    "password-placeholder": "********",
+    "forgot-password": "هل نسيت كلمة المرور؟",
+    "remember-me": "تذكرني",
+    "login-btn": "تسجيل الدخول",
+    "generic-error": "حدث خطأ ما",
+    "password-pattern-error": "يجب أن تكون كلمة المرور 8 أحرف على الأقل وتحتوي على حرف كبير، حرف صغير، رقم و رمز خاص.",
+    "no-account": "ليس لديك حساب بعد؟",
+    "create-account": "أنشئ حسابًا الآن",
     "schema": {
-      "emailRequired": "البريد الإلكتروني مطلوب",
-      "invalidEmail": "الرجاء إدخال بريد إلكتروني صالح",
-      "passwordRequired": "كلمة المرور مطلوبة"
+      "email-required": "البريد الإلكتروني مطلوب",
+      "invalid-email": "الرجاء إدخال بريد إلكتروني صالح",
+      "password-required": "كلمة المرور مطلوبة"
     }
   },
   
-   "categoryFilter": {
+   "category-filter": {
     "title": "الفئة",
     "reset": "إعادة",
-    "loadingMore": "... تحميل المزيد",
-    "loadingCategories": "... جاري تحميل الفئات"
+    "loading-more": "... تحميل المزيد",
+    "loading-categories": "... جاري تحميل الفئات"
   },
   
-  "ratingFilter": {
+  "rating-filter": {
     "title": "التقييم",
     "reset": "إعادة"
   },
   
-  "resetAll": "مسح جميع الفلاتر"
+  "reset-all": "مسح جميع الفلاتر"
 }

@@ -53,7 +53,7 @@ export default function EmailStep() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("email-lablel")}</FormLabel>
+                <FormLabel>{t("email-label")}</FormLabel>
                 <FormControl>
                   <Input placeholder={t("email-placeholder")} {...field} />
                 </FormControl>

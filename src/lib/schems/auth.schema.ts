@@ -24,7 +24,7 @@ export const NewPasswordSchema = (t: Translations) =>
         .min(8, t("password-at-least-8-characters"))
         .regex(/[A-Z]/, t("password-contain-uppercase-letter"))
         .regex(/[a-z]/, t("password-contain-lowercase-letter"))
-        .regex(/[0-9]/, t("password-contain--one-number"))
+        .regex(/[0-9]/, t("password-contain-one-number"))
         .regex(
           /[@$!%*?&]/,
           "Password must contain at least one special character"
