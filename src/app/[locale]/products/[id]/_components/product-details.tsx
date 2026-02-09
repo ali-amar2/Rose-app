@@ -46,13 +46,15 @@ export default function ProductDetails({ id }: { id: string }) {
     <div className="grid grid-cols-2 gap-16 p-10 h-[32.7rem] w-[80rem] mx-auto mb-20">
       <div className="col-span-1 w-full max-h-full ">
         {/* Image */}
-        <Image
-          src={mainImage || ""}
-          alt={productDetails?.product?.title || "Product Image"}
-          width={300}
-          height={300}
-          className="w-full h-[400px] object-cover rounded-xl border"
-        />
+        {mainImage && (
+          <Image
+            src={mainImage}
+            alt={productDetails?.product?.title || "Product Image"}
+            width={300}
+            height={300}
+            className="w-full h-[400px] object-fill rounded-xl border"
+          />
+        )}
 
         {/* Carosel */}
         {
@@ -65,7 +67,7 @@ export default function ProductDetails({ id }: { id: string }) {
             <CarouselContent className="flex gap-0.5 -ml-0 mt-2 w-full">
               {carouselImages.map((img, index) => (
                 <CarouselItem
-                  key={img}
+                  key={`${img}-${index}`}
                   className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6 pl-0"
                 >
                   <Image
