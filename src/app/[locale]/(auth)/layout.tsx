@@ -8,9 +8,9 @@ import { setRequestLocale } from "next-intl/server";
 import { Pinyon_Script } from "next/font/google";
 
 const pinyonScript = Pinyon_Script({
-subsets: ["latin"],
-variable: "--font-edwardian",
-weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-edwardian",
+  weight: ["400"],
 });
 
 type Props = { children: React.ReactNode; params: { locale: string } };
@@ -22,7 +22,6 @@ export default async function AuthLayout({ children, params }: Props) {
   }
 
   setRequestLocale(locale);
-
 
   return (
     <Providers>
