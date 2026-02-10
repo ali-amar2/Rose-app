@@ -18,6 +18,7 @@ export type CartResponse = {
   message: string;
   numOfCartItems: number;
   cart: Cart;
+  price: number;
 };
 
 export type AddToCartItem = {
