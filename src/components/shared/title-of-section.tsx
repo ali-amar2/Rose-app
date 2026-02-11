@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils/tailwind-merge";
 type TitleOfSectionProps = {
   title?: string;
   subtitle: string;
-  className?: string;             // للـ container
-  titleClassName?: string;        // للـ title
-  subtitleClassName?: string;     // للـ subtitle
+  className?: string; // للـ container
+  titleClassName?: string; // للـ title
+  subtitleClassName?: string; // للـ subtitle
 };
 
 export default function TitleOfSection({
@@ -20,7 +20,7 @@ export default function TitleOfSection({
       {title && (
         <h2
           className={cn(
-            "font-bold text-softPink-500 dark:text-maroon-400 uppercase",
+            "font-bold text-softPink-500 dark:text-maroon-400 uppercase"
           )}
         >
           {title}

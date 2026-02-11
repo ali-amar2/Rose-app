@@ -1,28 +1,28 @@
 import { Badge } from "@/components/ui/badge";
+import { useTranslations } from "next-intl";
 
 export default function ProductBadge({
-    quantity,
-    sold = 0,
+  quantity,
+  sold = 0,
 }: ProductBadgeProps) {
-    const isHot = sold >= 100;
-    const isOutOfStock = quantity <= 0;
-    const showHot = isHot;
-    const showNew = !isHot;
-    const showOutOfStock = isOutOfStock;
+  // Translation
+  const t = useTranslations("product.badge");
 
-    return (
-        <div className="absolute top-2 right-2 flex gap-1 z-10">
-            {showNew && !showOutOfStock && (
-                <Badge variant="new">NEW</Badge>
-            )}
+  const isHot = sold >= 100;
+  const isOutOfStock = quantity <= 0;
+  const showHot = isHot;
+  const showNew = !isHot;
+  const showOutOfStock = isOutOfStock;
 
-            {showHot && (
-                <Badge variant="hot">HOT</Badge>
-            )}
+  return (
+    <div className="absolute top-2 right-2 flex gap-1 z-10">
+      {showNew && !showOutOfStock && <Badge variant="new">{t("new")}</Badge>}
 
-            {showOutOfStock && (
-                <Badge variant="outOfStock">OUT OF STOCK</Badge>
-            )}
-        </div>
-    );
+      {showHot && <Badge variant="hot">{t("hot")}</Badge>}
+
+      {showOutOfStock && (
+        <Badge variant="outOfStock">{t("out-of-stock")}</Badge>
+      )}
+    </div>
+  );
 }

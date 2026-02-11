@@ -1,6 +1,4 @@
 import { OccProps } from "@/lib/types/occasion";
-import Footer from "./_components/footer";
-import Header from "./_components/header";
 import CarouselComponent from "./_components/carousel-component";
 import SecondSection from "./_components/second-section";
 import BestSellingSection from "./_components/BestSellingSection";
@@ -11,7 +9,6 @@ import { Testimonials } from "./_components/Testimonials";
 export default function Home({ searchParams }: OccProps) {
   return (
     <>
-      <Header />
       <main className="flex flex-col py-10 gap-y-10">
         <div className="px-20 flex flex-col gap-y-10">
           <CarouselComponent />
@@ -22,7 +19,6 @@ export default function Home({ searchParams }: OccProps) {
         </div>
         <Testimonials />
       </main>
-      <Footer />
     </>
   );
 }

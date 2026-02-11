@@ -13,17 +13,8 @@ export default function ToggleLanguage() {
 
   function toggleLocale() {
     // Toggle between 'ar' and 'en'
-    router.push(
-      {
-        pathname,
-        query: Object.fromEntries(
-          new URLSearchParams(location.search).entries()
-        ),
-      },
-      {
-        locale: locale === "ar" ? "en" : "ar",
-      }
-    );
+    const newLocale = locale === "ar" ? "en" : "ar";
+    router.push(pathname, { locale: newLocale });
   }
   return (
     // #TODO: Style the button

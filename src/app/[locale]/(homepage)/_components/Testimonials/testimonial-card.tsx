@@ -18,7 +18,6 @@ export default function TestimonialCard({
   content,
   updatedAt,
 }: TestimonialProps) {
-
   // formatter hook
   const format = useFormatter();
 
@@ -37,7 +36,9 @@ export default function TestimonialCard({
           className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-20 w-32 h-32 rounded-full object-cover border-4 border-white"
         />
 
-        <CardTitle className="font-semibold text-center">{user.firstName} {user.lastName}</CardTitle>
+        <CardTitle className="font-semibold text-center">
+          {user.firstName} {user.lastName}
+        </CardTitle>
 
         <CardDescription className="text-zinc-800 font-medium h-32 flex flex-col items-center justify-center">
           {/* Star rating component */}
@@ -57,7 +58,9 @@ export default function TestimonialCard({
           <p className="h-12">{content}</p>
         </CardDescription>
 
-        <CardFooter className="text-zinc-400 text-xs mt-5">{format.dateTime(new Date(updatedAt), { dateStyle: "long" })}</CardFooter>
+        <CardFooter className="text-zinc-400 text-xs mt-5">
+          {format.dateTime(new Date(updatedAt), { dateStyle: "long" })}
+        </CardFooter>
       </CardContent>
     </Card>
   );

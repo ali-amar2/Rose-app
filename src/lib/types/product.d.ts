@@ -22,12 +22,14 @@ declare type Product = {
 };
 
 type ProductCardProps = {
+  id?: string;
   img: string;
   title: string;
   price: number;
   priceAfterDiscount: number;
   quantity: number;
   sold: number;
+  rateAvg: number;
 };
 type ProductsParams = {
   sort?: string;
@@ -47,4 +49,13 @@ type MostPopularProductsProps = {
 type ProductBadgeProps = {
   quantity: number;
   sold?: number;
+};
+
+type ProductRatingProps = {
+  rate: number;
+};
+
+declare type ProductDetailsResponse = {
+  message: string;
+  product: Product;
 };
