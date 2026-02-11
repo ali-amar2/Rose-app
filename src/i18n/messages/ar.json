@@ -139,5 +139,26 @@
     "title": "التقييم",
     "reset": "إعادة"
   },
-  "reset-all": "مسح جميع الفلاتر"
+  "reset-all": "مسح جميع الفلاتر",
+  "orders": {
+    "title": "الطلبات",
+    "paid": "مدفوع",
+    "order-number": "طلب رقم",
+    "created-at": "تم الإنشاء في",
+    "total-price": "السعر الإجمالي",
+    "status": "الحالة",
+    "order-items": "عناصر الطلب",
+    "show-all": "عرض الكل",
+    "no-orders": "لا توجد طلبات.",
+    "currency": "ج.م",
+    "rating": "التقييم",
+    "ratings-count": "تقييم",
+    "payment": {
+      "method": "طريقة الدفع"
+    },
+    "delivery": {
+      "status": "حالة التوصيل"
+    },
+    "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات"
+  }
 }

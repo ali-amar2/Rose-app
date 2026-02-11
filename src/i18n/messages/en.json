@@ -139,5 +139,28 @@
     "title": "Rating",
     "reset": "Reset"
   },
-  "reset-all": "Reset All"
+  "reset-all": "Reset All",
+  
+  "orders": {
+    "title": "Orders",
+    "paid": "Paid",
+    "order-number": "Order",
+    "created-at": "Created at",
+    "total-price": "Total Price",
+    "status": "Status",
+    "order-items": "Order Items",
+    "show-all": "Show All",
+    "no-orders": "No orders found.",
+    "currency": "EGP",
+    "rating": "Rating",
+    "ratings-count": "ratings",
+    "payment": {
+      "method": "Payment Method"
+    },
+    "delivery": {
+      "status": "Delivery Status"
+    },
+    "error-loading-orders": "Error loading orders"
+  }
+
 }
