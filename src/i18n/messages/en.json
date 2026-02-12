@@ -139,5 +139,21 @@
     "title": "Rating",
     "reset": "Reset"
   },
-  "reset-all": "Reset All"
+  "reset-all": "Reset All",
+  "old-password-label": "Old Password",
+  "new-password-label": "New Password",
+  "confirm-new-password-label": "Confirm New Password",
+  "change-password": "Change Password",
+  "delete-my-account": "Delete My Account",
+  "ask-for-delete-account": "Are you sure you want to delete your account?",
+  "action-cannot-undone": "This action is permanent and cannot be undone.",
+  "not-doing": "Nope, not doing it",
+  "yes-delete": "Yes, delete",
+  "my-account": "My Account",
+  "update-profile": "Update Profile",
+  "logout": "Logout",
+  "gender": "Gender",
+  "male": "Male",
+  "upload-photo": "Upload Photo",
+  "photo-extentions": "You can upload a .jpg, .png, or .gif photo with max size of 5MB."
 }
