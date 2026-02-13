@@ -174,12 +174,12 @@ export default function CartGuestData() {
                           width={100}
                           className="rounded h-32 object-cover"
                         />
-                        <div className="flex flex-col justify-between h-32">
+                        <div className="flex flex-col justify-between items-start h-32 ">
                           <div>
-                            <p className="font-semibold text-lg text-maroon-600 capitalize pb-2">
+                            <p className="font-semibold text-lg text-start  text-maroon-600 capitalize pb-2">
                               {product.title}
                             </p>
-                            <p className="font-normal text-base">
+                            <div className="font-normal text-start text-base">
                               ⭐{t("rating")}:
                               <span className="font-medium">
                                 {product.rateAvg}
@@ -187,7 +187,7 @@ export default function CartGuestData() {
                               <span className="text-blue-600 font-medium text-base ms-2">
                                 ({product.rateCount} {t("ratings")})
                               </span>
-                            </p>
+                            </div>
                           </div>
 
                           <p>
@@ -246,7 +246,7 @@ export default function CartGuestData() {
               {hasNextPage && (
                 <div
                   ref={loadMoreRef}
-                  className="text-center py-6 text-zinc-500"
+                  className="text-start py-6  text-zinc-500"
                 >
                   {isFetchingNextPage ? "Loading..." : ""}
                 </div>
