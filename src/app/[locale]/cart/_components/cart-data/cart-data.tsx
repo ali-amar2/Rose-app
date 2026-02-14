@@ -14,6 +14,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { deleteCart } from "@/lib/actions/delete-cart.actions";
 import { updateCartQuantity } from "@/lib/actions/update-quantity.action";
 import { deleteProduct } from "@/lib/actions/remove-product.actions";
+import PersonalCartCarousel from "../personal-cart-carousel/personal-cart-carousel";
 
 export default function CartData() {
   const { status } = useSession();
@@ -150,54 +151,60 @@ export default function CartData() {
 
   return (
     <>
-      {/* in case cart empty */}
-      {data?.numOfCartItems === 0 ? (
-        <div className="w-[50rem] mx-auto my-10 px-4 py-2 rounded-[1rem]">
-          {/* cart header */}
-          <div className="cart-header flex justify-between items-center mb-4">
-            <div className="text-5xl text-zinc-800 font-bold ">
-              {t("title")}
-              <span className="text-zinc-500 font-normal text-base ms-2">
-                {data?.numOfCartItems} {t("products")}
-              </span>
+      <div className="px-20">
+        {/* in case cart empty */}
+        {data?.numOfCartItems === 0 ? (
+          <div className="w-[50rem] mx-auto my-10 px-4 py-2 rounded-[1rem] ">
+            {/* cart header */}
+            <div className="cart-header flex justify-between items-center mb-4 ">
+              <div className="text-5xl text-zinc-800 font-bold ">
+                {t("title")}
+                <span className="text-zinc-500 font-normal text-base ms-2">
+                  {data?.numOfCartItems} {t("products")}
+                </span>
+              </div>
+              <div className="clear">
+                <Button disabled className="capitalize">
+                  <BrushCleaning size={20} /> {t("empty")}
+                </Button>
+              </div>
             </div>
-            <div className="clear">
-              <Button disabled className="capitalize">
-                <BrushCleaning size={20} /> {t("empty")}
+
+            {/* card body */}
+            <Card>
+              <CardContent>
+                <Image
+                  src="/assets/p0.png"
+                  alt="No products"
+                  width={250}
+                  height={214}
+                  className="mx-auto "
+                />
+                <p className="text-sm font-normal text-zinc-400 ">
+                  {t("empty-cart")}
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* continue shopping button */}
+            <div className="text-start py-6">
+              <Button variant={"destructive"} className="capitalize">
+                <MoveLeft size={20} />
+                <Link href="/">{t("continue-shopping")}</Link>
               </Button>
             </div>
           </div>
-
-          {/* card body */}
-          <Card>
-            <CardContent>
-              <Image
-                src="/assets/p0.png"
-                alt="No products"
-                width={250}
-                height={214}
-                className="mx-auto "
-              />
-              <p className="text-sm font-normal text-zinc-400 ">
-                {t("empty-cart")}
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      ) : (
-        // in case cart is not empty
-        <div>
-          <div className="card w-[48rem] ">
-            {/* card header */}
-            <div className="cart-header flex justify-between items-center mb-4">
+        ) : (
+          // in case cart is not empty
+          <div className="w-[48rem]">
+            {/* cart header */}
+            <div className="cart-header flex justify-between items-center mb-4 w-full">
               <div className="text-5xl text-zinc-800 font-bold">
                 {t("title")}
                 <span className="text-zinc-500 font-normal text-base ms-2">
                   {data?.numOfCartItems} {t("products")}
                 </span>
               </div>
-
-              {/* clear the cart */}
               <Button
                 variant="light"
                 className="capitalize"
@@ -206,124 +213,127 @@ export default function CartData() {
                 <BrushCleaning size={20} /> {t("empty")}
               </Button>
             </div>
-          </div>
 
-          {/* cart body */}
-          <Card className="mb-6">
-            <CardContent
-              className="max-h-[32rem] overflow-y-auto hide-scrollbar"
-              onScroll={handleScroll}
-            >
-              {visibleItems.map((item: any) => (
-                <div
-                  key={item._id}
-                  className="flex justify-between items-center border-b py-4"
-                >
-                  {/* card content */}
-                  <div className="flex items-center gap-4">
-                    {/* card image */}
-                    <img
-                      src={item.product.imgCover}
-                      alt={item.product.title}
-                      width={100}
-                      className="rounded h-32 object-cover"
-                    />
-
-                    <div className="flex flex-col justify-between items-start h-32 ">
-                      {/* card title and rating */}
-                      <div>
-                        <p className="font-semibold text-lg text-start text-maroon-600 capitalize pb-2">
-                          {item.product.title}
-                        </p>
-                        <div className="font-normal text-start text-base">
-                          ⭐{t("rating")}:
-                          <span className="font-medium">
-                            {item.product.rateAvg}
-                          </span>
-                          <span className="text-blue-600 font-medium text-base ms-2">
-                            ({item.product.rateCount} {t("ratings")})
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* product price */}
-                      <p>
-                        <span className="text-maroon-600 text-sm font-medium me-1">
-                          (x{item?.quantity})
-                        </span>
-                        <span className="font-bold text-2xl">
-                          {item.price * item.quantity} EGP
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col justify-between items-end h-32">
-                    {/* remove product */}
-                    <Button
-                      variant="destructive"
-                      className="capitalize "
-                      onClick={() => handleDeleteProduct(item.product._id)}
-                    >
-                      <Trash2 /> {t("remove-product")}
-                    </Button>
-
-                    {/* quantity */}
-                    <div className="flex items-center gap-2 ">
-                      {/* minus */}
-                      <Button
-                        variant="secondary"
-                        disabled={item.quantity <= 1}
-                        onClick={() =>
-                          handleQuantityChange(
-                            item.product._id,
-                            item.quantity - 1
-                          )
-                        }
-                      >
-                        <Minus size={20} />
-                      </Button>
-
-                      {/* input value */}
-                      <Input
-                        type="number"
-                        value={item.quantity}
-                        className="w-24 text-center p-4 border border-zinc-300 rounded-[1rem]"
-                        readOnly
+            {/* cart body */}
+            <Card className="mb-6 w-full">
+              <CardContent
+                className="max-h-[32rem] overflow-y-auto hide-scrollbar"
+                onScroll={handleScroll}
+              >
+                {visibleItems.map((item: any) => (
+                  <div
+                    key={item._id}
+                    className="flex justify-between items-center border-b py-4"
+                  >
+                    {/* card content */}
+                    <div className="flex items-center gap-4">
+                      {/* card image */}
+                      <img
+                        src={item.product.imgCover}
+                        alt={item.product.title}
+                        width={100}
+                        className="rounded h-32 object-cover"
                       />
 
-                      {/* plus */}
+                      <div className="flex flex-col justify-between items-start h-32 ">
+                        {/* card title and rating */}
+                        <div>
+                          <p className="font-semibold text-lg text-start text-maroon-600 capitalize pb-2">
+                            {item.product.title}
+                          </p>
+                          <div className="font-normal text-start text-base">
+                            ⭐{t("rating")}:
+                            <span className="font-medium">
+                              {item.product.rateAvg}
+                            </span>
+                            <span className="text-blue-600 font-medium text-base ms-2">
+                              ({item.product.rateCount} {t("ratings")})
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* product price */}
+                        <p>
+                          <span className="text-maroon-600 text-sm font-medium me-1">
+                            (x{item?.quantity})
+                          </span>
+                          <span className="font-bold text-2xl">
+                            {item.price * item.quantity} EGP
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col justify-between items-end h-32">
+                      {/* remove product */}
                       <Button
-                        variant="secondary"
-                        onClick={() =>
-                          handleQuantityChange(
-                            item.product._id,
-                            item.quantity + 1
-                          )
-                        }
+                        variant="destructive"
+                        className="capitalize "
+                        onClick={() => handleDeleteProduct(item.product._id)}
                       >
-                        <Plus size={20} />
+                        <Trash2 /> {t("remove-product")}
                       </Button>
+
+                      {/* quantity */}
+                      <div className="flex items-center gap-2 ">
+                        {/* minus */}
+                        <Button
+                          variant="secondary"
+                          disabled={item.quantity <= 1}
+                          onClick={() =>
+                            handleQuantityChange(
+                              item.product._id,
+                              item.quantity - 1
+                            )
+                          }
+                        >
+                          <Minus size={20} />
+                        </Button>
+
+                        {/* input value */}
+                        <Input
+                          type="number"
+                          value={item.quantity}
+                          className="w-24 text-center p-4 border border-zinc-300 rounded-[1rem]"
+                          readOnly
+                        />
+
+                        {/* plus */}
+                        <Button
+                          variant="secondary"
+                          onClick={() =>
+                            handleQuantityChange(
+                              item.product._id,
+                              item.quantity + 1
+                            )
+                          }
+                        >
+                          <Plus size={20} />
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-              {/* loading on scroll */}
-              {visibleCount < cartItems.length && (
-                <p className="text-center py-4 text-zinc-500">
-                  Loading more...
-                </p>
-              )}
-            </CardContent>
-          </Card>
-          <div className=" text-start py-6">
-            <Button variant={"destructive"} className="capitalize">
-              <MoveLeft size={20} />
-              <Link href="/">{t("continue-shopping")}</Link>
-            </Button>
+                ))}
+                {/* loading on scroll */}
+                {visibleCount < cartItems.length && (
+                  <p className="text-center py-4 text-zinc-500">
+                    Loading more...
+                  </p>
+                )}
+              </CardContent>
+            </Card>
+            <div className="text-start py-6 w-full">
+              <Button variant={"destructive"} className="capitalize">
+                <MoveLeft size={20} />
+                <Link href="/">{t("continue-shopping")}</Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+
+        {/* Products you may like  */}
+        <PersonalCartCarousel />
+      </div>
     </>
   );
 }
