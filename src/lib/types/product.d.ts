@@ -1,4 +1,4 @@
-declare type Product = {
+export type Product = {
   _id: string;
   title: string;
   slug: string;

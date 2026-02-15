@@ -8,7 +8,6 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { InfiniteData } from "@tanstack/react-query";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -17,19 +16,17 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import ProductCard from "@/components/shared/product-card";
-
-type GuestCartItem = {
-  product: string;
-  quantity: number;
-};
+import EmptyCartCard from "../empty-cart-card/empty-cart-card";
+import type { AddToCartItem } from "@/lib/types/cart";
+import type { Product } from "@/lib/types/product";
 
 type ProductsPage = {
-  products: any[];
+  products: Product[];
   nextPage?: number;
 };
 
 export default function CartGuestData() {
-  const [cartItems, setCartItems] = useState<GuestCartItem[]>([]);
+  const [cartItems, setCartItems] = useState<AddToCartItem[]>([]);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   // translations
   const t = useTranslations("cart");
@@ -37,7 +34,9 @@ export default function CartGuestData() {
   const PAGE_SIZE = 2;
 
   // deal with best selling products
-  const { data: bestSellingData, isLoading: isBestSellingLoading } = useQuery({
+  const { data: bestSellingData, isLoading: isBestSellingLoading } = useQuery<{
+    products: Product[];
+  }>({
     queryKey: ["best-selling-products"],
     queryFn: async () => {
       const res = await fetch(
@@ -93,18 +92,24 @@ export default function CartGuestData() {
 
   // decrease quantity
   const decreaseQuantity = (id: string) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
+    setCartItems((prev) => {
+      const updated = prev.map((item) =>
         item.product === id
           ? { ...item, quantity: Math.max((item.quantity ?? 1) - 1, 1) }
           : item
-      )
-    );
+      );
+      localStorage.setItem("guest-cart", JSON.stringify(updated));
+      return updated;
+    });
   };
 
   // remove product
   const removeProduct = (id: string) => {
-    setCartItems((prev) => prev.filter((item) => item.product !== id));
+    setCartItems((prev) => {
+      const updated = prev.filter((item) => item.product !== id);
+      localStorage.setItem("guest-cart", JSON.stringify(updated));
+      return updated;
+    });
   };
 
   // get data from lcoastorage and check it no data
@@ -162,42 +167,7 @@ export default function CartGuestData() {
     <>
       <div className="px-20">
         {cartItems.length === 0 ? (
-          /* in case cart empty or after clear cart */
-          <div className="w-[48rem] my-10 px-4 py-2 rounded-[1rem]">
-            <div className="cart-header flex justify-between items-center mb-4 w-full">
-              <div className="text-5xl text-zinc-800 font-bold">
-                {t("title")}
-                <span className="text-zinc-500 font-normal text-base ms-2">
-                  {cartItems.length} {t("products")}
-                </span>
-              </div>
-              <div className="clear">
-                <Button disabled className="capitalize">
-                  <BrushCleaning size={20} /> {t("empty")}
-                </Button>
-              </div>
-            </div>
-            <Card className="w-full">
-              <CardContent>
-                <Image
-                  src="/assets/p0.png"
-                  alt="No products"
-                  width={250}
-                  height={214}
-                  className="mx-auto"
-                />
-                <p className="text-sm font-normal text-zinc-400">
-                  {t("empty-cart")}
-                </p>
-              </CardContent>
-            </Card>
-            <div className="text-start py-6 w-full">
-              <Button variant="destructive" className="capitalize">
-                <MoveLeft size={20} />
-                <Link href="/">{t("continue-shopping")}</Link>
-              </Button>
-            </div>
-          </div>
+          <EmptyCartCard productCount={cartItems.length} />
         ) : (
           <div className="w-[48rem]">
             {/* cart header */}
@@ -220,7 +190,7 @@ export default function CartGuestData() {
             <Card className="w-full">
               <CardContent className="max-h-[32rem] overflow-y-auto hide-scrollbar">
                 {data?.pages.map((page) =>
-                  page.products.map((product: any) => {
+                  page.products.map((product: Product) => {
                     const cartItem = cartItems.find(
                       (item) => item.product === product._id
                     );
@@ -351,7 +321,7 @@ export default function CartGuestData() {
           ) : bestSellingData?.products?.length ? (
             <Carousel opts={{ align: "start" }} className="w-full h-full">
               <CarouselContent className="ml-0 h-full flex">
-                {bestSellingData.products.map((product: any) => (
+                {bestSellingData.products.map((product: Product) => (
                   <CarouselItem
                     key={product._id}
                     className="md:basis-1/2 lg:basis-1/3"
