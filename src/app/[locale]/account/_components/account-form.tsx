@@ -30,7 +30,7 @@ import { useUpdateProfile } from "../_hooks/use-update-profile";
 import DeleteDialog from "./delete-dialog";
 import ProfileImage from "./profile-image";
 
-export default function NewPasswordStep() {
+export default function AccountForm() {
   // Translations
   const t = useTranslations();
 
@@ -168,7 +168,7 @@ export default function NewPasswordStep() {
             <DeleteDialog />
             <Button
               isLoading={isPending}
-              disabled={!form.formState.isValid && form.formState.isSubmitting}
+              disabled={!form.formState.isValid || form.formState.isSubmitting}
               type="submit"
               className="py-3.5 px-4 w-60  "
             >

@@ -1,10 +1,10 @@
 "use client";
 import { useToast } from "@/hooks/use-toast";
-import { changePasswordAction } from "@/lib/actions/account.acctions";
 import { ChangePasswordPayload } from "@/lib/types/account";
 import { useMutation } from "@tanstack/react-query";
 import { signIn } from "next-auth/react";
 import { useGetUser } from "../../_hooks/use-get-user";
+import { changePasswordAction } from "@/lib/actions/account.actions";
 
 export function useChangePassword() {
   const { toast } = useToast();
@@ -28,7 +28,7 @@ export function useChangePassword() {
     },
     onError: () => {
       toast({
-        title: "Faild to change password",
+        title: "Failed to change password",
         variant: "destructive",
       });
     },

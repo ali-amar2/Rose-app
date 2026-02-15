@@ -1,6 +1,6 @@
 "use client";
 import { useToast } from "@/hooks/use-toast";
-import { updateProfileAction } from "@/lib/actions/account.acctions";
+import { updateProfileAction } from "@/lib/actions/account.actions";
 import { UpdateProfileField } from "@/lib/types/account";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -13,7 +13,7 @@ export function useUpdateProfile() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
       toast({
-        title: "Your Data Update successfully",
+        title: "Your profile has been updated successfully",
         variant: "success",
       });
     },

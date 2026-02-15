@@ -1,7 +1,7 @@
 "use client";
 
 import { useToast } from "@/hooks/use-toast";
-import { uploadPhotoAction } from "@/lib/actions/account.acctions";
+import { uploadPhotoAction } from "@/lib/actions/account.actions";
 import { useMutation } from "@tanstack/react-query";
 
 export function useUploadPhoto() {

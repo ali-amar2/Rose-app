@@ -3,7 +3,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { Lock, LogOut, UserRoundPen } from "lucide-react";
 import { signOut } from "next-auth/react";
-import { useTranslations } from "use-intl";
+import { useTranslations } from "next-intl";
 
 export function AccountSidebar() {
   //Translations

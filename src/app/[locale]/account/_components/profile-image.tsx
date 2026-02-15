@@ -3,7 +3,7 @@ import { CloudUpload } from "lucide-react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import photo from "../../../../../public/images/Photo.png";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useUploadPhoto } from "../_hooks/use-upload-photo";
 
 type ProfileImageProps = {
@@ -27,6 +27,8 @@ export default function ProfileImage({ userPhoto }: ProfileImageProps) {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    if (preview) URL.revokeObjectURL(preview);
+
     // Show preview
     const imageUrl = URL.createObjectURL(file);
     setPreview(imageUrl);
@@ -35,6 +37,12 @@ export default function ProfileImage({ userPhoto }: ProfileImageProps) {
     formData.append("photo", file);
     mutate(formData);
   };
+
+  useEffect(() => {
+    return () => {
+      if (preview) URL.revokeObjectURL(preview);
+    };
+  }, [preview]);
 
   return (
     <div className="relative">

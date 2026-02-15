@@ -1,5 +1,5 @@
 import { useToast } from "@/hooks/use-toast";
-import { deleteAccountAction } from "@/lib/actions/account.acctions";
+import { deleteAccountAction } from "@/lib/actions/account.actions";
 import { useMutation } from "@tanstack/react-query";
 
 export function useDeleteAccount() {

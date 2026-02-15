@@ -7,7 +7,7 @@ export async function getLoggedUserService(): Promise<UserResponse> {
       "Content-Type": "application/json",
     },
   });
-  if (!res.ok) throw new Error("Failed to fetch Cart");
+  if (!res.ok) throw new Error("Failed to Get User Data");
 
   return res.json();
 }
