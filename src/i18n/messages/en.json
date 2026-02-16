@@ -10,147 +10,165 @@
     "step-two-title": "Enter the OTP Code",
     "step-two-subtitle": "We have sent a 6-digit code to {email} <button >Edit</button>",
     "step-three-title": "Create a new password",
-    "step-three-subtitle": "Set a strong password to secure your account.",
-    "home": "Home",
-    "testimonials": {
-      "title": "Testimonials",
-      "sub-title": "Real Words from Happy Customers"
-    },
-    "register": {
-      "heading": "Become part of our family!",
-      "fields": {
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "email": "Email",
-        "phone": "Phone",
-        "gender": {
-          "gender": "Gender",
-          "male": "Male",
-          "female": "Female"
-        },
-        "password": "Password",
-        "confirmPassword": "Confirm Password",
-        "createAccount": "Create Account"
-      },
-      "alreadyHaveAccount": "Already have an account? ",
-      "login": "Login",
-      "validation": {
-        "firstName": {
-          "required": "Please enter your first name",
-          "pattern": "Name must contain only letters",
-          "min": "Name must be at least 3 characters long",
-          "max": "Name must be at most 15 characters long"
-        },
-        "lastName": {
-          "required": "Please enter your last name",
-          "pattern": "Name must contain only letters",
-          "min": "Name must be at least 3 characters long",
-          "max": "Name must be at most 15 characters long"
-        },
-        "email": {
-          "invalid": "Please enter a valid email address"
-        },
-        "phone": {
-          "pattern": "Please enter a valid phone number starting with +20",
-          "length": "Phone number must be 13 characters including +20"
-        },
-        "gender": {
-          "required": "Please select your gender"
-        },
-        "password": {
-          "required": "Please enter your password",
-          "min": "Password must be at least 8 characters long",
-          "number": "Password must contain at least 1 number",
-          "lowercase": "Password must contain at least 1 lowercase letter",
-          "uppercase": "Password must contain at least 1 uppercase letter",
-          "special": "Password must contain at least 1 special character (#?!@$%^&-)"
-        },
-        "rePassword": {
-          "required": "Please re-enter your password",
-          "mismatch": "Passwords do not match"
-        }
-      }
-    },
-    "email-label": "Email",
-    "forgot-password-heading": "Forgot Password?",
-    "forget-password-text": "Worry not, we’ll send you instructions to help you reset it.",
-    "email-placeholder": "Enter your email",
-    "continue": "Continue",
-    "non-email-error": "Please Enter Your Email",
-    "email-not-valid": "Enter a valid email",
-    "required-email": "Email is required",
-    "dont-have-an-account": "Don’t have an account yet? <a>Create one now!</a>",
-    "create-new-password-label": "Create a new password",
-    "create-new-password-text": "Set a strong password to secure your account.",
-    "password-label": "Password",
-    "confirm-password-label": "Confirm Password",
-    "reset-password-btn": "Reset Password",
-    "need-help": "Need help? <a>Contact us</a>",
-    "password-is-required": "Password is required",
-    "password-at-least-8-characters": "Password must be at least 8 characters",
-    "password-contain-uppercase-letter": "Password must contain at least one uppercase letter",
-    "password-contain-lowercase-letter": "Password must contain at least one lowercase letter",
-    "password-contain-one-number": "Password must contain at least one number",
-    "passwords-do-not-match": "Passwords do not match",
-    "product": {
-      "currency": "EGP",
-      "badge": {
-        "new": "NEW",
-        "hot": "HOT",
-        "out-of-stock": "OUT OF STOCK"
-      },
-      "error-loading-product-details": "Error loading product details"
-    },
-    "best-selling": {
-      "title": "Best Selling",
-      "subtitle": {
-        "check-out": "Check Out",
-        "rest-before-buying": "What Everyone’s ",
-        "buying": "Buying",
-        "rest-after-buying": "Right Now"
-      },
-      "description": "Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for. Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.",
-      "button": "Explore gifts"
-    },
-    "most-popular": {
-      "title": "Most Popular",
-      "empty": "No products found for this occasion",
-      "view-more": "View More"
-    },
-    "login": {
+    "step-three-subtitle": "Set a strong password to secure your account."
+  },
+  "register": {
+    "heading": "Become part of our family!",
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
       "email": "Email",
+      "phone": "Phone",
+      "gender": {
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female"
+      },
       "password": "Password",
-      "email-placeholder": "user@example.com",
-      "password-placeholder": "********",
-      "forgot-password": "Forgot your password?",
-      "remember-me": "Remember me",
-      "login-btn": "Login",
-      "generic-error": "Something went wrong",
-      "password-pattern-error": "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
-      "no-account": "Don’t have an account yet?",
-      "create-account": "Create one now!",
-      "schema": {
-        "email-required": "Email is required",
-        "invalid-email": "Please enter a valid email address",
-        "password-required": "Password is required"
+      "confirmPassword": "Confirm Password",
+      "createAccount": "Create Account"
+    },
+    "alreadyHaveAccount": "Already have an account? ",
+    "login": "Login",
+    "validation": {
+      "firstName": {
+        "required": "Please enter your first name",
+        "pattern": "Name must contain only letters",
+        "min": "Name must be at least 3 characters long",
+        "max": "Name must be at most 15 characters long"
+      },
+      "lastName": {
+        "required": "Please enter your last name",
+        "pattern": "Name must contain only letters",
+        "min": "Name must be at least 3 characters long",
+        "max": "Name must be at most 15 characters long"
+      },
+      "email": {
+        "invalid": "Please enter a valid email address"
+      },
+      "phone": {
+        "pattern": "Please enter a valid phone number starting with +20",
+        "length": "Phone number must be 13 characters including +20"
+      },
+      "gender": {
+        "required": "Please select your gender"
+      },
+      "password": {
+        "required": "Please enter your password",
+        "min": "Password must be at least 8 characters long",
+        "number": "Password must contain at least 1 number",
+        "lowercase": "Password must contain at least 1 lowercase letter",
+        "uppercase": "Password must contain at least 1 uppercase letter",
+        "special": "Password must contain at least 1 special character (#?!@$%^&-)"
+      },
+      "rePassword": {
+        "required": "Please re-enter your password",
+        "mismatch": "Passwords do not match"
       }
+    }
+  },
+  "email-label": "Email",
+  "forgot-password-heading": "Forgot Password?",
+  "forget-password-text": "Worry not, we’ll send you instructions to help you reset it.",
+  "email-placeholder": "Enter your email",
+  "continue": "Continue",
+  "non-email-error": "Please Enter Your Email",
+  "email-not-valid": "Enter a valid email",
+  "required-email": "Email is required",
+  "dont-have-an-account": "Don’t have an account yet? <a>Create one now!</a>",
+  "create-new-password-label": "Create a new password",
+  "create-new-password-text": "Set a strong password to secure your account.",
+  "password-label": "Password",
+  "confirm-password-label": "Confirm Password",
+  "reset-password-btn": "Reset Password",
+  "need-help": "Need help? <a>Contact us</a>",
+  "password-is-required": "Password is required",
+  "password-at-least-8-characters": "Password must be at least 8 characters",
+  "password-contain-uppercase-letter": "Password must contain at least one uppercase letter",
+  "password-contain-lowercase-letter": "Password must contain at least one lowercase letter",
+  "password-contain-one-number": "Password must contain at least one number",
+  "passwords-do-not-match": "Passwords do not match",
+  "product": {
+    "currency": "EGP",
+    "badge": {
+      "new": "NEW",
+      "hot": "HOT",
+      "out-of-stock": "OUT OF STOCK"
     },
-    "login-popup": {
-      "loginTab": "Login",
-      "registerTab": "Register"
+    "error-loading-product-details": "Error loading product details"
+  },
+  "best-selling": {
+    "title": "Best Selling",
+    "subtitle": {
+      "check-out": "Check Out",
+      "rest-before-buying": "What Everyone’s ",
+      "buying": "Buying",
+      "rest-after-buying": "Right Now"
     },
-    "in-stock": "left in stock",
-    "out-of-stock": "Out of stock",
-    "category-filter": {
-      "title": "Category",
-      "reset": "Reset",
-      "loading-more": "Loading more...",
-      "loading-categories": "Loading categories..."
-    },
-    "rating-filter": {
-      "title": "Rating",
-      "reset": "Reset"
-    },
-    "reset-all": "Reset All"
+    "description": "Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for. Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.",
+    "button": "Explore gifts"
+  },
+  "most-popular": {
+    "title": "Most Popular",
+    "empty": "No products found for this occasion",
+    "view-more": "View More"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "email-placeholder": "user@example.com",
+    "password-placeholder": "********",
+    "forgot-password": "Forgot your password?",
+    "remember-me": "Remember me",
+    "login-btn": "Login",
+    "generic-error": "Something went wrong",
+    "password-pattern-error": "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
+    "no-account": "Don’t have an account yet?",
+    "create-account": "Create one now!",
+    "schema": {
+      "email-required": "Email is required",
+      "invalid-email": "Please enter a valid email address",
+      "password-required": "Password is required"
+    }
+  },
+  "login-popup": {
+    "loginTab": "Login",
+    "registerTab": "Register"
+  },
+  "in-stock": "left in stock",
+  "out-of-stock": "Out of stock",
+  "category-filter": {
+    "title": "Category",
+    "reset": "Reset",
+    "loading-more": "Loading more...",
+    "loading-categories": "Loading categories..."
+  },
+  "rating-filter": {
+    "title": "Rating",
+    "reset": "Reset"
+  },
+  "reset-all": "Reset All",
+  "shipping-address": {
+    "title": "Shipping Address",
+    "add-new": "Add New Address",
+    "or": "OR",
+    "next": "Next"
+  },
+  "payment-method": {
+    "title": "Payment Method",
+    "back": "Back",
+    "cash": "Cash on Delivery",
+    "cash-description": "You’ll pay in cash when your order is delivered.",
+    "card": "Credit Card",
+    "card-description": "You’ll be securely redirected to Stripe to complete your payment."
+  },
+  "checkout": "Checkout",
+  "summary": {
+    "title": "Summary",
+    "placeholder": "Coupon Code",
+    "apply": "Apply Coupon",
+    "box": "No coupons applied",
+    "subtotal": "Subtotal",
+    "total": "Total"
   }
 }
