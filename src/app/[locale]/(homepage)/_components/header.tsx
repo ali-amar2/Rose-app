@@ -1,19 +1,27 @@
 "use client";
 import Image from "next/image";
 import logo from "../../../../../public/images/logo1.svg";
-import { Heart, ShoppingCart, User } from "lucide-react";
+import { Heart, MapPinPen, ShoppingCart, User } from "lucide-react";
 import Navbar from "./navbar";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "@/components/skeletons/notifications/Notifications";
 import ToggleLanguage from "@/components/features/toggle-language";
 import LoginPopup from "@/components/skeletons/login-popup/login-popup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { useGetCart } from "../../products/[id]/_hooks/use-get-cart";
+import { DeliveryLocationDialog } from "@/app/[locale]/checkout/_components/address-dialog";
+import { Address } from "@/lib/types/address";
 
 export default function Header() {
   const { cart } = useGetCart();
+
+  // State for location dialog
+  const [isLocationDialogOpen, setIsLocationDialogOpen] = useState(false);
+  const [currentCity, setCurrentCity] = useState("Cairo");
+  const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
+
   const headerList = [
     {
       icons: [
@@ -50,6 +58,22 @@ export default function Header() {
       ],
     },
   ];
+  useEffect(() => {
+    const saved = localStorage.getItem("selectedAddress");
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      setSelectedAddress(parsed);
+      setCurrentCity(parsed.city);
+    }
+  }, []);
+
+  // Handle address selection
+  const handleSelectAddress = (address: Address) => {
+    setSelectedAddress(address);
+    setCurrentCity(address.city);
+    localStorage.setItem("selectedAddress", JSON.stringify(address));
+  };
+
   // state to manage login popup visibility
   const [isLoginHovered, setIsLoginHovered] = useState(false);
 
@@ -59,6 +83,21 @@ export default function Header() {
         <div className="logo mr-2">
           <Image src={logo} alt="Rose Logo" width={85} height={80} />
         </div>
+
+        {/* Delivery Location Trigger */}
+        <div className="ms-4 mr-4">
+          <div
+            className="flex flex-col text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800 px-3 py-1 rounded-lg transition-colors"
+            onClick={() => setIsLocationDialogOpen(true)}
+          >
+            <p className="font-normal text-zinc-500 text-xs">Deliver to:</p>
+            <span className="font-medium text-base text-maroon-700 flex items-center gap-1">
+              <MapPinPen size={18} />
+              {selectedAddress?.city || currentCity}
+            </span>
+          </div>
+        </div>
+
         <div className="flex-1 flex items-center">
           <Input
             type="text"
@@ -116,7 +155,16 @@ export default function Header() {
           </ul>
         </div>
       </header>
+
       <Navbar />
+
+      {/* Delivery Location Dialog */}
+      <DeliveryLocationDialog
+        open={isLocationDialogOpen}
+        onOpenChange={setIsLocationDialogOpen}
+        onSelectAddress={handleSelectAddress}
+        currentCity={currentCity}
+      />
     </>
   );
 }

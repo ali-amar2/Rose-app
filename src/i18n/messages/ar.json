@@ -139,5 +139,54 @@
     "title": "التقييم",
     "reset": "إعادة"
   },
-  "reset-all": "مسح جميع الفلاتر"
+  "reset-all": "مسح جميع الفلاتر",
+
+  "addressModal": {
+    "add-title": "إضافة عنوان",
+    "edit-title": "تعديل العنوان",
+    "next": "التالي",
+    "select-location": "اعثر على موقعك",
+    "saving": "جاري الحفظ...",
+    "add-btn": "إضافة العنوان",
+    "save-btn": "حفظ التعديلات",
+    "error": "فشل في حفظ العنوان"
+  },
+  "addressList": {
+    "title": "عناويني",
+    "add-new": "إضافة عنوان جديد",
+    "loading": "جاري تحميل العناوين...",
+    "empty": "لا توجد عناوين محفوظة",
+    "add": "إضافة عنوان"
+  },
+  "deliveryDialog": {
+    "title": "عناويني",
+    "add-new": "إضافة عنوان جديد",
+    "loading": "جاري تحميل العناوين...",
+    "empty": "لا توجد عناوين محفوظة بعد",
+    "add": "إضافة عنوان",
+    "labels": {
+      "home": "المنزل",
+      "work": "العمل",
+      "family": "العائلة"
+    }
+  },
+  "AddressForm": {
+    "title": "أدخل تفاصيل العنوان",
+    "cityLabel": "المدينة",
+    "cityPlaceholder": "أدخل اسم المدينة",
+    "streetLabel": "العنوان",
+    "streetPlaceholder": "أدخل عنوانك بالكامل",
+    "phoneLabel": "رقم الهاتف",
+    "phonePlaceholder": "أدخل رقم الهاتف"
+  },
+  "DeleteAddress": {
+    "title": "هل أنت متأكد أنك تريد حذف هذا العنوان؟",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد"
+  },
+  "MapPicker": {
+    "findLocation": "تحديد موقعي",
+    "notSupported": "المتصفح لا يدعم تحديد الموقع.",
+    "locationError": "تعذر الحصول على موقعك. حاول مرة أخرى."
+  }
 }

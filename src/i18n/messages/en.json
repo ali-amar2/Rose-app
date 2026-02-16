@@ -139,5 +139,54 @@
     "title": "Rating",
     "reset": "Reset"
   },
-  "reset-all": "Reset All"
+  "reset-all": "Reset All",
+  "addressModal": {
+    "add-title": "Add Address",
+    "edit-title": "Edit Address",
+    "next": "Next",
+    "select-location": "Find Your Location",
+    "saving": "Saving...",
+    "add-btn": "Add Address",
+    "save-btn": "Save Changes",
+    "error": "Failed to save address"
+  },
+
+  "addressList": {
+    "title": "My Addresses",
+    "add-new": "Add a New Address",
+    "loading": "Loading addresses...",
+    "empty": "No saved addresses",
+    "add": "Add Address"
+  },
+  "deliveryDialog": {
+    "title": "My Addresses",
+    "add-new": "Add a New Address",
+    "loading": "Loading addresses...",
+    "empty": "No saved addresses yet",
+    "add": "Add Address",
+    "labels": {
+      "home": "Home",
+      "work": "Work",
+      "family": "Family"
+    }
+  },
+  "AddressForm": {
+    "title": "Enter address details",
+    "cityLabel": "City",
+    "cityPlaceholder": "Enter city name",
+    "streetLabel": "Address",
+    "streetPlaceholder": "Enter your full address",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "Enter phone number"
+  },
+  "DeleteAddress": {
+    "title": "Are you sure you want to delete this address?",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "MapPicker": {
+    "findLocation": "Find My Location",
+    "notSupported": "Geolocation is not supported by your browser.",
+    "locationError": "Could not get your location. Please try again."
+  }
 }
