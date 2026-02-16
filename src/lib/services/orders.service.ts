@@ -6,7 +6,7 @@ export async function getOrders() {
 
   if (!response.ok) {
     const error = await response.json();
-    throw error;
+    throw new Error(error?.error || "Something went wrong");
   }
 
   return response.json();

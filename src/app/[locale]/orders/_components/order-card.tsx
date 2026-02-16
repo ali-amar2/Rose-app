@@ -23,7 +23,7 @@ export default function OrderCard({ order }: OrderCardProps) {
       {/* Body */}
       <div className="bg-zinc-100 p-5 space-y-4">
         <div className="flex justify-between items-center">
-          <p className="flex justify-center items-center text-xl">
+          <div className="flex justify-center items-center text-xl">
             {t("total-price")}:{" "}
             <span className="font-bold text-2xl">
               {order.totalPrice} {t("currency")}
@@ -36,7 +36,7 @@ export default function OrderCard({ order }: OrderCardProps) {
                 </p>
               )}
             </span>
-          </p>
+          </div>
           <p className="flex gap-2 font-medium justify-center items-center">
             <span className="text-base font-medium">{t("status")}:</span>
             <OrderStatusBadge state={order.state} />
@@ -46,7 +46,7 @@ export default function OrderCard({ order }: OrderCardProps) {
         <div className="flex flex-col gap-1">
           <OrderPaymentInfo
             paymentType={order.paymentType}
-            state={order.state}
+            deliveryState={order.isDelivered ? "delivered" : "pending"}
           />
 
           <OrderItemsPreview items={order.orderItems} />

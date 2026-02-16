@@ -150,15 +150,27 @@
     "status": "Status",
     "order-items": "Order Items",
     "show-all": "Show All",
+    "show-less": "Show Less",
     "no-orders": "No orders found.",
     "currency": "EGP",
     "rating": "Rating",
     "ratings-count": "ratings",
     "payment": {
-      "method": "Payment Method"
+      "method": "Payment Method",
+      "cash":"Cash",
+      "credit-card": "Credit Card"
     },
     "delivery": {
-      "status": "Delivery Status"
+      "status": "Delivery Status",
+      "pending": "Pending",
+      "cancelled": "Cancelled",
+      "delivered": "Delivered"
+
+    },
+    "order-status": {
+      "pending": "Pending",
+      "done": "Done",
+      "cancelled": "Cancelled"
     },
     "error-loading-orders": "Error loading orders"
   }

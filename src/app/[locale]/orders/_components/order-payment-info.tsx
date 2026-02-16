@@ -21,15 +21,16 @@ const paymentConfig: Record<
   },
 };
 
-const deliveryConfig: Partial<
-  Record<OrderState, { label: string; Icon: React.ElementType; color: string }>
+const deliveryConfig: Record<
+  DeliveryState,
+  { label: string; Icon: React.ElementType; color: string }
 > = {
   pending: {
     label: "Pending",
     Icon: Truck,
     color: "text-yellow-600",
   },
-  canceled: {
+  cancelled: {
     label: "Canceled",
     Icon: TriangleAlert,
     color: "text-maroon-500",
@@ -43,13 +44,15 @@ const deliveryConfig: Partial<
 
 export default function OrderPaymentInfo({
   paymentType,
-  state,
-}: OrderPaymentInfoProps) {
-  //Translation
+  deliveryState,
+}: {
+  paymentType: PaymentType;
+  deliveryState: DeliveryState;
+}) {
+  // Translation
   const t = useTranslations("orders");
-  // Variables
   const payment = paymentConfig[paymentType];
-  const delivery = deliveryConfig[state];
+  const delivery = deliveryConfig[deliveryState];
 
   return (
     <div className="text-sm">
@@ -59,21 +62,19 @@ export default function OrderPaymentInfo({
 
         <div className="flex items-center gap-1 text-zinc-500">
           <payment.Icon size={16} />
-          <span>{payment.label}</span>
+          <span>{t(`payment.${paymentType}`)}</span>
         </div>
       </div>
 
       {/* Delivery Status */}
-      {delivery && (
-        <div className="flex items-center gap-2 mt-1">
-          <span className="font-medium">{t("delivery.status")}:</span>
+      <div className="flex items-center gap-2 mt-1">
+        <span className="font-medium">{t("delivery.status")}:</span>
 
-          <div className={`flex items-center gap-1 ${delivery.color}`}>
-            <delivery.Icon size={16} />
-            <span>{delivery.label}</span>
-          </div>
+        <div className={`flex items-center gap-1 ${delivery.color}`}>
+          <delivery.Icon size={16} />
+          <span>{t(`delivery.${deliveryState}`)}</span>
         </div>
-      )}
+      </div>
     </div>
   );
 }

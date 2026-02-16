@@ -1,8 +1,7 @@
 "use client";
-
 import { useState } from "react";
 import OrderItemCard from "./order-item-card";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 
@@ -30,15 +29,25 @@ export default function OrderItemsPreview({ items }: OrderItemsPreviewProps) {
           ))}
         </div>
 
-        {/* Blur + Show All */}
-        {!showAll && shouldCollapse && (
-          <div className="absolute bottom-0 left-0 w-full h-28 bg-gradient-to-t from-zinc-100 via-zinc-100/80 to-transparent flex items-end justify-center">
+        {/* Show All / Show Less */}
+        {shouldCollapse && (
+          <div
+            className={clsx(
+              "flex justify-center w-full",
+              !showAll
+                ? "absolute bottom-0 h-28 items-end bg-gradient-to-t from-zinc-100 via-zinc-100/80 to-transparent"
+                : "mt-3"
+            )}
+          >
             <button
-              onClick={() => setShowAll(true)}
-              className="flex flex-col items-center text-sm text-maroon-600 font-medium mb-2"
+              onClick={() => setShowAll(!showAll)}
+              className={clsx(
+                "flex flex-col items-center text-sm text-maroon-600 font-medium",
+                !showAll ? "mb-2" : "gap-1"
+              )}
             >
-              {t("show-all")}
-              <ChevronDown size={18} />
+              {showAll ? t("show-less") : t("show-all")}
+              {showAll ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
             </button>
           </div>
         )}

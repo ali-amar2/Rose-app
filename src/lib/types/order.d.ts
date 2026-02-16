@@ -1,13 +1,7 @@
-// ===== Shared Enums / Unions =====
-
 declare type PaymentType = "cash" | "credit_card";
 
-declare type OrderState =
-  | "pending"
-  | "confirmed"
-  | "shipped"
-  | "delivered"
-  | "canceled";
+declare type OrderState = "pending" | "done" | "cancelled";
+declare type DeliveryState = "pending" | "cancelled" | "delivered";
 
 declare type OrdersMetadata = {
   currentPage: number;

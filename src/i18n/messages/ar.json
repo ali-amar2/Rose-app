@@ -149,16 +149,27 @@
     "status": "الحالة",
     "order-items": "عناصر الطلب",
     "show-all": "عرض الكل",
+    "show-less": "عرض أقل",
     "no-orders": "لا توجد طلبات.",
     "currency": "ج.م",
     "rating": "التقييم",
     "ratings-count": "تقييم",
     "payment": {
-      "method": "طريقة الدفع"
+      "method": "طريقة الدفع",
+      "cash":"نقداً",
+      "credit-card":"بطاقة ائتمان"
     },
     "delivery": {
-      "status": "حالة التوصيل"
+      "status": "حالة التوصيل",
+      "pending": "قيد الانتظار",
+      "cancelled": "تم الإلغاء",
+      "delivered": "تم التوصيل"
     },
+    "order-status": {
+      "pending": "قيد التنفيذ",
+      "done": "مكتمل",
+      "cancelled": "ملغي"
+   },
     "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات"
   }
 }
