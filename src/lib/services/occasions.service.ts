@@ -1,9 +1,9 @@
-export async function getOccasions() {
-  const res = await fetch(`${process.env.API}/occasions`, {
-    method: "GET",
-    cache: "no-store",
-  });
+import { OccasionsResponse } from "../types/occasion";
 
-  if (!res.ok) throw new Error("Failed to fetch occasions");
+export async function getOccasions(): Promise<OccasionsResponse> {
+
+  const res = await fetch("/api/occasions");
+
+  if (!res.ok) throw new Error("Failed to fetch occasions from local API");
   return res.json();
 }
