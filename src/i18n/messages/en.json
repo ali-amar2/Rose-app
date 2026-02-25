@@ -129,6 +129,21 @@
   },
   "in-stock": "left in stock",
   "out-of-stock": "Out of stock",
+
+  "cart": {
+    "title": "Cart",
+    "empty": "clear cart",
+    "empty-cart": "Your cart is empty, wanna try shopping?",
+    "products": "products",
+    "continue-shopping": "Continue Shopping",
+    "products-you-may-like": "Products You May Like",
+    "remove-product": "remove",
+    "rating": "Rating",
+    "ratings": "ratings",
+    "currency": "EGP",
+    "loading": "Loading ..."
+  }
+  "out-of-stock": "Out of stock",
   "category-filter": {
     "title": "Category",
     "reset": "Reset",

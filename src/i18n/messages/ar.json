@@ -129,6 +129,20 @@
   },
   "in-stock": "متبقي في المخزون",
   "out-of-stock": "غير متوفر حالياً",
+  "cart": {
+    "title": "السلة",
+    "empty": "مسح السلة",
+    "empty-cart": "سلة التسوق الخاصة بك فارغة، هل ترغب في تجربة التسوق؟ ",
+    "products": "المنتجات",
+    "continue-shopping": "متابعة التسوق",
+    "products-you-may-like": "منتجات قد تعجبك",
+    "remove-product": "إزالة المنتج",
+    "rating": "التقييم",
+    "ratings": "التقييمات",
+    "currency": "ج.م",
+    "loading": "جاري التحميل ..."
+  }
+  "out-of-stock": "غير متوفر حالياً",
   "category-filter": {
     "title": "الفئة",
     "reset": "إعادة",

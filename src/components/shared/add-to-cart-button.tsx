@@ -11,6 +11,21 @@ type AddToCartButtonProps = {
   className?: string;
 };
 
+// type AddToCartButtonProps = {
+//   product: {
+//     _id: string;
+//     title: string;
+//     imgCover: string;
+//     price: number;
+//     priceAfterDiscount?: number;
+//     rateAvg: number;
+//     rateCount: number;
+//     quantity: number; // stock
+//   };
+//   children: React.ReactNode;
+//   className?: string;
+// };
+
 export default function AddToCartButton({
   productId,
   quantityInStock,
@@ -43,3 +58,48 @@ export default function AddToCartButton({
     </Button>
   );
 }
+
+// export default function AddToCartButton({
+//   product,
+//   children,
+//   className,
+// }: AddToCartButtonProps) {
+//   const { mutate, isPending } = useAddToCart();
+//   const { toast } = useToast();
+
+//   const handleAddToCart = () => {
+//     if (product.quantity < 1) {
+//       toast({
+//         description: "Sorry, this product is out of stock",
+//         variant: "destructive",
+//       });
+//       return;
+//     }
+
+//     mutate({
+//       product: product._id,
+//       quantity: 1,
+
+//       // 👇 مهم للـ guest
+//       guestSnapshot: {
+//         productId: product._id,
+//         title: product.title,
+//         imgCover: product.imgCover,
+//         price: product.priceAfterDiscount ?? product.price,
+//         rateAvg: product.rateAvg,
+//         rateCount: product.rateCount,
+//       },
+//     });
+//   };
+
+//   return (
+//     <Button
+//       onClick={handleAddToCart}
+//       isLoading={isPending}
+//       disabled={isPending}
+//       className={className}
+//     >
+//       {children}
+//     </Button>
+//   );
+// }
