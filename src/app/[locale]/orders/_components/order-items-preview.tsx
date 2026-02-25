@@ -21,7 +21,7 @@ export default function OrderItemsPreview({ items }: OrderItemsPreviewProps) {
         <div
           className={clsx(
             "grid md:grid-cols-2 gap-2 overflow-hidden transition-all duration-300",
-            !showAll && shouldCollapse && "max-h-[260px]"
+            !showAll && shouldCollapse && "max-h-64"
           )}
         >
           {items.map((item) => (

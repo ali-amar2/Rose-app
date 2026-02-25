@@ -1,23 +1,12 @@
-"use client";
-import Loading from "@/app/loading";
-import { useOrders } from "@/hooks/use-orders";
 import OrderCard from "./order-card";
 import { useTranslations } from "next-intl";
+import { getOrders } from "@/lib/services/orders.service";
 
-export default function OrderList() {
+export default async function OrderList() {
   // Translation
   const t = useTranslations("orders");
   // States
-  const { data, isLoading, isError } = useOrders();
-
-  if (isLoading) return <Loading />;
-
-  if (isError)
-    return (
-      <p className="flex justify-center items-center text-maroon-600 text-lg py-5">
-        {t("error-loading-orders")}
-      </p>
-    );
+  const data = await getOrders();
 
   if (!data?.orders?.length)
     return (
@@ -27,7 +16,7 @@ export default function OrderList() {
     );
   return (
     <div className="space-y-4">
-      {data.orders.map((order) => (
+      {data.orders.map((order: Order) => (
         <OrderCard key={order._id} order={order} />
       ))}
     </div>
