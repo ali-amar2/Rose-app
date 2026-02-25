@@ -139,6 +139,8 @@
     "products-you-may-like": "Products You May Like",
     "remove-product": "remove",
     "rating": "Rating",
-    "ratings": "ratings"
+    "ratings": "ratings",
+    "currency": "EGP",
+    "loading": "Loading ..."
   }
 }

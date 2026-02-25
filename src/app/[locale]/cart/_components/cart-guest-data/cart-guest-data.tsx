@@ -1,24 +1,24 @@
 "use client";
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
-import { Plus, Minus, Trash2, BrushCleaning, MoveLeft } from "lucide-react";
+import {
+  Plus,
+  Minus,
+  Trash2,
+  BrushCleaning,
+  MoveLeft,
+  Star,
+} from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { InfiniteData } from "@tanstack/react-query";
 import { Input } from "@/components/ui/input";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import ProductCard from "@/components/shared/product-card";
 import EmptyCartCard from "../empty-cart-card/empty-cart-card";
 import type { AddToCartItem } from "@/lib/types/cart";
 import type { Product } from "@/lib/types/product";
+import BestSelling from "../best-selling/best-selling";
 
 type ProductsPage = {
   products: Product[];
@@ -26,27 +26,17 @@ type ProductsPage = {
 };
 
 export default function CartGuestData() {
+  // state
   const [cartItems, setCartItems] = useState<AddToCartItem[]>([]);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
+
   // translations
   const t = useTranslations("cart");
-  const tBestSelling = useTranslations("best-selling");
+
+  // varaiable
   const PAGE_SIZE = 2;
 
-  // deal with best selling products
-  const { data: bestSellingData, isLoading: isBestSellingLoading } = useQuery<{
-    products: Product[];
-  }>({
-    queryKey: ["best-selling-products"],
-    queryFn: async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API}/products?sort=-sold&limit=6`
-      );
-      if (!res.ok) throw new Error("Failed to fetch");
-      return res.json();
-    },
-  });
-
+  // functions
   // fetch products details for guest cart items
   async function fetchProducts({ pageParam = 0 }: { pageParam: number }) {
     const start = pageParam * PAGE_SIZE;
@@ -112,14 +102,6 @@ export default function CartGuestData() {
     });
   };
 
-  // get data from lcoastorage and check it no data
-  useEffect(() => {
-    const stored = localStorage.getItem("guest-cart");
-    if (stored) {
-      setCartItems(JSON.parse(stored));
-    }
-  }, []);
-
   // get product by id
   const ids = cartItems.map((item) => item.product);
 
@@ -144,6 +126,7 @@ export default function CartGuestData() {
     getNextPageParam: (lastPage) => lastPage.nextPage,
   });
 
+  // effects
   useEffect(() => {
     if (!loadMoreRef.current || !hasNextPage) return;
 
@@ -160,7 +143,15 @@ export default function CartGuestData() {
     return () => observer.disconnect();
   }, [fetchNextPage, hasNextPage]);
 
-  if (cartItems.length > 0 && isLoading) return <div>Loading...</div>;
+  // get data from lcoastorage and check it no data
+  useEffect(() => {
+    const stored = localStorage.getItem("guest-cart");
+    if (stored) {
+      setCartItems(JSON.parse(stored));
+    }
+  }, []);
+
+  if (cartItems.length > 0 && isLoading) return <div> {t("loading")} </div>;
   if (cartItems.length > 0 && isError) return <div>Error loading products</div>;
 
   return (
@@ -214,8 +205,12 @@ export default function CartGuestData() {
                               <p className="font-semibold text-lg text-start  text-maroon-600 capitalize pb-2">
                                 {product.title}
                               </p>
-                              <div className="font-normal text-start text-base">
-                                ⭐{t("rating")}:
+                              <div className="font-normal text-start text-base flex items-center gap-1">
+                                <Star
+                                  className="text-amber-500  fill-amber-500"
+                                  size={20}
+                                />
+                                {t("rating")}:
                                 <span className="font-medium">
                                   {product.rateAvg}
                                 </span>
@@ -231,7 +226,8 @@ export default function CartGuestData() {
                                 (x{cartItem?.quantity})
                               </span>
                               <span className="font-bold text-2xl">
-                                {product.price * (cartItem?.quantity ?? 1)} EGP
+                                {product.price * (cartItem?.quantity ?? 1)}{" "}
+                                {t("currency")}
                               </span>
                             </p>
                           </div>
@@ -291,7 +287,7 @@ export default function CartGuestData() {
                     ref={loadMoreRef}
                     className="text-start py-6  text-zinc-500"
                   >
-                    {isFetchingNextPage ? "Loading..." : ""}
+                    {isFetchingNextPage ? t("loading") : ""}
                   </div>
                 )}
               </CardContent>
@@ -308,42 +304,7 @@ export default function CartGuestData() {
         )}
 
         {/* Best Selling carousel */}
-        <section className="flex w-full md:w-[80rem] mx-auto flex-col gap-8 mt-10 mb-40 pt-8 ">
-          <h2 className="text-lg font-semibold text-start  uppercase mb-3 text-softPink-500">
-            {tBestSelling("title")}
-          </h2>
-          {isBestSellingLoading ? (
-            <div className="grid grid-cols-3 gap-4 animate-pulse">
-              <div className="h-72 w-full rounded-md bg-zinc-200" />
-              <div className="h-72 w-full rounded-md bg-zinc-200" />
-              <div className="h-72 w-full rounded-md bg-zinc-200" />
-            </div>
-          ) : bestSellingData?.products?.length ? (
-            <Carousel opts={{ align: "start" }} className="w-full h-full">
-              <CarouselContent className="ml-0 h-full flex">
-                {bestSellingData.products.map((product: Product) => (
-                  <CarouselItem
-                    key={product._id}
-                    className="md:basis-1/2 lg:basis-1/3"
-                  >
-                    <ProductCard
-                      id={product._id}
-                      img={product.imgCover}
-                      title={product.title}
-                      price={product.price}
-                      priceAfterDiscount={product.priceAfterDiscount}
-                      quantity={product.quantity}
-                      sold={product.sold}
-                      rateAvg={product.rateAvg}
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="bg-maroon-600 absolute text-white hover:bg-maroon-700 hover:text-white top-40 -left-0" />
-              <CarouselNext className="bg-maroon-600 absolute text-white hover:bg-maroon-700 hover:text-white top-40 -right-3" />
-            </Carousel>
-          ) : null}
-        </section>
+        <BestSelling />
       </div>
     </>
   );

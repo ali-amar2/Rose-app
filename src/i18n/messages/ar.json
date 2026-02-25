@@ -139,6 +139,8 @@
     "products-you-may-like": "منتجات قد تعجبك",
     "remove-product": "إزالة المنتج",
     "rating": "التقييم",
-    "ratings": "التقييمات"
+    "ratings": "التقييمات",
+    "currency": "ج.م",
+    "loading": "جاري التحميل ..."
   }
 }

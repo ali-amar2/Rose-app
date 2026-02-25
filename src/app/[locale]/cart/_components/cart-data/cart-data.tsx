@@ -8,7 +8,14 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
-import { Plus, Minus, Trash2, BrushCleaning, MoveLeft } from "lucide-react";
+import {
+  Plus,
+  Minus,
+  Trash2,
+  BrushCleaning,
+  MoveLeft,
+  Star,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useQueryClient } from "@tanstack/react-query";
 import { deleteCart } from "@/lib/actions/delete-cart.actions";
@@ -19,14 +26,19 @@ import EmptyCartCard from "../empty-cart-card/empty-cart-card";
 import type { AddToCartItem, CartItem } from "@/lib/types/cart";
 
 export default function CartData() {
-  const { status } = useSession();
+  // State
   const [guestCart, setGuestCart] = useState<AddToCartItem[]>([]);
+  const { status } = useSession();
+
+  // translations
   const t = useTranslations("cart");
+
   // display number of products in scroll
   const ITEMS_PER_LOAD = 3;
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_LOAD);
   const queryClient = useQueryClient();
 
+  // Effects
   // guest → read from localStorage
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -35,6 +47,7 @@ export default function CartData() {
     }
   }, [status]);
 
+  // functions
   // authenticated → fetch from backend
   const { data, isLoading, error } = useQuery({
     queryKey: ["cart"],
@@ -49,8 +62,8 @@ export default function CartData() {
   // handler clear cart
   const handleClearCart = async () => {
     try {
-      await deleteCart(); // استدعاء الـ endpoint
-      queryClient.invalidateQueries({ queryKey: ["cart"] }); // تحديث الداتا
+      await deleteCart();
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
     } catch (err) {
       console.error("Failed to clear cart:", err);
     }
@@ -101,9 +114,10 @@ export default function CartData() {
   }
 
   // user login
-  if (status === "loading" || isLoading) return <p>Loading...</p>;
+  if (status === "loading" || isLoading) return <p> t('loading') </p>;
   if (error) return <p>Error loading cart</p>;
 
+  // variables
   const cartItems: CartItem[] = data?.cart?.cartItems ?? [];
   const visibleItems = cartItems.slice(0, visibleCount);
 
@@ -160,8 +174,12 @@ export default function CartData() {
                           <p className="font-semibold text-lg text-start text-maroon-600 capitalize pb-2">
                             {item.product.title}
                           </p>
-                          <div className="font-normal text-start text-base">
-                            ⭐{t("rating")}:
+                          <div className="font-normal text-start text-base flex items-center gap-1">
+                            <Star
+                              className="text-amber-500  fill-amber-500"
+                              size={20}
+                            />
+                            {t("rating")}:
                             <span className="font-medium">
                               {item.product.rateAvg}
                             </span>
@@ -177,7 +195,7 @@ export default function CartData() {
                             (x{item?.quantity})
                           </span>
                           <span className="font-bold text-2xl">
-                            {item.price * item.quantity} EGP
+                            {item.price * item.quantity} {t("currency")}
                           </span>
                         </p>
                       </div>
@@ -236,7 +254,7 @@ export default function CartData() {
                 {/* loading on scroll */}
                 {visibleCount < cartItems.length && (
                   <p className="text-center py-4 text-zinc-500">
-                    Loading more...
+                    {t("loading")}
                   </p>
                 )}
               </CardContent>
