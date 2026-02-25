@@ -21,6 +21,7 @@
       "createAccount": "Create Account"
     },
     "alreadyHaveAccount": "Already have an account? ",
+    "login": "Login",
     "validation": {
       "firstName": {
         "required": "Please enter your first name",
@@ -50,19 +51,19 @@
         "number": "Password must contain at least 1 number",
         "lowercase": "Password must contain at least 1 lowercase letter",
         "uppercase": "Password must contain at least 1 uppercase letter",
-        "special": "Password must contain at least 1 special character (#?!@$%^&*-)"
+        "special": "Password must contain at least 1 special character (#?!@$%^&-)"
       },
       "rePassword": {
         "required": "Please re-enter your password",
-        "mismatch": "Passwords does not match"
+        "mismatch": "Passwords do not match"
       }
     }
   },
-  "email-lablel": "Email",
+  "email-label": "Email",
   "forgot-password-heading": "Forgot Password?",
   "forget-password-text": "Worry not, we’ll send you instructions to help you reset it.",
   "email-placeholder": "Enter your email",
-  "continue": "continue",
+  "continue": "Continue",
   "non-email-error": "Please Enter Your Email",
   "email-not-valid": "Enter a valid email",
   "required-email": "Email is required",
@@ -77,24 +78,24 @@
   "password-at-least-8-characters": "Password must be at least 8 characters",
   "password-contain-uppercase-letter": "Password must contain at least one uppercase letter",
   "password-contain-lowercase-letter": "Password must contain at least one lowercase letter",
-  "password-contain--one-number": "Password must contain at least one number",
+  "password-contain-one-number": "Password must contain at least one number",
   "passwords-do-not-match": "Passwords do not match",
   "product": {
     "currency": "EGP",
     "badge": {
       "new": "NEW",
       "hot": "HOT",
-      "outOfStock": "OUT OF STOCK"
+      "out-of-stock": "OUT OF STOCK"
     },
     "error-loading-product-details": "Error loading product details"
   },
   "best-selling": {
     "title": "Best Selling",
     "subtitle": {
-      "checkOut": "Check Out",
-      "restBeforeBuying": "What Everyone’s ",
+      "check-out": "Check Out",
+      "rest-before-buying": "What Everyone’s ",
       "buying": "Buying",
-      "restAfterBuying": "Right Now"
+      "rest-after-buying": "Right Now"
     },
     "description": "Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for. Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.",
     "button": "Explore gifts"
@@ -102,27 +103,26 @@
   "most-popular": {
     "title": "Most Popular",
     "empty": "No products found for this occasion",
-    "viewMore": "View More"
+    "view-more": "View More"
   },
   "login": {
     "email": "Email",
     "password": "Password",
-    "emailPlaceholder": "user@example.com",
-    "passwordPlaceholder": "********",
-    "forgotPassword": "Forgot your password?",
-    "rememberMe": "Remember me",
-    "loginBtn": "Login",
-    "genericError": "Something went wrong",
-    "passwordPatternError": "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
-    "noAccount": "Don’t have an account yet?",
-    "createAccount": "Create one now!",
+    "email-placeholder": "user@example.com",
+    "password-placeholder": "********",
+    "forgot-password": "Forgot your password?",
+    "remember-me": "Remember me",
+    "login-btn": "Login",
+    "generic-error": "Something went wrong",
+    "password-pattern-error": "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
+    "no-account": "Don’t have an account yet?",
+    "create-account": "Create one now!",
     "schema": {
-      "emailRequired": "Email is required",
-      "invalidEmail": "Please enter a valid email address",
-      "passwordRequired": "Password is required"
+      "email-required": "Email is required",
+      "invalid-email": "Please enter a valid email address",
+      "password-required": "Password is required"
     }
   },
-
   "login-popup": {
     "loginTab": "Login",
     "registerTab": "Register"
@@ -143,4 +143,35 @@
     "currency": "EGP",
     "loading": "Loading ..."
   }
+  "out-of-stock": "Out of stock",
+  "category-filter": {
+    "title": "Category",
+    "reset": "Reset",
+    "loading-more": "Loading more...",
+    "loading-categories": "Loading categories..."
+  },
+  "rating-filter": {
+    "title": "Rating",
+    "reset": "Reset"
+  },
+  "reset-all": "Reset All",
+  "old-password-label": "Old Password",
+  "new-password-label": "New Password",
+  "confirm-new-password-label": "Confirm New Password",
+  "change-password": "Change Password",
+  "delete-my-account": "Delete My Account",
+  "ask-for-delete-account": "Are you sure you want to delete your account?",
+  "action-cannot-undone": "This action is permanent and cannot be undone.",
+  "not-doing": "Nope, not doing it",
+  "yes-delete": "Yes, delete",
+  "my-account": "My Account",
+  "update-profile": "Update Profile",
+  "logout": "Logout",
+  "gender": "Gender",
+  "male": "Male",
+  "upload-photo": "Upload Photo",
+  "photo-extentions": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.",
+  "save-changes": "Save Changes",
+  "your-account-deleted": "Your Account Deleted",
+  "your-profile-updated": "Your profile has been updated successfully"
 }

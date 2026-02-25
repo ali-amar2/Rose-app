@@ -1,7 +1,7 @@
 "use client";
 
+import { useAddToCart } from "@/app/[locale]/products/[id]/_hooks/use-add-to-cart";
 import { Button } from "@/components/ui/button";
-import { useAddToCart } from "@/app/[locale]/(homepage)/products/[id]/_hooks/use-add-to-cart";
 import { useToast } from "@/hooks/use-toast";
 
 type AddToCartButtonProps = {

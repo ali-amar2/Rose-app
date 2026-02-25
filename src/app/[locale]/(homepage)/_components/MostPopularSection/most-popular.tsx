@@ -1,9 +1,9 @@
-import Link from "next/link";
 import OccasionsTabs from "./occasions-tabs";
 import ProductCard from "@/components/shared/product-card";
 import { MoveRight } from "lucide-react";
 import TitleOfSection from "@/components/shared/title-of-section";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function MostPopular({
   occasions,
@@ -56,7 +56,7 @@ export default function MostPopular({
           href={`/products`}
           className="flex gap-2 justify-end text-maroon-700 font-bold"
         >
-          {t("viewMore")} <MoveRight />
+          {t("view-more")} <MoveRight />
         </Link>
       )}
     </section>
