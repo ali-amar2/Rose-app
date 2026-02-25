@@ -141,8 +141,7 @@
     "ratings": "التقييمات",
     "currency": "ج.م",
     "loading": "جاري التحميل ..."
-  }
-  "out-of-stock": "غير متوفر حالياً",
+  },
   "category-filter": {
     "title": "الفئة",
     "reset": "إعادة",
@@ -172,5 +171,37 @@
   "photo-extentions": "يمكنكك تحميل صور من نوع (.jpg, .png, or .gif) واقصى حجم هو (5 ميجا بايت)",
   "save-changes": "حفظ التغييرات",
   "your-account-deleted": "تم حذف حسابك",
-  "your-profile-updated": "تم تحديث الملف الخاص بك بنجاح"
+  "your-profile-updated": "تم تحديث الملف الخاص بك بنجاح",
+  "orders": {
+    "title": "الطلبات",
+    "paid": "مدفوع",
+    "order-number": "طلب رقم",
+    "created-at": "تم الإنشاء في",
+    "total-price": "السعر الإجمالي",
+    "status": "الحالة",
+    "order-items": "عناصر الطلب",
+    "show-all": "عرض الكل",
+    "show-less": "عرض أقل",
+    "no-orders": "لا توجد طلبات.",
+    "currency": "ج.م",
+    "rating": "التقييم",
+    "ratings-count": "تقييم",
+    "payment": {
+      "method": "طريقة الدفع",
+      "cash":"نقداً",
+      "credit-card":"بطاقة ائتمان"
+    },
+    "delivery": {
+      "status": "حالة التوصيل",
+      "pending": "قيد الانتظار",
+      "cancelled": "تم الإلغاء",
+      "delivered": "تم التوصيل"
+    },
+    "order-status": {
+      "pending": "قيد التنفيذ",
+      "done": "مكتمل",
+      "cancelled": "ملغي"
+   },
+    "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات"
+  }
 }
