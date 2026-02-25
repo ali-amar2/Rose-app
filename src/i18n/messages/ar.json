@@ -139,5 +139,24 @@
     "title": "التقييم",
     "reset": "إعادة"
   },
-  "reset-all": "مسح جميع الفلاتر"
+  "reset-all": "مسح جميع الفلاتر",
+  "old-password-label": "كلمة المرور القديمة\n",
+  "new-password-label": "كلمة المرور الجديدة",
+  "confirm-new-password-label": "تأكيد كلمة المرور القديمة",
+  "change-password": "تغيير كلمة المرور",
+  "delete-my-account": "حذف الحساب الخاص بى",
+  "ask-for-delete-account": "هل أنت متأكد أنك تريد حذف حسابك؟",
+  "action-cannot-undone": "هذا الإجراء دائم ولا يمكن التراجع عنه.",
+  "not-doing": "لا، لا تفعل ذلك",
+  "yes-delete": "نعم احذف",
+  "my-account": "حسابي",
+  "update-profile": "تحديث الملف الشخصي",
+  "logout": "تسجيل الخروج",
+  "gender": "النوع",
+  "male": "ذكر",
+  "upload-photo": "تحميل الصورة",
+  "photo-extentions": "يمكنكك تحميل صور من نوع (.jpg, .png, or .gif) واقصى حجم هو (5 ميجا بايت)",
+  "save-changes": "حفظ التغييرات",
+  "your-account-deleted": "تم حذف حسابك",
+  "your-profile-updated": "تم تحديث الملف الخاص بك بنجاح"
 }
