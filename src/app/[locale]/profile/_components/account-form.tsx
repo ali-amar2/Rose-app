@@ -33,14 +33,10 @@ import ProfileImage from "./profile-image";
 export default function AccountForm() {
   // Translations
   const t = useTranslations();
-
   //Queries
-
   const { user } = useGetUser();
-
   // Mutations
   const { isPending, mutate } = useUpdateProfile();
-
   //Form
   const form = useForm<UpdateProfileField>({
     defaultValues: {
@@ -51,12 +47,10 @@ export default function AccountForm() {
     },
     resolver: zodResolver(UpdateProfileSchema(t)),
   });
-
   // Functions
   const onSubmit: SubmitHandler<UpdateProfileField> = (values) => {
     mutate(values);
   };
-
   // Effects
   useEffect(() => {
     if (user?.user) {
@@ -92,6 +86,7 @@ export default function AccountForm() {
           className=" pt-6 pb-9 space-y-2.5"
         >
           <div className="grid grid-cols-2 gap-4">
+            {/* First Name */}
             <FormField
               control={form.control}
               name="firstName"
@@ -105,6 +100,7 @@ export default function AccountForm() {
                 </FormItem>
               )}
             />
+            {/* Last Name */}
             <FormField
               control={form.control}
               name="lastName"
@@ -119,6 +115,7 @@ export default function AccountForm() {
               )}
             />
           </div>
+          {/* Email */}
           <FormField
             control={form.control}
             name="email"
@@ -132,6 +129,7 @@ export default function AccountForm() {
               </FormItem>
             )}
           />
+          {/* Phone number */}
           <FormField
             control={form.control}
             name="phone"
@@ -149,7 +147,7 @@ export default function AccountForm() {
               </FormItem>
             )}
           />
-
+          {/* Gender */}
           <Field className="text-zinc-400">
             <FieldLabel>{t("gender")}</FieldLabel>
             <Select>
@@ -172,7 +170,7 @@ export default function AccountForm() {
               type="submit"
               className="py-3.5 px-4 w-60  "
             >
-              Save Changes
+              {t("save-changes")}
             </Button>
           </div>
         </form>

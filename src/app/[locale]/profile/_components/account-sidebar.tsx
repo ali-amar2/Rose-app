@@ -16,12 +16,12 @@ export function AccountSidebar() {
   const items = [
     {
       title: t("my-account"),
-      url: "/account",
+      url: "/profile",
       icon: UserRoundPen,
     },
     {
       title: t("change-password"),
-      url: "/account/change-password",
+      url: "/profile/change-password",
       icon: Lock,
     },
   ];

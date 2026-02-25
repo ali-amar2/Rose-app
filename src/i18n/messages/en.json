@@ -155,5 +155,8 @@
   "gender": "Gender",
   "male": "Male",
   "upload-photo": "Upload Photo",
-  "photo-extentions": "You can upload a .jpg, .png, or .gif photo with max size of 5MB."
+  "photo-extentions": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.",
+  "save-changes": "Save Changes",
+  "your-account-deleted": "Your Account Deleted",
+  "your-profile-updated": "Your profile has been updated successfully"
 }

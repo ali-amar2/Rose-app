@@ -1,10 +1,11 @@
-"use client";
 import { useToast } from "@/hooks/use-toast";
 import { updateProfileAction } from "@/lib/actions/account.actions";
 import { UpdateProfileField } from "@/lib/types/account";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 
 export function useUpdateProfile() {
+  const t = useTranslations();
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const { mutate, isPending } = useMutation({
@@ -13,7 +14,7 @@ export function useUpdateProfile() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
       toast({
-        title: "Your profile has been updated successfully",
+        title: t("your-profile-updated"),
         variant: "success",
       });
     },
