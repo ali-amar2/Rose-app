@@ -9,11 +9,11 @@ import UserAvatar from "./user-avatar";
 import { useCurrentUser } from "../../_hooks/use-current-user";
 
 export default function DashboardSidebar() {
-  //States
+  //Queries
   const { user } = useCurrentUser();
 
   return (
-    <div className="flex flex-col pt-8 pb-4 px-4 w-full h-full justify-between">
+    <div className="flex flex-col pt-8 pb-4 px-4 w-full h-full justify-between border-r border-zinc-100">
       <div className="flex flex-col">
         <Image
           src={LogoImage}

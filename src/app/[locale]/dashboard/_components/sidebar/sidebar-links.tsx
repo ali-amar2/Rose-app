@@ -11,13 +11,15 @@ import {
 import { usePathname } from "@/i18n/navigation";
 
 const NavItems = [
-  { name: "Overview", href: "/dashboard/overview", icon: LayoutDashboard },
+  { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
   { name: "Categories", href: "/dashboard/categories", icon: ClipboardList },
   { name: "Occasions", href: "/dashboard/occasions", icon: CalendarHeart },
   { name: "Products", href: "/dashboard/products", icon: Package },
 ];
 
 export default function SidebarLinks() {
+  // Hooks
+
   const pathname = usePathname();
 
   return (
