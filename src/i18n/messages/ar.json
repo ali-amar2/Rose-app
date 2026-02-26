@@ -80,6 +80,7 @@
   "password-contain-lowercase-letter": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
   "password-contain-one-number": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
   "passwords-do-not-match": "كلمات المرور غير متطابقة",
+  "products": "منتجات",
   "product": {
     "currency": "ج.م",
     "badge": {
@@ -139,5 +140,7 @@
     "title": "التقييم",
     "reset": "إعادة"
   },
-  "reset-all": "مسح جميع الفلاتر"
+  "reset-all": "مسح جميع الفلاتر",
+  "error": "خطأ",
+  "product.products": ""
 }
