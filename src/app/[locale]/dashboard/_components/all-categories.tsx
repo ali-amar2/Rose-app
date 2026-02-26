@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import React from "react";
-import { useStatistics } from "../hooks/use-get-statistics";
+import { useStatistics } from "../_hooks/use-get-statistics";
 
 export default function AllCategories() {
   // translation

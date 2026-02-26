@@ -8,7 +8,7 @@ import {
   ReceiptText,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useStatistics } from "./../hooks/use-get-statistics";
+import { useStatistics } from "../_hooks/use-get-statistics";
 import AllCategories from "./all-categories";
 
 

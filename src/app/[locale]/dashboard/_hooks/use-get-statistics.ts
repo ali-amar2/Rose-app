@@ -1,6 +1,6 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import { StatisticsService } from "../services/statistics.service";
+import { StatisticsService } from "../_services/statistics.service";
 
 
 // hook
