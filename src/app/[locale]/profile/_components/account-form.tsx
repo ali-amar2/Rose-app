@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactNode } from "react";
 import {
   FormControl,
   FormField,
@@ -30,7 +31,11 @@ import { useUpdateProfile } from "../_hooks/use-update-profile";
 import DeleteDialog from "./delete-dialog";
 import ProfileImage from "./profile-image";
 
-export default function AccountForm() {
+interface AccountFormProps {
+  extraActions?: ReactNode;
+}
+
+export default function AccountForm({ extraActions }: AccountFormProps = {}) {
   // Translations
   const t = useTranslations();
   //Queries
@@ -163,7 +168,14 @@ export default function AccountForm() {
           </Field>
 
           <div className="flex items-center justify-between pt-20 ">
-            <DeleteDialog />
+            <div className="flex items-center gap-4">
+              <DeleteDialog />
+
+              {/* change password button should display when user is admin */}
+              {user?.user?.role === "admin" && extraActions && (
+                <>{extraActions}</>
+              )}
+            </div>
             <Button
               isLoading={isPending}
               disabled={!form.formState.isValid || form.formState.isSubmitting}
