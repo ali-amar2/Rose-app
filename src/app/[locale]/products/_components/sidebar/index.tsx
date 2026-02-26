@@ -5,6 +5,8 @@ import CategoryFilter from "./category-filter";
 import RatingFilter from "./rating-filter";
 import ResetAllButton from "./reset-all";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import ProductFilters from "./occasions/occasions";
+import PriceFilter from "./price-filter/price-filter";
 
 export default function ProductsSidebar() {
   // Refs
@@ -28,7 +30,9 @@ export default function ProductsSidebar() {
   return (
     <aside className="flex flex-col p-2 gap-4">
       <CategoryFilter ref={categoryRef} />
+      <ProductFilters/>
       <RatingFilter ref={ratingRef} />
+      <PriceFilter/>
       <ResetAllButton onResetAll={handleResetAll} />
     </aside>
   );
