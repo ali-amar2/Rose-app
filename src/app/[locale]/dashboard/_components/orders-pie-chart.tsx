@@ -68,37 +68,6 @@ export function OrdersPieChart({ status }: OrdersPieChartProps) {
     },
   };
 
-  //   const renderCustomLabel = (props: any) => {
-  //     const { cx, cy, midAngle, innerRadius, outerRadius, percent } = props;
-
-  //     if (percent < 0.05) return null; // hide labels less than 5%
-
-  //     const RADIAN = Math.PI / 180;
-  //     const radius = innerRadius + (outerRadius - innerRadius) / 2;
-  //     const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  //     const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-  //     return (
-  //       <g>
-  //         {/* Background circle */}
-  //         <circle cx={x} cy={y} r={18} fill="#FAFAFA" />
-
-  //         {/* Percentage text */}
-  //         <text
-  //           x={x}
-  //           y={y}
-  //           textAnchor="middle"
-  //           dominantBaseline="central"
-  //           fontSize={12}
-  //           fontWeight={600}
-  //           fill={"#27272A"}
-  //         >
-  //           {(percent * 100).toFixed(0)}%
-  //         </text>
-  //       </g>
-  //     );
-  //   };
-
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
@@ -120,7 +89,8 @@ export function OrdersPieChart({ status }: OrdersPieChartProps) {
               data={chartData}
               dataKey="value"
               nameKey="label"
-              innerRadius={45}
+              innerRadius={40}
+              outerRadius={90}
               label={StatusPercentage}
               labelLine={false}
             />

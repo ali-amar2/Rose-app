@@ -8,7 +8,12 @@ export default function Revenue() {
 
   return (
     <div className="w-[49.6rem] max-h-96 mx-auto my-52 ">
-      <RevenueChart data={orders?.statistics.monthlyRevenue} />
+      {orders?.statistics?.monthlyRevenue && (
+        <RevenueChart
+          dailyRevenue={orders?.statistics?.dailyRevenue}
+          monthlyRevenue={orders.statistics.monthlyRevenue}
+        />
+      )}
     </div>
   );
 }
