@@ -139,5 +139,16 @@
     "title": "Rating",
     "reset": "Reset"
   },
-  "reset-all": "Reset All"
+  "reset-all": "Reset All",
+   "dashboard": {
+      "sidebar": {
+        "preview-website": "Preview website",
+        "account": "Account",
+        "logout": "Logout",
+        "overview": "Overview",
+        "categories": "Categories",
+        "occasions": "Occasions",
+        "products": "Products"
+      }
+  }
 }

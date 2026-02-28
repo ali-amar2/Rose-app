@@ -7,13 +7,16 @@ import SidebarLinks from "./sidebar-links";
 import { SidebarDropdown } from "./sidebar-dropdown";
 import UserAvatar from "./user-avatar";
 import { useCurrentUser } from "../../_hooks/use-current-user";
+import { useTranslations } from "next-intl";
 
 export default function DashboardSidebar() {
+  // Translations
+  const t = useTranslations("dashboard.sidebar");
   //Queries
   const { user } = useCurrentUser();
 
   return (
-    <div className="flex flex-col pt-8 pb-4 px-4 w-full h-full justify-between border-r border-zinc-100">
+    <div className="flex flex-col w-full h-full justify-between pt-8 pb-4 px-4 border-zinc-100 ltr:border-r rtl:border-l">
       <div className="flex flex-col">
         <Image
           src={LogoImage}
@@ -26,7 +29,10 @@ export default function DashboardSidebar() {
           href="/"
           className="flex items-center justify-center my-4 p-3 bg-maroon-600 text-white rounded-md hover:bg-maroon-700 transition-colors"
         >
-          <Flower className="mr-2" /> Preview website
+          <span className="flex gap-2">
+            {" "}
+            <Flower /> {t("preview-website")}
+          </span>
         </Link>
         <SidebarLinks />
       </div>

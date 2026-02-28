@@ -11,8 +11,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { signOut } from "next-auth/react";
 import { useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export function SidebarDropdown({ user }: SidebarDropdownProps) {
+  // Translations
+  const t = useTranslations("dashboard.sidebar");
   // Navigations
   const router = useRouter();
 
@@ -33,14 +36,14 @@ export function SidebarDropdown({ user }: SidebarDropdownProps) {
             className="hover:cursor-pointer border-b border-zinc-100 text-zinc-700 hover:text-zinc-900"
           >
             <User className="mr-2 h-4 w-4" />
-            Account
+            {t("account")}
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => signOut()}
             className="text-zinc-700 hover:text-zinc-900 hover:cursor-pointer"
           >
             <LogOut className="mr-2 h-4 w-4" />
-            Logout
+            {t("logout")}
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

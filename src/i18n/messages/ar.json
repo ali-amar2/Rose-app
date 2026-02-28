@@ -139,5 +139,16 @@
     "title": "التقييم",
     "reset": "إعادة"
   },
-  "reset-all": "مسح جميع الفلاتر"
+  "reset-all": "مسح جميع الفلاتر",
+   "dashboard": {
+    "sidebar": {
+      "preview-website": "معاينة الموقع",
+      "account": "الحساب",
+      "logout": "تسجيل الخروج",
+      "overview": "نظرة عامة",
+      "categories": "التصنيفات",
+      "occasions": "المناسبات",
+      "products": "المنتجات"
+    }
+  }
 }

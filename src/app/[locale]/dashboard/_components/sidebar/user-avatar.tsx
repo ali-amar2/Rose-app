@@ -24,7 +24,7 @@ export default function UserAvatar({ user }: UserAvatarProps) {
     return (
       <Image
         src={user.photo}
-        alt="User Avatar"
+        alt={`${user.firstName} ${user.lastName} Avatar`}
         width={50}
         height={50}
         className="rounded-full object-cover"
