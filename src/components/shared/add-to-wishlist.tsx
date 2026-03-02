@@ -1,50 +1,49 @@
 "use client";
-import { useWishlist } from "@/hooks/use-wishlist";
-import { useToggleWishlist } from "@/hooks/use-toggle-wishlist";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+
 import { HeartMinus, HeartPlus } from "lucide-react";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils/tailwind-merge";
+import useToggleWishlist from "@/hooks/use-toggle-wishlist";
 
 type Props = {
-  id: string;
+  productId: string;
 };
 
-export default function AddToWishlist({ id }: Props) {
+export default function AddToWishlist({ productId }: Props) {
+  // Translation
+  const t = useTranslations("");
+
+  // State
   const [showAdd, setShowAdd] = useState<boolean>(false);
   const [showRemove, setShowRemove] = useState<boolean>(false);
-  const { data: session } = useSession();
-  const isLoggedIn = !!session;
-  const router = useRouter();
 
-  const { data: wishlist } = useWishlist(isLoggedIn);
+  // query
+  const {
+    mutation: toggleWishlist,
+    data,
+    isLoading,
+  } = useToggleWishlist(productId);
 
-  const { mutate, isPending } = useToggleWishlist();
-
-  const isInWishlist = wishlist?.some((item) => item.productId === id);
-
-  const handleToggle = () => {
-    if (!isLoggedIn) {
-      router.push("/login");
-      return;
-    }
-    mutate(id);
+  // function
+  const handleToggle = async () => {
+    toggleWishlist.mutate();
   };
 
   return (
     <div>
-      {isInWishlist ? (
+      {data ? (
         <button
           onClick={handleToggle}
           onMouseEnter={() => setShowRemove(true)}
           onMouseLeave={() => setShowRemove(false)}
-          disabled={isPending}
-          className="bg-black text-white rounded-full  h-8 flex items-center justify-center absolute top-2 left-2 px-2"
+          disabled={isLoading}
+          className="bg-black text-white rounded-full h-8 flex rtl:flex-row-reverse items-center justify-center absolute top-2 left-2 px-2"
         >
           <HeartMinus size={18} strokeWidth={2.5} />
           {showRemove && (
             <span className="px-1 text-xs font-medium">
-              Remove from wishlist
+              {t("remove-from-wishlist")}
             </span>
           )}
         </button>
@@ -53,12 +52,19 @@ export default function AddToWishlist({ id }: Props) {
           onClick={handleToggle}
           onMouseEnter={() => setShowAdd(true)}
           onMouseLeave={() => setShowAdd(false)}
-          disabled={isPending}
-          className="bg-white text-maroon-600 rounded-full  h-8 flex items-center justify-center absolute top-2 left-2 px-2"
+          disabled={isLoading}
+          className="bg-white text-maroon-600 rounded-full h-8 flex rtl:flex-row-reverse items-center justify-center absolute top-2 left-2 px-2"
         >
           <HeartPlus size={18} strokeWidth={2.5} />
           {showAdd && (
-            <span className="px-1 text-xs font-medium">add to wishlist</span>
+            <span
+              className={cn(
+                "px-1 text-xs font-medium transition-all duration-1000 ease-in-out",
+                showAdd && "opacity-100 translate-x-0"
+              )}
+            >
+              {t("add-to-wishlist")}
+            </span>
           )}
         </button>
       )}

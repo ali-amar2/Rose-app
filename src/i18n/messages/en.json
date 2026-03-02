@@ -11,50 +11,54 @@
       "lastName": "Last Name",
       "email": "Email",
       "phone": "Phone",
-      "gender": { "gender": "Gender", "male": "Male", "female": "Female" },
+      "gender": {
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female"
+      },
       "password": "Password",
       "confirmPassword": "Confirm Password",
       "createAccount": "Create Account"
     },
-    "alreadyHaveAccount": "Already have an account? ",
-    "login": "Login",
-
-    "validation": {
-      "firstName": {
-        "required": "Please enter your first name",
-        "pattern": "Name must contain only letters",
-        "min": "Name must be at least 3 characters long",
-        "max": "Name must be at most 15 characters long"
-      },
-      "lastName": {
-        "required": "Please enter your last name",
-        "pattern": "Name must contain only letters",
-        "min": "Name must be at least 3 characters long",
-        "max": "Name must be at most 15 characters long"
-      },
-      "email": {
-        "invalid": "Please enter a valid email address"
-      },
-      "phone": {
-        "pattern": "Please enter a valid phone number starting with +20",
-        "length": "Phone number must be 13 characters including +20"
-      },
-      "gender": {
-        "required": "Please select your gender"
-      },
-      "password": {
-        "required": "Please enter your password",
-        "min": "Password must be at least 8 characters long",
-        "number": "Password must contain at least 1 number",
-        "lowercase": "Password must contain at least 1 lowercase letter",
-        "uppercase": "Password must contain at least 1 uppercase letter",
-        "special": "Password must contain at least 1 special character (#?!@$%^&*-)"
-      },
-      "rePassword": {
-        "required": "Please re-enter your password",
-        "mismatch": "Passwords does not match"
-      }
+    "alreadyHaveAccount": "Already have an account? "
+  },
+  "login": "Login",
+  "validation": {
+    "firstName": {
+      "required": "Please enter your first name",
+      "pattern": "Name must contain only letters",
+      "min": "Name must be at least 3 characters long",
+      "max": "Name must be at most 15 characters long"
+    },
+    "lastName": {
+      "required": "Please enter your last name",
+      "pattern": "Name must contain only letters",
+      "min": "Name must be at least 3 characters long",
+      "max": "Name must be at most 15 characters long"
+    },
+    "email": {
+      "invalid": "Please enter a valid email address"
+    },
+    "phone": {
+      "pattern": "Please enter a valid phone number starting with +20",
+      "length": "Phone number must be 13 characters including +20"
+    },
+    "gender": {
+      "required": "Please select your gender"
+    },
+    "password": {
+      "required": "Please enter your password",
+      "min": "Password must be at least 8 characters long",
+      "number": "Password must contain at least 1 number",
+      "lowercase": "Password must contain at least 1 lowercase letter",
+      "uppercase": "Password must contain at least 1 uppercase letter",
+      "special": "Password must contain at least 1 special character (#?!@$%^&*-)"
+    },
+    "rePassword": {
+      "required": "Please re-enter your password",
+      "mismatch": "Passwords does not match"
     }
+  },
   "email-lablel": "Email",
   "forgot-password-heading": "Forgot Password?",
   "forget-password-text": "Worry not, we’ll send you instructions to help you reset it.",
@@ -76,7 +80,6 @@
   "password-contain-lowercase-letter": "Password must contain at least one lowercase letter",
   "password-contain--one-number": "Password must contain at least one number",
   "passwords-do-not-match": "Passwords do not match",
-
   "product": {
     "currency": "EGP",
     "badge": {
@@ -85,7 +88,6 @@
       "outOfStock": "OUT OF STOCK"
     }
   },
-
   "best-selling": {
     "title": "Best Selling",
     "subtitle": {
@@ -97,13 +99,11 @@
     "description": "Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for. Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.",
     "button": "Explore gifts"
   },
-
   "most-popular": {
     "title": "Most Popular",
     "empty": "No products found for this occasion",
     "viewMore": "View More"
   },
-
   "login": {
     "email": "Email",
     "password": "Password",
@@ -121,5 +121,7 @@
       "invalidEmail": "Please enter a valid email address",
       "passwordRequired": "Password is required"
     }
-  }
+  },
+  "add-to-wishlist": "add to wishlist",
+  "remove-from-wishlist": "add from wishlist"
 }

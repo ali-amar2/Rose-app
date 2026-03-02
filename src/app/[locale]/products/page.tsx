@@ -1,36 +1,25 @@
-import { getProducts } from "@/lib/services/products.service";
-import ProductCard from "@/components/shared/product-card";
+import { Suspense } from "react";
+import ProductList from "./_components/product-list";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default async function page({ searchParams }: ProductSearchParamsProps) {
-  const data = await getProducts({
-    category: searchParams.category,
-    occasion: searchParams.occasion,
-    "price[gte]": searchParams["price[gte]"],
-    "price[lte]": searchParams["price[gte]"],
-    rateAvg: searchParams.rateAvg,
-  });
-
   return (
     <div className="grid grid-cols-12 px-20 py-10 gap-6">
       {/* #TODP: Sidebar */}
       <div className="col-span-3 ">sidebar</div>
       {/* Products */}
       <div className="col-span-9">
-        <div className="grid grid-cols-3 gap-5">
-          {data.products.map((product: Product) => (
-            <ProductCard
-              id={product._id}
-              key={product._id}
-              img={product.imgCover}
-              title={product.title}
-              price={product.price}
-              priceAfterDiscount={product.priceAfterDiscount}
-              quantity={product.quantity}
-              sold={product.sold}
-              rateAvg={product.rateAvg}
-            />
-          ))}
-        </div>
+        <Suspense
+          fallback={
+            <div className="grid grid-cols-3 gap-4">
+              <Skeleton className="h-72 w-full rounded-md" />
+              <Skeleton className="h-72 w-full rounded-md" />
+              <Skeleton className="h-72 w-full rounded-md" />
+            </div>
+          }
+        >
+          <ProductList searchParams={searchParams} />
+        </Suspense>
       </div>
     </div>
   );
