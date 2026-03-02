@@ -7,6 +7,8 @@ import SpecificationsComponent from "./_components/specifications-component";
 import { Testimonials } from "./_components/Testimonials";
 
 export default function Home({ searchParams }: OccProps) {
+  // this is for testing error page
+  // throw new Error("test");
   return (
     <>
       <main className="flex flex-col py-10 gap-y-10">

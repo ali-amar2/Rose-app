@@ -189,7 +189,7 @@
     "ratings-count": "ratings",
     "payment": {
       "method": "Payment Method",
-      "cash":"Cash",
+      "cash": "Cash",
       "credit-card": "Credit Card"
     },
     "delivery": {
@@ -197,7 +197,6 @@
       "pending": "Pending",
       "cancelled": "Cancelled",
       "delivered": "Delivered"
-
     },
     "order-status": {
       "pending": "Pending",
@@ -205,6 +204,14 @@
       "cancelled": "Cancelled"
     },
     "error-loading-orders": "Error loading orders"
-  }
+  },
+  "notFound": {
+    "title": "This page does not exist.",
+    "description": "We couldn’t find the page your are looking for, please make sure you are in the right path."
+  },
 
+  "error-handler": {
+    "title": "Oops, something went wrong!",
+    "description": "Something unexpected happened, please refresh the page or try again shortly."
+  }
 }
