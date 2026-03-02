@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils/tailwind-merge";
 import useToggleWishlist from "@/hooks/use-toggle-wishlist";
+import { useSession } from "next-auth/react";
+import { useLocalWishlist } from "@/hooks/use-locale-wishlist";
 
 type Props = {
   productId: string;
@@ -17,27 +19,31 @@ export default function AddToWishlist({ productId }: Props) {
   // State
   const [showAdd, setShowAdd] = useState<boolean>(false);
   const [showRemove, setShowRemove] = useState<boolean>(false);
+  const { status } = useSession();
 
   // query
-  const {
-    mutation: toggleWishlist,
-    data,
-    isLoading,
-  } = useToggleWishlist(productId);
+  const { mutation: toggleWishlistt, data } = useToggleWishlist(productId);
+
+  // in case guest
+  const { isInWishlist, toggleWishlistGuest } = useLocalWishlist(productId);
 
   // function
   const handleToggle = async () => {
-    toggleWishlist.mutate();
+    // client
+    if (status === "authenticated") {
+      toggleWishlistt.mutate();
+    }
+    // guest
+    if (status === "unauthenticated") toggleWishlistGuest();
   };
 
   return (
     <div>
-      {data ? (
+      {isInWishlist || data ? (
         <button
           onClick={handleToggle}
           onMouseEnter={() => setShowRemove(true)}
           onMouseLeave={() => setShowRemove(false)}
-          disabled={isLoading}
           className="bg-black text-white rounded-full h-8 flex rtl:flex-row-reverse items-center justify-center absolute top-2 left-2 px-2"
         >
           <HeartMinus size={18} strokeWidth={2.5} />
@@ -52,7 +58,6 @@ export default function AddToWishlist({ productId }: Props) {
           onClick={handleToggle}
           onMouseEnter={() => setShowAdd(true)}
           onMouseLeave={() => setShowAdd(false)}
-          disabled={isLoading}
           className="bg-white text-maroon-600 rounded-full h-8 flex rtl:flex-row-reverse items-center justify-center absolute top-2 left-2 px-2"
         >
           <HeartPlus size={18} strokeWidth={2.5} />

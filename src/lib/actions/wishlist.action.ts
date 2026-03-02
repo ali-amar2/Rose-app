@@ -16,7 +16,7 @@ export async function addWishlist(fields: { productId: string }) {
     body: JSON.stringify(fields),
   });
 
-  if (!response.ok) throw new Error("Failed to fetch");
+  // if (!response.ok) throw new Error("Failed to fetch");
 
   const payload: ApiResponse = await response.json();
 
@@ -35,7 +35,7 @@ export async function removeWishlist(productId: string) {
     },
   });
 
-  if (!response.ok) throw new Error("Failed to fetch");
+  // if (!response.ok) throw new Error("Failed to fetch");
 
   const payload: ApiResponse = await response.json();
 
@@ -56,7 +56,7 @@ export async function checkWishlist(productId: string) {
       },
     }
   );
-  if (!response.ok) throw new Error("Failed to fetch");
+  // if (!response.ok) throw new Error("Failed to fetch");
 
   const payload: CheckWishlistResponse = await response.json();
 

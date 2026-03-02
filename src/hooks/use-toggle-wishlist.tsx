@@ -6,11 +6,11 @@ import {
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export default function useToggleWishlist(productId: string) {
-  const { data , isLoading} = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["wishlist", productId],
     queryFn: () => checkWishlist(productId),
   });
-
+  
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -27,5 +27,5 @@ export default function useToggleWishlist(productId: string) {
     },
   });
 
-  return { mutation, data ,  isLoading};
+  return { mutation, data, isLoading };
 }
