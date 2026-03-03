@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { stringToHash } from "@/lib/utils/string-to-hash";
+import { cn } from "@/lib/utils/tailwind-merge";
 
 const COLORS = [
   "bg-red-500",
@@ -27,14 +28,17 @@ export default function UserAvatar({ user }: UserAvatarProps) {
         alt={`${user.firstName} ${user.lastName} Avatar`}
         width={50}
         height={50}
-        className="rounded-full object-cover"
+        className="flex rounded-full object-cover items-center justify-center w-11 h-11"
       />
     );
   }
 
   return (
     <div
-      className={`flex items-center justify-center rounded-full w-10 h-10 text-white font-semibold ${bgColor}`}
+      className={cn(
+        "flex items-center justify-center rounded-full w-10 h-10 text-white font-semibold",
+        bgColor
+      )}
     >
       {firstLetter}
     </div>

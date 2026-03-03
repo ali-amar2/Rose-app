@@ -11,6 +11,7 @@ import LoginPopup from "@/components/skeletons/login-popup/login-popup";
 import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { useGetCart } from "../../products/[id]/_hooks/use-get-cart";
+import SearchModule from "./search-component/module";
 
 export default function Header() {
   const { cart } = useGetCart();
@@ -35,12 +36,14 @@ export default function Header() {
           height={24}
         />,
         <div className="relative" key={"cart"}>
-          <ShoppingCart
-            key="cart-icon"
-            className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50 mx-2"
-            width={24}
-            height={24}
-          ></ShoppingCart>
+          <Link href="/cart">
+            <ShoppingCart
+              key="cart-icon"
+              className="text-zinc-700 text-sm font-normal cursor-pointer dark:text-zinc-50 mx-2"
+              width={24}
+              height={24}
+            ></ShoppingCart>
+          </Link>
           <p className="absolute w-5 h-5 rounded-full bg-red-600 text-center text-white -top-2.5 right-0">
             {cart?.numOfCartItems}
           </p>
@@ -60,11 +63,7 @@ export default function Header() {
           <Image src={logo} alt="Rose Logo" width={85} height={80} />
         </div>
         <div className="flex-1 flex items-center">
-          <Input
-            type="text"
-            search={true}
-            placeholder="What awesome gift are you looking for?"
-          />
+          <SearchModule />
           <ul className="flex items-center ms-2 ">
             {headerList.map((item, index) => (
               <li

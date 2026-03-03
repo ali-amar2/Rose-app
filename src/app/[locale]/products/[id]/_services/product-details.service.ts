@@ -1,3 +1,5 @@
+import { ProductDetailsResponse } from "@/lib/types/product";
+
 export async function getProductDetails(
   id: string
 ): Promise<ProductDetailsResponse> {

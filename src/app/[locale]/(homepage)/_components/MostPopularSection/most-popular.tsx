@@ -4,6 +4,7 @@ import { MoveRight } from "lucide-react";
 import TitleOfSection from "@/components/shared/title-of-section";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { MostPopularProductsProps } from "@/lib/types/product";
 
 export default function MostPopular({
   occasions,

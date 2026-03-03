@@ -129,6 +129,19 @@
   },
   "in-stock": "متبقي في المخزون",
   "out-of-stock": "غير متوفر حالياً",
+  "cart": {
+    "title": "السلة",
+    "empty": "مسح السلة",
+    "empty-cart": "سلة التسوق الخاصة بك فارغة، هل ترغب في تجربة التسوق؟ ",
+    "products": "المنتجات",
+    "continue-shopping": "متابعة التسوق",
+    "products-you-may-like": "منتجات قد تعجبك",
+    "remove-product": "إزالة المنتج",
+    "rating": "التقييم",
+    "ratings": "التقييمات",
+    "currency": "ج.م",
+    "loading": "جاري التحميل ..."
+  },
   "category-filter": {
     "title": "الفئة",
     "reset": "إعادة",
@@ -140,15 +153,66 @@
     "reset": "إعادة"
   },
   "reset-all": "مسح جميع الفلاتر",
-   "dashboard": {
-    "sidebar": {
-      "preview-website": "معاينة الموقع",
-      "account": "الحساب",
-      "logout": "تسجيل الخروج",
-      "overview": "نظرة عامة",
-      "categories": "التصنيفات",
-      "occasions": "المناسبات",
-      "products": "المنتجات"
+  "old-password-label": "كلمة المرور القديمة\n",
+  "new-password-label": "كلمة المرور الجديدة",
+  "confirm-new-password-label": "تأكيد كلمة المرور القديمة",
+  "change-password": "تغيير كلمة المرور",
+  "delete-my-account": "حذف الحساب الخاص بى",
+  "ask-for-delete-account": "هل أنت متأكد أنك تريد حذف حسابك؟",
+  "action-cannot-undone": "هذا الإجراء دائم ولا يمكن التراجع عنه.",
+  "not-doing": "لا، لا تفعل ذلك",
+  "yes-delete": "نعم احذف",
+  "my-account": "حسابي",
+  "update-profile": "تحديث الملف الشخصي",
+  "logout": "تسجيل الخروج",
+  "gender": "النوع",
+  "male": "ذكر",
+  "upload-photo": "تحميل الصورة",
+  "photo-extentions": "يمكنكك تحميل صور من نوع (.jpg, .png, or .gif) واقصى حجم هو (5 ميجا بايت)",
+  "save-changes": "حفظ التغييرات",
+  "your-account-deleted": "تم حذف حسابك",
+  "your-profile-updated": "تم تحديث الملف الخاص بك بنجاح",
+  "orders": {
+    "title": "الطلبات",
+    "paid": "مدفوع",
+    "order-number": "طلب رقم",
+    "created-at": "تم الإنشاء في",
+    "total-price": "السعر الإجمالي",
+    "status": "الحالة",
+    "order-items": "عناصر الطلب",
+    "show-all": "عرض الكل",
+    "show-less": "عرض أقل",
+    "no-orders": "لا توجد طلبات.",
+    "currency": "ج.م",
+    "rating": "التقييم",
+    "ratings-count": "تقييم",
+    "payment": {
+      "method": "طريقة الدفع",
+      "cash":"نقداً",
+      "credit-card":"بطاقة ائتمان"
+    },
+    "delivery": {
+      "status": "حالة التوصيل",
+      "pending": "قيد الانتظار",
+      "cancelled": "تم الإلغاء",
+      "delivered": "تم التوصيل"
+    },
+    "order-status": {
+      "pending": "قيد التنفيذ",
+      "done": "مكتمل",
+      "cancelled": "ملغي"
+   },
+    "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات",
+    "dashboard": {
+      "sidebar": {
+        "preview-website": "معاينة الموقع",
+        "account": "الحساب",
+        "logout": "تسجيل الخروج",
+        "overview": "نظرة عامة",
+        "categories": "التصنيفات",
+        "occasions": "المناسبات",
+        "products": "المنتجات"
+      }
     }
   }
 }

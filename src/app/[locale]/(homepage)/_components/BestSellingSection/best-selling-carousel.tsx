@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/carousel";
 import { getProducts } from "@/lib/services/products.service";
 import ProductCard from "@/components/shared/product-card";
+import { Product } from "@/lib/types/product";
 
 export async function BestSellingCarousel() {
   // Queries
