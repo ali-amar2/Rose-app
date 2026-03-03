@@ -1,17 +1,18 @@
 "use client";
 import Image from "next/image";
 import LogoImage from "@public/images/logo1.svg";
-import Link from "next/link";
 import { Flower } from "lucide-react";
 import SidebarLinks from "./sidebar-links";
 import { SidebarDropdown } from "./sidebar-dropdown";
 import UserAvatar from "./user-avatar";
 import { useCurrentUser } from "../../_hooks/use-current-user";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function DashboardSidebar() {
   // Translations
   const t = useTranslations("dashboard.sidebar");
+
   //Queries
   const { user } = useCurrentUser();
 
@@ -30,7 +31,6 @@ export default function DashboardSidebar() {
           className="flex items-center justify-center my-4 p-3 bg-maroon-600 text-white rounded-md hover:bg-maroon-700 transition-colors"
         >
           <span className="flex gap-2">
-            {" "}
             <Flower /> {t("preview-website")}
           </span>
         </Link>
@@ -41,7 +41,7 @@ export default function DashboardSidebar() {
           <UserAvatar user={user} />
         </div>
         <div className="flex flex-col text-sm">
-          <span className="text-zinc-800 flex gap-1 font-bold ">
+          <span className="text-zinc-800 flex gap-1 font-bold text-base ">
             <span>{user?.firstName}</span>
             <span>{user?.lastName}</span>
           </span>

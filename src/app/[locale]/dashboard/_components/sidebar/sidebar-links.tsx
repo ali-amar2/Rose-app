@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { cn } from "@/lib/utils/tailwind-merge";
 import {
   LayoutDashboard,
@@ -8,7 +7,7 @@ import {
   CalendarHeart,
   Package,
 } from "lucide-react";
-import { usePathname } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 const NavItems = [

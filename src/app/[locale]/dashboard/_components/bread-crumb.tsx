@@ -1,8 +1,7 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import { useLocale } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 
 type Props = {
   customLast?: string;
@@ -33,7 +32,7 @@ export default function DashboardBreadcrumb({ customLast }: Props) {
         const isLast = index === segments.length - 1;
 
         return (
-          <span key={index} className="flex items-center gap-2">
+          <span key={href} className="flex items-center gap-2">
             {isLast ? (
               <span className="text-maroon-600">
                 {customLast ?? formatSegment(segment)}
