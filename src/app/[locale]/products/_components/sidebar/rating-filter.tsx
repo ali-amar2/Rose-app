@@ -31,7 +31,7 @@ const RatingFilter = forwardRef((props, ref) => {
       rateCount: rate.toString(),
     });
 
-    router.push(newUrl);
+    router.push(newUrl, { scroll: false });
   };
 
   const handleReset = () => {
@@ -41,7 +41,7 @@ const RatingFilter = forwardRef((props, ref) => {
       rateCount: null,
     });
 
-    router.push(newUrl);
+    router.push(newUrl, { scroll: false });
   };
 
   // Expose resetLocal for Reset All
@@ -79,7 +79,10 @@ const RatingFilter = forwardRef((props, ref) => {
             <Star
               key={starIndex}
               size={28}
-              onClick={() => handleSelect(starIndex)}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelect(starIndex);
+              }}
               className={`cursor-pointer transition-colors ${
                 isFilled ? "fill-amber-500 text-amber-500" : "text-amber-500"
               }`}

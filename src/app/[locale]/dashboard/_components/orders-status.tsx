@@ -1,7 +1,6 @@
 "use client";
 
 import { OrdersPieChart } from "./orders-pie-chart";
-
 import { useGetOrdersStatistics } from "../_hooks/useGetOrdersStatistics";
 
 export default function OrdersStatus() {
@@ -9,7 +8,7 @@ export default function OrdersStatus() {
 
   const status = orders?.statistics.ordersByStatus || [];
   return (
-    <div className="w-[17.3rem] h-96 mx-auto my-5 ">
+    <div className="w-1/4">
       <OrdersPieChart status={status} />
     </div>
   );

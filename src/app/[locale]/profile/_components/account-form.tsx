@@ -162,7 +162,7 @@ export default function AccountForm() {
             </Select>
           </Field>
 
-          <div className="flex items-center justify-between pt-20 ">
+          <div className="flex items-center justify-between pt-10 ">
             <DeleteDialog />
             <Button
               isLoading={isPending}

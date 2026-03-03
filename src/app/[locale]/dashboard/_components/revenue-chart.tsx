@@ -1,7 +1,6 @@
 "use client";
 
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   ChartContainer,
@@ -28,14 +27,15 @@ const chartConfig = {
 
 export function RevenueChart() {
   return (
-    <Card className="w-full h-96 mx-auto my-5 ">
+    <Card className="w-full">
       <CardHeader>
-        <CardTitle>Area Chart</CardTitle>
+        <CardTitle>Revenue</CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer className="h-72" config={chartConfig}>
+        <ChartContainer className="h-[18.75rem] w-full" config={chartConfig}>
           <AreaChart
             accessibilityLayer
+            className="w-full"
             data={chartData}
             margin={{
               left: 12,
@@ -69,6 +69,7 @@ export function RevenueChart() {
               fill="red"
               fillOpacity={0.4}
               stroke="var(--color-desktop)"
+              className="w-full"
             />
           </AreaChart>
         </ChartContainer>
