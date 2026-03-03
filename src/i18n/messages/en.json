@@ -205,6 +205,16 @@
       "cancelled": "Cancelled"
     },
     "error-loading-orders": "Error loading orders"
+  },
+   "dashboard": {
+      "sidebar": {
+        "preview-website": "Preview website",
+        "account": "Account",
+        "logout": "Logout",
+        "overview": "Overview",
+        "categories": "Categories",
+        "occasions": "Occasions",
+        "products": "Products"
+      }
   }
-
 }

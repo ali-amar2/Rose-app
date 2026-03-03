@@ -202,6 +202,17 @@
       "done": "مكتمل",
       "cancelled": "ملغي"
    },
-    "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات"
+    "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات",
+    "dashboard": {
+      "sidebar": {
+        "preview-website": "معاينة الموقع",
+        "account": "الحساب",
+        "logout": "تسجيل الخروج",
+        "overview": "نظرة عامة",
+        "categories": "التصنيفات",
+        "occasions": "المناسبات",
+        "products": "المنتجات"
+      }
+    }
   }
 }
