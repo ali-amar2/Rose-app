@@ -9,21 +9,24 @@ export default function ProfileSetting() {
   // navigation
   const router = useRouter();
 
-  //   translation
+  //   Translation
   const t = useTranslations("login");
 
-  const extraActions: ReactNode = (
-    <Button
-      variant="default"
-      onClick={() => router.push("/profile/change-password")}
-    >
-      {t("change-password")}
-    </Button>
-  );
+  const extraActions: ReactNode = <Button>{t("change-password")}</Button>;
+
+  // redirect to change password page
+  const onChangePassword = () => {
+    router.push("/profile/change-password");
+  };
 
   return (
     <>
-      <AccountForm extraActions={extraActions} />
+      <div className="mx-auto my-20">
+        <AccountForm
+          extraActions={extraActions}
+          onChangePassword={onChangePassword}
+        />
+      </div>
     </>
   );
 }

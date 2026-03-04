@@ -33,9 +33,13 @@ import ProfileImage from "./profile-image";
 
 interface AccountFormProps {
   extraActions?: ReactNode;
+  onChangePassword?: () => void;
 }
 
-export default function AccountForm({ extraActions }: AccountFormProps = {}) {
+export default function AccountForm({
+  extraActions,
+  onChangePassword,
+}: AccountFormProps = {}) {
   // Translations
   const t = useTranslations();
   //Queries
@@ -171,10 +175,14 @@ export default function AccountForm({ extraActions }: AccountFormProps = {}) {
             <div className="flex items-center gap-4">
               <DeleteDialog />
 
-              {/* change password button should display when user is admin */}
-              {user?.user?.role === "admin" && extraActions && (
-                <>{extraActions}</>
-              )}
+              {/* button change password */}
+              <Button
+                type="button"
+                variant={"ghost"}
+                onClick={onChangePassword}
+              >
+                {t("change-password")}
+              </Button>
             </div>
             <Button
               isLoading={isPending}

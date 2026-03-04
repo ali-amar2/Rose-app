@@ -1,4 +1,4 @@
-import ProfileSetting from "./_components/profile-setting";
+import ProfileSetting from "./_components/profile-settings";
 
 export default function page() {
   return (
