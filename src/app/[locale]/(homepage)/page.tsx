@@ -5,6 +5,7 @@ import BestSellingSection from "./_components/BestSellingSection";
 import MostPopularSection from "./_components/MostPopularSection";
 import SpecificationsComponent from "./_components/specifications-component";
 import { Testimonials } from "./_components/Testimonials";
+import { ProductImage } from "@/components/shared/product-image";
 
 export default function Home({ searchParams }: OccProps) {
   // this is for testing error page
@@ -21,6 +22,7 @@ export default function Home({ searchParams }: OccProps) {
         </div>
         <Testimonials />
       </main>
+      <ProductImage />
     </>
   );
 }
