@@ -15,7 +15,9 @@ export default function DashboardLayout({
         <div>
           <DashboardBreadcrumb />
         </div>
-        {children}
+        <main className="bg-zinc-50 p-3 ">
+          <div className="bg-white p-3 rounded-xl">{children}</div>
+        </main>
       </main>
     </div>
   );
