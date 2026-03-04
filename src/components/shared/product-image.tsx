@@ -13,17 +13,20 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 
-const images: string[] = ["/assets/1.png", "/assets/2.png", "/assets/3.png"];
-
 export function ProductImage() {
+  // hooks
   const [open, setOpen] = useState<boolean>(false);
   const [count, setCount] = useState<number>(1);
   const [api, setApi] = useState<CarouselApi | null>(null);
   const [current, setCurrent] = useState<number>(0);
 
+  // static images
+  const images: string[] = ["/assets/1.png", "/assets/2.png", "/assets/3.png"];
+
   const displayedImages = images.slice(0, count);
   const isMultiple = displayedImages.length > 1;
 
+  // effects
   useEffect(() => {
     if (!api) return;
 
@@ -36,6 +39,7 @@ export function ProductImage() {
 
   return (
     <div className="flex gap-4">
+      {/* button for display 1 image for test */}
       <Button
         onClick={() => {
           setCount(1);
@@ -46,6 +50,7 @@ export function ProductImage() {
         Show 1 Image
       </Button>
 
+      {/* button for display Multiple images for test */}
       <Button
         onClick={() => {
           setCount(3);
@@ -56,6 +61,7 @@ export function ProductImage() {
         Show 3 Images
       </Button>
 
+      {/* dialog and carousel */}
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-3xl">
           <Carousel setApi={setApi} className="w-full relative">
@@ -76,15 +82,15 @@ export function ProductImage() {
 
             {/* Bottom Controls */}
             {isMultiple && (
-              <div className="absolute bottom-2 left-0 right-0 flex items-center justify-between  px-4">
+              <div className="absolute bottom-2 left-0 right-0 flex items-center justify-between   px-4">
                 {/* Bullets — left side */}
-                <div className="flex gap-2">
+                <div className="flex gap-2 ">
                   {displayedImages.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => api?.scrollTo(index)}
                       className={`w-3 h-3 rounded-full transition-colors ${
-                        current === index ? "bg-black" : "bg-gray-300"
+                        current === index ? "bg-maroon-600" : "bg-gray-300"
                       }`}
                     />
                   ))}
@@ -92,8 +98,8 @@ export function ProductImage() {
 
                 {/* Arrows — right side */}
                 <div className="flex gap-2">
-                  <CarouselPrevious className="relative inset-0 translate-y-0" />
-                  <CarouselNext className="relative inset-0 translate-y-0" />
+                  <CarouselPrevious className="relative inset-0 translate-y-0 text-maroon-200" />
+                  <CarouselNext className="relative inset-0 translate-y-0 text-maroon-200" />
                 </div>
               </div>
             )}
