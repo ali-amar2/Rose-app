@@ -188,8 +188,8 @@
     "ratings-count": "تقييم",
     "payment": {
       "method": "طريقة الدفع",
-      "cash":"نقداً",
-      "credit-card":"بطاقة ائتمان"
+      "cash": "نقداً",
+      "credit-card": "بطاقة ائتمان"
     },
     "delivery": {
       "status": "حالة التوصيل",
@@ -201,7 +201,7 @@
       "pending": "قيد التنفيذ",
       "done": "مكتمل",
       "cancelled": "ملغي"
-   },
+    },
     "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات",
     "dashboard": {
       "sidebar": {
@@ -214,5 +214,32 @@
         "products": "المنتجات"
       }
     }
-  }
+  },
+  "create-product": {
+    "add-new-product": "إضافة منتج جديد",
+    "title": "اسم المنتج",
+    "title-placeholder": "أدخل اسم المنتج",
+    "title-required": "اسم المنتج مطلوب",
+    "description": "الوصف",
+    "description-placeholder": "أدخل وصف المنتج",
+    "description-required": "وصف المنتج مطلوب",
+    "price": "السعر",
+    "price-required": "من فضلك أدخل سعر صحيح",
+    "discount": "الخصم",
+    "price-after-discount": "السعر بعد الخصم",
+    "quantity": "الكمية",
+    "quantity-required": "كمية المنتج مطلوبة",
+    "product-cover": "صورة المنتج الرئيسية",
+    "product-cover-required": "صورة المنتج الرئيسية مطلوبة",
+    "product-gallery": "صور المنتج",
+    "product-gallery-required": "صور المنتج مطلوبة",
+    "category": "التصنيف",
+    "category-placeholder": "اختر خياراً",
+    "select-category": "من فضلك اختر تصنيفاً للمنتج",
+    "occasion": "المناسبة",
+    "occasion-placeholder": "اختر خياراً",
+    "select-occasion": "من فضلك اختر مناسبة للمنتج",
+    "add-product": "إضافة المنتج"
+  },
+  "upload-file": "تحميل الملف"
 }
