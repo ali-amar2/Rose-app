@@ -15,6 +15,7 @@ import {
   DashboardMonthlyRevenueStat,
 } from "@/lib/types/dashboard/orders";
 import { cn } from "@/lib/utils/tailwind-merge";
+import { useFormatter, useTranslations } from "next-intl";
 
 type RevenueChartProps = {
   dailyRevenue: DashboardDailyRevenueStat[];
@@ -32,7 +33,9 @@ export function RevenueChart({
   dailyRevenue,
   monthlyRevenue,
 }: RevenueChartProps) {
+  const t = useTranslations();
   const [view, setView] = useState<"daily" | "monthly">("monthly");
+  const format = useFormatter();
 
   // Choose data based on view
   const data =
@@ -63,7 +66,7 @@ export function RevenueChart({
   if (!data || data.length === 0) {
     return (
       <Card className="w-full h-96 mx-auto my-5 flex items-center justify-center">
-        <p>No revenue data available</p>
+        <p>{t("no-revenue-data-available")}</p>
       </Card>
     );
   }
@@ -72,7 +75,7 @@ export function RevenueChart({
     <Card className="w-[49rem] h-96 mx-auto my-5 border-none shadow-sm">
       <CardHeader className="flex flex-col gap-2">
         <div className="flex justify-between ">
-          <h2 className="text-2xl font-bold">Revenue</h2>
+          <h2 className="text-2xl font-bold">{t("revenue")}</h2>
           {/* Toggle Buttons */}
           <div className="flex text-sm">
             <p
@@ -84,7 +87,7 @@ export function RevenueChart({
               )}
               onClick={() => setView("monthly")}
             >
-              Monthly
+              {t("monthly")}
             </p>
             <p
               className={cn(
@@ -95,7 +98,7 @@ export function RevenueChart({
               )}
               onClick={() => setView("daily")}
             >
-              Last Week
+              {t("last-week")}
             </p>
           </div>
         </div>
@@ -128,7 +131,12 @@ export function RevenueChart({
               axisLine={false}
               tickMargin={8}
               tick={{ fontWeight: 600, fill: "Red" }}
-              tickFormatter={(value) => value}
+              tickFormatter={(value: number) =>
+                format.number(value, {
+                  style: "currency",
+                  currency: "EGP",
+                })
+              }
               domain={[0, maxRevenue * 1.1]}
             />
             <ChartTooltip

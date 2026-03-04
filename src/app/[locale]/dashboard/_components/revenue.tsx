@@ -1,12 +1,10 @@
-"use client";
+import { getOrdersStatisticsAction } from "@/lib/actions/orders.actions";
 import { RevenueChart } from "./revenue-chart";
-import { useGetOrdersStatistics } from "../_hooks/useGetOrdersStatistics";
 
-export default function Revenue() {
-  const { orders } = useGetOrdersStatistics();
-
+export default async function Revenue() {
+  const orders = await getOrdersStatisticsAction();
   return (
-    <div className="w-[49.6rem] max-h-96 mx-auto my-52 ">
+    <div className="w-[49.6rem] max-h-96 mx-auto ">
       {orders?.statistics?.monthlyRevenue && (
         <RevenueChart
           dailyRevenue={orders?.statistics?.dailyRevenue}
