@@ -129,7 +129,6 @@
   },
   "in-stock": "left in stock",
   "out-of-stock": "Out of stock",
-
   "cart": {
     "title": "Cart",
     "empty": "clear cart",
@@ -189,7 +188,7 @@
     "ratings-count": "ratings",
     "payment": {
       "method": "Payment Method",
-      "cash":"Cash",
+      "cash": "Cash",
       "credit-card": "Credit Card"
     },
     "delivery": {
@@ -197,7 +196,6 @@
       "pending": "Pending",
       "cancelled": "Cancelled",
       "delivered": "Delivered"
-
     },
     "order-status": {
       "pending": "Pending",
@@ -206,15 +204,20 @@
     },
     "error-loading-orders": "Error loading orders"
   },
-   "dashboard": {
-      "sidebar": {
-        "preview-website": "Preview website",
-        "account": "Account",
-        "logout": "Logout",
-        "overview": "Overview",
-        "categories": "Categories",
-        "occasions": "Occasions",
-        "products": "Products"
-      }
-  }
+  "dashboard": {
+    "sidebar": {
+      "preview-website": "Preview website",
+      "account": "Account",
+      "logout": "Logout",
+      "overview": "Overview",
+      "categories": "Categories",
+      "occasions": "Occasions",
+      "products": "Products"
+    }
+  },
+  "no-revenue-data-available": "No revenue data available",
+  "revenue": "Revenue",
+  "monthly": "monthly",
+  "last-week": "Last Week",
+  "daily": "daily"
 }

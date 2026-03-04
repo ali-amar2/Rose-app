@@ -188,8 +188,8 @@
     "ratings-count": "تقييم",
     "payment": {
       "method": "طريقة الدفع",
-      "cash":"نقداً",
-      "credit-card":"بطاقة ائتمان"
+      "cash": "نقداً",
+      "credit-card": "بطاقة ائتمان"
     },
     "delivery": {
       "status": "حالة التوصيل",
@@ -201,7 +201,7 @@
       "pending": "قيد التنفيذ",
       "done": "مكتمل",
       "cancelled": "ملغي"
-   },
+    },
     "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات",
     "dashboard": {
       "sidebar": {
@@ -214,5 +214,10 @@
         "products": "المنتجات"
       }
     }
-  }
+  },
+  "no-revenue-data-available": "لا توجد بيانات الإيرادات المتاحة",
+  "revenue": "ربح",
+  "monthly": "شهريا",
+  "last-week": "الأسبوع الماضي",
+  "daily": "يوميًا"
 }
