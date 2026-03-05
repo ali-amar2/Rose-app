@@ -200,7 +200,7 @@
   "save-changes": "حفظ التغييرات",
   "your-account-deleted": "تم حذف حسابك",
   "your-profile-updated": "تم تحديث الملف الخاص بك بنجاح",
-"orders": {
+  "orders": {
     "title": "الطلبات",
     "paid": "مدفوع",
     "order-number": "طلب رقم",
