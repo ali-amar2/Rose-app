@@ -189,7 +189,7 @@
     "ratings-count": "ratings",
     "payment": {
       "method": "Payment Method",
-      "cash":"Cash",
+      "cash": "Cash",
       "credit-card": "Credit Card"
     },
     "delivery": {
@@ -197,7 +197,6 @@
       "pending": "Pending",
       "cancelled": "Cancelled",
       "delivered": "Delivered"
-
     },
     "order-status": {
       "pending": "Pending",
@@ -206,15 +205,15 @@
     },
     "error-loading-orders": "Error loading orders"
   },
-   "dashboard": {
-      "sidebar": {
-        "preview-website": "Preview website",
-        "account": "Account",
-        "logout": "Logout",
-        "overview": "Overview",
-        "categories": "Categories",
-        "occasions": "Occasions",
-        "products": "Products"
-      }
+  "dashboard": {
+    "sidebar": {
+      "preview-website": "Preview website",
+      "account": "Account",
+      "logout": "Logout",
+      "overview": "Overview",
+      "categories": "Categories",
+      "occasions": "Occasions",
+      "products": "Products"
+    }
   }
 }

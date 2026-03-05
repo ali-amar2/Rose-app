@@ -1,3 +1,5 @@
-export default function page() {
-  return <div>page</div>;
+import ProductsTable from "./_components/products-table";
+
+export default function ProductsPage() {
+  return <ProductsTable />;
 }

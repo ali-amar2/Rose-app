@@ -188,8 +188,8 @@
     "ratings-count": "تقييم",
     "payment": {
       "method": "طريقة الدفع",
-      "cash":"نقداً",
-      "credit-card":"بطاقة ائتمان"
+      "cash": "نقداً",
+      "credit-card": "بطاقة ائتمان"
     },
     "delivery": {
       "status": "حالة التوصيل",
@@ -201,7 +201,7 @@
       "pending": "قيد التنفيذ",
       "done": "مكتمل",
       "cancelled": "ملغي"
-   },
+    },
     "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات",
     "dashboard": {
       "sidebar": {
