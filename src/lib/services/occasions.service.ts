@@ -1,7 +1,10 @@
 import { OccasionsResponse } from "../types/occasion";
 
-export async function getOccasions(): Promise<OccasionsResponse> {
-  const res = await fetch(`${process.env.API}/occasions`);
+export async function getOccasionsService(
+  params: Record<string, string> = {}
+): Promise<OccasionsResponse> {
+  const queryString = new URLSearchParams(params).toString();
+  const res = await fetch(`/api/occasions?${queryString}`);
 
 <<<<<<< HEAD
   if (!res.ok) throw new Error("Failed to fetch occasions from local API");

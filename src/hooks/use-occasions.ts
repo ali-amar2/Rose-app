@@ -1,14 +1,10 @@
-"use client";
-
 import { useQuery } from "@tanstack/react-query";
 import { OccasionsResponse } from "@/lib/types/occasion";
-import { getOccasions } from "@/app/apis/get-occassions";
+import { getOccasionsService } from "@/lib/services/occasions.service";
 
-export function useOccasions() {
+export function useOccasions(params: Record<string, string> = {}) {
   return useQuery<OccasionsResponse>({
-    queryKey: ["occasions"],
-    queryFn: getOccasions,
-    staleTime: 1000 * 60 * 5,
-    refetchOnWindowFocus: false,
+    queryKey: ["occasions", params],
+    queryFn: () => getOccasionsService(params),
   });
 }

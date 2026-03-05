@@ -294,5 +294,7 @@
   "revenue": "Revenue",
   "monthly": "monthly",
   "last-week": "Last Week",
-  "daily": "daily"
+  "daily": "daily",
+  "name-lable": "name",
+  "update-occasion": "Update Occasion"
 }
