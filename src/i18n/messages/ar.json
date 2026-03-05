@@ -241,5 +241,27 @@
     "select-occasion": "من فضلك اختر مناسبة للمنتج",
     "add-product": "إضافة المنتج"
   },
+  "update-product": {
+    "update-product": "تحديث المنتج",
+    "title": "العنوان",
+    "title-placeholder": "أدخل عنوان المنتج",
+    "title-required": "عنوان المنتج مطلوب",
+    "description": "الوصف",
+    "description-placeholder": "أدخل وصف المنتج",
+    "description-required": "وصف المنتج مطلوب",
+    "price": "السعر",
+    "price-required": "يرجى إدخال سعر صحيح",
+    "discount": "الخصم",
+    "price-after-discount": "السعر بعد الخصم",
+    "quantity": "الكمية",
+    "quantity-required": "كمية المنتج مطلوبة",
+    "category": "التصنيف",
+    "category-placeholder": "اختر خياراً",
+    "select-category": "يرجى اختيار تصنيف للمنتج",
+    "occasion": "المناسبة",
+    "occasion-placeholder": "اختر خياراً",
+    "select-occasion": "يرجى اختيار مناسبة للمنتج",
+    "update-btn": "تحديث المنتج"
+  },
   "upload-file": "تحميل الملف"
 }

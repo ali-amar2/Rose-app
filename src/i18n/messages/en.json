@@ -218,7 +218,7 @@
   "create-product": {
     "add-new-product": "Add a New Product",
     "title": "Title",
-    "title-placeholder": "Enter product description",
+    "title-placeholder": "Enter product title",
     "title-required": "Product title is required",
     "description": "Description",
     "description-placeholder": "Enter product description",
@@ -240,6 +240,28 @@
     "occasion-placeholder": "Select an option",
     "select-occasion": "Please select a Occasion for the product",
     "add-product": "Add Product"
+  },
+  "update-product": {
+    "update-product": "Update Product",
+    "title": "Title",
+    "title-placeholder": "Enter product title",
+    "title-required": "Product title is required",
+    "description": "Description",
+    "description-placeholder": "Enter product description",
+    "description-required": "Product description  is required",
+    "price": "Price",
+    "price-required": "Please enter a valid price",
+    "discount": "Discount",
+    "price-after-discount": "Price after discount ",
+    "quantity": "Quantity",
+    "quantity-required": "Product quantity is required",
+    "category": "Category",
+    "category-placeholder": "Select an option",
+    "select-category": "Please select a category for the product",
+    "occasion": "Occasion",
+    "occasion-placeholder": "Select an option",
+    "select-occasion": "Please select a Occasion for the product",
+    "update-btn": "Update Product"
   },
   "upload-file" :"Upload file"
 }
