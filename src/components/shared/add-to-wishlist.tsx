@@ -1,10 +1,12 @@
 "use client";
 
 import { HeartMinus, HeartPlus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils/tailwind-merge";
-import useToggleWishlist from "@/hooks/use-toggle-wishlist";
+import useToggleWishlist, {
+  syncLocalWishlistToAPI,
+} from "@/hooks/use-toggle-wishlist";
 import { useSession } from "next-auth/react";
 import { useLocalWishlist } from "@/hooks/use-locale-wishlist";
 
@@ -19,10 +21,16 @@ export default function AddToWishlist({ productId }: Props) {
   // State
   const [showAdd, setShowAdd] = useState<boolean>(false);
   const [showRemove, setShowRemove] = useState<boolean>(false);
+
+  // context
   const { status } = useSession();
 
   // query
-  const { mutation: toggleWishlistt, data } = useToggleWishlist(productId);
+  const {
+    mutation: toggleWishlist,
+    data,
+    isLoading,
+  } = useToggleWishlist(productId);
 
   // in case guest
   const { isInWishlist, toggleWishlistGuest } = useLocalWishlist(productId);
@@ -31,11 +39,25 @@ export default function AddToWishlist({ productId }: Props) {
   const handleToggle = async () => {
     // client
     if (status === "authenticated") {
-      toggleWishlistt.mutate();
+      toggleWishlist.mutate();
     }
     // guest
     if (status === "unauthenticated") toggleWishlistGuest();
   };
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      syncLocalWishlistToAPI();
+    }
+  }, [status]);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-40 absolute -top-12 left-2">
+        <div className="animate-spin rounded-full size-8 border-t-2 border-b-2 border-maroon-500"></div>
+      </div>
+    );
+  }
 
   return (
     <div>

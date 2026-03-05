@@ -12,9 +12,9 @@ export default async function page({ searchParams }: ProductSearchParamsProps) {
         <Suspense
           fallback={
             <div className="grid grid-cols-3 gap-4">
-              <Skeleton className="h-72 w-full rounded-md" />
-              <Skeleton className="h-72 w-full rounded-md" />
-              <Skeleton className="h-72 w-full rounded-md" />
+              <div className="h-24 bg-gray-200 rounded animate-pulse" />
+              <div className="h-24 bg-gray-200 rounded animate-pulse" />
+              <div className="h-24 bg-gray-200 rounded animate-pulse" />
             </div>
           }
         >
