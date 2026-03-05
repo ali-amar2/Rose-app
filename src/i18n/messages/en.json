@@ -105,6 +105,34 @@
     "empty": "No products found for this occasion",
     "view-more": "View More"
   },
+  "about": {
+    "title": "About",
+    "heading": {
+      "beforeFinest": "Delivering the",
+      "finest": "Finest",
+      "beforeSpecial": "Gift Boxes for Your",
+      "special": "Special",
+      "afterSpecial": "Moments"
+    },
+    "description": "Make every moment memorable with our premium gift boxes. Carefully curated and beautifully packaged, each box is filled with handpicked items designed to impress. Whether it's for a birthday, wedding, or a simple “thank you,” our gift boxes are crafted to leave a lasting impression — because thoughtful gifting starts here.",
+    "button": "Discover",
+    "features": {
+      "f1": "Competitive Prices & Easy Shopping",
+      "f2": "Premium Quality & Elegant Packaging",
+      "f3": "Perfect for Every Occasion",
+      "f4": "Fast & Reliable Delivery"
+    }
+  },
+  "companies": {
+    "title": "Trusted by over",
+    "count": "4.5k+",
+    "suffix": "companies"
+  },
+  "gallery": {
+    "label": "Gallery",
+    "title": "Check Out our Wonderful Gallery"
+  },
+
   "login": {
     "email": "Email",
     "password": "Password",
@@ -129,7 +157,6 @@
   },
   "in-stock": "left in stock",
   "out-of-stock": "Out of stock",
-
   "cart": {
     "title": "Cart",
     "empty": "clear cart",
@@ -173,7 +200,7 @@
   "save-changes": "Save Changes",
   "your-account-deleted": "Your Account Deleted",
   "your-profile-updated": "Your profile has been updated successfully",
-  "orders": {
+    "orders": {
     "title": "Orders",
     "paid": "Paid",
     "order-number": "Order",
@@ -189,7 +216,7 @@
     "ratings-count": "ratings",
     "payment": {
       "method": "Payment Method",
-      "cash":"Cash",
+      "cash": "Cash",
       "credit-card": "Credit Card"
     },
     "delivery": {
@@ -197,7 +224,6 @@
       "pending": "Pending",
       "cancelled": "Cancelled",
       "delivered": "Delivered"
-
     },
     "order-status": {
       "pending": "Pending",
@@ -206,32 +232,37 @@
     },
     "error-loading-orders": "Error loading orders"
   },
-   "dashboard": {
-      "sidebar": {
-        "preview-website": "Preview website",
-        "account": "Account",
-        "logout": "Logout",
-        "overview": "Overview",
-        "categories": "Categories",
-        "occasions": "Occasions",
-        "products": "Products"
-      },
-      "categories": {
-        "all": "All Categories",
-        "add": "Add a New Category",
-        "searchPlaceholder": "Search...",
-        "name": "Name",
-        "products": "Products",
-        "edit": "Edit",
-        "delete": "Delete",
-        "noCategories": "No categories found",
-        "loading": "Loading...",
-        "nameLabel": "Name",
-        "namePlaceholder": "Enter category name",
-        "imageLabel": "Category Image",
-        "submitButton": "Create Category",
-        "viewImage": "View category image",
-        "update":"Update Category"
-      }
+  "dashboard": {
+    "sidebar": {
+      "preview-website": "Preview website",
+      "account": "Account",
+      "logout": "Logout",
+      "overview": "Overview",
+      "categories": "Categories",
+      "occasions": "Occasions",
+      "products": "Products"
+    },
+    "categories": {
+      "all": "All Categories",
+      "add": "Add a New Category",
+      "searchPlaceholder": "Search...",
+      "name": "Name",
+      "products": "Products",
+      "edit": "Edit",
+      "delete": "Delete",
+      "noCategories": "No categories found",
+      "loading": "Loading...",
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter category name",
+      "imageLabel": "Category Image",
+      "submitButton": "Create Category",
+      "viewImage": "View category image",
+      "update": "Update Category"
     }
+  },
+  "no-revenue-data-available": "No revenue data available",
+  "revenue": "Revenue",
+  "monthly": "monthly",
+  "last-week": "Last Week",
+  "daily": "daily"
 }
