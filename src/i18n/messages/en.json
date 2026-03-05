@@ -4,31 +4,106 @@
     "title": "Testimonials",
     "sub-title": "Real Words from Happy Customers"
   },
+  "register": {
+    "heading": "Become part of our family!",
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "gender": {
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female"
+      },
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "createAccount": "Create Account"
+    },
+    "alreadyHaveAccount": "Already have an account? ",
+    "login": "Login",
+    "validation": {
+      "firstName": {
+        "required": "Please enter your first name",
+        "pattern": "Name must contain only letters",
+        "min": "Name must be at least 3 characters long",
+        "max": "Name must be at most 15 characters long"
+      },
+      "lastName": {
+        "required": "Please enter your last name",
+        "pattern": "Name must contain only letters",
+        "min": "Name must be at least 3 characters long",
+        "max": "Name must be at most 15 characters long"
+      },
+      "email": {
+        "invalid": "Please enter a valid email address"
+      },
+      "phone": {
+        "pattern": "Please enter a valid phone number starting with +20",
+        "length": "Phone number must be 13 characters including +20"
+      },
+      "gender": {
+        "required": "Please select your gender"
+      },
+      "password": {
+        "required": "Please enter your password",
+        "min": "Password must be at least 8 characters long",
+        "number": "Password must contain at least 1 number",
+        "lowercase": "Password must contain at least 1 lowercase letter",
+        "uppercase": "Password must contain at least 1 uppercase letter",
+        "special": "Password must contain at least 1 special character (#?!@$%^&-)"
+      },
+      "rePassword": {
+        "required": "Please re-enter your password",
+        "mismatch": "Passwords do not match"
+      }
+    }
+  },
+  "email-label": "Email",
+  "forgot-password-heading": "Forgot Password?",
+  "forget-password-text": "Worry not, we’ll send you instructions to help you reset it.",
+  "email-placeholder": "Enter your email",
+  "continue": "Continue",
+  "non-email-error": "Please Enter Your Email",
+  "email-not-valid": "Enter a valid email",
+  "required-email": "Email is required",
+  "dont-have-an-account": "Don’t have an account yet? <a>Create one now!</a>",
+  "create-new-password-label": "Create a new password",
+  "create-new-password-text": "Set a strong password to secure your account.",
+  "password-label": "Password",
+  "confirm-password-label": "Confirm Password",
+  "reset-password-btn": "Reset Password",
+  "need-help": "Need help? <a>Contact us</a>",
+  "password-is-required": "Password is required",
+  "password-at-least-8-characters": "Password must be at least 8 characters",
+  "password-contain-uppercase-letter": "Password must contain at least one uppercase letter",
+  "password-contain-lowercase-letter": "Password must contain at least one lowercase letter",
+  "password-contain-one-number": "Password must contain at least one number",
+  "passwords-do-not-match": "Passwords do not match",
   "product": {
     "currency": "EGP",
     "badge": {
       "new": "NEW",
       "hot": "HOT",
-      "outOfStock": "OUT OF STOCK"
-    }
+      "out-of-stock": "OUT OF STOCK"
+    },
+    "error-loading-product-details": "Error loading product details"
   },
-
   "best-selling": {
     "title": "Best Selling",
     "subtitle": {
-      "checkOut": "Check Out",
-      "restBeforeBuying": "What Everyone’s ",
+      "check-out": "Check Out",
+      "rest-before-buying": "What Everyone’s ",
       "buying": "Buying",
-      "restAfterBuying": "Right Now"
+      "rest-after-buying": "Right Now"
     },
     "description": "Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for. Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.",
     "button": "Explore gifts"
   },
-
   "most-popular": {
     "title": "Most Popular",
     "empty": "No products found for this occasion",
-    "viewMore": "View More"
+    "view-more": "View More"
   },
   "about": {
     "title": "About",
@@ -61,19 +136,116 @@
   "login": {
     "email": "Email",
     "password": "Password",
-    "emailPlaceholder": "user@example.com",
-    "passwordPlaceholder": "********",
-    "forgotPassword": "Forgot your password?",
-    "rememberMe": "Remember me",
-    "loginBtn": "Login",
-    "genericError": "Something went wrong",
-    "passwordPatternError": "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
-    "noAccount": "Don’t have an account yet?",
-    "createAccount": "Create one now!",
+    "email-placeholder": "user@example.com",
+    "password-placeholder": "********",
+    "forgot-password": "Forgot your password?",
+    "remember-me": "Remember me",
+    "login-btn": "Login",
+    "generic-error": "Something went wrong",
+    "password-pattern-error": "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
+    "no-account": "Don’t have an account yet?",
+    "create-account": "Create one now!",
     "schema": {
-      "emailRequired": "Email is required",
-      "invalidEmail": "Please enter a valid email address",
-      "passwordRequired": "Password is required"
+      "email-required": "Email is required",
+      "invalid-email": "Please enter a valid email address",
+      "password-required": "Password is required"
     }
-  }
+  },
+  "login-popup": {
+    "loginTab": "Login",
+    "registerTab": "Register"
+  },
+  "in-stock": "left in stock",
+  "out-of-stock": "Out of stock",
+  "cart": {
+    "title": "Cart",
+    "empty": "clear cart",
+    "empty-cart": "Your cart is empty, wanna try shopping?",
+    "products": "products",
+    "continue-shopping": "Continue Shopping",
+    "products-you-may-like": "Products You May Like",
+    "remove-product": "remove",
+    "rating": "Rating",
+    "ratings": "ratings",
+    "currency": "EGP",
+    "loading": "Loading ..."
+  },
+  "category-filter": {
+    "title": "Category",
+    "reset": "Reset",
+    "loading-more": "Loading more...",
+    "loading-categories": "Loading categories..."
+  },
+  "rating-filter": {
+    "title": "Rating",
+    "reset": "Reset"
+  },
+  "reset-all": "Reset All",
+  "old-password-label": "Old Password",
+  "new-password-label": "New Password",
+  "confirm-new-password-label": "Confirm New Password",
+  "change-password": "Change Password",
+  "delete-my-account": "Delete My Account",
+  "ask-for-delete-account": "Are you sure you want to delete your account?",
+  "action-cannot-undone": "This action is permanent and cannot be undone.",
+  "not-doing": "Nope, not doing it",
+  "yes-delete": "Yes, delete",
+  "my-account": "My Account",
+  "update-profile": "Update Profile",
+  "logout": "Logout",
+  "gender": "Gender",
+  "male": "Male",
+  "upload-photo": "Upload Photo",
+  "photo-extentions": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.",
+  "save-changes": "Save Changes",
+  "your-account-deleted": "Your Account Deleted",
+  "your-profile-updated": "Your profile has been updated successfully",
+  "orders": {
+    "title": "Orders",
+    "paid": "Paid",
+    "order-number": "Order",
+    "created-at": "Created at",
+    "total-price": "Total Price",
+    "status": "Status",
+    "order-items": "Order Items",
+    "show-all": "Show All",
+    "show-less": "Show Less",
+    "no-orders": "No orders found.",
+    "currency": "EGP",
+    "rating": "Rating",
+    "ratings-count": "ratings",
+    "payment": {
+      "method": "Payment Method",
+      "cash": "Cash",
+      "credit-card": "Credit Card"
+    },
+    "delivery": {
+      "status": "Delivery Status",
+      "pending": "Pending",
+      "cancelled": "Cancelled",
+      "delivered": "Delivered"
+    },
+    "order-status": {
+      "pending": "Pending",
+      "done": "Done",
+      "cancelled": "Cancelled"
+    },
+    "error-loading-orders": "Error loading orders"
+  },
+  "dashboard": {
+    "sidebar": {
+      "preview-website": "Preview website",
+      "account": "Account",
+      "logout": "Logout",
+      "overview": "Overview",
+      "categories": "Categories",
+      "occasions": "Occasions",
+      "products": "Products"
+    }
+  },
+  "no-revenue-data-available": "No revenue data available",
+  "revenue": "Revenue",
+  "monthly": "monthly",
+  "last-week": "Last Week",
+  "daily": "daily"
 }

@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/carousel";
 import { getProducts } from "@/lib/services/products.service";
 import ProductCard from "@/components/shared/product-card";
+import { Product } from "@/lib/types/product";
 
 export async function BestSellingCarousel() {
   // Queries
@@ -19,6 +20,7 @@ export async function BestSellingCarousel() {
           <CarouselItem key={product._id} className="md:basis-1/2 lg:basis-1/3">
             {/* Single product card For each item*/}
             <ProductCard
+              id={product._id}
               img={product.imgCover}
               title={product.title}
               price={product.price}

@@ -20,7 +20,9 @@ export default function ProductBadge({
 
       {showHot && <Badge variant="hot">{t("hot")}</Badge>}
 
-      {showOutOfStock && <Badge variant="outOfStock">{t("outOfStock")}</Badge>}
+      {showOutOfStock && (
+        <Badge variant="outOfStock">{t("out-of-stock")}</Badge>
+      )}
     </div>
   );
 }
