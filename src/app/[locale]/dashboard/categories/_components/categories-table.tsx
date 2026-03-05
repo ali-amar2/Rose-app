@@ -1,6 +1,10 @@
+"use client";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "@/i18n/navigation";
 import { Category } from "@/lib/types/category";
 import { Pencil, Trash2 } from "lucide-react";
+import { useDeleteCategory } from "../../_hooks/use-delete.category";
+import { useTranslations } from "next-intl";
 
 type Props = {
   categories: Category[];
@@ -8,24 +12,31 @@ type Props = {
 };
 
 export default function CategoriesTable({ categories, isLoading }: Props) {
+  // translations
+  const t = useTranslations("dashboard.categories");
+  // Navigation
+  const router = useRouter();
+  // Queries
+  const { mutate: deleteCategory } = useDeleteCategory();
+
   if (isLoading) {
-    return <div className="py-10 text-center">Loading...</div>;
+    return <div className="py-10 text-center">{t("loading")}</div>;
   }
 
   if (!categories.length) {
     return (
       <div className="py-10 text-center text-zinc-500 text-lg">
-        No categories found
+        {t("noCategories")}
       </div>
     );
   }
 
   return (
-    <table className="w-full border-collapse table-fixed">
+    <table className="w-full border-collapse table-fixed rtl:table-auto ltr:table-fixed">
       <thead className="bg-red-50">
-        <tr className="text-left border-b bg-zinc-50 ">
-          <th className="py-3 w-64 pl-5">Name</th>
-          <th>Products</th>
+        <tr className="border-b bg-zinc-50 rtl:text-right ltr:text-left">
+          <th className="py-3 w-64 rtl:pr-5 ltr:pl-5">{t("name")}</th>
+          <th className="rtl:text-right">{t("products")}</th>
           <th></th>
         </tr>
       </thead>
@@ -36,24 +47,32 @@ export default function CategoriesTable({ categories, isLoading }: Props) {
             key={category._id}
             className="border-b transition-colors hover:bg-maroon-50"
           >
-            <td className="capitalize py-3 pl-5 font-medium duration-300">
+            <td className="capitalize py-3 font-medium duration-300 rtl:pr-5 rtl:text-right ltr:pl-5">
               {category.name}
             </td>
-            <td className="text-zinc-600">{category.productsCount} Products</td>
-            <td className="text-right space-x-2">
+            <td className="text-zinc-600 rtl:text-right">
+              {category.productsCount} {t("products")}
+            </td>
+            <td className="rtl:flex rtl:flex-row-reverse rtl:gap-2 ltr:flex ltr:gap-2 ltr:justify-end">
               <Button
                 size="sm"
                 variant="inactive"
                 className="text-blue-600 bg-blue-600/10 hover:bg-blue-600/15 transition-colors duration-300 font-medium"
+                onClick={() =>
+                  router.push(
+                    `/dashboard/categories/update-category/${category._id}`
+                  )
+                }
               >
-                <Pencil size={15} /> Edit
+                <Pencil size={15} /> {t("edit")}
               </Button>
               <Button
                 size="sm"
                 variant="destructive"
-                className=" text-red-600 bg-red-600/10 hover:bg-red-600/15 transition-colors duration-300 font-medium"
+                className="text-red-600 bg-red-600/10 hover:bg-red-600/15 transition-colors duration-300 font-medium"
+                onClick={() => deleteCategory(category._id)}
               >
-                <Trash2 size={15} /> Delete
+                <Trash2 size={15} /> {t("delete")}
               </Button>
             </td>
           </tr>

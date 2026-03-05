@@ -201,18 +201,36 @@
       "pending": "قيد التنفيذ",
       "done": "مكتمل",
       "cancelled": "ملغي"
-   },
+   }
+  },
     "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات",
     "dashboard": {
-      "sidebar": {
-        "preview-website": "معاينة الموقع",
-        "account": "الحساب",
-        "logout": "تسجيل الخروج",
-        "overview": "نظرة عامة",
-        "categories": "التصنيفات",
-        "occasions": "المناسبات",
-        "products": "المنتجات"
-      }
+       "sidebar": {
+         "preview-website": "معاينة الموقع",
+         "account": "الحساب",
+         "logout": "تسجيل الخروج",
+         "overview": "نظرة عامة",
+         "categories": "التصنيفات",
+         "occasions": "المناسبات",
+         "products": "المنتجات"
+       },
+       "categories": {
+         "all": "جميع التصنيفات",
+         "add": "إضافة تصنيف جديد",
+         "searchPlaceholder": "بحث...",
+         "name": "الاسم",
+         "products":"المنتجات",
+         "edit": "تعديل",
+         "delete": "حذف",
+         "noCategories": "لا توجد تصنيفات",
+         "loading": "جاري التحميل...",
+         "nameLabel": "اسم التصنيف",
+         "namePlaceholder": "أدخل اسم التصنيف",
+         "imageLabel": "صورة التصنيف",
+         "submitButton": "إنشاء تصنيف",
+         "viewImage": "عرض صورة التصنيف",
+         "update": "تحديث التصنيف"
+       }
     }
-  }
 }
+

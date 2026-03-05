@@ -15,3 +15,16 @@ export interface CategoriesResponse {
   metadata: PaginationMetadata;
   categories: Category[];
 }
+
+export type DeleteCategoryResponse = {
+  message: string;
+  document?: {
+    _id: string;
+    name: string;
+    slug: string;
+    image: string;
+    isSuperAdmin: boolean;
+    createdAt: string;
+    updatedAt: string;
+  };
+};

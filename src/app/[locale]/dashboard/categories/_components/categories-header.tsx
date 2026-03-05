@@ -1,5 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 type Props = {
@@ -8,10 +9,13 @@ type Props = {
 };
 
 export default function CategoriesHeader({ search, onSearchChange }: Props) {
+  // translations
+  const t = useTranslations("dashboard.categories");
+
   return (
     <>
       <header className="flex justify-between items-center">
-        <h1 className="font-medium text-2xl">All Categories</h1>
+        <h1 className="font-medium text-2xl">{t("all")}</h1>
 
         <Link
           href="/dashboard/categories/add-category"
@@ -19,14 +23,14 @@ export default function CategoriesHeader({ search, onSearchChange }: Props) {
         >
           <span className="flex gap-2 items-center">
             <Plus size={20} />
-            Add New Category
+            {t("add")}
           </span>
         </Link>
       </header>
 
       <Input
         search
-        placeholder="Search..."
+        placeholder={t("searchPlaceholder")}
         value={search}
         onChange={(e) => onSearchChange(e.target.value)}
         className="my-3"
