@@ -27,7 +27,9 @@ export default function Home({ searchParams }: OccProps) {
           <Gallery />
         </div>
         <Testimonials />
-        <Companies />
+        <div className="px-20 gap-y-10">
+          <Companies />
+        </div>
       </main>
       <Footer />
     </>

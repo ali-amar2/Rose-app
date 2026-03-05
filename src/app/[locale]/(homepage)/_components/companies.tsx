@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
-// dummy logos companies data
 const companyLogos = [
   { src: "/assets/coconut.png", alt: "coconut" },
   { src: "/assets/ginyard.png", alt: "ginyard" },
@@ -11,20 +13,21 @@ const companyLogos = [
   { src: "/assets/habus.png", alt: "habus" },
 ];
 
-// component
 export default function Companies() {
+  const t = useTranslations("companies");
+
   return (
-    <section className="w-full p-28 pt-14">
+    <section className="w-full px-4 py-10">
       <div className="flex w-full flex-col items-center justify-between rounded-xl bg-maroon-50 p-10 dark:bg-zinc-700">
-        {/* Title */}
         <h2 className="pb-10 text-3xl font-bold text-maroon-700 dark:text-softPink-200">
-          Trusted by over{" "}
-          <span className="text-softPink-500 dark:text-maroon-400">4.5k+</span>{" "}
-          companies
+          {t("title")}{" "}
+          <span className="text-softPink-500 dark:text-maroon-400">
+            {t("count")}
+          </span>{" "}
+          {t("suffix")}
         </h2>
 
-        {/* Logos */}
-        <div className="flex w-full flex-wrap items-center justify-center gap-x-12 gap-y-8 transition-all duration-500 ">
+        <div className="flex w-full flex-wrap items-center justify-center gap-x-12 gap-y-8 transition-all duration-500">
           {companyLogos.map((logo, index) => (
             <div key={index} className="relative h-12 w-32">
               <Image

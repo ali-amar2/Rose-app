@@ -1,30 +1,33 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils/tailwind-merge";
 
-// dummy gallery data
 const galleryImages = [
   {
-    src: "/assets/10.png",
+    src: "/assets/gallery1.png",
     alt: "Gift Boxes",
     className: "col-span-4 row-span-7",
   },
   {
-    src: "/assets/7.png",
+    src: "/assets/gallery2.png",
     alt: "Flowers & Chocolate",
     className: "col-span-4 row-span-5 row-start-8",
   },
   {
-    src: "/assets/6.png",
+    src: "/assets/gallery3.png",
     alt: "Red Gifts",
     className: "col-span-4 row-span-5 col-start-5",
   },
   {
-    src: "/assets/9.png",
+    src: "/assets/gallery4.png",
     alt: "Ring Detail",
     className: "col-span-4 row-span-7 col-start-5 row-start-6",
   },
   {
-    src: "/assets/8.png",
+    src: "/assets/gallery5.png",
     alt: "Engagement Ring",
     className: "col-span-4 row-span-5 col-start-9",
   },
@@ -35,33 +38,29 @@ const galleryImages = [
   },
 ];
 
-// component
 export default function Gallery() {
+  const t = useTranslations("gallery");
+
   return (
-    <section className="container mx-auto pb-4">
-      {/* Section Header */}
+    <section className="container mx-auto">
       <div className="flex flex-col items-center py-8">
-        <h2 className="font-bold tracking-[0.25em] uppercase text-softPink-500 dark:text-maroon-400">
-          Gallery
+        <h2 className="font-bold uppercase tracking-[0.25em] text-softPink-500 dark:text-maroon-400">
+          {t("label")}
         </h2>
 
-        <div className="relative mt-2">
+        <div className="relative mt-2 text-center">
           <p className="text-4xl font-bold text-maroon-700 dark:text-softPink-200">
-            Check Out our Wonderful Gallery
+            {t("title")}
           </p>
 
-          {/* underline */}
-          <div className="mt-2 h-0.5 w-1/3 bg-softPink-600" />
-
-          {/* background highlight */}
-          <div className="absolute bottom-0 left-0 -z-10 h-4 w-3/4 rounded-r-2xl bg-softPink-100 dark:bg-zinc-700" />
+          <div className="mx-auto mt-2 h-0.5 w-1/3 bg-softPink-600" />
+          <div className="absolute bottom-0 left-1/2 -z-10 h-4 w-3/4 -translate-x-1/2 rounded-r-2xl bg-softPink-100 dark:bg-zinc-700" />
         </div>
       </div>
 
-      {/* Gallery Images Grid */}
-      <div className="grid h-[64rem] w-full grid-cols-12 grid-rows-12 gap-3">
+      <div className="grid h-[67rem] w-full grid-cols-12 grid-rows-12 gap-3">
         {galleryImages.map((image, index) => (
-          <div key={index} className={`relative ${image.className}`}>
+          <div key={index} className={cn("relative", image.className)}>
             <Image
               src={image.src}
               alt={image.alt}

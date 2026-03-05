@@ -114,15 +114,15 @@ export default function PaginationWrapper({
   return (
     <PaginationRoot className={className}>
       <PaginationContent dir={rtl ? "rtl" : "ltr"}>
-        {/* Back 2 pages button */}
         <PaginationItem>
+          {/* Go to first page */}
           <PaginationLink
-            onClick={() => navigateToPage(currentPage - 2)}
+            onClick={() => navigateToPage(1)}
             className={cn(
               "rounded-lg border border-zinc-100 dark:border-zinc-200 hover:border-zinc-200 hover:bg-zinc-50 cursor-pointer",
-              (isFirstPage || isSecondPage) && "opacity-50 pointer-events-none"
+              isFirstPage && "opacity-50 pointer-events-none"
             )}
-            aria-disabled={isFirstPage || isSecondPage}
+            aria-disabled={isFirstPage}
           >
             {rtl ? (
               <ChevronsRight className="h-4 w-4 dark:text-zinc-50" />
@@ -195,13 +195,12 @@ export default function PaginationWrapper({
         {/* Forward 2 pages button */}
         <PaginationItem>
           <PaginationLink
-            onClick={() => navigateToPage(currentPage + 2)}
+            onClick={() => navigateToPage(totalPages)}
             className={cn(
               "rounded-lg border border-zinc-100 dark:border-zinc-200 hover:border-zinc-200 hover:bg-zinc-50 cursor-pointer",
-              (isLastPage || isSecondLastPage) &&
-                "opacity-50 pointer-events-none"
+              isLastPage && "opacity-50 pointer-events-none"
             )}
-            aria-disabled={isLastPage || isSecondLastPage}
+            aria-disabled={isLastPage}
           >
             {rtl ? (
               <ChevronsLeft className="h-4 w-4 dark:text-zinc-50" />
