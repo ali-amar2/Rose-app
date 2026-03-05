@@ -50,12 +50,14 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
         <div
           onClick={handleClick}
           className={cn(
-            "flex h-12 w-full items-center justify-end rounded-xl border px-4 cursor-pointer transition",
+            "flex h-12 w-full items-center justify-between rounded-xl border px-4 cursor-pointer transition",
             "bg-white",
             error ? "border-red-600" : "border-zinc-300 hover:border-zinc-400",
             className
           )}
         >
+          <span className="text-sm text-zinc-500 truncate">{fileName}</span>
+
           <span className="flex items-center gap-2 text-red-600 font-medium text-sm">
             <Upload size={16} />
             Upload file

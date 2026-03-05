@@ -12,7 +12,6 @@ import { Link } from "@/i18n/navigation";
 export default function DashboardSidebar() {
   // Translations
   const t = useTranslations("dashboard.sidebar");
-
   //Queries
   const { user } = useCurrentUser();
 

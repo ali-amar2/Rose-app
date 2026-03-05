@@ -1,5 +1,4 @@
 "use client";
-
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteCategoryAction } from "@/lib/actions/delete-category.action";
 import { useToast } from "@/hooks/use-toast";
@@ -23,6 +22,9 @@ export function useDeleteCategory() {
       });
       if (data.success) {
         queryClient.invalidateQueries({ queryKey: ["categories"] });
+        toast({
+          description: "Category has been deleted successfully",
+        });
       }
     },
   });

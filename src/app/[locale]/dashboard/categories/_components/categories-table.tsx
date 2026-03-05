@@ -45,7 +45,7 @@ export default function CategoriesTable({ categories, isLoading }: Props) {
         {categories.map((category) => (
           <tr
             key={category._id}
-            className="border-b transition-colors hover:bg-maroon-50"
+            className="border-b transition-colors my-2 hover:bg-maroon-50"
           >
             <td className="capitalize py-3 font-medium duration-300 rtl:pr-5 rtl:text-right ltr:pl-5">
               {category.name}
@@ -53,27 +53,29 @@ export default function CategoriesTable({ categories, isLoading }: Props) {
             <td className="text-zinc-600 rtl:text-right">
               {category.productsCount} {t("products")}
             </td>
-            <td className="rtl:flex rtl:flex-row-reverse rtl:gap-2 ltr:flex ltr:gap-2 ltr:justify-end">
-              <Button
-                size="sm"
-                variant="inactive"
-                className="text-blue-600 bg-blue-600/10 hover:bg-blue-600/15 transition-colors duration-300 font-medium"
-                onClick={() =>
-                  router.push(
-                    `/dashboard/categories/update-category/${category._id}`
-                  )
-                }
-              >
-                <Pencil size={15} /> {t("edit")}
-              </Button>
-              <Button
-                size="sm"
-                variant="destructive"
-                className="text-red-600 bg-red-600/10 hover:bg-red-600/15 transition-colors duration-300 font-medium"
-                onClick={() => deleteCategory(category._id)}
-              >
-                <Trash2 size={15} /> {t("delete")}
-              </Button>
+            <td>
+              <div className="flex justify-end gap-2">
+                <Button
+                  size="sm"
+                  variant="inactive"
+                  className="text-blue-600 bg-blue-600/10 hover:bg-blue-600/15 transition-colors duration-300 font-medium focus:shadow-none"
+                  onClick={() =>
+                    router.push(
+                      `/dashboard/categories/update-category/${category._id}`
+                    )
+                  }
+                >
+                  <Pencil size={15} /> {t("edit")}
+                </Button>
+                <Button
+                  size="sm"
+                  variant="inactive"
+                  className="text-red-600 bg-red-600/10 hover:bg-red-600/15 transition-colors duration-300 font-medium focus:shadow-none"
+                  onClick={() => deleteCategory(category._id)}
+                >
+                  <Trash2 size={15} /> {t("delete")}
+                </Button>
+              </div>
             </td>
           </tr>
         ))}

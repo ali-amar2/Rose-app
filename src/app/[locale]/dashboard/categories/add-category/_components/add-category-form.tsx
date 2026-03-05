@@ -20,10 +20,13 @@ import {
 import { useCreateCategory } from "../../../_hooks/use-create-category";
 import { FileInput } from "@/components/ui/file-input";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 
 export default function AddCategoryForm() {
   // Translation
   const t = useTranslations("dashboard.categories");
+  // Navigation
+  const router = useRouter();
   // Mutation
   const { mutate, isPending, isError, error } = useCreateCategory();
   // Form & validation
@@ -41,8 +44,6 @@ export default function AddCategoryForm() {
       name: values.name,
       image: values.image[0],
     });
-
-    form.reset();
   };
 
   return (
