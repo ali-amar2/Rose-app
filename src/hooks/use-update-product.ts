@@ -1,10 +1,17 @@
 import { updateProduct } from "@/lib/actions/update-product.action";
 import { ProductUpdateFields } from "@/lib/types/product";
 import { useMutation } from "@tanstack/react-query";
+import { useToast } from "./use-toast";
+import { useTranslations } from "next-intl";
 
 type ProductMutationInput = ProductUpdateFields & { productId: string };
 
 export default function useUpdateProduct() {
+  //   translations
+  const t = useTranslations("update-product");
+  // Toaser
+  const { toast } = useToast();
+
   const { mutate, error, isPending } = useMutation({
     mutationFn: async (fields: ProductMutationInput) => {
       const { productId, ...values } = fields;
@@ -29,6 +36,22 @@ export default function useUpdateProduct() {
       }
 
       return response;
+    },
+    // if success
+    onSuccess: () => {
+      toast({
+        title: t("on-success-title"),
+        description: t("on-success-description"),
+        variant: "success",
+      });
+    },
+    // if error
+    onError: () => {
+      toast({
+        title: t("on-error-title"),
+        description: t("on-error-description"),
+        variant: "destructive",
+      });
     },
   });
 

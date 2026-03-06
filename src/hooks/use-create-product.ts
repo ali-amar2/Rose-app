@@ -1,12 +1,18 @@
 import { createProduct } from "@/lib/actions/create-product.action";
 import { ProductFields } from "@/lib/types/product";
 import { useMutation } from "@tanstack/react-query";
+import { useToast } from "./use-toast";
+import { useTranslations } from "next-intl";
 
 export default function useCreateProduct() {
+  //   translations
+  const t = useTranslations("create-product");
+  // Toaser
+  const { toast } = useToast();
+
   const { mutate, error, isPending } = useMutation({
     mutationFn: async (values: ProductFields) => {
-    
-      // handle data 
+      // handle data
       const formData = new FormData();
       formData.append("title", String(values.title));
       formData.append("description", String(values.description));
@@ -22,11 +28,11 @@ export default function useCreateProduct() {
           String(values.price - values.discount)
         );
       }
-      // handle one image 
+      // handle one image
       if (values.imageCover) {
         formData.append("imgCover", values.imageCover);
       }
-      // handle one or more images 
+      // handle one or more images
       if (values.gallery && values.gallery.length > 0) {
         values.gallery.forEach((file: File) => {
           formData.append("images", file);
@@ -40,6 +46,22 @@ export default function useCreateProduct() {
       }
 
       return response;
+    },
+    // if success
+    onSuccess: () => {
+      toast({
+        title: t("on-success-title"),
+        description: t("on-success-description"),
+        variant: "success",
+      });
+    },
+    // if error
+    onError: () => {
+      toast({
+        title: t("on-error-title"),
+        description: t("on-error-description"),
+        variant: "destructive",
+      });
     },
   });
 

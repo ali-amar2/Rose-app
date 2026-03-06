@@ -239,7 +239,11 @@
     "occasion": "المناسبة",
     "occasion-placeholder": "اختر خياراً",
     "select-occasion": "من فضلك اختر مناسبة للمنتج",
-    "add-product": "إضافة المنتج"
+    "add-product": "إضافة المنتج",
+    "on-success-title": "تمت إضافة المنتج بنجاح",
+    "on-success-description": "يمكنك رؤية المنتج الجديد في قائمة المنتجات",
+    "on-error-title": "فشلت إضافة المنتج",
+    "on-error-description": "حاول مرة أخرى"
   },
   "update-product": {
     "update-product": "تحديث المنتج",
@@ -261,7 +265,11 @@
     "occasion": "المناسبة",
     "occasion-placeholder": "اختر خياراً",
     "select-occasion": "يرجى اختيار مناسبة للمنتج",
-    "update-btn": "تحديث المنتج"
+    "update-btn": "تحديث المنتج",
+    "on-success-title": "تم تحديث المنتج بنجاح",
+    "on-success-description": "يمكنك رؤية المنتج المحدث في قائمة المنتجات",
+    "on-error-title": "فشل تحديث المنتج",
+    "on-error-description": "حاول مرة أخرى"
   },
   "upload-file": "تحميل الملف"
 }

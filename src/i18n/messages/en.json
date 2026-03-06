@@ -239,7 +239,11 @@
     "occasion": "Occasion",
     "occasion-placeholder": "Select an option",
     "select-occasion": "Please select a Occasion for the product",
-    "add-product": "Add Product"
+    "add-product": "Add Product",
+    "on-success-title": "Product added successfully",
+    "on-success-description": "You can see new product in Products list",
+    "on-error-title": "Product added Failed",
+    "on-error-description": "Try Again"
   },
   "update-product": {
     "update-product": "Update Product",
@@ -261,7 +265,11 @@
     "occasion": "Occasion",
     "occasion-placeholder": "Select an option",
     "select-occasion": "Please select a Occasion for the product",
-    "update-btn": "Update Product"
+    "update-btn": "Update Product",
+    "on-success-title": "Product Updated successfully",
+    "on-success-description": "You can see new product in Products list",
+    "on-error-title": "Product Updated Failed",
+    "on-error-description": "Try Again"
   },
-  "upload-file" :"Upload file"
+  "upload-file": "Upload file"
 }
