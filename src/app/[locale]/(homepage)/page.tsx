@@ -5,6 +5,7 @@ import BestSellingSection from "./_components/BestSellingSection";
 import MostPopularSection from "./_components/MostPopularSection";
 import SpecificationsComponent from "./_components/specifications-component";
 import { Testimonials } from "./_components/Testimonials";
+import ProfileSetting from "../dashboard/account-settings/_components/profile-settings";
 
 export default function Home({ searchParams }: OccProps) {
   return (
@@ -18,6 +19,7 @@ export default function Home({ searchParams }: OccProps) {
           <MostPopularSection searchParams={searchParams} />
         </div>
         <Testimonials />
+        <ProfileSetting />
       </main>
     </>
   );
