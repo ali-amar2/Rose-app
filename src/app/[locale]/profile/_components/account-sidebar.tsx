@@ -27,8 +27,8 @@ export function AccountSidebar() {
   ];
 
   return (
-    <div className="ps-20 pt-16 mb-20 me-5">
-      <h1 className="text-5xl text-center font-bold text-zinc-800 mb-9 ">
+    <div className="ps-20 pt-10 me-5">
+      <h1 className="text-4xl text-center font-bold text-zinc-800 mb-4 ">
         {t("update-profile")}
       </h1>
       <aside className="bg-zinc-50 border border-zinc-100 flex flex-col gap-2.5  p-4 w-[18.7rem] h-[40rem] ">

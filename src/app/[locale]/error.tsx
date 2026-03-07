@@ -1,7 +1,9 @@
 "use client";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+
 export default function error() {
+  // Translations
   const t = useTranslations("error-handler");
 
   return (
@@ -16,7 +18,10 @@ export default function error() {
         />
       </div>
       <div>
+        {/* alert titile */}
         <p className="text-3xl font-semibold mb-4">{t("title")}</p>
+
+        {/* description title */}
         <p className="text-xl font-normal text-zinc-400  dark:text-gray-400 space-y-4 leading-[1.5]">
           {t("description")}
         </p>

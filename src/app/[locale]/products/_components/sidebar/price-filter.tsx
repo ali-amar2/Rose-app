@@ -1,42 +1,19 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import React, { useEffect, forwardRef, useImperativeHandle } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils/tailwind-merge";
+import {
+  PriceFormValues,
+  priceSchema,
+} from "@/lib/schemas/products-filter.schema";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { useSearchParams } from "next/navigation";
 
-//schema
-const priceSchema = z
-  .object({
-    minPrice: z
-      .string()
-      .refine((val) => !val || !isNaN(Number(val)), "Numbers only"),
-    maxPrice: z
-      .string()
-      .refine((val) => !val || !isNaN(Number(val)), "Numbers only"),
-  })
-  .refine(
-    (data) => {
-      if (data.minPrice && data.maxPrice) {
-        return Number(data.minPrice) <= Number(data.maxPrice);
-      }
-      return true;
-    },
-    {
-      message: "Invalid range",
-      path: ["maxPrice"],
-    }
-  );
-
-type PriceFormValues = z.infer<typeof priceSchema>;
-
-
-// component
-export default function PriceFilter() {
+const PriceFilter = forwardRef((_, ref) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -57,13 +34,14 @@ export default function PriceFilter() {
     },
   });
 
-  // بنراقب القيم اللي اليوزر بيكتبها
+  useImperativeHandle(ref, () => ({
+    resetLocal: () => reset({ minPrice: "", maxPrice: "" }),
+  }));
+
   const watchedValues = watch();
 
   useEffect(() => {
-    // Logic بتاع الـ Debounce
     const delayDebounceFn = setTimeout(() => {
-      // لو الداتا سليمة (مفيش Errors في الـ Validation)
       if (!errors.minPrice && !errors.maxPrice) {
         const params = new URLSearchParams(searchParams.toString());
 
@@ -77,7 +55,7 @@ export default function PriceFilter() {
 
         router.push(`${pathname}?${params.toString()}`, { scroll: false });
       }
-    }, 500); // هيستنى نص ثانية بعد آخر حرف يكتبه
+    }, 500);
 
     return () => clearTimeout(delayDebounceFn);
   }, [
@@ -101,18 +79,18 @@ export default function PriceFilter() {
     <div className="space-y-4 py-6 border-t border-zinc-100">
       <div className="flex items-center justify-between mb-2">
         <h3 className="text-xl font-medium text-zinc-900">Price</h3>
-        <button
-          type="button"
-          onClick={handleReset}
-          className="flex items-center gap-1 text-red-500 hover:text-red-600 transition-colors text-sm"
-        >
-          <X size={20} />
-          Reset
-        </button>
+        {(watchedValues.minPrice || watchedValues.maxPrice) && (
+          <button
+            type="button"
+            onClick={handleReset}
+            className="flex items-center gap-1 text-red-600 text-md cursor-pointer"
+          >
+            <X size={20} /> Reset
+          </button>
+        )}
       </div>
 
       <div className="flex items-center gap-4">
-        {/* From Input */}
         <div className="flex-1 space-y-1.5">
           <label className="text-sm text-zinc-600 ml-1">from</label>
           <Input
@@ -125,7 +103,6 @@ export default function PriceFilter() {
           />
         </div>
 
-        {/* To Input */}
         <div className="flex-1 space-y-1.5">
           <label className="text-sm text-zinc-600 ml-1">to</label>
           <Input
@@ -139,7 +116,6 @@ export default function PriceFilter() {
         </div>
       </div>
 
-      {/* Validation Error Message */}
       {errors.maxPrice && (
         <p className="text-[10px] text-red-500 mt-1 italic font-medium">
           {errors.maxPrice.message}
@@ -147,4 +123,6 @@ export default function PriceFilter() {
       )}
     </div>
   );
-}
+});
+
+export default PriceFilter;

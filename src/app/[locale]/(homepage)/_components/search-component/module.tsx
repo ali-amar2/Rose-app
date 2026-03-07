@@ -9,6 +9,7 @@ import { getProducts } from "@/lib/services/products.service";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { getPersonalizedRecommendations } from "@/lib/services/personalized-rec.service";
+import { Product } from "@/lib/types/product";
 
 export default function SearchModule() {
   const router = useRouter();

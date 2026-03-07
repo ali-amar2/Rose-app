@@ -43,9 +43,9 @@ export default function LocaleLayout({ children, params }: LayoutProps) {
         "antialiased dark:bg-zinc-800 min-h-screen flex flex-col"
       )}
     >
-      <Header />
+      {/* <Header /> */}
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

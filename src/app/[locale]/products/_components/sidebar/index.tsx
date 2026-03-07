@@ -5,13 +5,15 @@ import CategoryFilter from "./category-filter";
 import RatingFilter from "./rating-filter";
 import ResetAllButton from "./reset-all";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import ProductFilters from "./occasions/occasions";
-import PriceFilter from "./price-filter/price-filter";
+import ProductFilters from "./occasions-filter";
+import PriceFilter from "./price-filter";
 
 export default function ProductsSidebar() {
   // Refs
   const categoryRef = useRef<{ resetLocal: () => void }>(null);
   const ratingRef = useRef<{ resetLocal: () => void }>(null);
+  const occasionsRef = useRef<{ resetLocal: () => void }>(null);
+  const priceRef = useRef<{ resetLocal: () => void }>(null);
 
   // Navigation
   const router = useRouter();
@@ -22,6 +24,8 @@ export default function ProductsSidebar() {
     // Reset local states inside filters
     categoryRef.current?.resetLocal();
     ratingRef.current?.resetLocal();
+    occasionsRef.current?.resetLocal();
+    priceRef.current?.resetLocal();
 
     // Remove all search params from URL
     router.push(pathname);
@@ -30,9 +34,9 @@ export default function ProductsSidebar() {
   return (
     <aside className="flex flex-col p-2 gap-4">
       <CategoryFilter ref={categoryRef} />
-      <ProductFilters/>
+      <ProductFilters ref={occasionsRef} />
       <RatingFilter ref={ratingRef} />
-      <PriceFilter/>
+      <PriceFilter ref={priceRef} />
       <ResetAllButton onResetAll={handleResetAll} />
     </aside>
   );

@@ -13,6 +13,7 @@ declare module "next-auth" {
       username: string;
       email: string;
       phone: string;
+      photo?: string;
       role: string;
       isVerified: boolean;
       createdAt: string;
@@ -30,6 +31,7 @@ declare module "next-auth/jwt" {
     email: string | null;
     phone: string;
     role: string;
+    photo?: string;
     isVerified: boolean;
     createdAt: string;
     accesstoken: string;

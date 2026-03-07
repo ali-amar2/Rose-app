@@ -10,11 +10,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Trash } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 
 // types
 interface DeleteAlertProps {
-  itemType: string;
+  itemType?: "product" | "category" | "item";
   triggerButton?: ReactNode;
   onConfirm?: () => void | Promise<void>;
   isLoading?: boolean;
@@ -26,12 +27,18 @@ export function DeleteAlert({
   onConfirm,
   isLoading = false,
 }: DeleteAlertProps) {
+  // Trasnlations
+  const t = useTranslations("delete-alert");
+  const tItems = useTranslations("items");
+
   return (
     <Dialog>
       <form>
         {/* dialog button */}
         <DialogTrigger asChild>
-          {triggerButton || <Button variant="outline">delete</Button>}
+          {triggerButton || (
+            <Button variant="outline">{t("button-text")}</Button>
+          )}
         </DialogTrigger>
         <DialogContent className="sm:max-w-sm">
           {/* dialog header and icon */}
@@ -45,7 +52,9 @@ export function DeleteAlert({
           {/* dialog description */}
           <DialogDescription>
             <p className="text-center text-zinc-800">
-              Are you sure you want to delete this {itemType}?
+              {t("delete-alert-description", {
+                itemType: tItems(itemType),
+              })}
             </p>
           </DialogDescription>
 
@@ -53,11 +62,11 @@ export function DeleteAlert({
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline" className="w-full" disabled={isLoading}>
-                Cancel
+                {t("delet-alert-cancel")}
               </Button>
             </DialogClose>
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Deleting..." : "Confirm"}
+              {isLoading ? t("delet-alert-loading") : t("delet-alert-Confirm")}
             </Button>
           </DialogFooter>
         </DialogContent>
