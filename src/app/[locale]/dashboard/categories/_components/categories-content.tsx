@@ -12,10 +12,13 @@ export default function CategoriesPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
+
   // States
   const [search, setSearch] = useState("");
+
   // Constants
   const searchPage = Number(searchParams.get("page") || "1");
+
   // Queries
   const { data, isLoading } = useCategories({
     page: searchPage,
@@ -23,12 +26,16 @@ export default function CategoriesPageContent() {
     limit: 10,
   });
 
+  // Reset page when search changes
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
+
     params.delete("page");
+
     const newUrl = params.toString() ? `${pathname}?${params}` : pathname;
+
     router.replace(newUrl);
-  }, [search, router, pathname, searchParams]);
+  }, [search]);
 
   return (
     <>
