@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactNode } from "react";
 import {
   FormControl,
   FormField,
@@ -30,7 +31,15 @@ import { useUpdateProfile } from "../_hooks/use-update-profile";
 import DeleteDialog from "./delete-dialog";
 import ProfileImage from "./profile-image";
 
-export default function AccountForm() {
+interface AccountFormProps {
+  extraActions?: ReactNode;
+  onChangePassword?: () => void;
+}
+
+export default function AccountForm({
+  extraActions,
+  onChangePassword,
+}: AccountFormProps = {}) {
   // Translations
   const t = useTranslations();
   //Queries
@@ -162,8 +171,19 @@ export default function AccountForm() {
             </Select>
           </Field>
 
-          <div className="flex items-center justify-between pt-10 ">
-            <DeleteDialog />
+          <div className="flex items-center justify-between pt-20 ">
+            <div className="flex items-center gap-4">
+              <DeleteDialog />
+
+              {/* button change password */}
+              <Button
+                type="button"
+                variant={"ghost"}
+                onClick={onChangePassword}
+              >
+                {t("change-password")}
+              </Button>
+            </div>
             <Button
               isLoading={isPending}
               disabled={!form.formState.isValid || form.formState.isSubmitting}

@@ -8,7 +8,6 @@ import { Testimonials } from "./_components/Testimonials";
 import About from "./_components/about";
 import Gallery from "./_components/gallery";
 import Companies from "./_components/companies";
-import PaginationWrapper from "@/components/ui/PaginationWrapper";
 
 export default function Home({ searchParams }: OccProps) {
   return (
