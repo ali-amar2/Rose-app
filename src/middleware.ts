@@ -49,6 +49,29 @@ export default async function middleware(req: NextRequest) {
     "i"
   );
 
+  // Dashboard authorization check
+  const isDashboardRoute = req.nextUrl.pathname.includes("/dashboard");
+  if (isDashboardRoute) {
+    // Only authenticated users can access dashboard
+    if (!token) {
+      const loginUrl = new URL("/login", req.nextUrl.origin);
+      return NextResponse.redirect(loginUrl);
+    }
+
+    const userRole = (token as any)?.role;
+    // Only allow admin users to access dashboard
+    if (userRole !== "admin") {
+      const localePrefix = routing.locales.find((locale) =>
+        req.nextUrl.pathname.startsWith(`/${locale}`)
+      );
+      const notAuthorizedUrl = new URL(
+        `/${localePrefix || routing.defaultLocale}/not-authorized`,
+        req.nextUrl.origin
+      );
+      return NextResponse.redirect(notAuthorizedUrl);
+    }
+  }
+
   const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
   const isAuthPage = authPathnameRegex.test(req.nextUrl.pathname);
 

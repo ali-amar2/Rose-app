@@ -158,6 +158,18 @@
   "admin": {
     "change-password": "تغيير كلمة المرور"
   },
+  "delete-alert":{
+    "button-text": "حذف",
+    "delet-alert-description" : "هل أنت متأكد من رغبتك في حذف هذا؟",
+    "delet-alert-cancel" : " إلغاء",
+    "delet-alert-Confirm" : "تأكيد",
+    "delet-alert-loading" : "جارٍ الحذف..."
+  },
+  "items": {
+    "product": "منتج",
+    "category": "تصنيف",
+    "item": "عنصر"
+  },
   "in-stock": "متبقي في المخزون",
   "out-of-stock": "غير متوفر حالياً",
   "cart": {
@@ -233,6 +245,23 @@
       "done": "مكتمل",
       "cancelled": "ملغي"
     },
+<<<<<<< HEAD
+    "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات"
+  },
+  "notFound": {
+    "title": "هذه الصفحه غير موجوده",
+    "description": " لم نتمكن من العثور على الصفحة التي تبحث عنها، يرجى التأكد من أنك في المسار الصحيح."
+  },
+  "error-handler": {
+    "title": "عفواً، حدث خطأ ما!",
+    "description": "حدث أمر غير متوقع، يرجى تحديث الصفحة أو المحاولة مرة أخرى بعد قليل."
+  },
+  "not-authorized": {
+    "title": "أنت غير مصرح لك بالوصول إلى هذه الصفحة.",
+    "description": "إذا كنت تعتقد أن هذا خطأ، فيرجى الاتصال بالدعم.",
+    "return-home": "العوده الي الصفحه الرئيسيه"
+  }
+=======
     "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات",
     "dashboard": {
       "sidebar": {
@@ -251,4 +280,5 @@
   "monthly": "شهريا",
   "last-week": "الأسبوع الماضي",
   "daily": "يوميًا"
+>>>>>>> d4af36935778edf96524dcb3040e30d551751b12
 }

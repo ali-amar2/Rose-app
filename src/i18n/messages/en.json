@@ -155,6 +155,18 @@
     "loginTab": "Login",
     "registerTab": "Register"
   },
+  "delete-alert":{
+    "button-text": "delete",
+    "delet-alert-description" : "Are you sure you want to delete this?",
+    "delet-alert-cancel" : " Cancel",
+    "delet-alert-Confirm" : "Confirm",
+    "delet-alert-loading" : "Deleting..."
+  },
+  "items": {
+    "product": "product",
+    "category": "category",
+    "item": "item"
+  },
   "admin": {
     "change-password": "Change Password"
   },
@@ -235,6 +247,22 @@
     },
     "error-loading-orders": "Error loading orders"
   },
+<<<<<<< HEAD
+  "notFound": {
+    "title": "This page does not exist.",
+    "description": "We couldn’t find the page your are looking for, please make sure you are in the right path."
+  },
+
+  "error-handler": {
+    "title": "Oops, something went wrong!",
+    "description": "Something unexpected happened, please refresh the page or try again shortly."
+  },
+  "not-authorized": {
+    "title": "You are not authorized to access this page.",
+    "description": "If you think this is wrong, please contact the support.",
+    "return-home": "Got to home"
+  }
+=======
   "dashboard": {
     "sidebar": {
       "preview-website": "Preview website",
@@ -251,4 +279,5 @@
   "monthly": "monthly",
   "last-week": "Last Week",
   "daily": "daily"
+>>>>>>> d4af36935778edf96524dcb3040e30d551751b12
 }
