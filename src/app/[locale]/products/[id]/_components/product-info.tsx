@@ -3,6 +3,7 @@ import { HeartPlus, Package, ShoppingCart, Star } from "lucide-react";
 import AddToCartButton from "@/components/shared/add-to-cart-button";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { useTranslations } from "next-intl";
+import { Product } from "@/lib/types/product";
 
 type ProductInfoProps = {
   product?: Product;

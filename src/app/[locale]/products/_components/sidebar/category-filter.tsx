@@ -40,14 +40,14 @@ const CategoryFilter = forwardRef((props, ref) => {
   const handleSelect = (id: string) => {
     setSelectedId(id);
     const newUrl = updateSearchParams(searchParams, { category: id });
-    router.push(newUrl);
+    router.push(newUrl, { scroll: false });
   };
 
   const handleReset = () => {
     setSelectedId(null);
     setVisibleCount(ITEMS_PER_LOAD);
     const newUrl = updateSearchParams(searchParams, { category: null });
-    router.push(newUrl);
+    router.push(newUrl, { scroll: false });
   };
 
   // Expose resetLocal for Reset All

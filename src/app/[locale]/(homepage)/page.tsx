@@ -5,7 +5,9 @@ import BestSellingSection from "./_components/BestSellingSection";
 import MostPopularSection from "./_components/MostPopularSection";
 import SpecificationsComponent from "./_components/specifications-component";
 import { Testimonials } from "./_components/Testimonials";
-import ProfileSetting from "../dashboard/account-settings/_components/profile-settings";
+import About from "./_components/about";
+import Gallery from "./_components/gallery";
+import Companies from "./_components/companies";
 
 export default function Home({ searchParams }: OccProps) {
   return (
@@ -17,9 +19,13 @@ export default function Home({ searchParams }: OccProps) {
           <SpecificationsComponent />
           <BestSellingSection />
           <MostPopularSection searchParams={searchParams} />
+          <About />
+          <Gallery />
         </div>
         <Testimonials />
-        <ProfileSetting />
+        <div className="px-20 gap-y-10">
+          <Companies />
+        </div>
       </main>
     </>
   );

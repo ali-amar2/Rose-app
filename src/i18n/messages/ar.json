@@ -105,6 +105,34 @@
     "empty": "لا توجد منتجات لهذه المناسبة",
     "view-more": "عرض المزيد"
   },
+  "about": {
+    "title": "من نحن",
+    "heading": {
+      "beforeFinest": "نقدم لكم",
+      "finest": "أفخم",
+      "beforeSpecial": "صناديق الهدايا لـ",
+      "special": "لحظاتكم",
+      "afterSpecial": "المميزة"
+    },
+    "description": "اجعل كل لحظة لا تُنسى مع صناديق الهدايا الفاخرة لدينا. تم اختيار كل صندوق بعناية وتغليفه بأناقة ليحتوي على منتجات مميزة تترك انطباعًا رائعًا. سواء كان عيد ميلاد أو زفاف أو حتى كلمة شكر بسيطة، هدايانا مصممة لتصنع فرقًا حقيقيًا.",
+    "button": "اكتشف",
+    "features": {
+      "f1": "أسعار تنافسية وتسوق سهل",
+      "f2": "جودة عالية وتغليف أنيق",
+      "f3": "مثالية لكل المناسبات",
+      "f4": "توصيل سريع وموثوق"
+    }
+  },
+  "companies": {
+    "title": "موثوق به من أكثر من",
+    "count": "+4.5 ألف",
+    "suffix": "شركة"
+  },
+  "gallery": {
+    "label": "المعرض",
+    "title": "اكتشف معرضنا الرائع"
+  },
+
   "login": {
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
@@ -145,7 +173,6 @@
     "currency": "ج.م",
     "loading": "جاري التحميل ..."
   },
-  "out-of-stock": "غير متوفر حالياً",
   "category-filter": {
     "title": "الفئة",
     "reset": "إعادة",
@@ -175,5 +202,53 @@
   "photo-extentions": "يمكنكك تحميل صور من نوع (.jpg, .png, or .gif) واقصى حجم هو (5 ميجا بايت)",
   "save-changes": "حفظ التغييرات",
   "your-account-deleted": "تم حذف حسابك",
-  "your-profile-updated": "تم تحديث الملف الخاص بك بنجاح"
+  "your-profile-updated": "تم تحديث الملف الخاص بك بنجاح",
+  "orders": {
+    "title": "الطلبات",
+    "paid": "مدفوع",
+    "order-number": "طلب رقم",
+    "created-at": "تم الإنشاء في",
+    "total-price": "السعر الإجمالي",
+    "status": "الحالة",
+    "order-items": "عناصر الطلب",
+    "show-all": "عرض الكل",
+    "show-less": "عرض أقل",
+    "no-orders": "لا توجد طلبات.",
+    "currency": "ج.م",
+    "rating": "التقييم",
+    "ratings-count": "تقييم",
+    "payment": {
+      "method": "طريقة الدفع",
+      "cash": "نقداً",
+      "credit-card": "بطاقة ائتمان"
+    },
+    "delivery": {
+      "status": "حالة التوصيل",
+      "pending": "قيد الانتظار",
+      "cancelled": "تم الإلغاء",
+      "delivered": "تم التوصيل"
+    },
+    "order-status": {
+      "pending": "قيد التنفيذ",
+      "done": "مكتمل",
+      "cancelled": "ملغي"
+    },
+    "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات",
+    "dashboard": {
+      "sidebar": {
+        "preview-website": "معاينة الموقع",
+        "account": "الحساب",
+        "logout": "تسجيل الخروج",
+        "overview": "نظرة عامة",
+        "categories": "التصنيفات",
+        "occasions": "المناسبات",
+        "products": "المنتجات"
+      }
+    }
+  },
+  "no-revenue-data-available": "لا توجد بيانات الإيرادات المتاحة",
+  "revenue": "ربح",
+  "monthly": "شهريا",
+  "last-week": "الأسبوع الماضي",
+  "daily": "يوميًا"
 }
