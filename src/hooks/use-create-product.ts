@@ -3,10 +3,13 @@ import { ProductFields } from "@/lib/types/product";
 import { useMutation } from "@tanstack/react-query";
 import { useToast } from "./use-toast";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 
 export default function useCreateProduct() {
-  //   translations
+  // translations
   const t = useTranslations("create-product");
+  // router
+  const router = useRouter();
   // Toaser
   const { toast } = useToast();
 
@@ -54,6 +57,7 @@ export default function useCreateProduct() {
         description: t("on-success-description"),
         variant: "success",
       });
+      router.push("/dashboard/products")
     },
     // if error
     onError: () => {

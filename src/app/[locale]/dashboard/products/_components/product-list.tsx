@@ -6,10 +6,11 @@ export default async function ProductList() {
   const data = await getProducts();
 
   return (
+    //  # TODO .. This is component for Testing only
     <div>
       {data.products.map((product) => (
         <Link
-          href={`/dashboard/products/update-product?productId=${product._id}`}
+          href={`/dashboard/products/${product._id}`}
           key={product._id}
           className=" block"
         >

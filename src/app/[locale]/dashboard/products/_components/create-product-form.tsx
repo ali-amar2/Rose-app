@@ -86,8 +86,8 @@ export default function CreateProductForm() {
               name="title"
               render={({ field }) => (
                 <FormItem className="col-span-6">
-                  <FormLabel>
-                    {t("title")} <span className="text-red-600">*</span>
+                  <FormLabel className="after:content-['*'] after:text-red-600">
+                    {t("title")}
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -106,8 +106,8 @@ export default function CreateProductForm() {
               name="description"
               render={({ field }) => (
                 <FormItem className="col-span-6">
-                  <FormLabel>
-                    {t("description")} <span className="text-red-600">*</span>
+                  <FormLabel className="after:content-['*'] after:text-red-600">
+                    {t("description")}
                   </FormLabel>
                   <FormControl>
                     <Textarea
@@ -126,8 +126,8 @@ export default function CreateProductForm() {
               name="price"
               render={({ field }) => (
                 <FormItem className="col-span-2">
-                  <FormLabel>
-                    {t("price")} <span className="text-red-600">*</span>
+                  <FormLabel className="after:content-['*'] after:text-red-600">
+                    {t("price")}
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -176,6 +176,7 @@ export default function CreateProductForm() {
                       {...field}
                       value={field.value ?? ""}
                       onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                      disabled
                     />
                   </FormControl>
                   <FormMessage />
@@ -188,8 +189,8 @@ export default function CreateProductForm() {
               name="quantity"
               render={({ field }) => (
                 <FormItem className="col-span-6">
-                  <FormLabel>
-                    {t("quantity")} <span className="text-red-600">*</span>
+                  <FormLabel className="after:content-['*'] after:text-red-600">
+                    {t("quantity")}
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -208,8 +209,8 @@ export default function CreateProductForm() {
               name="imageCover"
               render={({ field }) => (
                 <FormItem className="col-span-3">
-                  <FormLabel>
-                    {t("product-cover")} <span className="text-red-600">*</span>
+                  <FormLabel className="after:content-['*'] after:text-red-600">
+                    {t("product-cover")}
                   </FormLabel>
                   <FormControl>
                     <InputImage
@@ -230,9 +231,8 @@ export default function CreateProductForm() {
               name="gallery"
               render={({ field }) => (
                 <FormItem className="col-span-3">
-                  <FormLabel>
+                  <FormLabel className="after:content-['*'] after:text-red-600">
                     {t("product-gallery")}{" "}
-                    <span className="text-red-600">*</span>
                   </FormLabel>
                   <FormControl>
                     <InputImage
@@ -256,8 +256,8 @@ export default function CreateProductForm() {
               name="category"
               render={({ field }) => (
                 <FormItem className="col-span-6">
-                  <FormLabel>
-                    {t("category")} <span className="text-red-600">*</span>
+                  <FormLabel className="after:content-['*'] after:text-red-600">
+                    {t("category")}
                   </FormLabel>
                   <Select
                     onValueChange={field.onChange}
@@ -286,8 +286,8 @@ export default function CreateProductForm() {
               name="occasion"
               render={({ field }) => (
                 <FormItem className="col-span-6">
-                  <FormLabel>
-                    {t("occasion")} <span className="text-red-600">*</span>
+                  <FormLabel className="after:content-['*'] after:text-red-600">
+                    {t("occasion")}
                   </FormLabel>
                   <Select
                     onValueChange={field.onChange}
@@ -313,7 +313,7 @@ export default function CreateProductForm() {
             {error && (
               <p className="text-red-500 text-center mt-2">{error.message} </p>
             )}
-            <Button disabled={isPending} className="col-span-6 mt-28">
+            <Button disabled={isPending} className="col-span-6 mt-20">
               {t("add-product")}
             </Button>
           </form>
