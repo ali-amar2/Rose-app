@@ -1,6 +1,4 @@
-import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
 import { Sarabun, Tajawal } from "next/font/google";
 import { setRequestLocale } from "next-intl/server";
 import Header from "./(homepage)/_components/header";
@@ -24,10 +22,12 @@ type LayoutProps = {
   params: { locale: string };
 };
 
+const locales = ["en", "ar"];
+
 export default function LocaleLayout({ children, params }: LayoutProps) {
   const { locale } = params;
 
-  if (!hasLocale(routing.locales, locale)) {
+  if (!locales.includes(locale)) {
     notFound();
   }
 

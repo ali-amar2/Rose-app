@@ -95,7 +95,7 @@ export default function ChangePasswordForm() {
           <div className="flex items-center justify-between pt-20 ">
             <Button
               isLoading={isPending}
-              disabled={!form.formState.isValid || form.formState.isSubmitting}
+              disabled={!form.formState.isDirty || form.formState.isSubmitting}
               type="submit"
               className="py-3.5 px-4 w-60 ms-auto  "
             >
