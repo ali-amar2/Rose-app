@@ -8,7 +8,7 @@ import { getToken } from "next-auth/jwt";
 const authPages = ["/login", "/register", "/forgot-password"];
 
 // Public pages (accessible for everyone)
-const publicPages = ["/", ...authPages];
+const publicPages = ["/", "/products", ...authPages];
 
 // Next-Intl middleware handler
 const handleI18nRouting = createMiddleware(routing);
