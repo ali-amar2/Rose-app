@@ -1,4 +1,4 @@
-declare type Product = {
+export type Product = {
   _id: string;
   title: string;
   slug: string;
@@ -53,4 +53,9 @@ type ProductBadgeProps = {
 
 type ProductRatingProps = {
   rate: number;
+};
+
+declare type ProductDetailsResponse = {
+  message: string;
+  product: Product;
 };

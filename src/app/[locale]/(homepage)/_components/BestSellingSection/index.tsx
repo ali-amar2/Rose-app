@@ -21,11 +21,11 @@ export default function BestSellingSection() {
             <p className="text-2xl leading-none mb-1 font-bold text-maroon-600">
               <span className="text-softPink-500">
                 {" "}
-                {t("subtitle.checkOut")}{" "}
+                {t("subtitle.check-out")}{" "}
               </span>{" "}
-              {t("subtitle.restBeforeBuying")}
+              {t("subtitle.rest-before-buying")}
               <span className="text-softPink-500">{t("subtitle.buying")}</span>
-              {t("subtitle.restAfterBuying")}
+              {t("subtitle.rest-after-buying")}
             </p>
             {/* Description paragraph */}
             <p className="text-sm text-zinc-500 p-1 ">{t("description")}</p>

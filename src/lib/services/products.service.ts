@@ -1,3 +1,4 @@
+"use server"
 export async function getProducts(params: Record<string, any> = {}) {
   const query = new URLSearchParams();
 

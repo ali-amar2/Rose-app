@@ -2,8 +2,9 @@ declare type ProductSearchParamsProps = {
   searchParams: {
     occasion?: string;
     category?: string;
-    "price[gte]"?: number;
-    "price[lte]"?: number;
-    rateAvg?: number;
+    minPrice?: number;
+    maxPrice?: number;
+    rateCount?: number;
+    page? : number
   };
 };

@@ -51,13 +51,13 @@ export default function AddToWishlist({ productId }: Props) {
     }
   }, [status]);
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-40 absolute -top-12 left-2">
-        <div className="animate-spin rounded-full size-8 border-t-2 border-b-2 border-maroon-500"></div>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex justify-center items-center h-40 absolute -top-12 left-2">
+  //       <div className="animate-spin rounded-full size-8 border-t-2 border-b-2 border-maroon-500"></div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>
