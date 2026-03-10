@@ -1,5 +1,5 @@
 "use client";
-import { Spinner } from "@/components/ui/spinner";
+
 import {
   Table,
   TableBody,
@@ -16,12 +16,18 @@ import { useSearchParams } from "next/navigation";
 import { useDeleteOccasions } from "../_hooks/use-delete-occasions";
 import { useRouter } from "@/i18n/navigation";
 import PaginationWrapper from "@/components/ui/PaginationWrapper";
+import { useTranslations } from "next-intl";
+import OccasionsListSkeleton from "./occasions-list-skeleton";
+import { Spinner } from "@/components/ui/spinner";
 
 interface OccasionsListProps {
   search?: string;
 }
 
 export default function OccasionsList({ search = "" }: OccasionsListProps) {
+  //Translations
+  const t = useTranslations();
+
   // State
   const [selected, setSelected] = useState<string | null>(null);
   const [deleteedId, setDeletedId] = useState<string | null>(null);
@@ -39,16 +45,16 @@ export default function OccasionsList({ search = "" }: OccasionsListProps) {
 
   const router = useRouter();
 
-  if (isLoading) return <Spinner />;
-  if (error) return <div>Failed to load occasions</div>;
+  if (isLoading) return <OccasionsListSkeleton />;
+  if (error) return <div>{t("failed-to-load-occasions")}</div>;
 
   return (
     <>
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-24">Name</TableHead>
-            <TableHead className="text-center">Products</TableHead>
+            <TableHead className="w-24">{t("name")}</TableHead>
+            <TableHead className="text-center">{t("products")}</TableHead>
             <TableHead className="text-right"></TableHead>
           </TableRow>
         </TableHeader>
@@ -87,7 +93,7 @@ export default function OccasionsList({ search = "" }: OccasionsListProps) {
                   ) : (
                     <>
                       <Trash2 size={14} />
-                      Delete
+                      {t("delete")}
                     </>
                   )}
                 </span>

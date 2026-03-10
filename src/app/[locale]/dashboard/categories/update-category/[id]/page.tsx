@@ -1,6 +1,6 @@
 import { getCategory } from "@/lib/services/single-category.service";
 import UpdateCategoryForm from "../_components/update-category-form";
-import SetBreadcrumb from "../../../_components/breadCrumb/set-breadcrumb";
+import SetBreadcrumb from "../../../_components/bread-crumb/set-breadcrumb";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const category = await getCategory(params.id);

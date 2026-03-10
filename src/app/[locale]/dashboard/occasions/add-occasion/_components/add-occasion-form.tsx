@@ -24,8 +24,10 @@ import { Asterisk } from "lucide-react";
 export default function AddOccasionForm() {
   // Translations
   const t = useTranslations();
+
   // Mutations
   const { mutate, isPending, error } = useAddOccasion();
+
   //Form
   const form = useForm<AddOccasionSchemaType>({
     defaultValues: {
@@ -46,6 +48,7 @@ export default function AddOccasionForm() {
       onSuccess: () => form.reset(),
     });
   };
+
   return (
     <FormProvider {...form}>
       <form

@@ -296,5 +296,11 @@
   "last-week": "Last Week",
   "daily": "daily",
   "name-lable": "name",
-  "update-occasion": "Update Occasion"
+  "update-occasion": "Update Occasion",
+  "all-occasions": "All Occasions",
+  "add-new-occasion": "Add New Occasion",
+  "failed-to-load-occasions": "Failed to load occasions",
+  "name": "Name",
+  "products": "Products",
+  "delete": "Delete"
 }
