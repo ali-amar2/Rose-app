@@ -11,6 +11,7 @@ import { useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils/tailwind-merge";
 import Image from "next/image";
+import Loading from "@/app/loading";
 
 const ITEMS_PER_LOAD = 5;
 
@@ -57,11 +58,6 @@ const CategoryFilter = forwardRef((props, ref) => {
       setVisibleCount(ITEMS_PER_LOAD);
     },
   }));
-
-  // Loading state
-  if (isLoading) {
-    return <p className="text-sm text-zinc-500">{t("loading-categories")}</p>;
-  }
 
   return (
     <div>

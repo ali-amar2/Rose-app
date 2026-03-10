@@ -6,6 +6,7 @@
   },
   "register": {
     "heading": "كُن جزءًا من عائلتنا!",
+    "login": "تسجيل الدخول",
     "fields": {
       "firstName": "الاسم الأول",
       "lastName": "الاسم الأخير",
@@ -134,6 +135,7 @@
     "title": "اكتشف معرضنا الرائع"
   },
   "login": {
+    "heading":"مرحبًا بعودتك!",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "email-placeholder": "user@example.com",

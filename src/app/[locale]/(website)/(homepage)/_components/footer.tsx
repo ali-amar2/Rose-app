@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../../../../public/images/logo1.svg";
+import logo from "@public/images/logo1.svg";
 import { ArrowRight } from "lucide-react";
 
 const footerItems = [

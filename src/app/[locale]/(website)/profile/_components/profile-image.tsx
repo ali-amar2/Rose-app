@@ -2,7 +2,7 @@
 import { CloudUpload } from "lucide-react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
-import photo from "../../../../../public/images/Photo.png";
+import photo from "../../../../../../public/images/Photo.png";
 import React, { useEffect, useRef, useState } from "react";
 import { useUploadPhoto } from "../_hooks/use-upload-photo";
 

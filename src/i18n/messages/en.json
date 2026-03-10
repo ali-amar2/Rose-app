@@ -6,6 +6,7 @@
   },
   "register": {
     "heading": "Become part of our family!",
+     "login": "Login",
     "fields": {
       "firstName": "First Name",
       "lastName": "Last Name",
@@ -134,6 +135,7 @@
     "title": "Check Out our Wonderful Gallery"
   },
   "login": {
+    "heading":"Welcome back!",
     "email": "Email",
     "password": "Password",
     "email-placeholder": "user@example.com",

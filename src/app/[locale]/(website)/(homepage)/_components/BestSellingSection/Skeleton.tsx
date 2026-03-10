@@ -1,6 +1,6 @@
-import { BestSellingCarousel } from "@/app/[locale]/(homepage)/_components/BestSellingSection/best-selling-carousel";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Suspense } from "react";
+import { BestSellingCarousel } from "./best-selling-carousel";
 
 <div className="w-full">
   <Suspense

@@ -67,7 +67,7 @@ export default function CarouselComponent() {
             </h2>
             <Button
               onClick={() => router.push("/products")}
-              className="w-fit bg-pink-50 text-rose-900 px-5 py-2 rounded-xl flex items-center"
+              className="w-fit bg-pink-50 text-rose-900 px-5 py-2 rounded-xl flex items-center hover:text-white"
             >
               Shop Now <ArrowRight />
             </Button>
@@ -115,7 +115,7 @@ export default function CarouselComponent() {
             <p className=" mb-8 ">Elegant gifts for every special moment.</p>
             <Button
               onClick={() => router.push("/products")}
-              className="w-fit bg-[#FDF0F0] text-rose-900 font-medium px-8 py-6 text-lg rounded-2xl"
+              className="w-fit bg-[#FDF0F0] text-rose-900 font-medium px-8 py-6 text-lg rounded-2xl hover:text-white"
             >
               I'm buying!
             </Button>

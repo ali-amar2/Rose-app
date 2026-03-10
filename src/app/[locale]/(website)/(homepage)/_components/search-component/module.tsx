@@ -4,12 +4,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { Search, Loader2, Star } from "lucide-react";
-// import InfiniteScroll from "react-infinite-scroll-component";
 import { getProducts } from "@/lib/services/products.service";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { getPersonalizedRecommendations } from "@/lib/services/personalized-rec.service";
 import { Product } from "@/lib/types/product";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useRouter } from "@/i18n/navigation";
 
 export default function SearchModule() {
   const router = useRouter();

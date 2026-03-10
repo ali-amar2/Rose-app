@@ -14,15 +14,14 @@ export default async function page({ searchParams }: ProductSearchParamsProps) {
         <Suspense
           fallback={
             <div className="grid grid-cols-3 gap-4">
-              <div className="h-24 bg-gray-200 rounded animate-pulse" />
-              <div className="h-24 bg-gray-200 rounded animate-pulse" />
-              <div className="h-24 bg-gray-200 rounded animate-pulse" />
+              <div className="h-68 bg-gray-200 rounded animate-pulse" />
+              <div className="h-68 bg-gray-200 rounded animate-pulse" />
+              <div className="h-68 bg-gray-200 rounded animate-pulse" />
             </div>
           }
         >
           <ProductList searchParams={searchParams} />
         </Suspense>
-
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ export default function About() {
   };
 
   return (
-    <section className="grid grid-cols-2 gap-4 px-7 py-20">
+    <section className="grid grid-cols-2 gap-4">
       {/* Images Section */}
       <div className="flex items-start gap-4">
         <div className="relative h-80 w-72 flex-shrink-0">

@@ -32,7 +32,7 @@ export default function ProductsSidebar() {
   };
 
   return (
-    <aside className="flex flex-col p-2 gap-4">
+    <aside className="flex flex-col p-2 gap-4 pt-0">
       <CategoryFilter ref={categoryRef} />
       <ProductFilters ref={occasionsRef} />
       <RatingFilter ref={ratingRef} />
