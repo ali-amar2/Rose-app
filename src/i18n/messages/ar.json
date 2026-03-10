@@ -308,8 +308,13 @@
   "monthly": "شهريا",
   "last-week": "الأسبوع الماضي",
   "daily": "يوميًا",
-  "no-revenue-data-available": "لا توجد بيانات الإيرادات المتاحة"
+  "no-revenue-data-available": "لا توجد بيانات الإيرادات المتاحة",
 
+  "name-lable": "الاسم",
+  "all-occasions": "جميع المناسبات",
+  "add-new-occasion": "أضف مناسبة جديدة",
+  "failed-to-load-occasions": "فشل تحميل المناسبات",
+  "name": "الاسم",
+  "products": "منتجات",
+  "delete": "حذف"
 }
-
-
