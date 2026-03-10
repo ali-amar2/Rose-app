@@ -1,11 +1,11 @@
 "use client";
 
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useCategories } from "@/hooks/use-categories";
-import { useState, useEffect } from "react";
 import CategoriesHeader from "./categories-header";
 import CategoriesTable from "./categories-table";
 import PaginationWrapper from "@/components/ui/PaginationWrapper";
+import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 
 export default function CategoriesPageContent() {
   // Navigation
@@ -13,11 +13,9 @@ export default function CategoriesPageContent() {
   const router = useRouter();
   const pathname = usePathname();
 
-  // States
-  const [search, setSearch] = useState("");
-
   // Constants
   const searchPage = Number(searchParams.get("page") || "1");
+  const search = searchParams.get("search") || "";
 
   // Queries
   const { data, isLoading } = useCategories({
@@ -26,20 +24,21 @@ export default function CategoriesPageContent() {
     limit: 10,
   });
 
-  // Reset page when search changes
-  useEffect(() => {
+  const handleSearchChange = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
-
+    if (value) {
+      params.set("search", value);
+    } else {
+      params.delete("search");
+    }
     params.delete("page");
-
     const newUrl = params.toString() ? `${pathname}?${params}` : pathname;
-
     router.replace(newUrl);
-  }, [search]);
+  };
 
   return (
     <>
-      <CategoriesHeader search={search} onSearchChange={setSearch} />
+      <CategoriesHeader search={search} onSearchChange={handleSearchChange} />
 
       <CategoriesTable
         categories={data?.categories || []}

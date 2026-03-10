@@ -2,9 +2,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteCategoryAction } from "@/lib/actions/delete-category.action";
 import { useToast } from "@/hooks/use-toast";
+import { ActionCategoryResponse } from "@/lib/types/category";
 
 export function useDeleteCategory() {
+  // React Query client
   const queryClient = useQueryClient();
+  // Toast
   const { toast } = useToast();
 
   return useMutation({
@@ -12,20 +15,19 @@ export function useDeleteCategory() {
       const res = await deleteCategoryAction(id);
       return res;
     },
-    onSuccess: (data: {
-      success: boolean;
-      message: string;
-      document?: any;
-    }) => {
-      toast({
-        description: data.message,
-      });
-      if (data.success) {
+    onSuccess: (data: ActionCategoryResponse) => {
+      const success = !!data.document;
+
+      if (success) {
         queryClient.invalidateQueries({ queryKey: ["categories"] });
-        toast({
-          description: "Category has been deleted successfully",
-        });
       }
+
+      toast({
+        description: success
+          ? "Category has been deleted successfully"
+          : data.message,
+        variant: success ? "success" : "destructive",
+      });
     },
   });
 }

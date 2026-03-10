@@ -5,6 +5,7 @@ import { Category } from "@/lib/types/category";
 import { Pencil, Trash2 } from "lucide-react";
 import { useDeleteCategory } from "../../_hooks/use-delete.category";
 import { useTranslations } from "next-intl";
+import CategoriesTableSkeleton from "./CategoriesTableSkeleton";
 
 type Props = {
   categories: Category[];
@@ -14,13 +15,15 @@ type Props = {
 export default function CategoriesTable({ categories, isLoading }: Props) {
   // translations
   const t = useTranslations("dashboard.categories");
+
   // Navigation
   const router = useRouter();
+
   // Queries
   const { mutate: deleteCategory } = useDeleteCategory();
 
   if (isLoading) {
-    return <div className="py-10 text-center">{t("loading")}</div>;
+    return <CategoriesTableSkeleton />;
   }
 
   if (!categories.length) {

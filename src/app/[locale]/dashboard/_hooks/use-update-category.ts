@@ -3,11 +3,15 @@
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "@/i18n/navigation";
 import { updateCategoryAction } from "@/lib/actions/update-category.action";
+import { ActionCategoryResponse } from "@/lib/types/category";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export function useUpdateCategory() {
-  const queryClient = useQueryClient();
+  // Navigation
   const router = useRouter();
+  // React Query client
+  const queryClient = useQueryClient();
+  // Toast
   const { toast } = useToast();
 
   return useMutation({
@@ -15,23 +19,28 @@ export function useUpdateCategory() {
       return await updateCategoryAction(data.id, data.name);
     },
 
-    onSuccess: (data: {
-      success: boolean;
-      message: string;
-      document?: any;
-    }) => {
-      toast({
-        description: data.message,
-      });
-      setTimeout(() => {
-        router.push("/dashboard/categories");
-      }, 2000);
-      if (data.success) {
+    onSuccess: (data: ActionCategoryResponse) => {
+      const success = !!data.document;
+
+      if (success) {
         queryClient.invalidateQueries({ queryKey: ["categories"] });
+      }
+
+      toast({
+        description: success
+          ? "Category has been updated successfully"
+          : data.message,
+        variant: success ? "success" : "destructive",
+      });
+
+      if (success) {
+        setTimeout(() => {
+          router.push("/dashboard/categories");
+        }, 2000);
       }
     },
 
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast({
         title: "Error",
         description:

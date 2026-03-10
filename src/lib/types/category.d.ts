@@ -16,7 +16,7 @@ export interface CategoriesResponse {
   categories: Category[];
 }
 
-export type DeleteCategoryResponse = {
+export type ActionCategoryResponse = {
   message: string;
   document?: {
     _id: string;
