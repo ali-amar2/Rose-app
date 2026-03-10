@@ -2,22 +2,22 @@
 
 import { useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import { useBreadcrumb } from "./breadcrumb-context";
 
-type Props = {
-  customLast?: string;
-};
-
-export default function DashboardBreadcrumb({ customLast }: Props) {
-  //Locale
+export default function DashboardBreadcrumb() {
+  // Translation
   const locale = useLocale();
-  // Hooks
+  // Navigation
   const pathname = usePathname();
-  // Constants
+  // Context
+  const { customLast } = useBreadcrumb();
+  // Variables
   let segments = pathname.split("/").filter(Boolean);
-
   if (segments[0] === locale) segments = segments.slice(1);
-
-  // Function to format any segment into Capitalized Words
+  if (customLast) {
+    segments = segments.slice(0, -1);
+  }
+  // Functions
   const formatSegment = (segment: string) => {
     return segment
       .split("-")
@@ -26,17 +26,17 @@ export default function DashboardBreadcrumb({ customLast }: Props) {
   };
 
   return (
-    <div className="flex items-center gap-2 p-5 border border-zinc-100">
+    <div className="flex items-center gap-2 p-5 border capitalize border-zinc-100">
       {segments.map((segment, index) => {
-        const href = `/${locale}/` + segments.slice(0, index + 1).join("/");
+        const href = "/" + segments.slice(0, index + 1).join("/");
         const isLast = index === segments.length - 1;
 
         return (
           <span key={href} className="flex items-center gap-2">
-            {isLast ? (
-              <span className="text-maroon-600">
-                {customLast ?? formatSegment(segment)}
-              </span>
+            {isLast && customLast ? (
+              <span className="text-maroon-600">{customLast}</span>
+            ) : isLast ? (
+              <span className="text-maroon-600">{formatSegment(segment)}</span>
             ) : (
               <>
                 <Link

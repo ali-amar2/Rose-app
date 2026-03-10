@@ -217,7 +217,7 @@
   "save-changes": "Save Changes",
   "your-account-deleted": "Your Account Deleted",
   "your-profile-updated": "Your profile has been updated successfully",
-  "orders": {
+    "orders": {
     "title": "Orders",
     "paid": "Paid",
     "order-number": "Order",
@@ -271,6 +271,23 @@
       "categories": "Categories",
       "occasions": "Occasions",
       "products": "Products"
+    },
+    "categories": {
+      "all": "All Categories",
+      "add": "Add a New Category",
+      "searchPlaceholder": "Search...",
+      "name": "Name",
+      "products": "Products",
+      "edit": "Edit",
+      "delete": "Delete",
+      "noCategories": "No categories found",
+      "loading": "Loading...",
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter category name",
+      "imageLabel": "Category Image",
+      "submitButton": "Create Category",
+      "viewImage": "View category image",
+      "update": "Update Category"
     }
   },
   "no-revenue-data-available": "No revenue data available",

@@ -283,12 +283,33 @@
         "categories": "التصنيفات",
         "occasions": "المناسبات",
         "products": "المنتجات"
-      }
+      },
+      "products": "المنتجات"
+    },
+    "categories": {
+      "all": "جميع التصنيفات",
+      "add": "إضافة تصنيف جديد",
+      "searchPlaceholder": "بحث...",
+      "name": "الاسم",
+      "products": "المنتجات",
+      "edit": "تعديل",
+      "delete": "حذف",
+      "noCategories": "لا توجد تصنيفات",
+      "loading": "جاري التحميل...",
+      "nameLabel": "اسم التصنيف",
+      "namePlaceholder": "أدخل اسم التصنيف",
+      "imageLabel": "صورة التصنيف",
+      "submitButton": "إنشاء تصنيف",
+      "viewImage": "عرض صورة التصنيف",
+      "update": "تحديث التصنيف"
     }
   },
-  "no-revenue-data-available": "لا توجد بيانات الإيرادات المتاحة",
   "revenue": "ربح",
   "monthly": "شهريا",
   "last-week": "الأسبوع الماضي",
-  "daily": "يوميًا"
+  "daily": "يوميًا",
+  "no-revenue-data-available": "لا توجد بيانات الإيرادات المتاحة"
+
 }
+
+

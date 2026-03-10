@@ -23,20 +23,22 @@ export default function UserAvatar({ user }: UserAvatarProps) {
 
   if (user?.photo && user.photo.trim() !== "") {
     return (
-      <Image
-        src={user.photo}
-        alt={`${user.firstName} ${user.lastName} Avatar`}
-        width={50}
-        height={50}
-        className="flex rounded-full object-cover items-center justify-center w-11 h-11"
-      />
+      <div className="w-9 h-9 rounded-full object-cover">
+        <Image
+          src={user.photo}
+          alt={`${user.firstName} ${user.lastName} Avatar`}
+          width={50}
+          height={50}
+          className="w-full rounded-full"
+        />
+      </div>
     );
   }
 
   return (
     <div
       className={cn(
-        "flex items-center justify-center rounded-full w-10 h-10 text-white font-semibold",
+        "flex items-center justify-center rounded-full w-9 h-9 text-white font-semibold",
         bgColor
       )}
     >

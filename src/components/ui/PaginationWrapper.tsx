@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils/tailwind-merge";
 // Types
 interface PaginationProps {
   totalPages: number;
-  searchParams?: { page?: string };
+  searchParams?: { page?: string; search?: string };
   rtl?: boolean;
   className?: string;
 }
