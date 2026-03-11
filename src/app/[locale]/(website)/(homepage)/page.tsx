@@ -5,7 +5,6 @@ import BestSellingSection from "./_components/BestSellingSection";
 import MostPopularSection from "./_components/MostPopularSection";
 import SpecificationsComponent from "./_components/specifications-component";
 import { Testimonials } from "./_components/Testimonials";
-import { ProductImage } from "@/components/shared/product-image";
 import About from "./_components/about";
 import Gallery from "./_components/gallery";
 import Companies from "./_components/companies";
