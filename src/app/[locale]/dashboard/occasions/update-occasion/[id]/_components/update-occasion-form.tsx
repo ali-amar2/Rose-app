@@ -56,7 +56,7 @@ export default function UpdateOccasionForm({
     <FormProvider {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-[47rem] pt-6 pb-9 mt-12 ms-6 "
+        className="w-[47rem] pt-6 pb-9 mt-2 ms-6 "
       >
         {/* Name */}
         <FormField
