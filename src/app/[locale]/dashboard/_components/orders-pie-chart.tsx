@@ -89,7 +89,8 @@ export function OrdersPieChart({ status }: OrdersPieChartProps) {
               data={chartData}
               dataKey="value"
               nameKey="label"
-              innerRadius={45}
+              innerRadius={40}
+              outerRadius={90}
               label={StatusPercentage}
               labelLine={false}
             />

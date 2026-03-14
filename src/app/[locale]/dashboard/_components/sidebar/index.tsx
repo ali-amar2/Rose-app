@@ -12,7 +12,6 @@ import { Link } from "@/i18n/navigation";
 export default function DashboardSidebar() {
   // Translations
   const t = useTranslations("dashboard.sidebar");
-
   //Queries
   const { user } = useCurrentUser();
 
@@ -37,7 +36,7 @@ export default function DashboardSidebar() {
         <SidebarLinks />
       </div>
       <div className="flex gap-2 justify-center items-center">
-        <div className="w-11 h-11 rounded-full">
+        <div className="w-11 h-11 rounded-full flex items-center justify-center ">
           <UserAvatar user={user} />
         </div>
         <div className="flex flex-col text-sm">
