@@ -82,6 +82,7 @@
   "password-contain-lowercase-letter": "Password must contain at least one lowercase letter",
   "password-contain-one-number": "Password must contain at least one number",
   "passwords-do-not-match": "Passwords do not match",
+    "products": "products",
   "product": {
     "currency": "EGP",
     "badge": {
@@ -200,7 +201,9 @@
     "reset": "Reset"
   },
   "reset-all": "Reset All",
-  "old-password-label": "Old Password",
+  "error": "error",
+  "product.products": "" ,
+  "old-password-label" : "Old Password",
   "new-password-label": "New Password",
   "confirm-new-password-label": "Confirm New Password",
   "change-password": "Change Password",

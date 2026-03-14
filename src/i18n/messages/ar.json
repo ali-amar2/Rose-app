@@ -82,6 +82,7 @@
   "password-contain-lowercase-letter": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
   "password-contain-one-number": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
   "passwords-do-not-match": "كلمات المرور غير متطابقة",
+  "products": "منتجات",
   "product": {
     "currency": "ج.م",
     "badge": {
@@ -200,7 +201,9 @@
     "reset": "إعادة"
   },
   "reset-all": "مسح جميع الفلاتر",
-  "old-password-label": "كلمة المرور القديمة\n",
+  "error": "خطأ",
+  "product.products": "" ,
+  "old-password-label" : "كلمة المرور القديمة",
   "new-password-label": "كلمة المرور الجديدة",
   "confirm-new-password-label": "تأكيد كلمة المرور القديمة",
   "change-password": "تغيير كلمة المرور",
