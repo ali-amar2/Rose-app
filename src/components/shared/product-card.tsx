@@ -3,8 +3,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import Rating from "@/components/ui/rating";
 import ProductBadge from "./product-badge";
 import { useTranslations } from "next-intl";
+import AddToWishlist from "./add-to-wishlist";
 import AddToCartButton from "./add-to-cart-button";
 import { ShoppingCart } from "lucide-react";
+import { ProductCardProps } from "@/lib/types/product";
 
 export default function ProductCard({
   id,
@@ -32,6 +34,7 @@ export default function ProductCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <ProductBadge quantity={quantity} sold={sold} />
+          <AddToWishlist productId={id || ""} />
         </div>
 
         <div className="flex flex-col space-y-1 mt-2">

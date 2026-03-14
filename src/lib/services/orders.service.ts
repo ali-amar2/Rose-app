@@ -4,6 +4,8 @@ export async function getOrders() {
   try {
     const token = await getToken();
     const accessToken = token?.accesstoken;
+    console.log(accessToken);
+    console.log(process.env.API);
 
     if (!accessToken) {
       throw new Error("Unauthorized");

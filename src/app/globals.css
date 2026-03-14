@@ -24,6 +24,14 @@
   scrollbar-width: none;
 }
 
+.rounded-shape-main {
+  border-radius: 50px 120px 120px 120px;
+}
+
+.rounded-shape-alt {
+  border-radius: 3rem 6rem 6rem 3rem;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
