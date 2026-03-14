@@ -14,6 +14,7 @@ const config: Config = {
         "68": "17rem",
       },
       width: {
+        "185": "50rem",
         "175": "43.75rem",
         "100": "25.375rem",
       },
@@ -47,7 +48,6 @@ const config: Config = {
           "900": "#99102c",
           "950": "#590414",
         },
-        alertColor: "#2E2E30",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
