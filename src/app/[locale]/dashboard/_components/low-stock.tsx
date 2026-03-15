@@ -1,41 +1,27 @@
-"use client";
-
-import { useGetStatistics } from "../_hooks/useGetProductsStatistics";
+import { Suspense } from "react";
+import { getTranslations } from "next-intl/server";
+import { getLowStockProducts } from "../_services/products-statistics.service";
 import { LowStockList } from "./low-stock-list";
-import { LowStockProduct } from "@/lib/types/dashboard/product";
+import { LowStockSkeleton } from "./low-stock-skeleton";
 
-// component
-export default function LowStock() {
-  // custom hook
-  const { statistics, isLoading } = useGetStatistics();
+async function LowStockContent() {
+  const products = await getLowStockProducts();
+  return <LowStockList products={products} />;
+}
 
-  // Flatten All Products
-  const allProducts: LowStockProduct[] = (
-    statistics?.products.productsByCategory ?? []
-  ).flatMap((cat) =>
-    cat.products.map((p: LowStockProduct) => ({
-      _id: p.title,
-      title: p.title,
-      imgCover: p.imgCover,
-      price: p.price,
-      quantity: Math.max(0, p.quantity),
-    }))
-  );
-
-  // Sort ascending
-  const sorted = allProducts.sort((a, b) => a.quantity - b.quantity);
+export default async function LowStock() {
+  // translations
+  const t = await getTranslations();
 
   return (
     <div className="w-[33.5rem] min-h-[28rem] rounded-2xl p-6 bg-white flex flex-col gap-6 shadow-lg">
       <h2 className="text-2xl font-semibold text-zinc-800">
-        Low Stock Products
+        {t("low-stock.title")}
       </h2>
       {/* loading */}
-      {isLoading ? (
-        <p className="text-sm text-zinc-400">Loading...</p>
-      ) : (
-        <LowStockList products={sorted} />
-      )}
+      <Suspense fallback={<LowStockSkeleton />}>
+        <LowStockContent />
+      </Suspense>
     </div>
   );
 }

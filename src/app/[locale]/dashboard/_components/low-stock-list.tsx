@@ -1,8 +1,10 @@
 "use client";
 
 import { LowStockProduct } from "@/lib/types/dashboard/product";
+import { cn } from "@/lib/utils/tailwind-merge";
+import { useTranslations } from "next-intl";
 
-// utils
+// whether the quantity is less than 5
 const getQuantityClass = (quantity: number) =>
   quantity < 5 ? "text-red-600" : "text-zinc-800";
 
@@ -13,9 +15,10 @@ type LowStockListProps = {
 
 // component
 export function LowStockList({ products }: LowStockListProps) {
-  // render
+  // translations
+  const t = useTranslations();
+
   return (
-    // List
     <div className="flex flex-col max-h-[21.7rem] gap-2.5 overflow-y-auto hide-scrollbar w-full">
       {products.map((product) => (
         <div
@@ -29,11 +32,14 @@ export function LowStockList({ products }: LowStockListProps) {
               : product.title}
           </span>
 
-          {/* Quantit */}
+          {/* Quantity */}
           <span
-            className={`text-sm font-medium shrink-0 ${getQuantityClass(product.quantity)}`}
+            className={cn(
+              "text-sm font-medium shrink-0",
+              getQuantityClass(product.quantity)
+            )}
           >
-            {product.quantity} Products
+            {product.quantity} {t("low-stock.unit")}
           </span>
         </div>
       ))}

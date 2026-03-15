@@ -158,5 +158,13 @@
   "photo-extentions": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.",
   "save-changes": "Save Changes",
   "your-account-deleted": "Your Account Deleted",
-  "your-profile-updated": "Your profile has been updated successfully"
+  "your-profile-updated": "Your profile has been updated successfully",
+  "low-stock": {
+    "title": "Low Stock Products",
+    "unit": "Products"
+  },
+  "top-selling": {
+    "title": "Top Selling Products",
+    "unit": "Sales"
+  }
 }

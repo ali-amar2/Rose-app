@@ -1,43 +1,26 @@
-"use client";
-
-import { useGetStatistics } from "../_hooks/useGetProductsStatistics";
+import { Suspense } from "react";
+import { getTranslations } from "next-intl/server";
+import { getTopSellingProducts } from "../_services/products-statistics.service";
 import { TopSellingList } from "./top-selling-list";
-import { TopSellingProduct } from "@/lib/types/dashboard/product";
+import { TopSellingSkeleton } from "./top-selling-skeleton";
 
-// component
-export default function TopSelling() {
-  // custom hook
-  const { statistics, isLoading } = useGetStatistics();
+async function TopSellingContent() {
+  const products = await getTopSellingProducts();
+  return <TopSellingList products={products} />;
+}
 
-  // Flatten All Product
-  const allProducts: TopSellingProduct[] = (
-    statistics?.products.productsByCategory ?? []
-  ).flatMap((cat) =>
-    cat.products.map((p: TopSellingProduct) => ({
-      _id: p.title,
-      title: p.title,
-      imgCover: p.imgCover,
-      price: p.price,
-      sold: p.sold,
-    }))
-  );
+export default async function TopSelling() {
+  // translations
+  const t = await getTranslations();
 
-  // Sort descending by sold
-  const sorted = allProducts.sort((a, b) => b.sold - a.sold);
-
-  // render
   return (
     <div className="w-[33.5rem] min-h-[28rem] rounded-2xl p-6 bg-white flex flex-col gap-6 shadow-lg">
       <h2 className="text-2xl font-semibold text-zinc-800">
-        Top Selling Products
+        {t("top-selling.title")}
       </h2>
-
-      {/* loading */}
-      {isLoading ? (
-        <p className="text-sm text-zinc-400">Loading...</p>
-      ) : (
-        <TopSellingList products={sorted} />
-      )}
+      <Suspense fallback={<TopSellingSkeleton />}>
+        <TopSellingContent />
+      </Suspense>
     </div>
   );
 }
