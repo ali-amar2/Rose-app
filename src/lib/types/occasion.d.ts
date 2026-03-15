@@ -12,7 +12,6 @@ declare type Occasion = {
 export type MostPopularTabsProps = {
   occasions: Occasion[];
   activeOccasion: string;
-
 };
 
 export type OccProps = {
@@ -20,7 +19,6 @@ export type OccProps = {
     occasion?: string;
   };
 };
-
 
 export type Occasion = {
   _id: string;
@@ -39,4 +37,14 @@ export type OccasionsResponse = {
     totalItems: number;
   };
   occasions: Occasion[];
+};
+
+export type DeleteOccasionResponse = {
+  message: string;
+  document: Occasion;
+};
+
+export type GetOccasionResponse = {
+  message: string;
+  occasion: Occasion;
 };

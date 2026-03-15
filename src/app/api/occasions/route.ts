@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(req: Request) {
   try {
-    const res = await fetch(`${process.env.API}/occasions`, {
+    const { searchParams } = new URL(req.url);
+    const queryString = searchParams.toString();
+    const url = `${process.env.API}/occasions${queryString ? `?${queryString}` : ""}`;
+
+    const res = await fetch(url, {
       method: "GET",
       next: { revalidate: 3600 },
     });
@@ -16,10 +20,9 @@ export async function GET() {
 
     const data = await res.json();
     return NextResponse.json(data);
-  } catch (error) {
-    return NextResponse.json(
-      { error: "Internal Server Error" },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error ? error.message : "Internal Server Error";
+    return NextResponse.json({ message }, { status: 500 });
   }
 }
