@@ -222,6 +222,14 @@
   "save-changes": "حفظ التغييرات",
   "your-account-deleted": "تم حذف حسابك",
   "your-profile-updated": "تم تحديث الملف الخاص بك بنجاح",
+  "low-stock": {
+    "title": "منتجات على وشك النفاد",
+    "unit": "قطعة"
+  },
+  "top-selling": {
+    "title": "الأكثر مبيعاً",
+    "unit": "مبيعات"
+  }
   "orders": {
     "title": "الطلبات",
     "paid": "مدفوع",

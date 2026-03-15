@@ -1,15 +1,23 @@
+
 import OrdersStatus from "./_components/orders-status";
 import Revenue from "./_components/revenue";
 import DashboardStats from "./_components/statistics";
+import TopSelling from "./_components/top-selling";
+import LowStock from "./_components/low-stock";
 
 export default function page() {
   return (
-    <div className="flex flex-col items-center p-2">
+    <div className="">
+      <div className="flex flex-col items-center p-2">
         <DashboardStats/>
-      {/* Dashboard Overview Second Section */}
-      <div className="flex w-full">
-        <OrdersStatus />
-        <Revenue />
+        <div className ="flex items-center mt-2 gap-6">
+          <OrdersStatus />
+          <Revenue />
+        </div>
+      </div>
+      <div className="flex items-center gap-6 justify-center pb-3">
+        <TopSelling></TopSelling>
+        <LowStock></LowStock>
       </div>
     </div>
   );
