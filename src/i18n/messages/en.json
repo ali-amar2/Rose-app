@@ -214,6 +214,31 @@
       "categories": "Categories",
       "occasions": "Occasions",
       "products": "Products"
+    },
+    "products": {
+      "title": "All Products",
+      "add-product": "Add a new product",
+      "search-placeholder": "Search...",
+      "table": {
+        "name": "Name",
+        "price": "Price",
+        "stock": "Stock",
+        "sales": "Sales",
+        "ratings": "Ratings"
+      },
+      "actions": {
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "states": {
+        "loading-error": "Failed to load products.",
+        "empty": "No products found."
+      },
+      "delete-modal": {
+        "title": "Are you sure you want to delete this product?",
+        "cancel": "Cancel",
+        "confirm": "Confirm"
+      }
     }
   }
 }

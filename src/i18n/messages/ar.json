@@ -202,8 +202,10 @@
       "done": "مكتمل",
       "cancelled": "ملغي"
     },
-    "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات",
-    "dashboard": {
+    "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات"
+
+  },
+      "dashboard": {
       "sidebar": {
         "preview-website": "معاينة الموقع",
         "account": "الحساب",
@@ -212,7 +214,31 @@
         "categories": "التصنيفات",
         "occasions": "المناسبات",
         "products": "المنتجات"
+      },
+      "products": {
+        "title": "كل المنتجات",
+        "add-product": "إضافة منتج جديد",
+        "search-placeholder": "بحث...",
+        "table": {
+          "name": "الاسم",
+          "price": "السعر",
+          "stock": "المخزون",
+          "sales": "المبيعات",
+          "ratings": "التقييمات"
+        },
+        "actions": {
+          "edit": "تعديل",
+          "delete": "حذف"
+        },
+        "states": {
+          "loading-error": "فشل تحميل المنتجات.",
+          "empty": "لا توجد منتجات."
+        },
+        "delete-modal": {
+          "title": "هل أنت متأكد أنك تريد حذف هذا المنتج؟",
+          "cancel": "إلغاء",
+          "confirm": "تأكيد"
+        }
       }
     }
-  }
 }

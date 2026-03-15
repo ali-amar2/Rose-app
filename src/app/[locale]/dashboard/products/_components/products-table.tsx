@@ -1,17 +1,18 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { Plus, Search, Edit, Trash2, Loader2, Star } from "lucide-react";
+import { useState, useCallback } from "react";
+import { useRouter, usePathname } from "@/i18n/navigation";
+import { useSearchParams } from "next/navigation";
+import { Plus, Search, Edit, Trash2 } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { DeleteConfirmation } from "@/components/ui/delete-confirm";
 import PaginationWrapper from "@/components/ui/paginationWrapper";
-import BreadCrumb from "@/app/[locale]/dashboard/_components/bread-crumb";
 import { useGetProducts } from "../../_hooks/useGetProducts";
 import { useDeleteProduct } from "../../_hooks/useDeleteProduct";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useFormatter, useTranslations } from "next-intl";
 import {
   Table,
   TableBody,
@@ -19,8 +20,48 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
+
 // constants
-const tableHeaders = ["Name", "Price", "Stock", "Sales", "Ratings"];
+const SKELETON_ROWS = 8;
+
+// Skeleton row
+function TableSkeleton() {
+  return (
+    <>
+      {Array.from({ length: SKELETON_ROWS }).map((_, i) => (
+        <TableRow key={i} style={{ height: "60px" }}>
+          {/* Name */}
+          <TableCell className="pl-5">
+            <div className="h-4 w-40 rounded bg-gray-200 animate-pulse" />
+          </TableCell>
+          {/* Price */}
+          <TableCell>
+            <div className="h-4 w-20 rounded bg-gray-200 animate-pulse" />
+          </TableCell>
+          {/* Stock */}
+          <TableCell>
+            <div className="h-4 w-12 rounded bg-gray-200 animate-pulse" />
+          </TableCell>
+          {/* Sales */}
+          <TableCell>
+            <div className="h-4 w-12 rounded bg-gray-200 animate-pulse" />
+          </TableCell>
+          {/* Ratings */}
+          <TableCell>
+            <div className="h-4 w-20 rounded bg-gray-200 animate-pulse" />
+          </TableCell>
+          {/* Actions */}
+          <TableCell className="pr-5">
+            <div className="flex gap-3 justify-end">
+              <div className="h-7 w-14 rounded-md bg-blue-100 animate-pulse" />
+              <div className="h-7 w-14 rounded-md bg-red-100 animate-pulse" />
+            </div>
+          </TableCell>
+        </TableRow>
+      ))}
+    </>
+  );
+}
 
 // Component
 export default function ProductsTable() {
@@ -28,25 +69,52 @@ export default function ProductsTable() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const format = useFormatter();
+  const t = useTranslations("dashboard.products");
 
-  // State
+  // Derived
+  const tableHeaders = [
+    t("table.name"),
+    t("table.price"),
+    t("table.stock"),
+    t("table.sales"),
+    t("table.ratings"),
+  ];
+
+  // Derived from URL
   const page = Math.max(1, Number(searchParams.get("page")) || 1);
-  const [search, setSearch] = useState("");
+  const search = searchParams.get("search") ?? "";
+
+  // Local state only for the controlled input
+  const [searchInput, setSearchInput] = useState(search);
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
 
   // Queries
-  const { data, isLoading, isError } = useGetProducts(page);
+  const { data, isLoading, isError } = useGetProducts(page, 12, search);
   const { mutate: deleteProduct, isPending: isDeleting } =
     useDeleteProduct(page);
 
   // Derived
   const products = data?.products ?? [];
   const metadata = data?.metadata;
-  const filtered = products.filter((p) =>
-    p.title.toLowerCase().includes(search.toLowerCase())
-  );
 
   // Handlers
+  const handleSearch = useCallback(
+    (value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (value) {
+        params.set("search", value);
+      } else {
+        params.delete("search");
+      }
+      // Reset to page 1 on new search
+      params.delete("page");
+      router.push(`${pathname}?${params.toString()}`);
+    },
+    [pathname, router, searchParams]
+  );
+
+  // Confirm delete
   function handleConfirmDelete() {
     if (!pendingDeleteId) return;
     deleteProduct(pendingDeleteId, {
@@ -59,29 +127,33 @@ export default function ProductsTable() {
     <div className="flex flex-col gap-6 p-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-zinc-800 font-semibold text-2xl">All Products</h1>
+        <h1 className="text-zinc-800 font-semibold text-2xl">{t("title")}</h1>
 
         <Button
-          variant={"default"}
+          variant="default"
           onClick={() => router.push(`${pathname}/add`)}
           className="p-2.5"
         >
           <Plus size={16} />
-          Add a new product
+          {t("add-product")}
         </Button>
       </div>
 
-      {/* Search */}
-      <div className="relative w-full ">
+      {/* Search input*/}
+      <div className="relative w-full">
         <Search
           className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
           size={18}
         />
         <Input
-          placeholder="Search..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className=" pl-11 pr-4"
+          placeholder={t("search-placeholder")}
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleSearch(searchInput);
+          }}
+          onBlur={() => handleSearch(searchInput)}
+          className="pl-11 pr-4"
         />
       </div>
 
@@ -92,44 +164,33 @@ export default function ProductsTable() {
           {tableHeaders.map((header, index) => (
             <TableHead
               key={index}
-              className={cn(`${index === 0 ? "pl-5" : ""} text-black `)}
+              className={cn(`${index === 0 ? "pl-5" : ""} text-black`)}
             >
               {header}
             </TableHead>
           ))}
 
           <TableBody>
-            {/* Loading */}
-            {isLoading && (
-              <TableRow>
-                <TableCell colSpan={6}>
-                  <div className="flex items-center justify-center py-20">
-                    <Loader2
-                      className="animate-spin text-maroon-600"
-                      size={28}
-                    />
-                  </div>
-                </TableCell>
-              </TableRow>
-            )}
+            {/* Skeleton loading */}
+            {isLoading && <TableSkeleton />}
 
             {/* Error */}
             {isError && (
               <TableRow>
                 <TableCell colSpan={6}>
                   <div className="flex items-center justify-center py-20 text-red-500 text-sm">
-                    Failed to load products.
+                    {t("states.loading-error")}
                   </div>
                 </TableCell>
               </TableRow>
             )}
 
             {/* Empty */}
-            {!isLoading && !isError && filtered.length === 0 && (
+            {!isLoading && !isError && products.length === 0 && (
               <TableRow>
                 <TableCell colSpan={6}>
                   <div className="flex items-center justify-center py-20 text-gray-400 text-sm">
-                    No products found.
+                    {t("states.empty")}
                   </div>
                 </TableCell>
               </TableRow>
@@ -138,7 +199,7 @@ export default function ProductsTable() {
             {/* Rows */}
             {!isLoading &&
               !isError &&
-              filtered.map((product) => {
+              products.map((product) => {
                 const isOutOfStock = product.quantity <= 0;
                 const isLowStock =
                   product.quantity > 0 && product.quantity < 10;
@@ -155,10 +216,12 @@ export default function ProductsTable() {
                         : product.title}
                     </TableCell>
 
+                    {/* Currency formatted with next-intl */}
                     <TableCell className="text-gray-600">
-                      {product.price.toLocaleString()} EGP
+                      {format.number(product.price, "currency-full")}
                     </TableCell>
 
+                    {/* stock */}
                     <TableCell
                       className={cn(
                         "font-medium",
@@ -172,15 +235,17 @@ export default function ProductsTable() {
                       {product.quantity.toLocaleString()}
                     </TableCell>
 
+                    {/* sold */}
                     <TableCell className="text-gray-600">
                       {(product.sold ?? 0).toLocaleString()}
                     </TableCell>
 
+                    {/* rating */}
                     <TableCell>
                       <div className="flex items-center gap-1 text-gray-600">
                         <span className="font-semibold">
                           {(product.rateAvg ?? 0).toFixed(1)}/5
-                          <span className="text-gray-400 ">
+                          <span className="text-gray-400">
                             {" "}
                             ({product.rateCount ?? 0})
                           </span>
@@ -188,24 +253,26 @@ export default function ProductsTable() {
                       </div>
                     </TableCell>
 
+                    {/* Actions to edit */}
                     <TableCell className="pr-5">
                       <div className="flex items-center gap-3 justify-end">
                         <button
                           onClick={() =>
                             router.push(`${pathname}/${product._id}/edit`)
                           }
-                          className="flex items-center gap-1 text-xs font-medium text-blue-600  px-2 py-1.5 rounded-md bg-blue-100 transition-colors"
+                          className="flex items-center gap-1 text-xs font-medium text-blue-600 px-2 py-1.5 rounded-md bg-blue-100 transition-colors"
                         >
                           <Edit size={13} />
-                          Edit
+                          {t("actions.edit")}
                         </button>
 
+                        {/* Delete button */}
                         <button
                           onClick={() => setPendingDeleteId(product._id)}
                           className="flex items-center gap-1 text-xs font-medium text-red-500 px-2 py-1.5 rounded-md bg-red-100 transition-colors"
                         >
                           <Trash2 size={13} />
-                          Delete
+                          {t("actions.delete")}
                         </button>
                       </div>
                     </TableCell>
@@ -237,9 +304,9 @@ export default function ProductsTable() {
             onCancel={() => setPendingDeleteId(null)}
             onConfirm={handleConfirmDelete}
             translations={{
-              title: "Are you sure you want to delete this product?",
-              cancel: "Cancel",
-              confirm: "Confirm",
+              title: t("delete-modal.title"),
+              cancel: t("delete-modal.cancel"),
+              confirm: t("delete-modal.confirm"),
             }}
           />
         </DialogContent>
