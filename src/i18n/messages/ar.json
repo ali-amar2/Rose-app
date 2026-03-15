@@ -253,33 +253,9 @@
       "cancelled": "ملغي"
     },
     "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات"
+
   },
-  "dashboard": {
-    "sidebar": {
-      "preview-website": "معاينة الموقع",
-      "account": "الحساب",
-      "logout": "تسجيل الخروج",
-      "overview": "نظرة عامة",
-      "categories": "التصنيفات",
-      "occasions": "المناسبات",
-      "products": "المنتجات",
-      "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات"
-    },
-    "notFound": {
-      "title": "هذه الصفحه غير موجوده",
-      "description": " لم نتمكن من العثور على الصفحة التي تبحث عنها، يرجى التأكد من أنك في المسار الصحيح."
-    },
-    "error-handler": {
-      "title": "عفواً، حدث خطأ ما!",
-      "description": "حدث أمر غير متوقع، يرجى تحديث الصفحة أو المحاولة مرة أخرى بعد قليل."
-    },
-    "not-authorized": {
-      "title": "أنت غير مصرح لك بالوصول إلى هذه الصفحة.",
-      "description": "إذا كنت تعتقد أن هذا خطأ، فيرجى الاتصال بالدعم.",
-      "return-home": "العوده الي الصفحه الرئيسيه"
-    },
-    "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات",
-    "dashboard": {
+      "dashboard": {
       "sidebar": {
         "preview-website": "معاينة الموقع",
         "account": "الحساب",
@@ -289,93 +265,30 @@
         "occasions": "المناسبات",
         "products": "المنتجات"
       },
-      "products": "المنتجات"
-    },
-    "categories": {
-      "all": "جميع التصنيفات",
-      "add": "إضافة تصنيف جديد",
-      "searchPlaceholder": "بحث...",
-      "name": "الاسم",
-      "products": "المنتجات",
-      "edit": "تعديل",
-      "delete": "حذف",
-      "noCategories": "لا توجد تصنيفات",
-      "loading": "جاري التحميل...",
-      "nameLabel": "اسم التصنيف",
-      "namePlaceholder": "أدخل اسم التصنيف",
-      "imageLabel": "صورة التصنيف",
-      "submitButton": "إنشاء تصنيف",
-      "viewImage": "عرض صورة التصنيف",
-      "update": "تحديث التصنيف"
+      "products": {
+        "title": "كل المنتجات",
+        "add-product": "إضافة منتج جديد",
+        "search-placeholder": "بحث...",
+        "table": {
+          "name": "الاسم",
+          "price": "السعر",
+          "stock": "المخزون",
+          "sales": "المبيعات",
+          "ratings": "التقييمات"
+        },
+        "actions": {
+          "edit": "تعديل",
+          "delete": "حذف"
+        },
+        "states": {
+          "loading-error": "فشل تحميل المنتجات.",
+          "empty": "لا توجد منتجات."
+        },
+        "delete-modal": {
+          "title": "هل أنت متأكد أنك تريد حذف هذا المنتج؟",
+          "cancel": "إلغاء",
+          "confirm": "تأكيد"
+        }
+      }
     }
-  },
-  "create-product": {
-    "add-new-product": "إضافة منتج جديد",
-    "title": "اسم المنتج",
-    "title-placeholder": "أدخل اسم المنتج",
-    "title-required": "اسم المنتج مطلوب",
-    "description": "الوصف",
-    "description-placeholder": "أدخل وصف المنتج",
-    "description-required": "وصف المنتج مطلوب",
-    "price": "السعر",
-    "price-required": "من فضلك أدخل سعر صحيح",
-    "discount": "الخصم",
-    "price-after-discount": "السعر بعد الخصم",
-    "quantity": "الكمية",
-    "quantity-required": "كمية المنتج مطلوبة",
-    "product-cover": "صورة المنتج الرئيسية",
-    "product-cover-required": "صورة المنتج الرئيسية مطلوبة",
-    "product-gallery": "صور المنتج",
-    "product-gallery-required": "صور المنتج مطلوبة",
-    "category": "التصنيف",
-    "category-placeholder": "اختر خياراً",
-    "select-category": "من فضلك اختر تصنيفاً للمنتج",
-    "occasion": "المناسبة",
-    "occasion-placeholder": "اختر خياراً",
-    "select-occasion": "من فضلك اختر مناسبة للمنتج",
-    "add-product": "إضافة المنتج",
-    "on-success-title": "تمت إضافة المنتج بنجاح",
-    "on-success-description": "يمكنك رؤية المنتج الجديد في قائمة المنتجات",
-    "on-error-title": "فشلت إضافة المنتج",
-    "on-error-description": "حاول مرة أخرى"
-  },
-  "update-product": {
-    "update-product": "تحديث المنتج",
-    "title": "العنوان",
-    "title-placeholder": "أدخل عنوان المنتج",
-    "title-required": "عنوان المنتج مطلوب",
-    "description": "الوصف",
-    "description-placeholder": "أدخل وصف المنتج",
-    "description-required": "وصف المنتج مطلوب",
-    "price": "السعر",
-    "price-required": "يرجى إدخال سعر صحيح",
-    "discount": "الخصم",
-    "price-after-discount": "السعر بعد الخصم",
-    "quantity": "الكمية",
-    "quantity-required": "كمية المنتج مطلوبة",
-    "category": "التصنيف",
-    "category-placeholder": "اختر خياراً",
-    "select-category": "يرجى اختيار تصنيف للمنتج",
-    "occasion": "المناسبة",
-    "occasion-placeholder": "اختر خياراً",
-    "select-occasion": "يرجى اختيار مناسبة للمنتج",
-    "update-btn": "تحديث المنتج",
-    "on-success-title": "تم تحديث المنتج بنجاح",
-    "on-success-description": "يمكنك رؤية المنتج المحدث في قائمة المنتجات",
-    "on-error-title": "فشل تحديث المنتج",
-    "on-error-description": "حاول مرة أخرى"
-  },
-  "upload-file": "تحميل الملف",
-  "revenue": "ربح",
-  "monthly": "شهريا",
-  "last-week": "الأسبوع الماضي",
-  "daily": "يوميًا",
-  "no-revenue-data-available": "لا توجد بيانات الإيرادات المتاحة",
-  "name-lable": "الاسم",
-  "all-occasions": "جميع المناسبات",
-  "add-new-occasion": "أضف مناسبة جديدة",
-  "failed-to-load-occasions": "فشل تحميل المناسبات",
-  "name": "الاسم",
-  "products": "منتجات",
-  "delete": "حذف"
 }
