@@ -1,10 +1,6 @@
-import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
 import { Sarabun, Tajawal } from "next/font/google";
 import { setRequestLocale } from "next-intl/server";
-import Header from "./(homepage)/_components/header";
-import Footer from "./(homepage)/_components/footer";
 import { cn } from "@/lib/utils/tailwind-merge";
 
 const sarabun = Sarabun({
@@ -24,10 +20,12 @@ type LayoutProps = {
   params: { locale: string };
 };
 
+const locales = ["en", "ar"];
+
 export default function LocaleLayout({ children, params }: LayoutProps) {
   const { locale } = params;
 
-  if (!hasLocale(routing.locales, locale)) {
+  if (!locales.includes(locale)) {
     notFound();
   }
 
@@ -43,9 +41,7 @@ export default function LocaleLayout({ children, params }: LayoutProps) {
         "antialiased dark:bg-zinc-800 min-h-screen flex flex-col"
       )}
     >
-      <Header />
       {children}
-      <Footer />
     </div>
   );
 }
