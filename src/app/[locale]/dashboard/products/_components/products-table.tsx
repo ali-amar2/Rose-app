@@ -131,7 +131,7 @@ export default function ProductsTable() {
 
         <Button
           variant="default"
-          onClick={() => router.push(`${pathname}/add`)}
+          onClick={() => router.push(`${pathname}/create-product`)}
           className="p-2.5"
         >
           <Plus size={16} />
