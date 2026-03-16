@@ -1,9 +1,19 @@
 import React from "react";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, MoveRight } from "lucide-react";
 import PayMethod from "./pay-method";
 import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
+import { useCheckout } from "@/hooks/use-checkout";
 
-export default function PaymentMethod({ setStep }: CheckoutStep) {
+type PaymentMethodProps = CheckoutStep & CheckoutPayload;
+export default function PaymentMethod({
+  setStep,
+  street,
+  phone,
+  city,
+  lat,
+  long,
+}: PaymentMethodProps) {
   // translation
   const t = useTranslations("payment-method");
   // state
@@ -24,6 +34,18 @@ export default function PaymentMethod({ setStep }: CheckoutStep) {
       method: "credit",
     },
   ];
+
+  const { checkout } = useCheckout();
+
+  const handleCheckout = () => {
+    checkout({ street, phone, city, lat, long });
+    console.log('s' , selectedMethod)
+    console.log('1- ', street)
+    console.log('1- ', phone)
+    console.log('1- ', lat)
+    console.log('1- ', long)
+    console.log('1- ', city)
+  };
 
   return (
     <div>
@@ -68,6 +90,11 @@ export default function PaymentMethod({ setStep }: CheckoutStep) {
           </li>
         ))}
       </ul>
+      <div className="flex justify-end mt-6">
+        <Button className="w-40 font-semibold" onClick={handleCheckout}>
+          {t("checkout")} <MoveRight size={20} className="rtl:rotate-180" />
+        </Button>
+      </div>
     </div>
   );
 }

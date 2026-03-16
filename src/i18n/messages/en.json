@@ -160,9 +160,9 @@
     "cash": "Cash on Delivery",
     "cash-description": "You’ll pay in cash when your order is delivered.",
     "card": "Credit Card",
-    "card-description": "You’ll be securely redirected to Stripe to complete your payment."
+    "card-description": "You’ll be securely redirected to Stripe to complete your payment.",
+    "checkout": "Checkout"
   },
-  "checkout": "Checkout",
   "summary": {
     "title": "Summary",
     "placeholder": "Coupon Code",

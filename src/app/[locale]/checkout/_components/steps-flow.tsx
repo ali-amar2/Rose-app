@@ -4,7 +4,6 @@ import React from "react";
 import ShippingAddress from "./shipping-address";
 import PaymentMethod from "./payment-method";
 import StepsShow from "./steps-show";
-import CheckoutButton from "./checkout.button";
 
 export default function StepsFlow() {
   // states
@@ -36,9 +35,8 @@ export default function StepsFlow() {
       ) : (
         // payment method component
         <>
-          <PaymentMethod setStep={setStep} />
-          {/* button for checkout  */}
-          <CheckoutButton
+          <PaymentMethod
+            setStep={setStep}
             street={street}
             phone={phone}
             city={city}
