@@ -1,4 +1,5 @@
-import { useState, useCallback, useEffect } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 import { Address, AddressFormData } from "@/lib/types/address";
 import {
   getAddressesAction,
@@ -7,28 +8,37 @@ import {
   updateAddressAction,
 } from "@/lib/actions/address.actions";
 
+// Query Keys
+export const addressKeys = {
+  all: ["addresses"] as const,
+};
+
 const defaultCoords = { lat: 30.0444, lng: 31.2357 };
 
+// ============ useAddresses
 export function useAddresses() {
-  const [addresses, setAddresses] = useState<Address[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  const loadAddresses = useCallback(async () => {
-    try {
-      setLoading(true);
+  const {
+    data: addresses = [],
+    isLoading: loading,
+    error,
+  } = useQuery({
+    queryKey: addressKeys.all,
+    queryFn: async () => {
       const data = await getAddressesAction();
-      setAddresses(Array.isArray(data) ? data : []);
-    } catch {
-      setAddresses([]);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+      return Array.isArray(data) ? data : [];
+    },
+  });
 
-  return { addresses, loading, loadAddresses };
+  return {
+    addresses,
+    loading,
+    error: error instanceof Error ? error.message : null,
+  };
 }
 
+//  useAddressForm
 export function useAddressForm(fullName: string) {
+  // State
   const [formData, setFormData] = useState<AddressFormData>({
     username: fullName,
     phone: "",
@@ -40,6 +50,7 @@ export function useAddressForm(fullName: string) {
 
   const [mapPosition, setMapPosition] = useState(defaultCoords);
 
+  // handlers
   const handleFormChange = (field: keyof AddressFormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
@@ -80,35 +91,51 @@ export function useAddressForm(fullName: string) {
   };
 }
 
+//  useAddressMutations 
 export function useAddressMutations(onSuccess: () => void) {
-  const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
 
-  const handleSave = async (
-    formData: AddressFormData,
-    editing: Address | null
-  ) => {
-    try {
-      setLoading(true);
-
-      editing?._id
-        ? await updateAddressAction(editing._id, formData)
-        : await addAddressAction(formData);
-
-      await onSuccess();
-    } finally {
-      setLoading(false);
-    }
+  const invalidate = async () => {
+    await queryClient.invalidateQueries({ queryKey: addressKeys.all });
+    onSuccess();
   };
 
-  const handleDelete = async (addressId: string) => {
-    try {
-      setLoading(true);
+  const saveMutation = useMutation({
+    mutationFn: async ({
+      formData,
+      editing,
+    }: {
+      formData: AddressFormData;
+      editing: Address | null;
+    }) => {
+      const id = editing?._id ?? editing?.id;
+      if (editing && id) {
+        await updateAddressAction(id, formData);
+      } else {
+        await addAddressAction(formData);
+      }
+    },
+    onSuccess: invalidate,
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: async (addressId: string) => {
       await deleteAddressAction(addressId);
-      await onSuccess();
-    } finally {
-      setLoading(false);
-    }
-  };
+    },
+    onSuccess: invalidate,
+  });
 
-  return { loading, handleSave, handleDelete };
+  return {
+    saveLoading: saveMutation.isPending,
+    deleteLoading: deleteMutation.isPending,
+    saveError:
+      saveMutation.error instanceof Error ? saveMutation.error.message : null,
+    deleteError:
+      deleteMutation.error instanceof Error
+        ? deleteMutation.error.message
+        : null,
+    handleSave: (formData: AddressFormData, editing: Address | null) =>
+      saveMutation.mutate({ formData, editing }),
+    handleDelete: (addressId: string) => deleteMutation.mutate(addressId),
+  };
 }

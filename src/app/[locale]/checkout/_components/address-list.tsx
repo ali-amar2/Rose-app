@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { MapPin, Plus, Phone, PencilLine, Trash2 } from "lucide-react";
+import { MapPin, Phone, PencilLine, Trash2 } from "lucide-react";
 import { Address } from "@/lib/types/address";
 
 // Types
@@ -37,9 +37,7 @@ export function AddressList({
   // Organize labels
   const organizedAddresses = addresses.map((addr, index) => ({
     label:
-      index < 3
-        ? [t.labels.home, t.labels.work, t.labels.family][index]
-        : null,
+      index < 3 ? [t.labels.home, t.labels.work, t.labels.family][index] : null,
     address: addr,
   }));
 
@@ -72,11 +70,14 @@ export function AddressList({
   // Render
   return (
     <div className="space-y-5">
-      {organizedAddresses.map((item, idx) => (
-        <div key={idx} className="relative pt-5">
+      {organizedAddresses.map((item) => (
+        <div
+          key={item.address._id ?? item.address.id}
+          className="relative pt-5"
+        >
           {/* Label [work - home - family] */}
           {item.label && (
-            <div className="absolute top-0 left-3 bg-white px-2">
+            <div className="absolute top-0 start-3 bg-white px-2">
               <h3 className="text-2xl font-semibold text-maroon-600 capitalize">
                 {item.label}
               </h3>
@@ -84,11 +85,12 @@ export function AddressList({
           )}
 
           {/* Address Card */}
-          <button
+          <Button
+            variant="default"
             onClick={() => onSelect(item.address)}
-            className="w-full text-left rounded-xl pt-6 pl-5 pr-9 pb-5 transition-all duration-150 border border-zinc-300 hover:border-maroon-600"
+            className="w-full h-auto text-start justify-start rounded-xl pt-6 ps-5 pe-9 pb-5 transition-all duration-150 border border-zinc-300 hover:border-maroon-600 bg-transparent hover:bg-transparent shadow-none"
           >
-            <div className="flex items-center justify-between">
+            <div className="w-full flex items-center justify-between">
               <div className="w-full">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -110,7 +112,7 @@ export function AddressList({
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center flex-col absolute -right-4 gap-1">
+              <div className="flex items-center flex-col absolute -end-4 gap-1">
                 <Button
                   variant="ghost"
                   onClick={(e) => onEdit(e, item.address)}
@@ -126,7 +128,7 @@ export function AddressList({
                 </Button>
               </div>
             </div>
-          </button>
+          </Button>
         </div>
       ))}
     </div>

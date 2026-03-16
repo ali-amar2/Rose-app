@@ -79,27 +79,31 @@ export function AddressFormStep2({
     );
   };
 
+  // Ensure plain objects for Google Maps
+  const center = { lat: mapPosition.lat, lng: mapPosition.lng };
+
   // Render
   return (
     <div dir={isRTL ? "rtl" : "ltr"}>
       {/* Back button & title */}
       <div className="flex items-center gap-4 mb-4">
-        <button
+        <Button
+          variant="default"
           onClick={onBack}
-          className="w-9 h-9 rounded-full bg-maroon-600 text-white flex items-center justify-center"
+          className="w-9 h-9 rounded-full bg-maroon-600 text-white flex items-center justify-center p-0"
         >
-          {isRTL ? <ArrowRight /> : <ArrowLeft />}
-        </button>
+          {isRTL ? <ArrowRight size={18} /> : <ArrowLeft size={18} />}
+        </Button>
         <p className="text-2xl font-medium text-maroon-600">
           {t.selectLocation}
         </p>
       </div>
 
       {/* Map Container */}
-      <div className="relative w-full h-[350px] rounded-lg overflow-hidden border bg-gray-100">
+      <div className="relative w-full h-[21.875rem] rounded-lg overflow-hidden border bg-gray-100">
         <APIProvider apiKey={apiKey}>
           <Map
-            center={mapPosition}
+            center={center}
             zoom={15}
             mapId="be560d0baba3386b2fdaa6a5"
             gestureHandling="greedy"
@@ -113,7 +117,7 @@ export function AddressFormStep2({
             }}
           >
             <AdvancedMarker
-              position={mapPosition}
+              position={center}
               draggable
               onDragStart={() => setIsDragging(true)}
               onDragEnd={handleDragEnd}
@@ -133,9 +137,9 @@ export function AddressFormStep2({
         </APIProvider>
 
         {/* Find My Location Button */}
-        <div className="absolute top-3 right-3 z-10">
+        <div className="absolute top-3 end-3 z-10">
           <Button
-            type="button"
+            variant="default"
             size="sm"
             onClick={handleFindMyLocation}
             disabled={locating}
@@ -146,7 +150,7 @@ export function AddressFormStep2({
             ) : (
               <>
                 <MapPinHouse size={16} />
-                <span className="ml-2">{t.findLocation}</span>
+                <span className="ms-2">{t.findLocation}</span>
               </>
             )}
           </Button>
@@ -155,6 +159,7 @@ export function AddressFormStep2({
 
       {/* Save Button */}
       <Button
+        variant="default"
         onClick={onSave}
         disabled={loading}
         className="w-full h-12 mt-12 bg-maroon-600 text-white rounded-xl font-medium"

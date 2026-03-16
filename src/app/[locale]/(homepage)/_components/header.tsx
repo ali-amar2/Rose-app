@@ -13,8 +13,10 @@ import { Link } from "@/i18n/navigation";
 import { useGetCart } from "../../products/[id]/_hooks/use-get-cart";
 import { DeliveryLocationDialog } from "@/app/[locale]/checkout/_components/address-dialog";
 import { Address } from "@/lib/types/address";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
+  const t = useTranslations();
   const { cart } = useGetCart();
 
   // State for location dialog
@@ -90,7 +92,7 @@ export default function Header() {
             className="flex flex-col text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800 px-3 py-1 rounded-lg transition-colors"
             onClick={() => setIsLocationDialogOpen(true)}
           >
-            <p className="font-normal text-zinc-500 text-xs">Deliver to:</p>
+            <p className="font-normal text-zinc-500 text-xs">{t("deliver")}</p>
             <span className="font-medium text-base text-maroon-700 flex items-center gap-1">
               <MapPinPen size={18} />
               {selectedAddress?.city || currentCity}

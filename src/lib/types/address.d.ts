@@ -21,3 +21,5 @@ export interface AddressFormData {
 }
 
 export type ModalMode = "add" | "edit";
+
+export type ViewMode = "list" | "form-step1" | "form-step2" | "delete";
