@@ -1,13 +1,13 @@
 "use client";
 
-import { useAddToCart } from "@/app/[locale]/products/[id]/_hooks/use-add-to-cart";
+import { useAddToCart } from "@/app/[locale]/(website)/products/[id]/_hooks/use-add-to-cart";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
 type AddToCartButtonProps = {
   productId: string;
   quantityInStock: number;
-  children: React.ReactNode; // 👈 dynamic content
+  children: React.ReactNode;
   className?: string;
 };
 
