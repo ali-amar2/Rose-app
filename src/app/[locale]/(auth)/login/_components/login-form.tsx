@@ -53,93 +53,114 @@ export default function LoginForm() {
   };
 
   return (
-    <Form {...form}>
-      <form
-        className="flex flex-col w-[25rem]"
-        onSubmit={form.handleSubmit(onsubmit)}
-      >
-        {/* Form Fields */}
-        <div className="flex flex-col gap-4">
-          {/* Email Field */}
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>{t("email")}</FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    type="email"
-                    placeholder={t("emailPlaceholder")}
-                    error={!!form.formState.errors.email}
-                  />
-                </FormControl>
-                <FormMessage className="text-[0.9rem]" />
-              </FormItem>
-            )}
-          />
+    <>
+      <Form {...form}>
+        <form
+          className="flex flex-col w-[25rem]"
+          onSubmit={form.handleSubmit(onsubmit)}
+        >
+          {/* Form Fields */}
+          <div className="flex flex-col gap-4">
+            {/* Email Field */}
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("email")}</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="email"
+                      placeholder={t("email-placeholder")}
+                      error={!!form.formState.errors.email}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-[0.9rem]" />
+                </FormItem>
+              )}
+            />
 
-          {/* Password Field */}
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>{t("password")}</FormLabel>
-                <FormControl>
-                  <PasswordInput
-                    {...field}
-                    placeholder={t("passwordPlaceholder")}
-                    error={!!form.formState.errors.password}
-                  />
-                </FormControl>
-                <FormMessage className="text-[0.9rem]" />
-              </FormItem>
-            )}
-          />
+            {/* Password Field */}
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("password")}</FormLabel>
+                  <FormControl>
+                    <PasswordInput
+                      {...field}
+                      placeholder={t("password-placeholder")}
+                      error={!!form.formState.errors.password}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-[0.9rem]" />
+                </FormItem>
+              )}
+            />
 
-          {/* Navigation */}
-          <div className="flex justify-end">
-            <Link
-              href="/forgot-password"
-              className="text-maroon-700 font-medium mt-2"
-            >
-              {t("forgotPassword")}
-            </Link>
+            {/* Navigation */}
+            <div className="flex justify-end">
+              <Link
+                href="/forgot-password"
+                className="text-maroon-700 font-medium mt-2"
+              >
+                {t("forgot-password")}
+              </Link>
+            </div>
           </div>
-        </div>
 
-        {/* Submission Error */}
-        {isError && (
-          <p className="text-center text-red-600 mt-3">{errorMessage}</p>
-        )}
-
-        {/* Remember Me */}
-        <FormField
-          control={form.control}
-          name="rememberMe"
-          render={({ field }) => (
-            <Label className="flex items-center gap-2 cursor-pointer my-5 mb-8">
-              <Checkbox
-                checked={field.value}
-                onCheckedChange={field.onChange}
-                className="border-maroon-700 data-[state=checked]:bg-maroon-600"
-              />
-              <span className="text-zinc-700">{t("rememberMe")}</span>
-            </Label>
+          {/* Submission Error */}
+          {isError && (
+            <p className="text-center text-red-600 mt-3">{errorMessage}</p>
           )}
-        />
 
-        {/* Submit Button */}
-        <Button disabled={isPending} type="submit">
-          {isPending ? (
-            <Loader className="animate-spin mr-2" size={16} />
-          ) : (
-            t("loginBtn")
+          {/* Remember Me */}
+          <FormField
+            control={form.control}
+            name="rememberMe"
+            render={({ field }) => (
+              <Label className="flex items-center gap-2 cursor-pointer my-5 mb-8">
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                  className="border-maroon-700 data-[state=checked]:bg-maroon-600"
+                />
+                <span className="text-zinc-700">{t("rememberMe")}</span>
+              </Label>
+            )}
+          />
+
+          {/* Submit Button */}
+          <Button disabled={isPending} type="submit">
+            {isPending ? (
+              <Loader className="animate-spin mr-2" size={16} />
+            ) : (
+              t("loginBtn")
+            )}
+          </Button>
+          {/* Submission Error */}
+          {isError && (
+            <p className="text-center text-red-600 mt-3">{errorMessage}</p>
           )}
-        </Button>
-      </form>
-    </Form>
+
+          {/* Remember Me */}
+          <Label className="flex items-center gap-2 cursor-pointer my-5 mb-8">
+            <Checkbox className="border-maroon-700 data-[state=checked]:bg-maroon-600" />
+            <span className="text-zinc-700">{t("remember-me")}</span>
+          </Label>
+
+          {/* Submit Button */}
+          <Button disabled={isPending} type="submit">
+            {isPending ? (
+              <Loader className="animate-spin mr-2" size={16} />
+            ) : (
+              t("login-btn")
+            )}
+          </Button>
+        </form>
+      </Form>
+    </>
   );
 }

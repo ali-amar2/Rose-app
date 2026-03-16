@@ -1,4 +1,7 @@
-declare type Product = {
+import z from "zod";
+import { productSchema, productUpdateSchema } from "../schemas/product.schema";
+
+export type Product = {
   _id: string;
   title: string;
   slug: string;
@@ -59,3 +62,6 @@ declare type ProductDetailsResponse = {
   message: string;
   product: Product;
 };
+
+export type ProductFields = z.infer<ReturnType<typeof productSchema>>;
+export type ProductUpdateFields = z.infer<ReturnType<typeof productUpdateSchema>>;
