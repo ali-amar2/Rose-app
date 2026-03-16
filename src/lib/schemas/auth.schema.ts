@@ -60,6 +60,7 @@ export const loginSchema = (t: Translations) =>
       .email(t("schema.invalid-email"))
       .nonempty(t("schema.email-required")),
     password: z.string().nonempty(t("schema.password-required")),
+    rememberMe: z.boolean().optional(),
   });
 
 export type loginValues = z.infer<ReturnType<typeof loginSchema>>;

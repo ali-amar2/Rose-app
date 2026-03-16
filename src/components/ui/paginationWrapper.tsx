@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils/tailwind-merge";
 // Types
 interface PaginationProps {
   totalPages: number;
-  searchParams?: { page?: string };
+  searchParams?: { page?: string; search?: string };
   rtl?: boolean;
   className?: string;
 }
@@ -42,7 +42,9 @@ export default function PaginationWrapper({
 
   // Variables
   const isFirstPage = currentPage === 1;
+  const isSecondPage = currentPage === 2;
   const isLastPage = currentPage === totalPages;
+  const isSecondLastPage = currentPage === totalPages - 1;
   const visiblePages = generatePageNumbers();
 
   // Functions

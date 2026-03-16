@@ -4,6 +4,14 @@
     "title": "الشهادات",
     "sub-title": "كلمات حقيقية من العملاء السعداء"
   },
+  "forgot-password": {
+    "step-one-title": "هل نسيت كلمة المرور؟",
+    "step-one-subtitle": "لا تقلق، سنرسل لك تعليمات لمساعدتك في إعادة تعيينها.",
+    "step-two-title": "أدخل رمز التحقق",
+    "step-two-subtitle": "لقد أرسلنا رمزًا مكوّنًا من 6 أرقام إلى {email} <button>تعديل</button>",
+    "step-three-title": "إنشاء كلمة مرور جديدة",
+    "step-three-subtitle": "قم بتعيين كلمة مرور قوية لحماية حسابك."
+  },
   "register": {
     "heading": "كُن جزءًا من عائلتنا!",
     "login": "تسجيل الدخول",
@@ -201,6 +209,29 @@
     "reset": "إعادة"
   },
   "reset-all": "مسح جميع الفلاتر",
+  "shipping-address": {
+    "title": "عنوان الشحن",
+    "add-new": "إضافة عنوان جديد",
+    "or": "أو",
+    "next": "التالي"
+  },
+  "payment-method": {
+    "title": "طريقة الدفع",
+    "back": "العودة",
+    "cash": "الدفع عند الاستلام",
+    "cash-description": "سيتم دفع المبلغ نقدًا عند استلام الطلب.",
+    "card": "بطاقة ائتمان",
+    "card-description": "سيتم إعادة توجيهك بشكل آمن إلى Stripe لإكمال عملية الدفع.",
+    "checkout": "الدفع"
+  },
+  "summary": {
+    "title": "ملخص الطلب",
+    "placeholder": "رمز الكوبون",
+    "apply": "تطبيق الكوبون",
+    "box": "لا توجد كوبونات مطبقة",
+    "subtotal": "المجموع الفرعي",
+    "total": "الإجمالي"
+  },
   "error": "خطأ",
   "product.products": "",
   "old-password-label": "كلمة المرور القديمة",
@@ -229,7 +260,7 @@
   "top-selling": {
     "title": "الأكثر مبيعاً",
     "unit": "مبيعات"
-  }
+  },
   "orders": {
     "title": "الطلبات",
     "paid": "مدفوع",
@@ -261,42 +292,41 @@
       "cancelled": "ملغي"
     },
     "error-loading-orders": "حدث خطأ أثناء تحميل الطلبات"
-
   },
-      "dashboard": {
-      "sidebar": {
-        "preview-website": "معاينة الموقع",
-        "account": "الحساب",
-        "logout": "تسجيل الخروج",
-        "overview": "نظرة عامة",
-        "categories": "التصنيفات",
-        "occasions": "المناسبات",
-        "products": "المنتجات"
+  "dashboard": {
+    "sidebar": {
+      "preview-website": "معاينة الموقع",
+      "account": "الحساب",
+      "logout": "تسجيل الخروج",
+      "overview": "نظرة عامة",
+      "categories": "التصنيفات",
+      "occasions": "المناسبات",
+      "products": "المنتجات"
+    },
+    "products": {
+      "title": "كل المنتجات",
+      "add-product": "إضافة منتج جديد",
+      "search-placeholder": "بحث...",
+      "table": {
+        "name": "الاسم",
+        "price": "السعر",
+        "stock": "المخزون",
+        "sales": "المبيعات",
+        "ratings": "التقييمات"
       },
-      "products": {
-        "title": "كل المنتجات",
-        "add-product": "إضافة منتج جديد",
-        "search-placeholder": "بحث...",
-        "table": {
-          "name": "الاسم",
-          "price": "السعر",
-          "stock": "المخزون",
-          "sales": "المبيعات",
-          "ratings": "التقييمات"
-        },
-        "actions": {
-          "edit": "تعديل",
-          "delete": "حذف"
-        },
-        "states": {
-          "loading-error": "فشل تحميل المنتجات.",
-          "empty": "لا توجد منتجات."
-        },
-        "delete-modal": {
-          "title": "هل أنت متأكد أنك تريد حذف هذا المنتج؟",
-          "cancel": "إلغاء",
-          "confirm": "تأكيد"
-        }
+      "actions": {
+        "edit": "تعديل",
+        "delete": "حذف"
+      },
+      "states": {
+        "loading-error": "فشل تحميل المنتجات.",
+        "empty": "لا توجد منتجات."
+      },
+      "delete-modal": {
+        "title": "هل أنت متأكد أنك تريد حذف هذا المنتج؟",
+        "cancel": "إلغاء",
+        "confirm": "تأكيد"
       }
     }
+  }
 }

@@ -4,6 +4,14 @@
     "title": "Testimonials",
     "sub-title": "Real Words from Happy Customers"
   },
+  "forgot-password": {
+    "step-one-title": "Forgot Password?",
+    "step-one-subtitle": "Worry not, we’ll send you instructions to help you reset it.",
+    "step-two-title": "Enter the OTP Code",
+    "step-two-subtitle": "We have sent a 6-digit code to {email} <button >Edit</button>",
+    "step-three-title": "Create a new password",
+    "step-three-subtitle": "Set a strong password to secure your account."
+  },
   "register": {
     "heading": "Become part of our family!",
     "login": "Login",
@@ -201,6 +209,29 @@
     "reset": "Reset"
   },
   "reset-all": "Reset All",
+  "shipping-address": {
+    "title": "Shipping Address",
+    "add-new": "Add New Address",
+    "or": "OR",
+    "next": "Next"
+  },
+  "payment-method": {
+    "title": "Payment Method",
+    "back": "Back",
+    "cash": "Cash on Delivery",
+    "cash-description": "You’ll pay in cash when your order is delivered.",
+    "card": "Credit Card",
+    "card-description": "You’ll be securely redirected to Stripe to complete your payment.",
+    "checkout": "Checkout"
+  },
+  "summary": {
+    "title": "Summary",
+    "placeholder": "Coupon Code",
+    "apply": "Apply Coupon",
+    "box": "No coupons applied",
+    "subtotal": "Subtotal",
+    "total": "Total"
+  },
   "error": "error",
   "product.products": "",
   "old-password-label": "Old Password",

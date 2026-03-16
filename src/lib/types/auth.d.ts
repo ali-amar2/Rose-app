@@ -1,9 +1,11 @@
+import { FORGOT_PASSWORD_STEPS } from "../constants/auth.constant";
 import z from "zod";
 import {
   ForgotPasswordSchema,
   NewPasswordSchema,
 } from "../schemas/auth.schema";
 
+export type ForgotPasswordSteps = (typeof FORGOT_PASSWORD_STEPS)[keyof typeof FORGOT_PASSWORD_STEPS];
 declare module "next-auth" {
   interface Session {
     user: {
