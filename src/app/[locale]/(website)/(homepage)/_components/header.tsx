@@ -1,24 +1,43 @@
 "use client";
 
 import Image from "next/image";
+<<<<<<< HEAD:src/app/[locale]/(homepage)/_components/header.tsx
+import logo from "../../../../../public/images/logo1.svg";
+import { Heart, MapPinPen, ShoppingCart, User } from "lucide-react";
+=======
 import logo from "@public/images/logo1.svg";
 import { Heart, ShoppingCart, User } from "lucide-react";
+>>>>>>> origin/dev:src/app/[locale]/(website)/(homepage)/_components/header.tsx
 import Navbar from "./navbar";
 import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "@/components/skeletons/notifications/Notifications";
 import ToggleLanguage from "@/components/features/toggle-language";
 import LoginPopup from "@/components/skeletons/login-popup/login-popup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { useGetCart } from "../../products/[id]/_hooks/use-get-cart";
+<<<<<<< HEAD:src/app/[locale]/(homepage)/_components/header.tsx
+import { DeliveryLocationDialog } from "@/app/[locale]/checkout/_components/address-dialog";
+import { Address } from "@/lib/types/address";
+import { useTranslations } from "next-intl";
+=======
 import SearchModule from "./search-component/module";
 import { useSession } from "next-auth/react";
+>>>>>>> origin/dev:src/app/[locale]/(website)/(homepage)/_components/header.tsx
 
 export default function Header() {
+  const t = useTranslations();
   const { cart } = useGetCart();
 
+<<<<<<< HEAD:src/app/[locale]/(homepage)/_components/header.tsx
+  // State for location dialog
+  const [isLocationDialogOpen, setIsLocationDialogOpen] = useState(false);
+  const [currentCity, setCurrentCity] = useState("Cairo");
+  const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
+=======
   const { data: session } = useSession();
   const isLoggedIn = !!session;
+>>>>>>> origin/dev:src/app/[locale]/(website)/(homepage)/_components/header.tsx
 
   const headerList = [
     {
@@ -58,6 +77,24 @@ export default function Header() {
       ],
     },
   ];
+<<<<<<< HEAD:src/app/[locale]/(homepage)/_components/header.tsx
+  useEffect(() => {
+    const saved = localStorage.getItem("selectedAddress");
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      setSelectedAddress(parsed);
+      setCurrentCity(parsed.city);
+    }
+  }, []);
+
+  // Handle address selection
+  const handleSelectAddress = (address: Address) => {
+    setSelectedAddress(address);
+    setCurrentCity(address.city);
+    localStorage.setItem("selectedAddress", JSON.stringify(address));
+  };
+=======
+>>>>>>> origin/dev:src/app/[locale]/(website)/(homepage)/_components/header.tsx
 
   // state to manage login popup visibility
   const [isLoginHovered, setIsLoginHovered] = useState(false);
@@ -69,6 +106,23 @@ export default function Header() {
           <Image src={logo} alt="Rose Logo" width={85} height={80} />
         </div>
 
+<<<<<<< HEAD:src/app/[locale]/(homepage)/_components/header.tsx
+        {/* Delivery Location Trigger */}
+        <div className="ms-4 mr-4">
+          <div
+            className="flex flex-col text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800 px-3 py-1 rounded-lg transition-colors"
+            onClick={() => setIsLocationDialogOpen(true)}
+          >
+            <p className="font-normal text-zinc-500 text-xs">{t("deliver")}</p>
+            <span className="font-medium text-base text-maroon-700 flex items-center gap-1">
+              <MapPinPen size={18} />
+              {selectedAddress?.city || currentCity}
+            </span>
+          </div>
+        </div>
+
+=======
+>>>>>>> origin/dev:src/app/[locale]/(website)/(homepage)/_components/header.tsx
         <div className="flex-1 flex items-center">
           <SearchModule />
 
@@ -134,6 +188,14 @@ export default function Header() {
       </header>
 
       <Navbar />
+
+      {/* Delivery Location Dialog */}
+      <DeliveryLocationDialog
+        open={isLocationDialogOpen}
+        onOpenChange={setIsLocationDialogOpen}
+        onSelectAddress={handleSelectAddress}
+        currentCity={currentCity}
+      />
     </>
   );
 }
