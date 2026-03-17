@@ -72,13 +72,13 @@
   "alreadyHaveAccount": "Already have an account? ",
   "email-label": "Email",
   "forgot-password-heading": "Forgot Password?",
-  "forget-password-text": "Worry not, we’ll send you instructions to help you reset it.",
+  "forget-password-text": "Worry not, we'll send you instructions to help you reset it.",
   "email-placeholder": "Enter your email",
   "continue": "Continue",
   "non-email-error": "Please Enter Your Email",
   "email-not-valid": "Enter a valid email",
   "required-email": "Email is required",
-  "dont-have-an-account": "Don’t have an account yet? <a>Create one now!</a>",
+  "dont-have-an-account": "Don't have an account yet? <a>Create one now!</a>",
   "create-new-password-label": "Create a new password",
   "create-new-password-text": "Set a strong password to secure your account.",
   "password-label": "Password",
@@ -104,8 +104,8 @@
   "best-selling": {
     "title": "Best Selling",
     "subtitle": {
-      "check-out": "Check Out",
-      "rest-before-buying": "What Everyone’s ",
+      "checkOut": "Check Out",
+      "restBeforeBuying": "What Everyone's ",
       "buying": "Buying",
       "rest-after-buying": "Right Now"
     },
@@ -148,15 +148,15 @@
     "heading": "Welcome back!",
     "email": "Email",
     "password": "Password",
-    "email-placeholder": "user@example.com",
-    "password-placeholder": "********",
-    "forgot-password": "Forgot your password?",
-    "remember-me": "Remember me",
-    "login-btn": "Login",
-    "generic-error": "Something went wrong",
-    "password-pattern-error": "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
-    "no-account": "Don’t have an account yet?",
-    "create-account": "Create one now!",
+    "emailPlaceholder": "user@example.com",
+    "passwordPlaceholder": "********",
+    "forgotPassword": "Forgot your password?",
+    "rememberMe": "Remember me",
+    "loginBtn": "Login",
+    "genericError": "Something went wrong",
+    "passwordPatternError": "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
+    "noAccount": "Don't have an account yet?",
+    "createAccount": "Create one now!",
     "schema": {
       "email-required": "Email is required",
       "invalid-email": "Please enter a valid email address",
@@ -391,5 +391,34 @@
         "confirm": "Confirm"
       }
     }
+  },
+  "reviews": {
+    "title": "Product Reviews",
+    "generalRating": "General rating",
+    "ratings": "{count} ratings",
+    "noReviews": "No reviews yet for this product.",
+    "form": {
+      "yourRating": "Your rating:",
+      "titleLabel": "Title",
+      "titlePlaceholder": "Enter review title",
+      "reviewLabel": "Review",
+      "reviewPlaceholder": "What do you think of this product?",
+      "submit": "Add Review",
+      "submitting": "Submitting...",
+      "success": "Review submitted successfully!",
+      "loginRequired": "Please login to review this product",
+      "validation": {
+        "titleRequired": "Title is required",
+        "titleMin": "Title must be at least 3 characters",
+        "titleMax": "Title must be at most 100 characters",
+        "commentRequired": "Review is required",
+        "commentMin": "Review must be at least 10 characters",
+        "commentMax": "Review must be at most 500 characters",
+        "ratingRequired": "Please select a rating"
+      }
+    }
+  },
+  "relatedProducts": {
+    "title": "Related Products"
   }
 }

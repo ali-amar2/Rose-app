@@ -40,7 +40,7 @@ export default function SecondSection() {
               {item.badge}
             </span>
 
-            <h2 className="text-white text-2xl  font-semibold ">
+            <h2 className="text-white text-2xl font-semibold ">
               {item.title}
             </h2>
           </div>

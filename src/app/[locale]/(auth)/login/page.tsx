@@ -16,9 +16,9 @@ export default function page() {
         <LoginForm />
       </div>
       <div className="flex gap-2 justify-center border-t border-zinc-200 border-solid pt-5">
-        <p className="text-zinc-800">{t("no-account")}</p>
+        <p className="text-zinc-800">{t("noAccount")}</p>
         <Link href={"/register"} className="text-maroon-700 font-medium">
-          {t("create-account")}
+          {t("createAccount")}
         </Link>
       </div>
     </main>

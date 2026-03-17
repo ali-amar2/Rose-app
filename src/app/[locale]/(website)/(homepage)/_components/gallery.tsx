@@ -48,13 +48,12 @@ export default function Gallery() {
           {t("label")}
         </h2>
 
+        {/* pseudo-elements via Tailwind after: / before: */}
         <div className="relative mt-2 text-center">
-          <p className="text-4xl font-bold text-maroon-700 dark:text-softPink-200">
+          <p className="text-4xl font-bold text-maroon-700 dark:text-softPink-200 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:-z-10 after:h-4 after:w-3/4 after:rounded-e-2xl after:bg-softPink-100 dark:after:bg-zinc-700">
             {t("title")}
           </p>
-
           <div className="mx-auto mt-2 h-0.5 w-1/3 bg-softPink-600" />
-          <div className="absolute bottom-0 left-1/2 -z-10 h-4 w-3/4 -translate-x-1/2 rounded-r-2xl bg-softPink-100 dark:bg-zinc-700" />
         </div>
       </div>
 

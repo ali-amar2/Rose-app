@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import Rating from "@/components/ui/rating";
 import ProductBadge from "./product-badge";
@@ -18,14 +19,16 @@ export default function ProductCard({
   sold,
   rateAvg,
 }: ProductCardProps) {
-  // translation
   const t = useTranslations("product");
 
   return (
     <Card className="border-none shadow-none h-full">
       <CardContent className="flex flex-col h-full px-1 p-0">
         {/* Product image */}
-        <div className="relative w-full h-72 overflow-hidden rounded-md">
+        <Link
+          href={`/products/${id}`}
+          className="relative w-full h-72 block overflow-hidden rounded-md"
+        >
           <Image
             src={img}
             alt={title}
@@ -35,13 +38,15 @@ export default function ProductCard({
           />
           <ProductBadge quantity={quantity} sold={sold} />
           <AddToWishlist productId={id || ""} />
-        </div>
+        </Link>
 
         <div className="flex flex-col space-y-1 mt-2">
           {/* Product title */}
-          <p className="font-semibold capitalize text-lg text-maroon-600 line-clamp-1">
-            {title}
-          </p>
+          <Link href={`/products/${id}`}>
+            <p className="font-semibold capitalize text-lg text-maroon-600 line-clamp-1">
+              {title}
+            </p>
+          </Link>
 
           <div className="flex justify-between items-center">
             {/* Rating and price */}

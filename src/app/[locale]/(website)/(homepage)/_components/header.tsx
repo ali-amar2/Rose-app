@@ -1,13 +1,8 @@
 "use client";
 
 import Image from "next/image";
-<<<<<<< HEAD:src/app/[locale]/(homepage)/_components/header.tsx
-import logo from "../../../../../public/images/logo1.svg";
-import { Heart, MapPinPen, ShoppingCart, User } from "lucide-react";
-=======
 import logo from "@public/images/logo1.svg";
-import { Heart, ShoppingCart, User } from "lucide-react";
->>>>>>> origin/dev:src/app/[locale]/(website)/(homepage)/_components/header.tsx
+import { Heart, MapPinPen, ShoppingCart, User } from "lucide-react";
 import Navbar from "./navbar";
 import { cn } from "@/lib/utils/tailwind-merge";
 import Notifications from "@/components/skeletons/notifications/Notifications";
@@ -16,28 +11,22 @@ import LoginPopup from "@/components/skeletons/login-popup/login-popup";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { useGetCart } from "../../products/[id]/_hooks/use-get-cart";
-<<<<<<< HEAD:src/app/[locale]/(homepage)/_components/header.tsx
 import { DeliveryLocationDialog } from "@/app/[locale]/checkout/_components/address-dialog";
 import { Address } from "@/lib/types/address";
 import { useTranslations } from "next-intl";
-=======
 import SearchModule from "./search-component/module";
 import { useSession } from "next-auth/react";
->>>>>>> origin/dev:src/app/[locale]/(website)/(homepage)/_components/header.tsx
 
 export default function Header() {
   const t = useTranslations();
   const { cart } = useGetCart();
 
-<<<<<<< HEAD:src/app/[locale]/(homepage)/_components/header.tsx
   // State for location dialog
   const [isLocationDialogOpen, setIsLocationDialogOpen] = useState(false);
   const [currentCity, setCurrentCity] = useState("Cairo");
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
-=======
   const { data: session } = useSession();
   const isLoggedIn = !!session;
->>>>>>> origin/dev:src/app/[locale]/(website)/(homepage)/_components/header.tsx
 
   const headerList = [
     {
@@ -77,7 +66,6 @@ export default function Header() {
       ],
     },
   ];
-<<<<<<< HEAD:src/app/[locale]/(homepage)/_components/header.tsx
   useEffect(() => {
     const saved = localStorage.getItem("selectedAddress");
     if (saved) {
@@ -93,8 +81,6 @@ export default function Header() {
     setCurrentCity(address.city);
     localStorage.setItem("selectedAddress", JSON.stringify(address));
   };
-=======
->>>>>>> origin/dev:src/app/[locale]/(website)/(homepage)/_components/header.tsx
 
   // state to manage login popup visibility
   const [isLoginHovered, setIsLoginHovered] = useState(false);
@@ -106,7 +92,6 @@ export default function Header() {
           <Image src={logo} alt="Rose Logo" width={85} height={80} />
         </div>
 
-<<<<<<< HEAD:src/app/[locale]/(homepage)/_components/header.tsx
         {/* Delivery Location Trigger */}
         <div className="ms-4 mr-4">
           <div
@@ -121,8 +106,6 @@ export default function Header() {
           </div>
         </div>
 
-=======
->>>>>>> origin/dev:src/app/[locale]/(website)/(homepage)/_components/header.tsx
         <div className="flex-1 flex items-center">
           <SearchModule />
 
@@ -194,7 +177,6 @@ export default function Header() {
         open={isLocationDialogOpen}
         onOpenChange={setIsLocationDialogOpen}
         onSelectAddress={handleSelectAddress}
-        currentCity={currentCity}
       />
     </>
   );

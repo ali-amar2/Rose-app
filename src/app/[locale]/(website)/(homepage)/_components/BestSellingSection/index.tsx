@@ -3,14 +3,13 @@ import { BestSellingCarousel } from "./best-selling-carousel";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function BestSellingSection() {
-  // translation
-  const t = useTranslations("best-selling");
+export default async function BestSellingSection() {
+  const t = await getTranslations("best-selling");
 
   return (
-    <section className="flex w-full flex-col gap-8 mt-14 ">
+    <section className="flex w-full flex-col gap-8 mt-14">
       <div className="flex">
         <div className="flex flex-col w-[18.5%] justify-between flex-shrink-0">
           <div>
@@ -20,17 +19,15 @@ export default function BestSellingSection() {
             </h2>
             <p className="text-2xl leading-none mb-1 font-bold text-maroon-600">
               <span className="text-softPink-500">
-                {" "}
-                {t("subtitle.check-out")}{" "}
+                {t("subtitle.checkOut")}
               </span>{" "}
-              {t("subtitle.rest-before-buying")}
+              {t("subtitle.restBeforeBuying")}
               <span className="text-softPink-500">{t("subtitle.buying")}</span>
               {t("subtitle.rest-after-buying")}
             </p>
-            {/* Description paragraph */}
-            <p className="text-sm text-zinc-500 p-1 ">{t("description")}</p>
+            <p className="text-sm text-zinc-500 p-1">{t("description")}</p>
           </div>
-          {/* Explore gifts link To The Products Page*/}
+
           <Link
             href="/products"
             className="flex gap-4 bg-maroon-600 text-white px-5 py-1 rounded-md w-fit"
@@ -40,7 +37,7 @@ export default function BestSellingSection() {
           </Link>
         </div>
 
-        {/* Best Selling Products Carousel component */}
+        {/* Best Selling Products Carousel */}
         <div className="w-full">
           <Suspense
             fallback={

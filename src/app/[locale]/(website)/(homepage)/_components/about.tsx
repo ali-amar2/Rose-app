@@ -23,13 +23,14 @@ export default function About() {
   };
 
   return (
-    <section className="grid grid-cols-2 gap-4">
+    <section className="grid grid-cols-2">
       {/* Images Section */}
-      <div className="flex items-start gap-4">
-        <div className="relative h-80 w-72 flex-shrink-0">
-          <div className="absolute left-0 top-8 z-0 h-80 w-72  rotate-3 rounded-shape-main border-4 border-maroon-600" />
+      <div className="flex items-start gap-8">
+        <div className="relative h-80 w-80 flex-shrink-0">
+          {/* pseudo-element via before: instead of decorative div */}
+          <div className="absolute left-0 top-8 z-0 h-80 w-72 rotate-3 rounded-shape-main border-4 border-maroon-600 before:content-['']" />
 
-          <div className="relative left-7 top-12 z-10 h-80 ">
+          <div className="relative left-7 top-12 z-10 h-80">
             <Image
               src={images.main}
               alt="Main gift box"
@@ -54,9 +55,8 @@ export default function About() {
                 alt="Small gift"
                 fill
                 className={cn(
-                  `object-cover ${
-                    index === 1 ? "rounded-shape-alt" : "rounded-full"
-                  }`
+                  "object-cover",
+                  index === 1 ? "rounded-shape-alt" : "rounded-full"
                 )}
               />
             </div>

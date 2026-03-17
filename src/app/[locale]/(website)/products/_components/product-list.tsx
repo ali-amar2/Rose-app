@@ -1,6 +1,6 @@
 import { getProducts } from "@/lib/services/products.service";
 import ProductCard from "@/components/shared/product-card";
-import PaginationWrapper from "@/components/ui/PaginationWrapper";
+import PaginationWrapper from "@/components/ui/paginationWrapper";
 import { Product } from "@/lib/types/product";
 
 export default async function ProductList({
