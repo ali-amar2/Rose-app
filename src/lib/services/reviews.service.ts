@@ -4,24 +4,16 @@ import { Review } from "@/lib/types/review";
 const API = process.env.API!;
 
 // Fetches all reviews from the API
-export async function getAllReviews(): Promise<{
-  reviews: Review[];
-}> {
-  const res = await fetch(`${API}/reviews`, {
-    cache: "no-store",
-  });
+export async function getAllReviews(): Promise<{ reviews: Review[] }> {
+  const res = await fetch(`${API}/reviews`, { cache: "no-store" });
 
-  // Throw an error if the response is not OK
-  if (!res.ok) {
-    throw new Error("Failed to fetch reviews");
-  }
+  if (!res.ok) throw new Error("Failed to fetch reviews");
 
   return res.json();
 }
 
 // Creates a new product review
 export async function createReview(
-  // types
   token: string,
   payload: {
     product: string;
@@ -30,7 +22,6 @@ export async function createReview(
     comment: string;
   }
 ) {
-  // Fetch
   const res = await fetch(`${API}/reviews`, {
     method: "POST",
     headers: {
@@ -40,7 +31,10 @@ export async function createReview(
     body: JSON.stringify(payload),
   });
 
-  // Throw an error if the response is not OK
-  if (!res.ok) throw new Error("Failed to create review");
+  if (!res.ok) {
+    const data = await res.json().catch(() => null);
+    throw new Error(data?.error ?? data?.message ?? "Failed to create review");
+  }
+
   return res.json();
 }

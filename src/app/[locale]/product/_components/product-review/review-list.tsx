@@ -1,31 +1,35 @@
 import { Star } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { getAllReviews } from "@/lib/services/reviews.service";
 import { Review } from "@/lib/types/review";
+import { cn } from "@/lib/utils/tailwind-merge";
 
-// component
+// Component
 export default async function ReviewList({ productId }: { productId: string }) {
+  // Translations
+  const t = await getTranslations("reviews");
+
+  // Data
   const response = await getAllReviews();
   const reviews: Review[] = response?.reviews ?? [];
 
-  // filter
+  // Filter
   const productReviews = reviews.filter(
-    (review) => review.status === "approved" && review.product._id === productId
+    (review) => review.product._id === productId
   );
 
-  // no reviews
+  // No reviews
   if (productReviews.length === 0) {
-    return (
-      <p className="text-sm text-gray-400">No reviews yet for this product.</p>
-    );
+    return <p className="text-sm text-gray-400">{t("noReviews")}</p>;
   }
 
-  // render
+  // Render
   return (
     <div className="max-w-[650px] max-h-[600px] overflow-y-auto pr-4 space-y-6">
       {productReviews.map((review, index) => (
         <div
           key={review._id}
-          className={index !== 0 ? "pt-6 border-t border-gray-200" : ""}
+          className={cn(index !== 0 && "pt-6 border-t border-gray-200")}
         >
           {/* User Info */}
           <div className="flex items-center gap-3 mb-2">
@@ -39,7 +43,11 @@ export default async function ReviewList({ productId }: { productId: string }) {
                 {review.user.firstName} {review.user.lastName}
               </p>
               <p className="text-xs text-gray-400">
-                {new Date(review.createdAt).toLocaleDateString()}
+                {new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                }).format(new Date(review.createdAt))}
               </p>
             </div>
           </div>
@@ -49,13 +57,15 @@ export default async function ReviewList({ productId }: { productId: string }) {
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
                 key={i}
-                className={`w-4 h-4 ${
+                className={cn(
+                  "w-4 h-4",
                   i < review.rating
                     ? "fill-amber-500 text-amber-500"
                     : "text-gray-300"
-                }`}
+                )}
               />
             ))}
+            {/* Rating count */}
             <span className="text-xs text-gray-500 ml-1">
               ({review.rating})
             </span>

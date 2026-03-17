@@ -1,13 +1,14 @@
 import { Suspense } from "react";
+import { getTranslations } from "next-intl/server";
 import { RelatedProductsCarousel } from "./related-products-carousel";
 import { Skeleton } from "@/components/ui/skeleton";
 
-// type
+// Type
 type RelatedProductsSectionProps = {
   productId: string;
 };
 
-// Loading skeleton for carousel
+// Loading skeleton
 function CarouselSkeleton() {
   return (
     <div className="grid grid-cols-3 gap-4">
@@ -18,25 +19,23 @@ function CarouselSkeleton() {
   );
 }
 
-// component
-export default function RelatedProductsSection({
+// Component
+export default async function RelatedProductsSection({
   productId,
 }: RelatedProductsSectionProps) {
-  // Render
+  const t = await getTranslations("relatedProducts");
+
   return (
     <section className="flex w-full flex-col gap-8 mt-14">
-      {/* Section title with decorative elements */}
+      {/* Section title */}
       <div className="relative">
-        <h2 className="font-bold text-maroon-700 dark:text-softPink-200 text-3xl">
-          Related Products
+        <h2 className="font-bold text-maroon-700 dark:text-softPink-200 text-3xl after:content-[''] after:absolute after:bottom-0 after:start-0 after:w-[9%] after:h-4 after:bg-softPink-100 after:-z-10 after:rounded-e-2xl">
+          {t("title")}
         </h2>
-        {/* Decorative underline */}
-        <div className="h-[2px] w-[3%] bg-softPink-600" />
-        {/* Decorative background accent */}
-        <div className="absolute bottom-0 left-0 w-[9%] h-4 bg-softPink-100 -z-10 rounded-r-2xl" />
+        <div className="h-0.5 w-[3%] bg-softPink-600 mt-1" />
       </div>
 
-      {/* Products carousel with loading state */}
+      {/* Carousel with Suspense */}
       <Suspense fallback={<CarouselSkeleton />}>
         <RelatedProductsCarousel productId={productId} />
       </Suspense>

@@ -1,20 +1,17 @@
-import SessionWrapper from "./_components/ProductReview/session-wrapper";
-import ProductReviews from "./_components/ProductReview";
-import RelatedProductsIndex from "./_components/RelatedProd";
+import ProductReviews from "./_components/product-review/product-review";
+import RelatedProductsSection from "./_components/related-prod/related-product";
 
 export default function ProductPage() {
-  // Now to test until the product page is completed
+  // TODO: replace with real productId from params
   const ProdId = "673e2e1f1159920171828153";
 
   return (
-    <SessionWrapper>
-      <main className="container mx-auto px-20 py-10">
-        {/* Reviews */}
-        <ProductReviews productId={ProdId} />
+    <main className="container mx-auto px-20 py-10">
+      {/* Reviews */}
+      <ProductReviews productId={ProdId} />
 
-        {/* Related Products */}
-        <RelatedProductsIndex productId={ProdId} />
-      </main>
-    </SessionWrapper>
+      {/* Related Products */}
+      <RelatedProductsSection productId={ProdId} />
+    </main>
   );
 }

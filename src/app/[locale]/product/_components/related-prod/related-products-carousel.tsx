@@ -8,33 +8,35 @@ import {
 import ProductCard from "@/components/shared/product-card";
 import { getRelatedProducts } from "@/lib/services/related-products.service";
 
+// Constants
 const IMAGE_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-// type
+// Type
 type Props = {
   productId: string;
 };
 
-// component
+// Component
 export async function RelatedProductsCarousel({ productId }: Props) {
   const data = await getRelatedProducts(productId);
 
-  // Return null if no products found
   if (!data?.similarProducts?.length) return null;
 
-  // Render 
   return (
     <Carousel opts={{ align: "start" }} className="w-full h-full">
+      {/* Items */}
       <CarouselContent className="ml-0 h-full flex">
         {data.similarProducts.map((product: any) => {
+          // Image
           const imageUrl = `${IMAGE_BASE_URL}/uploads/${product.imgCover}`;
 
-          // Render product card
+          // Render
           return (
             <CarouselItem
               key={product._id}
               className="md:basis-1/2 lg:basis-1/4"
             >
+              {/* Product Card */}
               <ProductCard
                 img={imageUrl}
                 title={product.title}
@@ -49,7 +51,7 @@ export async function RelatedProductsCarousel({ productId }: Props) {
         })}
       </CarouselContent>
 
-      {/* Navigation buttons */}
+      {/* Arrows */}
       <CarouselPrevious className="bg-maroon-600 absolute text-white hover:bg-maroon-700 hover:text-white top-40 -left-0" />
       <CarouselNext className="bg-maroon-600 absolute text-white hover:bg-maroon-700 hover:text-white top-40 -right-3" />
     </Carousel>
