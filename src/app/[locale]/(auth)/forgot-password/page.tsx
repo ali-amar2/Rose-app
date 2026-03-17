@@ -1,11 +1,14 @@
-import VerifyOtp from "./_components/verify-otp";
+import React from "react";
+import ForgotPasswordFlowLayout from "./_components/forgot-password-flow-layout";
+import EmailStep from "./_components/email-step";
 
 export default function page() {
   return (
-    <>
-      <h1>forgot password</h1>
-
-      <VerifyOtp />
-    </>
+    <div>
+      <ForgotPasswordFlowLayout />
+      {/* #TODO : waiting footer */}
+      {/* <footer>footer</footer> */}
+      <EmailStep />
+    </div>
   );
 }

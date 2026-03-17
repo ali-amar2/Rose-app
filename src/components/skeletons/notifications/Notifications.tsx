@@ -110,9 +110,9 @@ export default function Notifications() {
           className="relative rounded-full border-none outline-none px-0"
         >
           <Bell size={24} />
-          <Badge className="h-4 min-w-4 rounded-full p-1 bg-red-600 text-white absolute -top-0 -right-0">
-            15
-          </Badge>
+          <p className="absolute w-5 h-5 rounded-full bg-red-600 text-center text-white -top-1 -right-1">
+            5
+          </p>
         </Button>
       </DropdownMenuTrigger>
 

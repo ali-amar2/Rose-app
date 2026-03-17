@@ -1,6 +1,11 @@
+import { FORGOT_PASSWORD_STEPS } from "../constants/auth.constant";
 import z from "zod";
-import { ForgotPasswordSchema, NewPasswordSchema } from "../schems/auth.schema";
+import {
+  ForgotPasswordSchema,
+  NewPasswordSchema,
+} from "../schemas/auth.schema";
 
+export type ForgotPasswordSteps = (typeof FORGOT_PASSWORD_STEPS)[keyof typeof FORGOT_PASSWORD_STEPS];
 declare module "next-auth" {
   interface Session {
     user: {
@@ -10,6 +15,7 @@ declare module "next-auth" {
       username: string;
       email: string;
       phone: string;
+      photo?: string;
       role: string;
       isVerified: boolean;
       createdAt: string;
@@ -27,6 +33,7 @@ declare module "next-auth/jwt" {
     email: string | null;
     phone: string;
     role: string;
+    photo?: string;
     isVerified: boolean;
     createdAt: string;
     accesstoken: string;
@@ -44,7 +51,7 @@ export type ForgotPasswordResponse = {
   info: string;
 };
 
-export type ForgetPasswordField = z.infer<
+export type ForgotPasswordField = z.infer<
   ReturnType<typeof ForgotPasswordSchema>
 >;
 

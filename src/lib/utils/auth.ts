@@ -5,9 +5,9 @@ export function getFriendlyErrorMessage(
   error: string,
   t: ReturnType<typeof useTranslations>
 ) {
-  if (!error) return t("genericError");
+  if (!error) return t("generic-error");
   if (error.includes("fails to match the required pattern")) {
-    return t("passwordPatternError");
+    return t("password-pattern-error");
   }
   return error;
 }

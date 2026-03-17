@@ -17,10 +17,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
-import {
-  RegistrationSchema,
-  RegistrationSchemaType,
-} from "@/lib/schemes/register.scheama";
+
 import { PhoneInput } from "@/components/ui/phone-input";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,6 +26,10 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRegister } from "../_hooks/use-register";
 import { useTranslations } from "next-intl";
+import {
+  RegistrationSchema,
+  RegistrationSchemaType,
+} from "@/lib/schemas/auth.schema";
 
 export default function RegisterComponent() {
   //  Translation

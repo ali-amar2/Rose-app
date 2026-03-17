@@ -17,7 +17,7 @@ import useVerifyOtp from "../_hooks/use-verify-otp";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { otpSchema, type OtpFormValues } from "@/lib/schema/zod-validation";
+import { otpSchema, type OtpFormValues } from "@/lib/schemas/auth.schema";
 
 // resend timer localStorage key
 const RESEND_TIMER_KEY = "resend_otp_expire_at";

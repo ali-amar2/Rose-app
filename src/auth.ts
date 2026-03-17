@@ -84,6 +84,7 @@ export const authOptions: NextAuthOptions = {
       session.user.isVerified = token.isVerified;
       session.user.createdAt = token.createdAt;
       session.user.accesstoken = token.accesstoken;
+      session.user.photo = token.photo;
       return session;
     },
   },
