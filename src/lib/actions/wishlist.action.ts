@@ -1,64 +1,56 @@
-"use server";
-import { ApiResponse } from "../types/api";
-import { getToken } from "../utils/manage-token";
+// "use server";
 
-// add product to wishlist
-export async function addWishlist(fields: { productId: string }) {
-  const tokenObj = await getToken();
-  const token = tokenObj?.accesstoken;
+// import { getToken } from "@/lib/utils/manage-token";
 
-  const response = await fetch(`${process.env.API}/wishlist/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(fields),
-  });
+// export async function addWishlistAction(productId: string) {
+//   const token = await getToken();
 
-  // if (!response.ok) throw new Error("Failed to fetch");
+//   const accessToken = token?.accessToken;
 
-  const payload: ApiResponse = await response.json();
+//   if (!accessToken) {
+//     throw new Error("Unauthorized");
+//   }
 
-  return payload;
-}
+//   const res = await fetch(`${process.env.API}/wishlist/add`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${accessToken}`,
+//     },
+//     body: JSON.stringify({ productId }),
+//   });
 
-// Delete product from wishlist.
-export async function removeWishlist(productId: string) {
-  const tokenObj = await getToken();
-  const token = tokenObj?.accesstoken;
+//   const data = await res.json();
 
-  const response = await fetch(`${process.env.API}/wishlist//${productId}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+//   if (!res.ok) {
+//     throw new Error(data?.message || "Failed to add wishlist");
+//   }
+//   console.log(data);
 
-  // if (!response.ok) throw new Error("Failed to fetch");
+//   return data;
+// }
 
-  const payload: ApiResponse = await response.json();
+// export async function removeWishlistAction(productId: string) {
+//   const token = await getToken();
 
-  return payload;
-}
+//   const accessToken = token?.accessToken;
 
-// check if product in wishlist, else.
-export async function checkWishlist(productId: string) {
-  const tokenObj = await getToken();
-  const token = tokenObj?.accesstoken;
+//   if (!accessToken) {
+//     throw new Error("Unauthorized");
+//   }
 
-  const response = await fetch(
-    `${process.env.API}/wishlist/check/${productId}`,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  // if (!response.ok) throw new Error("Failed to fetch");
+//   const res = await fetch(`${process.env.API}/wishlist/${productId}`, {
+//     method: "DELETE",
+//     headers: {
+//       Authorization: `Bearer ${accessToken}`,
+//     },
+//   });
 
-  const payload: CheckWishlistResponse = await response.json();
+//   const data = await res.json();
 
-  return payload?.isInWishlist;
-}
+//   if (!res.ok) {
+//     throw new Error(data?.message || "Failed to remove wishlist");
+//   }
+
+//   return data;
+// }

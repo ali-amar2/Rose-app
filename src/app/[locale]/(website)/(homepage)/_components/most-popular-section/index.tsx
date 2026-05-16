@@ -16,10 +16,12 @@ export default async function MostPopularSection({ searchParams }: OccProps) {
   });
 
   return (
-    <MostPopular
-      occasions={occasions}
-      initialOccasion={activeOccasion}
-      initialProducts={products}
-    />
+    <div className="w-full mt-5">
+      <MostPopular
+        occasions={occasions}
+        initialOccasion={activeOccasion}
+        initialProducts={products}
+      />
+    </div>
   );
 }

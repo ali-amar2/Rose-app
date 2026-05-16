@@ -5,9 +5,7 @@ export async function GET(request: NextRequest) {
   try {
     const token = await getToken({ req: request });
 
-    if (!token?.accesstoken) {
-      console.log(token?.accesstoken);
-
+    if (!token?.accessToken) {
       return NextResponse.json(
         { message: "Unauthorized ❌❌" },
         { status: 401 }
@@ -18,7 +16,7 @@ export async function GET(request: NextRequest) {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token.accesstoken}`,
+        Authorization: `Bearer ${token.accessToken}`,
       },
     });
 

@@ -1,56 +1,55 @@
 import React from "react";
 import { Truck, ShieldCheck, RefreshCcw, Headset } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-// dummy specifications data
 const specs = [
   {
-    icon: <Truck size={40} strokeWidth={1.5} />,
-    title: "Free Delivery",
-    sub: "For orders above 120 EGP",
+    icon: <Truck size={28} strokeWidth={1.8} />,
+    titleKey: "freeDelivery.title",
+    subKey: "freeDelivery.sub",
   },
   {
-    icon: <RefreshCcw size={40} strokeWidth={1.5} />,
-    title: "Get Refund",
-    sub: "Refunds within 30 days",
+    icon: <RefreshCcw size={28} strokeWidth={1.8} />,
+    titleKey: "refund.title",
+    subKey: "refund.sub",
   },
   {
-    icon: <ShieldCheck size={40} strokeWidth={1.5} />,
-    title: "Safe Payment",
-    sub: "100% Secure Payment",
+    icon: <ShieldCheck size={28} strokeWidth={1.8} />,
+    titleKey: "safePayment.title",
+    subKey: "safePayment.sub",
   },
   {
-    icon: <Headset size={40} strokeWidth={1.5} />,
-    title: "24/7 Support",
-    sub: "Contact us at any time",
+    icon: <Headset size={28} strokeWidth={1.8} />,
+    titleKey: "support.title",
+    subKey: "support.sub",
   },
 ];
 
-// component
 export default function SpecificationsComponent() {
-  // TODO: translation
+  const t = useTranslations("specs");
 
   return (
-    // TODO: colors to be changed
-    <section className="w-full">
-      <div className="bg-[#FDF0F0] dark:bg-zinc-700 rounded-xl p-10 flex items-center justify-between w-full">
+    <section aria-label={t("aria")} className="w-full">
+      <div className="grid grid-cols-1 gap-3 rounded-2xl bg-[#FDF0F0] p-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4 lg:p-6 dark:bg-zinc-800">
         {specs.map((item, index) => (
-          <div
+          <article
             key={index}
-            className="flex items-center gap-4 w-fit px-8 flex-1"
+            className="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md dark:bg-zinc-900"
           >
-            <div className="w-16 h-16 bg-[#A12525] dark:bg-pink-200 dark:text-red-900 rounded-full flex items-center justify-center text-white ">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#A12525] text-white dark:bg-pink-200 dark:text-red-900">
               {item.icon}
             </div>
 
-            <div className="flex flex-col gap-1">
-              <h3 className="font-semibold text-[#A12525] dark:text-pink-200 text-xl">
-                {item.title}
+            <div className="min-w-0">
+              <h3 className="text-sm font-semibold text-[#A12525] sm:text-base dark:text-pink-200">
+                {t(item.titleKey)}
               </h3>
-              <p className="text-sm text-zinc-500 dark:text-zinc-300">
-                {item.sub}
+
+              <p className="mt-1 text-xs leading-relaxed text-zinc-500 sm:text-sm dark:text-zinc-300">
+                {t(item.subKey)}
               </p>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

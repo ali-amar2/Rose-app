@@ -1,22 +1,30 @@
 import { useMutation } from "@tanstack/react-query";
-import { registerAction } from "../_actions/register.action";
 import { useRouter } from "next/navigation";
+import { registerAction } from "../_actions/register.action";
+import { RegisterValues } from "@/lib/schemas/auth.schema";
 
 export function useRegister() {
   const router = useRouter();
-  const { isPending, error, mutate } = useMutation({
-    mutationFn: async (values: any) => {
-      const response = await registerAction({ values });
 
-      if (response?.error) {
-        throw new Error(response?.error || "Sign up failed");
+  const { isPending, error, mutate } = useMutation({
+    mutationFn: async (values: RegisterValues) => {
+      const res = await registerAction(values);
+
+      if ("error" in res) {
+        throw new Error(res.error);
       }
 
-      router.push("/login");
+      return res;
+    },
 
-      return response;
+    onSuccess: () => {
+      router.push("/login");
     },
   });
 
-  return { isPending, error, signup: mutate };
+  return {
+    isPending,
+    error,
+    signup: mutate,
+  };
 }

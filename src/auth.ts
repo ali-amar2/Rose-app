@@ -6,12 +6,14 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
+
   cookies: {
     sessionToken: {
       name:
         process.env.NODE_ENV === "production"
           ? "__Secure-next-auth.session-token"
           : "next-auth.session-token",
+
       options: {
         httpOnly: true,
         sameSite: "lax",
@@ -24,6 +26,7 @@ export const authOptions: NextAuthOptions = {
   providers: [
     Credentials({
       name: "Credentials",
+
       credentials: {
         email: {},
         password: {},
@@ -32,59 +35,53 @@ export const authOptions: NextAuthOptions = {
       authorize: async (credentials) => {
         const response = await fetch(`${process.env.API}/auth/signin`, {
           method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({
             email: credentials?.email,
             password: credentials?.password,
           }),
-          headers: {
-            "Content-Type": "application/json",
-          },
         });
 
         const payload: ApiResponse = await response.json();
 
-        if ("error" in payload) {
-          throw new Error(payload.error);
+        if (!response.ok || "error" in payload) {
+          throw new Error("error" in payload ? payload.error : "Login failed");
         }
 
         return {
           id: payload.user._id,
-          accesstoken: payload.token,
+          accessToken: payload.token,
           ...payload.user,
         };
       },
     }),
   ],
+
   secret: process.env.NEXTAUTH_SECRET,
 
   callbacks: {
-    async jwt({ token, user, trigger, session }) {
+    async jwt({ token, user }) {
       if (user) {
         token = { ...token, ...user };
       }
-
-      if (trigger === "update" && session?.user) {
-        token = {
-          ...token,
-          ...session.user,
-        };
-      }
-
       return token;
     },
 
     session: ({ session, token }) => {
-      session.user._id = token._id;
-      session.user.firstName = token.firstName;
-      session.user.lastName = token.lastName;
-      session.user.username = token.username;
-      session.user.email = token.email || "";
-      session.user.phone = token.phone;
-      session.user.role = token.role;
-      session.user.isVerified = token.isVerified;
-      session.user.createdAt = token.createdAt;
-      session.user.accesstoken = token.accesstoken;
-      session.user.photo = token.photo;
+      if (session.user) {
+        session.user._id = token._id as string;
+        session.user.firstName = token.firstName as string;
+        session.user.lastName = token.lastName as string;
+        session.user.username = token.username as string;
+        session.user.email = (token.email as string) || "";
+        session.user.phone = token.phone as string;
+        session.user.role = token.role;
+        session.user.photo = token.photo as string;
+        session.user.accesstoken = token.accessToken as string;
+      }
+
       return session;
     },
   },

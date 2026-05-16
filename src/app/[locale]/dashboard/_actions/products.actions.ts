@@ -1,10 +1,10 @@
 "use server";
 
-import { getMyToken } from "@/lib/utils/get-my-token";
+import { getToken } from "@/lib/utils/manage-token";
 
 // delete product action
 export async function deleteProductAction(productId: string): Promise<void> {
-  const token = await getMyToken();
+  const token = await getToken();
   if (!token?.accesstoken) throw new Error("Unauthorized");
 
   const res = await fetch(`${process.env.API}/products/${productId}`, {

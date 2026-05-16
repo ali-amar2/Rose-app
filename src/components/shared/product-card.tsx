@@ -1,13 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import Rating from "@/components/ui/rating";
 import ProductBadge from "./product-badge";
-import { useTranslations } from "next-intl";
-import AddToWishlist from "./add-to-wishlist";
+import { useTranslations, useLocale } from "next-intl";
 import AddToCartButton from "./add-to-cart-button";
 import { ShoppingCart } from "lucide-react";
 import { ProductCardProps } from "@/lib/types/product";
+import { Link } from "@/i18n/navigation";
 
 export default function ProductCard({
   id,
@@ -20,28 +19,27 @@ export default function ProductCard({
   rateAvg,
 }: ProductCardProps) {
   const t = useTranslations("product");
+  const locale = useLocale();
+  const isRTL = locale === "ar";
 
   return (
-    <Card className="border-none shadow-none h-full">
+    <Card
+      className="border-none shadow-none h-full"
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       <CardContent className="flex flex-col h-full px-1 p-0">
-        {/* Product image */}
+        {/* IMAGE */}
         <Link
           href={`/products/${id}`}
-          className="relative w-full h-72 block overflow-hidden rounded-md"
+          className="relative w-full h-72 block overflow-hidden rounded-xl"
         >
-          <Image
-            src={img}
-            alt={title}
-            fill
-            style={{ objectFit: "cover", objectPosition: "center" }}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
+          <Image src={img} alt={title} fill style={{ objectFit: "fill" }} />
+
           <ProductBadge quantity={quantity} sold={sold} />
-          <AddToWishlist productId={id || ""} />
         </Link>
 
-        <div className="flex flex-col space-y-1 mt-2">
-          {/* Product title */}
+        {/* CONTENT */}
+        <div className="flex flex-col space-y-1 px-2 mt-2">
           <Link href={`/products/${id}`}>
             <p className="font-semibold capitalize text-lg text-maroon-600 line-clamp-1">
               {title}
@@ -49,9 +47,10 @@ export default function ProductCard({
           </Link>
 
           <div className="flex justify-between items-center">
-            {/* Rating and price */}
+            {/* rating + price */}
             <div className="flex flex-col">
               <Rating rate={rateAvg} />
+
               <span className="text-maroon-600 font-semibold">
                 {priceAfterDiscount} {t("currency")}{" "}
                 <span className="text-zinc-500 line-through">
@@ -60,7 +59,7 @@ export default function ProductCard({
               </span>
             </div>
 
-            {/* Add to cart button */}
+            {/* cart */}
             <AddToCartButton
               className="flex justify-center items-center w-11 h-11 rounded-full"
               productId={id!}

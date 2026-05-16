@@ -1,13 +1,13 @@
-import { getMyToken } from "@/lib/utils/get-my-token";
 import {
   LowStockProduct,
   TopSellingProduct,
   AllStatisticsResponse,
 } from "@/lib/types/dashboard/product";
+import { getToken } from "@/lib/utils/manage-token";
 
 // fetch statistics
 async function fetchStatistics(): Promise<AllStatisticsResponse | null> {
-  const token = await getMyToken();
+  const token = await getToken();
   if (!token?.accesstoken) return null;
 
   // fetch

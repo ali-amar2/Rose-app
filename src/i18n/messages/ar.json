@@ -1,9 +1,30 @@
 {
+    "navbar": {
+    "home": "الرئيسية",
+    "products": "المنتجات",
+    "categories": "التصنيفات",
+    "occasions": "المناسبات",
+    "contact": "تواصل معنا",
+    "about": "من نحن"
+  },
+   "header": {
+    "toggleMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "logoAlt": "شعار روز",
+
+    "deliverTo": "التوصيل إلى",
+    "profile": "الملف الشخصي",
+    "login": "تسجيل الدخول",
+
+    "wishlist": "المفضلة",
+    "cart": "السلة"
+  },
   "home": "الرئيسية",
   "deliver": "توصيل الى",
   "testimonials": {
     "title": "الشهادات",
-    "sub-title": "كلمات حقيقية من العملاء السعداء"
+    "sub-title": "كلمات حقيقية من العملاء السعداء",
+    "empty": "لا توجد آراء حتى الآن."
   },
   "forgot-password": {
     "step-one-title": "هل نسيت كلمة المرور؟",
@@ -22,7 +43,7 @@
       "email": "البريد الإلكتروني",
       "phone": "رقم الهاتف",
       "gender": {
-        "gender": "الجنس",
+        "index": "الجنس",
         "male": "ذكر",
         "female": "أنثى"
       },
@@ -68,7 +89,6 @@
       "mismatch": "كلمتا المرور غير متطابقتين"
     }
   },
-  "email-lablel": "البريد الالكترونى",
   "alreadyHaveAccount": "هل لديك حساب بالفعل؟ ",
   "email-label": "البريد الالكترونى",
   "forgot-password-heading": "هل نسيت كلمة المرور؟",
@@ -115,7 +135,13 @@
   "most-popular": {
     "title": "الأكثر شيوعًا",
     "empty": "لا توجد منتجات لهذه المناسبة",
-    "view-more": "عرض المزيد"
+    "view-more": "عرض المزيد",
+    "occasion": {
+      "Wedding": "زفاف",
+      "Graduation": "ذكرى سنوية",
+      "Birthday": "ميلاد",
+      "Anniversary": "ذكرى سنوية"
+    }
   },
   "about": {
     "title": "من نحن",
@@ -155,8 +181,8 @@
     "login-btn": "تسجيل الدخول",
     "generic-error": "حدث خطأ ما",
     "password-pattern-error": "يجب أن تكون كلمة المرور 8 أحرف على الأقل وتحتوي على حرف كبير، حرف صغير، رقم و رمز خاص.",
-    "noAccount": "ليس لديك حساب بعد؟",
-    "createAccount": "أنشئ حسابًا الآن",
+    "no-account": "ليس لديك حساب بعد؟",
+    "create-account": "أنشئ حسابًا الآن",
     "schema": {
       "email-required": "البريد الإلكتروني مطلوب",
       "invalid-email": "الرجاء إدخال بريد إلكتروني صالح",
@@ -174,10 +200,10 @@
   },
   "delete-alert": {
     "button-text": "حذف",
-    "delet-alert-description": "هل أنت متأكد من رغبتك في حذف هذا؟",
-    "delet-alert-cancel": " إلغاء",
-    "delet-alert-Confirm": "تأكيد",
-    "delet-alert-loading": "جارٍ الحذف..."
+    "delete-alert-description": "هل أنت متأكد من رغبتك في حذف هذا؟",
+    "delete-alert-cancel": " إلغاء",
+    "delete-alert-Confirm": "تأكيد",
+    "delete-alert-loading": "جارٍ الحذف..."
   },
   "items": {
     "product": "منتج",
@@ -240,7 +266,7 @@
       "family": "العائلة"
     }
   },
-  "AddressForm": {
+  "address-form": {
     "title": "أدخل تفاصيل العنوان",
     "cityLabel": "المدينة",
     "cityPlaceholder": "أدخل اسم المدينة",
@@ -249,12 +275,12 @@
     "phoneLabel": "رقم الهاتف",
     "phonePlaceholder": "أدخل رقم الهاتف"
   },
-  "DeleteAddress": {
+  "delete-address": {
     "title": "هل أنت متأكد أنك تريد حذف هذا العنوان؟",
     "cancel": "إلغاء",
     "confirm": "تأكيد"
   },
-  "MapPicker": {
+  "map-picker": {
     "findLocation": "تحديد موقعي",
     "notSupported": "المتصفح لا يدعم تحديد الموقع.",
     "locationError": "تعذر الحصول على موقعك. حاول مرة أخرى."
@@ -283,10 +309,9 @@
     "total": "الإجمالي"
   },
   "error": "خطأ",
-  "product.products": "",
   "old-password-label": "كلمة المرور القديمة",
   "new-password-label": "كلمة المرور الجديدة",
-  "confirm-new-password-label": "تأكيد كلمة المرور القديمة",
+  "confirm-new-password-label": "تأكيد كلمة المرور الجديدة",
   "change-password": "تغيير كلمة المرور",
   "delete-my-account": "حذف الحساب الخاص بى",
   "ask-for-delete-account": "هل أنت متأكد أنك تريد حذف حسابك؟",
@@ -321,7 +346,7 @@
     "order-items": "عناصر الطلب",
     "show-all": "عرض الكل",
     "show-less": "عرض أقل",
-    "no-orders": "لا توجد طلبات.",
+    "no-orders-found": "لا توجد طلبات.",
     "currency": "ج.م",
     "rating": "التقييم",
     "ratings-count": "تقييم",
@@ -407,5 +432,136 @@
   },
   "relatedProducts": {
     "title": "منتجات مشابهة"
+  },
+  "carousel": {
+  "sideBadge": "ابتداءً من 10.99 جنيه",
+  "sideTitle": "هدايا مميزة للأشخاص الذين تحبهم",
+  "sideDescription": "زهور أنيقة ومفاجآت مميزة لكل مناسبة.",
+  "shopNow": "تسوق الآن",
+
+  "mainBadge": "مجموعة مميزة",
+  "mainTitle": "عبّر بالورود",
+  "mainDescription": "هدايا أنيقة مصممة لأعياد الميلاد، الزفاف، الذكريات والمناسبات التي لا تُنسى.",
+  "buyNow": "سأشتري الآن!",
+
+  "slidesAlt": "مجموعة زهور"
+},
+
+"specialOccasions": {
+  "sectionLabel": "المناسبات الخاصة",
+
+  "cards": {
+    "wedding": {
+      "badge": "زفاف",
+      "title": "احتفل بحبها للأبد بهدية ستتذكرها دائمًا"
+    },
+
+    "engagement": {
+      "badge": "خطوبة",
+      "title": "احتفل ببداية رحلة جميلة تجمع بينكما"
+    },
+
+    "anniversary": {
+      "badge": "ذكرى سنوية",
+      "title": "اجعل كل سنة من الحب مميزة بهدية لا تُنسى"
+    }
+  }
+},
+
+"storeFeatures": {
+  "sectionLabel": "مميزات المتجر",
+
+  "freeDelivery": {
+    "title": "توصيل مجاني",
+    "description": "للطلبات فوق 120 جنيه"
+  },
+
+  "refund": {
+    "title": "استرجاع الأموال",
+    "description": "استرجاع خلال 30 يوم"
+  },
+
+  "safePayment": {
+    "title": "دفع آمن",
+    "description": "دفع آمن 100%"
+  },
+
+  "support": {
+    "title": "دعم 24/7",
+    "description": "تواصل معنا في أي وقت"
+  }
+},
+"secondSection": {
+    "aria": "المناسبات الخاصة",
+
+    "cards": {
+      "wedding": {
+        "title": "احتفل بها إلى الأبد بهدية ستتذكرها دائمًا",
+        "badge": "زفاف"
+      },
+      "engagement": {
+        "title": "احتفل ببداية رحلة جميلة معًا",
+        "badge": "خطوبة"
+      },
+      "anniversary": {
+        "title": "احتفل بكل عام من الحب بمفاجأة مميزة",
+        "badge": "ذكرى زواج"
+      }
+    }
+  },
+  "specs": {
+    "aria": "مميزات المتجر",
+
+    "freeDelivery": {
+      "title": "توصيل مجاني",
+      "sub": "للطلبات أكثر من 120 جنيه"
+    },
+    "refund": {
+      "title": "استرجاع الأموال",
+      "sub": "خلال 30 يوم"
+    },
+    "safePayment": {
+      "title": "دفع آمن",
+      "sub": "دفع محمي 100%"
+    },
+    "support": {
+      "title": "دعم 24/7",
+      "sub": "تواصل معنا في أي وقت"
+    }
+  },
+   "search": {
+    "placeholder": "ما هي الهدية المميزة التي تبحث عنها ؟",
+    "resultsFor": "نتائج البحث عن",
+    "recommended": "مقترحات لك",
+    "noRecommendations": "لا توجد اقتراحات حالياً",
+    "noResults": "لا توجد منتجات",
+    "startSearching": "ابدأ البحث عن الهدايا",
+    "rating": "التقييم",
+    "egp": "جنيه"
+  },
+  "footer": {
+    "logoTitle": "تطبيق روز للتجارة الإلكترونية",
+    "rights": "جميع الحقوق محفوظة | 2025",
+
+    "discoverTitle": "اكتشف موقعنا",
+
+    "items": {
+      "home": "الرئيسية",
+      "products": "المنتجات",
+      "categories": "التصنيفات",
+      "occasions": "المناسبات",
+      "contact": "تواصل معنا",
+      "about": "من نحن",
+      "terms": "الشروط والأحكام",
+      "privacy": "سياسة الخصوصية",
+      "faqs": "الأسئلة الشائعة"
+    },
+
+    "newsletter": {
+      "title": "احصل على خصم 20%",
+      "subtitle": "عن طريق الاشتراك في النشرة البريدية",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "button": "اشترك"
+    }
   }
 }

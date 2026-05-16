@@ -1,100 +1,81 @@
-"use client";
+// "use client";
 
-import { HeartMinus, HeartPlus } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
-import { cn } from "@/lib/utils/tailwind-merge";
-import useToggleWishlist, {
-  syncLocalWishlistToAPI,
-} from "@/hooks/use-toggle-wishlist";
-import { useSession } from "next-auth/react";
-import { useLocalWishlist } from "@/hooks/use-locale-wishlist";
+// import { HeartMinus, HeartPlus } from "lucide-react";
+// import { useState } from "react";
+// import { cn } from "@/lib/utils/tailwind-merge";
+// import useWishlist from "@/hooks/use-wishlist";
+// import { useTranslations } from "next-intl";
+// import { Button } from "../ui/button";
 
-type Props = {
-  productId: string;
-};
+// type Props = {
+//   productId: string;
+// };
 
-export default function AddToWishlist({ productId }: Props) {
-  // Translation
-  const t = useTranslations("");
+// export default function AddToWishlist({ productId }: Props) {
+//   const t = useTranslations("");
 
-  // State
-  const [showAdd, setShowAdd] = useState<boolean>(false);
-  const [showRemove, setShowRemove] = useState<boolean>(false);
+//   const [showAdd, setShowAdd] = useState(false);
+//   const [showRemove, setShowRemove] = useState(false);
 
-  // context
-  const { status } = useSession();
+//   const { isInWishlist, toggleWishlist, isPending } = useWishlist();
 
-  // query
-  const {
-    mutation: toggleWishlist,
-    data,
-    isLoading,
-  } = useToggleWishlist(productId);
+//   const active = isInWishlist(productId);
 
-  // in case guest
-  const { isInWishlist, toggleWishlistGuest } = useLocalWishlist(productId);
+//   const handleToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+//     e.preventDefault();
 
-  // function
-  const handleToggle = async () => {
-    // client
-    if (status === "authenticated") {
-      toggleWishlist.mutate();
-    }
-    // guest
-    if (status === "unauthenticated") toggleWishlistGuest();
-  };
+//     if (isPending) return;
 
-  useEffect(() => {
-    if (status === "authenticated") {
-      syncLocalWishlistToAPI();
-    }
-  }, [status]);
+//     toggleWishlist(productId);
+//   };
 
-  // if (isLoading) {
-  //   return (
-  //     <div className="flex justify-center items-center h-40 absolute -top-12 left-2">
-  //       <div className="animate-spin rounded-full size-8 border-t-2 border-b-2 border-maroon-500"></div>
-  //     </div>
-  //   );
-  // }
+//   return (
+//     <div>
+//       {active ? (
+//         <Button
+//           variant={"inactive"}
+//           type="button"
+//           onClick={handleToggle}
+//           onMouseEnter={() => setShowAdd(true)}
+//           onMouseLeave={() => setShowAdd(false)}
+//           disabled={isPending}
+//           className={cn(
+//             "bg-white text-maroon-600 rounded-full h-8 flex items-center justify-center absolute top-2 left-2 px-2 transition-all duration-200",
+//             isPending && "opacity-50 cursor-not-allowed"
+//           )}
+//         >
+//           <HeartMinus size={18} strokeWidth={2.5} />
 
-  return (
-    <div>
-      {isInWishlist || data ? (
-        <button
-          onClick={handleToggle}
-          onMouseEnter={() => setShowRemove(true)}
-          onMouseLeave={() => setShowRemove(false)}
-          className="bg-black text-white rounded-full h-8 flex rtl:flex-row-reverse items-center justify-center absolute top-2 left-2 px-2"
-        >
-          <HeartMinus size={18} strokeWidth={2.5} />
-          {showRemove && (
-            <span className="px-1 text-xs font-medium">
-              {t("remove-from-wishlist")}
-            </span>
-          )}
-        </button>
-      ) : (
-        <button
-          onClick={handleToggle}
-          onMouseEnter={() => setShowAdd(true)}
-          onMouseLeave={() => setShowAdd(false)}
-          className="bg-white text-maroon-600 rounded-full h-8 flex rtl:flex-row-reverse items-center justify-center absolute top-2 left-2 px-2"
-        >
-          <HeartPlus size={18} strokeWidth={2.5} />
-          {showAdd && (
-            <span
-              className={cn(
-                "px-1 text-xs font-medium transition-all duration-1000 ease-in-out",
-                showAdd && "opacity-100 translate-x-0"
-              )}
-            >
-              {t("add-to-wishlist")}
-            </span>
-          )}
-        </button>
-      )}
-    </div>
-  );
-}
+//           {showRemove && (
+//             <span className="px-1 text-xs font-medium">
+//               {t("remove-from-wishlist")}
+//             </span>
+//           )}
+//         </Button>
+//       ) : (
+//         <Button
+//           onClick={handleToggle}
+//           onMouseEnter={() => setShowAdd(true)}
+//           onMouseLeave={() => setShowAdd(false)}
+//           disabled={isPending}
+//           className={cn(
+//             "bg-white text-maroon-600 rounded-full h-8 flex items-center justify-center absolute top-2 left-2 px-2 transition-all duration-200",
+//             isPending && "opacity-50 cursor-not-allowed"
+//           )}
+//         >
+//           <HeartPlus size={18} strokeWidth={2.5} />
+
+//           {showAdd && (
+//             <span
+//               className={cn(
+//                 "px-1 text-xs font-medium transition-all duration-200"
+//               )}
+//             >
+//               {t("add-to-wishlist")}
+//             </span>
+//           )}
+//         </Button>
+//       )}
+//     </div>
+//   );
+// }

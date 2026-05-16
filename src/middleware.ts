@@ -1,98 +1,45 @@
-import { withAuth } from "next-auth/middleware";
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 import { getToken } from "next-auth/jwt";
 
-// Auth pages (should NOT be accessible when logged in)
-const authPages = ["/login", "/register", "/forgot-password"];
-
-// Public pages (accessible for everyone)
-const publicPages = ["/", "/products", ...authPages];
-
-// Next-Intl middleware handler
 const handleI18nRouting = createMiddleware(routing);
 
-// NextAuth middleware
-const authMiddleware = withAuth(
-  function onSuccess(req) {
-    // Apply i18n routing after successful auth
-    return handleI18nRouting(req);
-  },
-  {
-    callbacks: {
-      authorized: ({ token }) => token != null,
-    },
-    pages: {
-      signIn: "/login",
-    },
-  }
-);
+const authPages = ["/login", "/register", "/forgot-password"];
 
 export default async function middleware(req: NextRequest) {
-  // Variables
   const token = await getToken({ req });
 
-  const locales = routing.locales.join("|");
+  const pathname = req.nextUrl.pathname;
 
-  const publicPathnameRegex = new RegExp(
-    `^(/(${locales}))?(${publicPages
-      .flatMap((p) => (p === "/" ? ["", "/"] : p))
-      .join("|")})/?$`,
-    "i"
-  );
+  const locale =
+    routing.locales.find((l) => pathname.startsWith(`/${l}`)) ||
+    routing.defaultLocale;
 
-  const authPathnameRegex = new RegExp(
-    `^(/(${locales}))?(${authPages
-      .flatMap((p) => (p === "/" ? ["", "/"] : p))
-      .join("|")})/?$`,
-    "i"
-  );
+  const pathnameWithoutLocale = pathname.replace(`/${locale}`, "") || "/";
 
-  // Dashboard authorization check
-  const isDashboardRoute = req.nextUrl.pathname.includes("/dashboard");
-  if (isDashboardRoute) {
-    // Only authenticated users can access dashboard
-    if (!token) {
-      const loginUrl = new URL("/login", req.nextUrl.origin);
-      return NextResponse.redirect(loginUrl);
-    }
+  const isPublicPage =
+    pathnameWithoutLocale === "/" || authPages.includes(pathnameWithoutLocale);
 
-    const userRole = (token as any)?.role;
-    // Only allow admin users to access dashboard
+  if (!token && !isPublicPage) {
+    return NextResponse.redirect(new URL(`/${locale}/login`, req.url));
+  }
+
+  if (token && authPages.includes(pathnameWithoutLocale)) {
+    return NextResponse.redirect(new URL(`/${locale}`, req.url));
+  }
+
+  if (pathnameWithoutLocale.startsWith("/dashboard")) {
+    const userRole = (token as { role?: "admin" | "user" })?.role;
+
     if (userRole !== "admin") {
-      const localePrefix = routing.locales.find((locale) =>
-        req.nextUrl.pathname.startsWith(`/${locale}`)
+      return NextResponse.redirect(
+        new URL(`/${locale}/not-authorized`, req.url)
       );
-      const notAuthorizedUrl = new URL(
-        `/${localePrefix || routing.defaultLocale}/not-authorized`,
-        req.nextUrl.origin
-      );
-      return NextResponse.redirect(notAuthorizedUrl);
     }
   }
 
-  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
-  const isAuthPage = authPathnameRegex.test(req.nextUrl.pathname);
-
-  // Public pages logic
-  if (isPublicPage) {
-    // Redirect authenticated users away from auth pages
-    if (token && isAuthPage) {
-      const redirectUrl = new URL("/", req.nextUrl.origin);
-
-      // Preserve search params
-      req.nextUrl.searchParams.forEach((value, key) => {
-        redirectUrl.searchParams.set(key, value);
-      });
-
-      return NextResponse.redirect(redirectUrl);
-    }
-
-    return handleI18nRouting(req);
-  }
-
-  return (authMiddleware as any)(req);
+  return handleI18nRouting(req);
 }
 
 export const config = {

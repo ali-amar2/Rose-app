@@ -6,20 +6,79 @@ import {
   NewPasswordField,
   NewPasswordResponse,
 } from "../types/auth";
+import { OtpFormValues } from "../schemas/auth.schema";
+
+type ActionError = {
+  error: string;
+};
+
+type VerifyOtpResponse = {
+  status: string;
+  message: string;
+};
+
+const API_URL = process.env.API;
+
+async function parseResponse<T>(response: Response): Promise<T | ActionError> {
+  const payload = await response.json();
+
+  if (!response.ok) {
+    return {
+      error: payload?.message || payload?.error || "Something went wrong",
+    };
+  }
+
+  return payload;
+}
 
 // Forgot Password Action
 
-export async function forgotPasswordAction(fields: ForgotPasswordField) {
-  const response = await fetch(`${process.env.API}//auth/forgotPassword`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(fields),
-  });
+export async function forgotPasswordAction(
+  fields: ForgotPasswordField
+): Promise<ForgotPasswordResponse | ActionError> {
+  try {
+    const response = await fetch(`${API_URL}/auth/forgotPassword`, {
+      method: "POST",
 
-  const payload: ForgotPasswordResponse = await response.json();
-  return payload;
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify(fields),
+    });
+
+    return parseResponse<ForgotPasswordResponse>(response);
+  } catch {
+    return {
+      error: "Network error. Please check your connection and try again.",
+    };
+  }
+}
+
+// Verify OTP Action
+
+export async function verifyOtpAction(
+  values: OtpFormValues
+): Promise<VerifyOtpResponse | ActionError> {
+  try {
+    const response = await fetch(`${API_URL}/auth/verifyResetCode`, {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+        resetCode: values.otp,
+      }),
+    });
+
+    return parseResponse<VerifyOtpResponse>(response);
+  } catch {
+    return {
+      error: "Network error. Please check your connection and try again.",
+    };
+  }
 }
 
 // New Password Action
@@ -32,47 +91,25 @@ type NewPasswordActionParams = {
 export async function newPasswordAction({
   email,
   fields,
-}: NewPasswordActionParams) {
-  const response = await fetch(`${process.env.API}/auth/resetPassword`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email,
-      newPassword: fields.newPassword,
-    }),
-  });
+}: NewPasswordActionParams): Promise<NewPasswordResponse | ActionError> {
+  try {
+    const response = await fetch(`${API_URL}/auth/resetPassword`, {
+      method: "PUT",
 
-  const payload: NewPasswordResponse = await response.json();
-  console.log(payload);
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-  return payload;
-}
+      body: JSON.stringify({
+        email,
+        newPassword: fields.newPassword,
+      }),
+    });
 
-//Verify OTP Action
-export async function verifyOtpAction() {
-  //simulating static payload for testing verify otp api
-  //incase code dosn't work please change the code value below
-  const staticPayload = {
-    resetCode: "313539",
-  };
-
-  const apiUrl = process.env.API || "https://flower.elevateegy.com/api/v1";
-
-  const response = await fetch(`${apiUrl}/auth/verifyResetCode`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(staticPayload),
-  });
-
-  if (!response.ok) {
-    throw new Error(`API Error: ${response.status} ${response.statusText}`);
+    return parseResponse<NewPasswordResponse>(response);
+  } catch {
+    return {
+      error: "Network error. Please check your connection and try again.",
+    };
   }
-
-  const payload = await response.json();
-
-  return payload;
 }

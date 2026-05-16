@@ -68,7 +68,7 @@ export default function LoginForm() {
   return (
     <Form {...form}>
       <form
-        className="flex flex-col w-[25rem]"
+        className="flex flex-col w-full"
         onSubmit={form.handleSubmit(onsubmit)}
       >
         {/* Fields */}
@@ -84,7 +84,7 @@ export default function LoginForm() {
                   <Input
                     {...field}
                     type="email"
-                    placeholder={tKey("emailPlaceholder")}
+                    placeholder={tKey("email-placeholder")}
                     error={!!form.formState.errors.email}
                   />
                 </FormControl>
@@ -103,7 +103,7 @@ export default function LoginForm() {
                 <FormControl>
                   <PasswordInput
                     {...field}
-                    placeholder={tKey("passwordPlaceholder")}
+                    placeholder={tKey("password-placeholder")}
                     error={!!form.formState.errors.password}
                   />
                 </FormControl>
@@ -118,7 +118,7 @@ export default function LoginForm() {
               href="/forgot-password"
               className="text-maroon-700 font-medium mt-2"
             >
-              {tKey("forgotPassword")}
+              {tKey("forgot-password")}
             </Link>
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function LoginForm() {
                 onCheckedChange={field.onChange}
                 className="border-maroon-700 data-[state=checked]:bg-maroon-600"
               />
-              <span className="text-zinc-700">{tKey("rememberMe")}</span>
+              <span className="text-zinc-700">{tKey("remember-me")}</span>
             </Label>
           )}
         />
@@ -149,7 +149,7 @@ export default function LoginForm() {
           {isPending ? (
             <Loader className="animate-spin mr-2" size={16} />
           ) : (
-            tKey("loginBtn")
+            tKey("login-btn")
           )}
         </Button>
       </form>

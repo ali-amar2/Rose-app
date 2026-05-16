@@ -3,9 +3,7 @@ import { getToken } from "../utils/manage-token";
 export async function getOrders() {
   try {
     const token = await getToken();
-    const accessToken = token?.accesstoken;
-    console.log(accessToken);
-    console.log(process.env.API);
+    const accessToken = token?.accessToken;
 
     if (!accessToken) {
       throw new Error("Unauthorized");

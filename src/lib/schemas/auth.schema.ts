@@ -48,9 +48,7 @@ export const RegistrationSchema = (t: Translations) =>
       message: t("validation.rePassword.mismatch"),
     });
 
-export type RegistrationSchemaType = z.infer<
-  ReturnType<typeof RegistrationSchema>
->;
+export type RegisterValues = z.infer<ReturnType<typeof RegistrationSchema>>;
 
 //Login schema
 export const loginSchema = (t: Translations) =>
@@ -106,7 +104,7 @@ export const NewPasswordSchema = (t: Translations) =>
 
 // OTP Schema
 export const otpSchema = z.object({
-  otp: z.string(),
+  otp: z.string().length(6),
 });
 
 export type OtpFormValues = z.infer<typeof otpSchema>;

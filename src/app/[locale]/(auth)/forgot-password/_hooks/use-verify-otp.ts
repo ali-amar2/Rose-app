@@ -1,40 +1,28 @@
-"use client";
-
 import { useMutation } from "@tanstack/react-query";
-import { useToast } from "@/hooks/use-toast";
-import { useTranslations } from "next-intl";
 import { verifyOtpAction } from "@/lib/actions/auth.actions";
+import { OtpFormValues } from "@/lib/schemas/auth.schema";
 
-export default function useVerifyOtp() {
-  //   translations
-  const t = useTranslations("verify");
-  const { toast } = useToast();
+export default function useVerifyOtp(onSuccessCallback?: () => void) {
+  const mutation = useMutation({
+    mutationFn: async (values: OtpFormValues) => {
+      const payload = await verifyOtpAction(values);
 
-  // mutation
-  const { isPending, mutate, error } = useMutation({
-    mutationFn: async () => {
-      const payload = await verifyOtpAction();
+      if ("error" in payload) {
+        throw new Error(payload.error);
+      }
+
       return payload;
     },
 
-    // on success
     onSuccess: () => {
-      toast({
-        title: "Success",
-        description: t("success-toast"),
-        variant: "success",
-      });
-    },
-
-    // on error
-    onError: () => {
-      toast({
-        title: "Error",
-        description: t("error-toast"),
-        variant: "destructive",
-      });
+      onSuccessCallback?.();
     },
   });
 
-  return { isPending, error, verifyOtp: mutate };
+  return {
+    verifyOtp: mutation.mutate,
+    isPending: mutation.isPending,
+    error: mutation.error,
+    isSuccess: mutation.isSuccess,
+  };
 }

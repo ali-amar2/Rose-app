@@ -5,14 +5,14 @@ export async function GET(request: NextRequest) {
   try {
     const token = await getToken({ req: request });
 
-    if (!token || !token?.accesstoken) {
+    if (!token || !token?.accessToken) {
       return NextResponse.json({ error: "unauthorized" }, { status: 401 });
     }
 
     const response = await fetch(`${process.env.API}/addresses`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token.accesstoken}`,
+        Authorization: `Bearer ${token.accessToken}`,
       },
       cache: "no-store",
     });

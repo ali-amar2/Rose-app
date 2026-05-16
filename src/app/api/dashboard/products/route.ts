@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getMyToken } from "@/lib/utils/get-my-token";
 import { GetProductsResponse } from "@/lib/types/dashboard/product.d";
+import { getToken } from "next-auth/jwt";
 
-export async function GET(req: NextRequest): Promise<NextResponse> {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   // Auth
-  const token = await getMyToken();
+  const token = await getToken({ req: request });
   if (!token?.accesstoken) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
   // Forward query params
-  const { searchParams } = req.nextUrl;
+  const { searchParams } = request.nextUrl;
   const page = searchParams.get("page") ?? "1";
   const limit = searchParams.get("limit") ?? "12";
   const search = searchParams.get("search") ?? "";

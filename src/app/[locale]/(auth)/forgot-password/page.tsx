@@ -1,14 +1,5 @@
-import React from "react";
-import ForgotPasswordFlowLayout from "./_components/forgot-password-flow-layout";
-import EmailStep from "./_components/email-step";
+import ForgotPasswordFlow from "./_components/forgot-password-flow";
 
-export default function page() {
-  return (
-    <div>
-      <ForgotPasswordFlowLayout />
-      {/* #TODO : waiting footer */}
-      {/* <footer>footer</footer> */}
-      <EmailStep />
-    </div>
-  );
+export default function Page() {
+  return <ForgotPasswordFlow />;
 }

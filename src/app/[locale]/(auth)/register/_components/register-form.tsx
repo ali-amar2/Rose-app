@@ -1,12 +1,12 @@
 "use client";
 
 import {
+  Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-  Form,
 } from "@/components/ui/form";
 import {
   Select,
@@ -17,29 +17,25 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
-
 import { PhoneInput } from "@/components/ui/phone-input";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { PasswordInput } from "@/components/ui/password-input";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useRegister } from "../_hooks/use-register";
 import { useTranslations } from "next-intl";
-import {
-  RegistrationSchema,
-  RegistrationSchemaType,
-} from "@/lib/schemas/auth.schema";
+import { RegisterValues, RegistrationSchema } from "@/lib/schemas/auth.schema";
+import { Loader2 } from "lucide-react";
 
-export default function RegisterComponent() {
-  //  Translation
-  const t = useTranslations("register");
+export default function RegisterForm() {
+  // Translation
+  const t = useTranslations();
 
   // Mutation
   const { isPending, error, signup } = useRegister();
 
   // Form
-  const form = useForm<RegistrationSchemaType>({
+  const form = useForm<RegisterValues>({
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -50,151 +46,137 @@ export default function RegisterComponent() {
       rePassword: "",
     },
     resolver: zodResolver(RegistrationSchema(t)),
+    mode: "onChange",
   });
 
-  // functions
-  const onSubmit = () => {
-    signup(form.getValues());
+  // Submit
+  const onSubmit = (values: RegisterValues) => {
+    signup(values);
   };
 
   return (
-    <div className=" flex items-center justify-center">
+    <div className="flex items-center justify-center">
       <div className="w-full">
-        <div className="mb-10">
-          <h3 className="font-edwardian text-4xl text-maroon-700 text-center dark:text-softPink-300">
-            {t("heading")}
-          </h3>
-        </div>
+        <h3 className="mb-5 text-center font-edwardian text-4xl text-maroon-700 dark:text-softPink-300">
+          {t("register.heading")}
+        </h3>
 
-        {/* INPUTS */}
-        <div className=" border-t border-b border-zinc-300 pt-3 pb-9">
+        <div className="border-y border-zinc-300 py-5">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-2 gap-3 ">
-                {/* FULL name */}
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
                 <FormField
                   control={form.control}
                   name="firstName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t("fields.firstName")}</FormLabel>
+                      <FormLabel>{t("register.fields.firstName")}</FormLabel>
                       <FormControl>
-                        <Input type="text" placeholder="Fady" {...field} />
+                        <Input {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
                   name="lastName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t("fields.lastName")}</FormLabel>
+                      <FormLabel>{t("register.fields.lastName")}</FormLabel>
                       <FormControl>
-                        <Input type="text" placeholder="Refaat" {...field} />
+                        <Input {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
-              {/* The rest */}
 
-              {/* EMAIL */}
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("fields.email")}</FormLabel>
+                    <FormLabel>{t("register.fields.email")}</FormLabel>
                     <FormControl>
-                      <Input
-                        type="email"
-                        placeholder="user@example.com"
-                        {...field}
-                      />
+                      <Input type="email" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              {/* PHONE */}
+
               <FormField
                 control={form.control}
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("fields.phone")}</FormLabel>
-                    <div className="grid grid-cols-1 !mt-0 ">
-                      <FormControl>
-                        <div className="flex">
-                          <PhoneInput
-                            className="w-full"
-                            placeholder="01012345678"
-                            {...field}
-                          />
-                        </div>
-                      </FormControl>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Gender */}
-              <FormField
-                control={form.control}
-                name="gender"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t("fields.gender.gender")}</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select gender" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="male">
-                          {t("fields.gender.male")}
-                        </SelectItem>
-                        <SelectItem value="female">
-                          {t("fields.gender.female")}
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* PASSWORD */}
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t("fields.password")}</FormLabel>
+                    <FormLabel>{t("register.fields.phone")}</FormLabel>
                     <FormControl>
-                      <PasswordInput placeholder="*********" {...field} />
+                      <PhoneInput {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              {/* CONFIRM PASSWORD */}
+
+              <FormField
+                control={form.control}
+                name="gender"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("register.fields.gender.index")}</FormLabel>
+
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue
+                            placeholder={t("register.fields.gender.index")}
+                          />
+                        </SelectTrigger>
+                      </FormControl>
+
+                      <SelectContent>
+                        <SelectItem value="male">
+                          {t("register.fields.gender.male")}
+                        </SelectItem>
+                        <SelectItem value="female">
+                          {t("register.fields.gender.female")}
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("register.fields.password")}</FormLabel>
+                    <FormControl>
+                      <PasswordInput {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <FormField
                 control={form.control}
                 name="rePassword"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("fields.confirmPassword")}</FormLabel>
+                    <FormLabel>
+                      {t("register.fields.confirmPassword")}
+                    </FormLabel>
                     <FormControl>
-                      <PasswordInput placeholder="*********" {...field} />
+                      <PasswordInput {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -202,27 +184,24 @@ export default function RegisterComponent() {
               />
 
               {error && (
-                <p className="text-red-500 text-center mt-2">
-                  {error.message}{" "}
-                </p>
+                <p className="text-center text-red-500">{error.message}</p>
               )}
-              <Button
-                disabled={isPending}
-                type="submit"
-                className="mt-6 w-full"
-              >
-                {isPending ? <Skeleton /> : t("fields.createAccount")}
+
+              <Button disabled={isPending} type="submit" className="w-full">
+                {isPending ? (
+                  <Loader2 className="animate-spin" />
+                ) : (
+                  t("register.fields.createAccount")
+                )}
               </Button>
             </form>
           </Form>
         </div>
-        <p className="text-center text-sm mt-9 dark:text-white">
-          {t("alreadyHaveAccount")}{" "}
-          <Link
-            href={"/login"}
-            className="text-maroon-700 hover:underline dark:text-softPink-300"
-          >
-            {t("login")}
+
+        <p className="mt-3 text-center text-sm">
+          {t("register.alreadyHaveAccount")}{" "}
+          <Link href="/login" className="font-bold text-maroon-700">
+            {t("register.login")}
           </Link>
         </p>
       </div>

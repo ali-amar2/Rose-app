@@ -1,50 +1,60 @@
 import React from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
-// dummy cards data
+// cards data (keys فقط)
 const cards = [
   {
     img: "/assets/s1.png",
-    title: "Celebrate Her Forever with a Gift She’ll Always Remember",
-    badge: "Wedding",
+    titleKey: "cards.wedding.title",
+    badgeKey: "cards.wedding.badge",
   },
   {
     img: "/assets/s2.png",
-    title: "Honor the Beginning of a Beautiful Journey Together",
-    badge: "Engagement",
+    titleKey: "cards.engagement.title",
+    badgeKey: "cards.engagement.badge",
   },
   {
     img: "/assets/s3.png",
-    title: "Mark Every Year of Love with a Meaningful Surprise",
-    badge: "Anniversary",
+    titleKey: "cards.anniversary.title",
+    badgeKey: "cards.anniversary.badge",
   },
 ];
 
 export default function SecondSection() {
+  const t = useTranslations("secondSection");
+
   return (
-    <section className="flex items-center justify-between gap-6">
+    <section
+      aria-label={t("aria")}
+      className="grid grid-cols-1 gap-4 lg:grid-cols-3"
+    >
       {cards.map((item, idx) => (
-        <div
+        <article
           key={idx}
-          className="relative flex-1 h-68 overflow-hidden rounded-2xl bg-gray-100"
+          className="group relative h-[240px] overflow-hidden rounded-2xl sm:h-[280px] lg:h-[340px]"
         >
           <Image
             src={item.img}
-            alt={item.title}
+            alt={t(item.titleKey)}
             fill
-            className="object-cover"
+            priority={idx === 0}
+            sizes="(max-width: 1024px) 100vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
 
-          <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 bg-gradient-to-r from-black/0 to-black/50 ">
-            <span className="bg-white text-red-600 text-xs font-medium px-2 mb-2 rounded-full w-fit">
-              {item.badge}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+          <div className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-5 lg:p-6">
+            <span className="mb-3 inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold text-maroon-700">
+              {t(item.badgeKey)}
             </span>
 
-            <h2 className="text-white text-2xl font-semibold ">
-              {item.title}
+            <h2 className="max-w-[95%] text-base font-semibold leading-relaxed text-white sm:text-lg lg:text-xl xl:text-2xl">
+              {t(item.titleKey)}
             </h2>
           </div>
-        </div>
+        </article>
       ))}
     </section>
   );

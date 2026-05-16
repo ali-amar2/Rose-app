@@ -6,7 +6,7 @@ export default function OrdersSkeleton() {
       {Array.from({ length: 2 }).map((_, i) => (
         <div key={i} className="rounded-lg overflow-hidden shadow-sm border">
           {/* Header Skeleton */}
-          <div className="bg-maroon-600 p-4">
+          <div className="bg-red-100 p-4">
             <Skeleton className="h-6 w-40 bg-white/40" />
           </div>
 

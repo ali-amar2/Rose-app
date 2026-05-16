@@ -24,7 +24,7 @@ export const PasswordInput = React.forwardRef<
 
   // Render
   return (
-    <div className="relative w-full max-w-md">
+    <div className="relative w-full">
       {/* Input Field */}
       <Input
         ref={ref}

@@ -6,8 +6,6 @@ export async function GET(request: NextRequest) {
     const token = await getToken({ req: request });
 
     if (!token?.accesstoken) {
-      console.log(token?.accesstoken);
-
       return NextResponse.json(
         { message: "Unauthorized ❌❌" },
         { status: 401 }

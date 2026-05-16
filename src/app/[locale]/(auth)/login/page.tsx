@@ -7,8 +7,8 @@ export default function page() {
   const t = useTranslations("login");
 
   return (
-    <main className="flex flex-col justify-center items-center w-full gap-10">
-      <div>
+    <main className="flex flex-col justify-center items-center gap-10">
+      <div className="w-full">
         {/* Heading */}
         <h3 className="font-edwardian text-4xl text-maroon-700 text-center dark:text-softPink-300">
           {t("heading")}
@@ -16,9 +16,9 @@ export default function page() {
         <LoginForm />
       </div>
       <div className="flex gap-2 justify-center border-t border-zinc-200 border-solid pt-5">
-        <p className="text-zinc-800">{t("noAccount")}</p>
+        <p className="text-zinc-800">{t("no-account")}</p>
         <Link href={"/register"} className="text-maroon-700 font-medium">
-          {t("createAccount")}
+          {t("create-account")}
         </Link>
       </div>
     </main>

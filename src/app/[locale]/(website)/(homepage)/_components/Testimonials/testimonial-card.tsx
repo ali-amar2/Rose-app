@@ -10,56 +10,51 @@ import {
 import Image from "next/image";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { useFormatter } from "next-intl";
+import { Testimonial } from "@/lib/types/testimonial";
 
 export default function TestimonialCard({
-  _id,
   user,
   rating,
   content,
   updatedAt,
-}: TestimonialProps) {
-  // formatter hook
+}: Testimonial) {
   const format = useFormatter();
 
   return (
-    //  container card for testimonial card
-    <Card
-      key={_id}
-      className="w-[404px] h-[433px] bg-transparent pb-10 border-none shadow-none flex items-end justify-center"
-    >
-      <CardContent className="w-[343px] h-64 bg-white mx-auto rounded-3xl flex flex-col items-center justify-between px-5 pt-16 pb-0 gap-7 relative">
+    <Card className="w-full max-w-sm sm:max-w-md bg-transparent border-none shadow-none flex items-end justify-center">
+      <CardContent className="w-full bg-white dark:bg-zinc-900 rounded-3xl flex flex-col items-center justify-between px-5 pt-16 pb-5 gap-6 relative">
         <Image
           src={user.photo}
-          alt="Vector"
-          width={120}
-          height={120}
-          className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-20 w-32 h-32 rounded-full object-cover border-4 border-white"
+          alt="user"
+          width={96}
+          height={96}
+          className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-12 w-24 h-24 rounded-full object-cover border-4 border-white"
         />
 
-        <CardTitle className="font-semibold text-center">
+        <CardTitle className="text-center font-semibold text-sm sm:text-base">
           {user.firstName} {user.lastName}
         </CardTitle>
 
-        <CardDescription className="text-zinc-800 font-medium h-32 flex flex-col items-center justify-center">
-          {/* Star rating component */}
-          <div className="flex items-center justify-center gap-1 mb-1">
-            {Array.from({ length: 4 }).map((_, index) => (
+        <CardDescription className="text-center text-zinc-700 dark:text-zinc-300 space-y-2">
+          <div className="flex justify-center gap-1">
+            {Array.from({ length: 5 }).map((_, i) => (
               <Star
-                key={index}
+                key={i}
                 className={cn(
                   "h-4 w-4",
-                  index < rating
-                    ? "fill-[#fba707] text-[#fba707]"
-                    : "text-[#fba707]"
+                  i < rating
+                    ? "fill-yellow-500 text-yellow-500"
+                    : "text-zinc-300"
                 )}
               />
             ))}
           </div>
-          <p className="h-12">{content}</p>
+
+          <p className="text-sm line-clamp-3">{content}</p>
         </CardDescription>
 
-        <CardFooter className="text-zinc-400 text-xs mt-5">
-          {format.dateTime(new Date(updatedAt), { dateStyle: "long" })}
+        <CardFooter className="text-xs text-zinc-400">
+          {format.dateTime(new Date(updatedAt), { dateStyle: "medium" })}
         </CardFooter>
       </CardContent>
     </Card>

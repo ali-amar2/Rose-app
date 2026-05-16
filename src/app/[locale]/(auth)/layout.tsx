@@ -25,9 +25,11 @@ export default async function AuthLayout({ children, params }: Props) {
 
   return (
     <Providers>
-      <main className={`flex w-full min-h-screen ${pinyonScript.variable}`}>
-        <div className="flex flex-col justify-center items-center my-28 w-175 px-36">
-          <div className="self-end mb-10 ">
+      <main
+        className={`flex min-h-screen w-full flex-col lg:flex-row ${pinyonScript.variable}`}
+      >
+        <div className="flex lg:w-1/2 flex-col items-center justify-center px-6 py-8">
+          <div className="self-end mb-5 ">
             <ToggleLanguage />
           </div>
           <Image
@@ -35,24 +37,24 @@ export default async function AuthLayout({ children, params }: Props) {
             alt="frame"
             width={280}
             height={45}
-            className="mb-10  dark:brightness-150  "
+            className="mb-5 dark:brightness-150  "
             priority
           />
-          {children}
+          <div className="w-9/12">{children}</div>
           <Image
             src="/assets/auth.png"
             alt="frame"
-            className="rotate-180 mt-10 dark:brightness-150  "
+            className="rotate-180 mt-5 dark:brightness-150  "
             width={280}
             height={45}
             priority
           />
         </div>
-        <div className="flex-1 relative">
+        <div className=" hidden lg:block lg:w-1/2 h-screen sticky top-0">
           <Image
             src="/assets/banner.png"
             alt="Rose App Gifts"
-            className="object-cover"
+            className="object-fill"
             fill
             priority
           />

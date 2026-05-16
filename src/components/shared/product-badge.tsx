@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { ProductBadgeProps } from "@/lib/types/product";
 import { useTranslations } from "next-intl";
 
 export default function ProductBadge({
@@ -8,7 +9,7 @@ export default function ProductBadge({
   // Translation
   const t = useTranslations("product.badge");
 
-  const isHot = sold >= 100;
+  const isHot = sold >= 50;
   const isOutOfStock = quantity <= 0;
   const showHot = isHot;
   const showNew = !isHot;

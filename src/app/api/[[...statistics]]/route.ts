@@ -1,17 +1,17 @@
+import { getToken } from "next-auth/jwt";
+import { NextRequest, NextResponse } from "next/server";
 
-import { getMyToken } from '@/lib/utils/get-my-token';
-import { NextResponse } from 'next/server';
+export async function GET(request: NextRequest) {
+  const token = await getToken({ req: request });
+  const accessToken = token?.accesstoken;
 
-export async function GET() {
-    const token = await getMyToken();
-    const accessToken = token?.accesstoken;
   try {
     const res = await fetch(`https://flower.elevateegy.com/api/v1/statistics`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
-              },
+      },
     });
 
     if (!res.ok) {

@@ -1,7 +1,5 @@
 "use client";
 
-// dynamic version with dummy data + scrollable
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,9 +13,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   Bell,
   BrushCleaning,
@@ -27,7 +22,7 @@ import {
   EllipsisVertical,
   BellOff,
 } from "lucide-react";
-
+import { Button } from "@/components/ui/button";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 export default function Notifications() {
@@ -44,6 +39,7 @@ export default function Notifications() {
       title: "Your Order Has Been Shipped",
       description:
         "Your order #12345 has been shipped and will arrive in 2-3 business days. We’ll send you another update once it’s out for delivery...",
+      isRead: index % 3 === 0,
     }));
 
     const start = pageParam * PAGE_SIZE;
@@ -66,8 +62,13 @@ export default function Notifications() {
 
   const notifications = data?.pages.flatMap((page) => page.data) ?? [];
 
+  const unreadNotifications = notifications.filter(
+    (item) => !item.isRead
+  ).length;
+
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
+
     const reachedBottom =
       target.scrollTop + target.clientHeight >= target.scrollHeight - 10;
 
@@ -107,138 +108,146 @@ export default function Notifications() {
         {/*  icon button */}
         <Button
           variant="ghost"
-          className="relative rounded-full border-none outline-none px-0"
+          className="relative h-10 w-10 rounded-xl p-0 transition-all hover:bg-zinc-100 dark:hover:bg-zinc-800"
         >
-          <Bell size={24} />
-          <p className="absolute w-5 h-5 rounded-full bg-red-600 text-center text-white -top-1 -right-1">
-            5
-          </p>
+          <Bell size={22} className="text-zinc-700 dark:text-zinc-50" />
+
+          <span className="absolute -end-0 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-[10px] font-semibold text-white">
+            {unreadNotifications}
+          </span>
         </Button>
       </DropdownMenuTrigger>
 
       {/* start menu content */}
       <DropdownMenuContent
-        align="start"
+        align="end"
         onScroll={handleScroll}
-        className="w-80 p-0 max-h-[26.25rem] hide-scrollbar"
+        className="hide-scrollbar max-h-[32rem] w-[22rem] overflow-y-auto rounded-2xl border border-zinc-200 p-0 shadow-2xl dark:border-zinc-800 dark:bg-zinc-950"
       >
         {/* Header */}
-        <DropdownMenuLabel className="bg-maroon-700 p-4 text-white dark:bg-soft-pink-200 dark:text-zinc-800">
-          Notifications ({notifications.length})
+        <DropdownMenuLabel className="sticky top-0 z-10 flex items-center justify-between border-b border-zinc-200 bg-maroon-700 p-4 text-white dark:border-zinc-700 dark:bg-maroon-700">
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold">Notifications</span>
+
+            <span className="text-xs font-normal text-white/80">
+              {notifications.length} notifications
+            </span>
+          </div>
+
+          <div className="flex h-6 min-w-6 items-center justify-center rounded-full bg-white/20 px-2 text-xs font-semibold">
+            {unreadNotifications}
+          </div>
         </DropdownMenuLabel>
 
         {/* menu items */}
-        <DropdownMenuGroup>
-          <DropdownMenuItem className="p-2 dark:bg-zinc-700">
-            <div className="flex justify-between items-center w-full">
-              <div className="flex items-center gap-1">
-                <BrushCleaning size={18} className="dark:text-zinc-500" />
-                <span className="dark:text-zinc-50">
-                  {/* clear all notifications */}
-                  <button onClick={clearAllNotifications}>
-                    Clear all notifications
-                  </button>
-                </span>
-              </div>
-              <div className="flex items-center gap-1">
-                <CheckCheck size={18} className="dark:text-zinc-500" />
-                <span className="dark:text-zinc-50">
-                  {/* mark all as read */}
-                  <button onClick={markAllAsRead}>Mark all as read</button>
-                </span>
-              </div>
+        <DropdownMenuGroup className="border-b border-zinc-200 dark:border-zinc-800">
+          <DropdownMenuItem className="rounded-none px-4 py-3 focus:bg-zinc-100 dark:focus:bg-zinc-800">
+            <div className="flex w-full items-center justify-between gap-3">
+              <button
+                onClick={clearAllNotifications}
+                className="flex items-center gap-2 text-sm font-medium text-zinc-700 transition-colors hover:text-red-500 dark:text-zinc-200"
+              >
+                <BrushCleaning size={17} className="text-zinc-500" />
+
+                <span>Clear all</span>
+              </button>
+
+              <button
+                onClick={markAllAsRead}
+                className="flex items-center gap-2 text-sm font-medium text-zinc-700 transition-colors hover:text-maroon-700 dark:text-zinc-200"
+              >
+                <CheckCheck size={17} className="text-zinc-500" />
+
+                <span>Mark all read</span>
+              </button>
             </div>
           </DropdownMenuItem>
-          <DropdownMenuSeparator className="bg-zinc-300 dark:bg-zinc-600" />
         </DropdownMenuGroup>
 
         {/* display Notifications data dynamic */}
-        {notifications.map((item, index) => (
-          <div key={item.id}>
-            <DropdownMenuGroup
-              className={`p-4 gap-2 ${
-                index === 2 ||
-                index === 4 ||
-                index === 7 ||
-                index === 10 ||
-                index === 13
-                  ? "bg-zinc-200 dark:bg-zinc-800"
-                  : "dark:bg-zinc-900"
-              }`}
-            >
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger>
-                  <div className="flex justify-between items-center w-full">
-                    <h5 className="text-zinc-800 font-semibold text-base capitalize dark:text-zinc-50">
-                      {item.title}
-                    </h5>
-                    <EllipsisVertical
-                      size={18}
-                      className="dark:text-zinc-400"
-                    />
-                  </div>
-                </DropdownMenuSubTrigger>
+        <div className="flex flex-col">
+          {notifications.map((item) => (
+            <div key={item.id}>
+              <DropdownMenuGroup
+                className={`relative px-4 py-4 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-900 ${
+                  !item.isRead
+                    ? "bg-zinc-100/80 dark:bg-zinc-900"
+                    : "bg-white dark:bg-zinc-950"
+                }`}
+              >
+                {!item.isRead && (
+                  <span className="absolute end-4 top-4 h-2.5 w-2.5 rounded-full bg-maroon-700" />
+                )}
 
-                <DropdownMenuPortal>
-                  <DropdownMenuSubContent className="gap-2 ml-2">
-                    <DropdownMenuItem
-                      onClick={() => markAsRead(index)}
-                      className={`flex items-center gap-2 rounded-md  ${
-                        index === 2 ||
-                        index === 4 ||
-                        index === 7 ||
-                        index === 10 ||
-                        index === 13
-                          ? "text-zinc-400 dark:text-zinc-700"
-                          : "text-zinc-800 dark:text-zinc-500"
-                      }`}
-                    >
-                      <Check
-                        size={18}
-                        className="text-zinc-200 dark:text-zinc-300 "
-                      />
-                      <span className="text-sm font-medium cursor-pointer">
-                        Mark as read
-                      </span>
-                    </DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger className="rounded-lg px-0 py-0 focus:bg-transparent data-[state=open]:bg-transparent">
+                    <div className="flex w-full items-start justify-between gap-4">
+                      <div className="flex flex-col gap-1 pe-4">
+                        <h5 className="line-clamp-1 text-sm font-semibold capitalize text-zinc-800 dark:text-zinc-50">
+                          {item.title}
+                        </h5>
 
-                    <DropdownMenuItem>
-                      <Trash2 size={18} className="text-red-500" />
-                      <span className="text-sm font-medium dark:text-zinc-50">
-                        {/* delete single notification */}
-                        <button onClick={() => deleteSingleNotifcation(index)}>
+                        <p className="line-clamp-2 text-xs leading-5 text-zinc-500 dark:text-zinc-400">
+                          {item.description}
+                        </p>
+                      </div>
+
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors hover:bg-zinc-200 dark:hover:bg-zinc-800">
+                        <EllipsisVertical
+                          size={16}
+                          className="text-zinc-500 dark:text-zinc-400"
+                        />
+                      </div>
+                    </div>
+                  </DropdownMenuSubTrigger>
+
+                  <DropdownMenuPortal>
+                    <DropdownMenuSubContent className="w-52 rounded-xl border border-zinc-200 p-2 shadow-xl dark:border-zinc-700 dark:bg-zinc-900">
+                      <DropdownMenuItem
+                        onClick={() => markAsRead(item.id)}
+                        className="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 focus:bg-zinc-100 dark:focus:bg-zinc-800"
+                      >
+                        <Check size={16} className="text-maroon-700" />
+
+                        <span className="text-sm font-medium">
+                          Mark as read
+                        </span>
+                      </DropdownMenuItem>
+
+                      <DropdownMenuItem
+                        onClick={() => deleteSingleNotifcation(item.id)}
+                        className="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 focus:bg-zinc-100 dark:focus:bg-zinc-800"
+                      >
+                        <Trash2 size={16} className="text-red-500" />
+
+                        <span className="text-sm font-medium text-red-500">
                           Delete notification
-                        </button>
-                      </span>
-                    </DropdownMenuItem>
-                  </DropdownMenuSubContent>
-                </DropdownMenuPortal>
-              </DropdownMenuSub>
+                        </span>
+                      </DropdownMenuItem>
+                    </DropdownMenuSubContent>
+                  </DropdownMenuPortal>
+                </DropdownMenuSub>
+              </DropdownMenuGroup>
 
-              <DropdownMenuItem>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                  {item.description}
-                </p>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-
-            <DropdownMenuSeparator className="bg-zinc-300 dark:bg-zinc-600" />
-          </div>
-        ))}
+              <DropdownMenuSeparator className="bg-zinc-200 dark:bg-zinc-800" />
+            </div>
+          ))}
+        </div>
 
         {/* Loading */}
         {isFetchingNextPage && (
-          <div className="p-4 text-center text-sm text-zinc-500 capitalize dark:text-zinc-400">
+          <div className="p-4 text-center text-sm font-medium text-zinc-500 dark:text-zinc-400">
             Loading more...
           </div>
         )}
 
         {/* No more data */}
         {!hasNextPage && notifications.length > 0 && (
-          <div className="p-4 mx-auto flex flex-col items-center justify-center gap-2 text-sm text-zinc-400 dark:bg-zinc-700">
-            <BellOff size={50} className="dark:text-zinc-400" />
-            <span className="text-zinc-500 text-sm font-medium dark:text-zinc-400">
-              No notifications to display.
+          <div className="flex flex-col items-center justify-center gap-3 border-t border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <BellOff size={42} className="text-zinc-400 dark:text-zinc-500" />
+
+            <span className="text-center text-sm font-medium text-zinc-500 dark:text-zinc-400">
+              No more notifications
             </span>
           </div>
         )}

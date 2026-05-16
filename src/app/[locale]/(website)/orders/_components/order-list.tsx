@@ -5,12 +5,12 @@ import { getOrders } from "@/lib/services/orders.service";
 export default async function OrderList() {
   // Translation
   const t = useTranslations("orders");
-  // States
+  // Services
   const data = await getOrders();
 
   if (!data?.orders?.length)
     return (
-      <p className="flex justify-center items-center text-maroon-600 text-lg py-5">
+      <p className="flex justify-center items-center text-maroon-600 text-lg py-14">
         {t("no-orders-found")}
       </p>
     );

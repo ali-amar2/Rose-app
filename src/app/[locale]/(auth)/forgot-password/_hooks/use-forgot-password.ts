@@ -1,42 +1,37 @@
-import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
 import { forgotPasswordAction } from "@/lib/actions/auth.actions";
 import { ForgotPasswordField } from "@/lib/types/auth";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useToast } from "@/hooks/use-toast";
 
-export default function useForgotPassword() {
-  // Queries
-  const queryClient = useQueryClient();
-
-  //Toast
-
+export default function useForgotPassword(
+  onSuccessCallback?: (email: string) => void
+) {
   const { toast } = useToast();
 
-  //Mutations
-  const { isPending, error, mutate } = useMutation({
-    mutationKey: ["forgot-password"],
-    mutationFn: async (fields: ForgotPasswordField) => {
-      const payload = await forgotPasswordAction(fields);
+  const mutation = useMutation({
+    mutationFn: async (values: ForgotPasswordField) => {
+      const payload = await forgotPasswordAction(values);
 
-      // Error
       if ("error" in payload) {
-        if (typeof payload.error === "string") {
-          throw new Error(payload.error);
-        } else {
-          throw new Error("Unknown error occurred");
-        }
+        throw new Error(payload.error);
       }
 
       return payload;
     },
+
     onSuccess: (_, variables) => {
-      // TODO: Store email in useState after workflow task is done (out of current scope).
-      queryClient.setQueryData(["forgot-password-email"], variables.email);
+      onSuccessCallback?.(variables.email);
+
       toast({
-        title: "OTP Sended",
-        description: "Check Your mail Please",
+        title: "OTP Sent",
+        description: "Check your email",
       });
     },
   });
 
-  return { isPending, error, forgotPassword: mutate };
+  return {
+    forgotPassword: mutation.mutate,
+    isPending: mutation.isPending,
+    error: mutation.error,
+  };
 }

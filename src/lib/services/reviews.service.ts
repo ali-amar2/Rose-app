@@ -1,11 +1,7 @@
 import { Review } from "@/lib/types/review";
 
-// API
-const API = process.env.API!;
-
-// Fetches all reviews from the API
 export async function getAllReviews(): Promise<{ reviews: Review[] }> {
-  const res = await fetch(`${API}/reviews`, { cache: "no-store" });
+  const res = await fetch(`${process.env.API}/reviews`, { cache: "no-store" });
 
   if (!res.ok) throw new Error("Failed to fetch reviews");
 
@@ -22,7 +18,7 @@ export async function createReview(
     comment: string;
   }
 ) {
-  const res = await fetch(`${API}/reviews`, {
+  const res = await fetch(`${process.env.API}/reviews`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

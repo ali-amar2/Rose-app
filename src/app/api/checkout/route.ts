@@ -6,14 +6,14 @@ export async function POST(request: NextRequest) {
   try {
     const token = await getToken({ req: request });
 
-    if (!token || !token?.accesstoken) {
+    if (!token || !token?.accessToken) {
       return NextResponse.json({ error: "unauthorized" }, { status: 401 });
     }
 
     const response = await fetch(`${process.env.API}/orders`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token.accesstoken}`,
+        Authorization: `Bearer ${token.accessToken}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),

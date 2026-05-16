@@ -3,7 +3,7 @@ import { getToken } from "../utils/manage-token";
 
 export async function getCategory(id: string): Promise<Category> {
   const token = await getToken();
-  const accessToken = token?.accesstoken;
+  const accessToken = token?.accessToken;
 
   const res = await fetch(`${process.env.API}/categories/${id}`, {
     method: "GET",

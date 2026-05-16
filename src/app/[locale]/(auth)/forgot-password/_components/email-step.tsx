@@ -6,47 +6,56 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  Form,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useTranslations } from "next-intl";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { ForgotPasswordSchema } from "@/lib/schemas/auth.schema";
 import useForgotPassword from "../_hooks/use-forgot-password";
-import { ForgotPasswordField } from "@/lib/types/auth";
+import { ForgotPasswordField, ForgotPasswordSteps } from "@/lib/types/auth";
+import { Dispatch, SetStateAction } from "react";
+import { FORGOT_PASSWORD_STEPS } from "@/lib/constants/auth.constant";
 
-export default function EmailStep() {
-  // Translations
+type Props = {
+  setStep: Dispatch<SetStateAction<ForgotPasswordSteps>>;
+  setEmail: Dispatch<SetStateAction<string>>;
+};
+
+export default function EmailStep({ setStep, setEmail }: Props) {
   const t = useTranslations();
 
-  // Mutations
-  const { isPending, error, forgotPassword } = useForgotPassword();
+  const { isPending, error, forgotPassword } = useForgotPassword((email) => {
+    setEmail(email);
+    setStep(FORGOT_PASSWORD_STEPS.OTP);
+  });
 
-  //Form
   const form = useForm<ForgotPasswordField>({
     defaultValues: {
       email: "",
     },
+
     resolver: zodResolver(ForgotPasswordSchema(t)),
+    mode: "onChange",
   });
 
-  // Functions
   const onSubmit: SubmitHandler<ForgotPasswordField> = (values) => {
     forgotPassword(values);
   };
-  return (
-    <div className="w-[25.5rem] dark:text-zinc-50 text-zinc-800">
-      {/* Heading */}
-      <h2 className="text-2xl font-semibold">{t("forgot-password-heading")}</h2>
-      <p className="mb-4 font-medium text-base">{t("forget-password-text")}</p>
 
-      {/* Form  */}
-      <FormProvider {...form}>
+  return (
+    <div className="w-full text-zinc-800 dark:text-zinc-50">
+      <h2 className="text-2xl font-semibold">{t("forgot-password-heading")}</h2>
+
+      <p className="mb-4 text-base font-medium">{t("forget-password-text")}</p>
+
+      <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="border-y border-y-zinc-200 dark:border-y-zinc-600 pt-6 pb-9 space-y-7"
+          className="space-y-4 border-y border-y-zinc-200 pt-6 pb-9 dark:border-y-zinc-600"
         >
           <FormField
             control={form.control}
@@ -54,41 +63,43 @@ export default function EmailStep() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>{t("email-label")}</FormLabel>
+
                 <FormControl>
                   <Input placeholder={t("email-placeholder")} {...field} />
                 </FormControl>
+
                 <FormMessage />
               </FormItem>
             )}
           />
 
           {error && (
-            <p className="text-red-600 text-sm mt-2">{error.message}</p>
+            <p className="text-sm font-medium text-red-600">{error.message}</p>
           )}
 
           <Button
             isLoading={isPending}
-            disabled={!form.formState.isValid && form.formState.isSubmitting}
+            disabled={!form.formState.isValid || isPending}
             type="submit"
-            className="w-full "
+            className="w-full"
           >
             {t("continue")}
           </Button>
         </form>
 
-        <p className="text-center mt-5 font-medium">
+        <p className="mt-5 text-center font-medium">
           {t.rich("dont-have-an-account", {
             a: (chunk) => (
               <Link
                 href="/register"
-                className="text-maroon-700 font-bold dark:text-softPink-200"
+                className="font-bold text-maroon-700 dark:text-softPink-200"
               >
                 {chunk}
               </Link>
             ),
           })}
         </p>
-      </FormProvider>
+      </Form>
     </div>
   );
 }
