@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -34,7 +32,8 @@ export default function Companies() {
                 src={logo.src}
                 alt={logo.alt}
                 fill
-                className="object-contain"
+                sizes="128px"
+                className="object-fill"
               />
             </div>
           ))}

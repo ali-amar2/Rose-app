@@ -11,7 +11,7 @@ import TestimonialsSection from "./_components/testimonials";
 export default function Home({ searchParams }: OccProps) {
   return (
     <main className="flex flex-col">
-      <div className="flex flex-col gap-10 px-6 md:px-8 lg:px-10 xl:px-14">
+      <div className="flex flex-col gap-10 px-6 md:px-8 lg:px-10 xl:px-14 mt-3">
         <CarouselComponent />
         <SecondSection />
         <SpecificationsComponent />

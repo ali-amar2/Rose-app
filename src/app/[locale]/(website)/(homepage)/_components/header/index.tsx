@@ -3,27 +3,30 @@
 import Image from "next/image";
 import logo from "@public/images/logo1.svg";
 import { Heart, MapPinPen, Menu, ShoppingCart, User, X } from "lucide-react";
-import Navbar from "./navbar";
+import Navbar from "../navbar";
 import Notifications from "@/components/skeletons/notifications/Notifications";
 import ToggleLanguage from "@/components/features/toggle-language";
 import LoginPopup from "@/components/skeletons/login-popup/login-popup";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
-import { useGetCart } from "../../products/[id]/_hooks/use-get-cart";
+import { useGetCart } from "../../../products/[id]/_hooks/use-get-cart";
 import { DeliveryLocationDialog } from "@/app/[locale]/checkout/_components/address-dialog";
 import { Address } from "@/lib/types/address";
 import { useTranslations } from "next-intl";
-import SearchModule from "./search-component/module";
-import { useSession } from "next-auth/react";
+import SearchModule from "../search-component/module";
 import { Button } from "@/components/ui/button";
+import { Session } from "next-auth";
 
-export default function Header() {
+interface HeaderProps {
+  session: Session | null;
+}
+
+export default function Header({ session }: HeaderProps) {
   const t = useTranslations("header");
 
   const { cart } = useGetCart();
-  const { status } = useSession();
 
-  const isLoggedIn = status === "authenticated";
+  const isLoggedIn = !!session;
 
   const [isLocationDialogOpen, setIsLocationDialogOpen] = useState(false);
   const [currentCity, setCurrentCity] = useState("Cairo");
@@ -45,6 +48,7 @@ export default function Header() {
   const handleSelectAddress = (address: Address) => {
     setSelectedAddress(address);
     setCurrentCity(address.city);
+
     localStorage.setItem("selectedAddress", JSON.stringify(address));
   };
 
@@ -84,7 +88,7 @@ export default function Header() {
               />
             </Link>
 
-            {/* Delivery Location (DESKTOP ONLY) */}
+            {/* Delivery Location */}
             <div className="hidden md:block">
               <button
                 className="flex max-w-[190px] flex-col rounded-2xl px-3 py-2 text-start transition-all hover:bg-zinc-100 dark:hover:bg-zinc-800"
@@ -96,6 +100,7 @@ export default function Header() {
 
                 <span className="flex items-center gap-1 truncate text-sm font-medium text-maroon-700 dark:text-maroon-400">
                   <MapPinPen size={16} />
+
                   <span className="truncate">
                     {selectedAddress?.city || currentCity}
                   </span>
@@ -122,6 +127,7 @@ export default function Header() {
                 className="flex items-center gap-2 rounded-xl px-2 py-2 text-sm font-medium capitalize text-zinc-700 transition-all hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-800"
               >
                 <User width={22} height={22} />
+
                 <span className="hidden sm:block">
                   {isLoggedIn ? t("profile") : t("login")}
                 </span>
@@ -163,12 +169,12 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile search */}
+        {/* Mobile Search */}
         <div className="px-4 pb-3 lg:hidden">
           <SearchModule />
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <>
             <div

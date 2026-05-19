@@ -12,7 +12,7 @@ export default function error() {
         <Image
           src="/assets/server-down.jpg"
           alt="error "
-          fill
+          sizes="100vw"
           className="object-contain"
           priority
         />

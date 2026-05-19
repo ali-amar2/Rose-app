@@ -19,6 +19,7 @@ export default function OrderItemCard({ item }: OrderItemCardProps) {
             src={product.imgCover}
             alt={product.title}
             fill
+            sizes="100vw"
             className="rounded-lg object-cover"
           />
         </div>

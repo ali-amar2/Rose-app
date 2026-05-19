@@ -5,11 +5,9 @@ export function useCheckout() {
   const { mutate: checkout, isPending } = useMutation({
     mutationFn: async (values: CheckoutPayload) => {
       const payload = await AddCheckoutCash(values);
-
-      console.log("payload" , payload )
     },
-    onSuccess: () => console.log("Succusssssssssssssssssssssssss"),
-    onError: () => console.log("Errrrrrrrrrrrrror"),
+    onSuccess: () => console.log(""),
+    onError: () => console.log(""),
   });
 
   return { checkout, isPending };

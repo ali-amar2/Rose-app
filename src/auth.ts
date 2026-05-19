@@ -7,22 +7,6 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
 
-  cookies: {
-    sessionToken: {
-      name:
-        process.env.NODE_ENV === "production"
-          ? "__Secure-next-auth.session-token"
-          : "next-auth.session-token",
-
-      options: {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        secure: process.env.NODE_ENV === "production",
-      },
-    },
-  },
-
   providers: [
     Credentials({
       name: "Credentials",
@@ -35,9 +19,11 @@ export const authOptions: NextAuthOptions = {
       authorize: async (credentials) => {
         const response = await fetch(`${process.env.API}/auth/signin`, {
           method: "POST",
+
           headers: {
             "Content-Type": "application/json",
           },
+
           body: JSON.stringify({
             email: credentials?.email,
             password: credentials?.password,
@@ -66,19 +52,28 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token = { ...token, ...user };
       }
+
       return token;
     },
 
-    session: ({ session, token }) => {
+    async session({ session, token }) {
       if (session.user) {
         session.user._id = token._id as string;
+
         session.user.firstName = token.firstName as string;
+
         session.user.lastName = token.lastName as string;
+
         session.user.username = token.username as string;
-        session.user.email = (token.email as string) || "";
+
+        session.user.email = token.email as string;
+
         session.user.phone = token.phone as string;
+
         session.user.role = token.role;
+
         session.user.photo = token.photo as string;
+
         session.user.accesstoken = token.accessToken as string;
       }
 

@@ -33,7 +33,13 @@ export default function ProductCard({
           href={`/products/${id}`}
           className="relative w-full h-72 block overflow-hidden rounded-xl"
         >
-          <Image src={img} alt={title} fill style={{ objectFit: "fill" }} />
+          <Image
+            src={img}
+            alt={title}
+            fill
+            className="object-fill"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw,25vw"
+          />
 
           <ProductBadge quantity={quantity} sold={sold} />
         </Link>

@@ -25,7 +25,6 @@
 //   if (!res.ok) {
 //     throw new Error(data?.message || "Failed to add wishlist");
 //   }
-//   console.log(data);
 
 //   return data;
 // }

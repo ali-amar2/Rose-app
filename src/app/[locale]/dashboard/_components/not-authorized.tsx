@@ -14,6 +14,7 @@ export default async function NotAuthorized() {
           src="/assets/lock-shield.jpg"
           alt="Not Authorized"
           fill
+          sizes="100vw"
           className="object-contain"
           priority
         />

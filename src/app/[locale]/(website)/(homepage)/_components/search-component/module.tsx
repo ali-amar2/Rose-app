@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useId } from "react";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { Search, Loader2, Star } from "lucide-react";
@@ -12,15 +12,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
-type Recommendation = Product;
-
 type RecommendationsResponse = {
   recommendations: Product[];
 };
 
 export default function SearchModule() {
   const t = useTranslations("search");
-
+  const searchId = useId();
   const router = useRouter();
   const { data: session, status } = useSession();
 
@@ -34,9 +32,7 @@ export default function SearchModule() {
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  /* -------------------------
-   Close dropdown on outside click
-  -------------------------- */
+  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -51,9 +47,7 @@ export default function SearchModule() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  /* -------------------------
-   Recommendations
-  -------------------------- */
+  // Recommendations
   const fetchRecommendations = useCallback(async () => {
     if (status !== "authenticated") {
       setProducts([]);
@@ -80,9 +74,7 @@ export default function SearchModule() {
     }
   }, [session, status]);
 
-  /* -------------------------
-   Search products
-  -------------------------- */
+  // Search products
   const fetchSearchData = useCallback(
     async (isNewSearch = false) => {
       try {
@@ -118,9 +110,7 @@ export default function SearchModule() {
     [keyword, page, products.length]
   );
 
-  /* -------------------------
-   Debounced search
-  -------------------------- */
+  // Debounced search
   useEffect(() => {
     const timer = setTimeout(() => {
       if (keyword.trim()) {
@@ -154,12 +144,12 @@ export default function SearchModule() {
     >
       {/* Input */}
       <div className="relative w-full">
-        <label htmlFor="search" className="sr-only">
+        <label htmlFor={searchId} className="sr-only">
           {t("placeholder")}
         </label>
 
         <Input
-          id="search"
+          id={searchId}
           ref={inputRef}
           className="h-12 w-full rounded-lg border-maroon-700 pl-10 pr-4 focus-visible:ring-maroon-700"
           placeholder={t("placeholder")}
@@ -216,6 +206,7 @@ export default function SearchModule() {
                           src={product.imgCover || "/placeholder.png"}
                           alt={product.title}
                           fill
+                          sizes="100vw"
                           className="object-cover"
                         />
                       </div>

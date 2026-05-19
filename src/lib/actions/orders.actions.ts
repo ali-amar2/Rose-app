@@ -27,7 +27,7 @@ export async function getOrdersStatisticsAction(): Promise<
     const statistics: DashboardStatisticsResponse = await res.json();
     return statistics;
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return;
   }
 }

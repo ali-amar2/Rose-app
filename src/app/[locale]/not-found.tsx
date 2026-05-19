@@ -10,9 +10,8 @@ export default async function NotFound() {
         <Image
           src="/assets/404.jpg"
           alt="404 Not Found"
-          fill
+          sizes="100vw"
           className="object-contain"
-          priority
         />
       </div>
       <div>

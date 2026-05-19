@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +24,7 @@ export default function About() {
     <section className="grid grid-cols-1 xl:grid-cols-2">
       {/* Images Section */}
       <div className="flex flex-col xl:flex-row items-center xl:items-start gap-6 xl:gap-8">
-        <div className="relative h-64 sm:h-72 xl:h-80 w-64 sm:w-72 xl:w-80 flex-shrink-0">
+        <div className="relative h-64 sm:h-72 xl:h-80 w-64 sm:w-72 xl:w-80 flex-shrink-0 mb-5">
           <div className="absolute left-0 top-6 xl:top-8 z-0 h-64 sm:h-72 xl:h-80 w-56 sm:w-64 xl:w-72 rotate-3 rounded-shape-main border-4 border-maroon-600 before:content-['']" />
 
           <div className="relative left-4 sm:left-5 xl:left-7 top-8 xl:top-12 z-10 h-64 sm:h-72 xl:h-80">
@@ -34,7 +32,7 @@ export default function About() {
               src={images.main}
               alt="Main gift box"
               fill
-              priority
+              sizes="(max-width: 640px) 256px,(max-width: 1280px) 288px,320px"
               className="rounded-shape-main object-cover"
             />
           </div>
@@ -55,6 +53,7 @@ export default function About() {
                 src={src}
                 alt="Small gift"
                 fill
+                sizes="(max-width: 640px) 112px,(max-width: 1280px) 144px,192px"
                 className={cn(
                   "object-cover",
                   index === 1 ? "rounded-shape-alt" : "rounded-full"

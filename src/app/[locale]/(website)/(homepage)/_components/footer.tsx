@@ -75,7 +75,10 @@ export default function Footer() {
 
             <div className="mt-4 flex w-full max-w-sm overflow-hidden rounded-full bg-zinc-600">
               <input
+                id="newsletter-email"
+                name="email"
                 type="email"
+                autoComplete="email"
                 placeholder={t("newsletter.placeholder")}
                 className="flex-1 bg-transparent px-4 py-2 text-sm text-white outline-none placeholder:text-zinc-400"
               />

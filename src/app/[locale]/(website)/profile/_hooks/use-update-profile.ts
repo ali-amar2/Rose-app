@@ -18,7 +18,7 @@ export function useUpdateProfile() {
         variant: "success",
       });
     },
-    onError: (err) => console.log(err),
+    onError: (err) => console.error(err),
   });
 
   return { mutate, isPending };

@@ -47,7 +47,6 @@ export default async function AuthLayout({ children, params }: Props) {
             className="rotate-180 mt-5 dark:brightness-150  "
             width={280}
             height={45}
-            priority
           />
         </div>
         <div className=" hidden lg:block lg:w-1/2 h-screen sticky top-0">
@@ -55,8 +54,7 @@ export default async function AuthLayout({ children, params }: Props) {
             src="/assets/banner.png"
             alt="Rose App Gifts"
             className="object-fill"
-            fill
-            priority
+            sizes="100vw"
           />
         </div>
       </main>

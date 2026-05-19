@@ -1,5 +1,6 @@
 import Footer from "./(homepage)/_components/footer";
 import Header from "./(homepage)/_components/header";
+import HeaderSession from "./(homepage)/_components/header/header-session";
 
 export default function WebsiteLayout({
   children,
@@ -8,7 +9,7 @@ export default function WebsiteLayout({
 }) {
   return (
     <>
-      <Header />
+      <HeaderSession />
       {children}
       <Footer />
     </>

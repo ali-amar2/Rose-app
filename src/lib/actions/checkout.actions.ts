@@ -1,7 +1,6 @@
 "use server";
 import { getToken } from "../utils/manage-token";
 
-
 export async function AddCheckoutCash(fields: CheckoutPayload) {
   const tokenObj = await getToken();
   const token = tokenObj?.accesstoken;
@@ -16,7 +15,6 @@ export async function AddCheckoutCash(fields: CheckoutPayload) {
   });
 
   const payload = await response.json();
-  console.log(payload)
 
   return payload;
 }

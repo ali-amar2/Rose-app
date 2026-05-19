@@ -98,6 +98,7 @@ const ProductFilters = forwardRef((_, ref) => {
                       src={`${IMAGE_BASE_URL}${occasion.image}`}
                       alt={occasion.name}
                       fill
+                      sizes="100vw"
                       className="object-cover"
                     />
                     <div

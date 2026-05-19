@@ -15,6 +15,7 @@ export default function Summary() {
         <form className="flex gap-2">
           <input
             type="text"
+            name="text"
             placeholder={t("placeholder")}
             className="flex-1 border border-zinc-300 rounded-lg px-4 py-2 outline-none "
           />

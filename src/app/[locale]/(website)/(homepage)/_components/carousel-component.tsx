@@ -59,7 +59,6 @@ export default function CarouselComponent() {
             src={sideBanner}
             alt={t("sideTitle")}
             fill
-            priority
             sizes="(max-width: 1280px) 100vw, 340px"
             className="object-cover"
           />
@@ -110,7 +109,6 @@ export default function CarouselComponent() {
                       src={item}
                       alt={`${t("slidesAlt")} ${index + 1}`}
                       fill
-                      priority={index === 0}
                       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 70vw, 75vw"
                       className="object-cover"
                     />

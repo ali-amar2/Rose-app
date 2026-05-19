@@ -73,6 +73,7 @@ export function ProductImage() {
                       src={src}
                       alt="preview"
                       fill
+                      sizes="100vw"
                       className="object-cover rounded-lg"
                     />
                   </div>

@@ -35,7 +35,7 @@ export function useAddToCart() {
       });
     },
 
-    onError: (err) => console.log(err),
+    onError: (err) => console.error(err),
   });
 
   return {

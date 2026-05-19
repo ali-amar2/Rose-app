@@ -77,7 +77,7 @@ export default function Gallery() {
               alt={image.alt}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1280px) 33vw, 400px"
-              className="object-fill"
+              className="object-fill lg:object-cover"
             />
           </div>
         ))}
