@@ -4,9 +4,15 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getTranslations } from "next-intl/server";
+import { getProducts } from "@/lib/services/products.service";
 
 export default async function BestSellingSection() {
   const t = await getTranslations("best-selling");
+
+  const data = await getProducts({
+    sort: "-sold",
+    limit: 6,
+  });
 
   return (
     <section className="flex w-full flex-col">
@@ -41,7 +47,7 @@ export default async function BestSellingSection() {
 
         {/* Carousel */}
         <div className="w-full">
-          <BestSellingCarousel />
+          <BestSellingCarousel products={data.products} />
         </div>
       </div>
     </section>

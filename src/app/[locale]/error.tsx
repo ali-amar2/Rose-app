@@ -11,7 +11,9 @@ export default function error() {
       <div className="relative w-full max-w-md h-96">
         <Image
           src="/assets/server-down.jpg"
-          alt="error "
+          alt="error"
+          width={400}
+          height={0}
           sizes="100vw"
           className="object-contain"
           priority

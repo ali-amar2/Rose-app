@@ -46,6 +46,7 @@ export async function RelatedProductsCarousel({ productId }: Props) {
                 rateAvg={product.rateAvg}
                 quantity={product.quantity}
                 sold={product.sold}
+                createdAt={product.createdAt}
               />
             </CarouselItem>
           );

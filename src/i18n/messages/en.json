@@ -226,7 +226,13 @@
     "rating": "Rating",
     "ratings": "ratings",
     "currency": "EGP",
-    "loading": "Loading ..."
+    "summary": {
+      "title": "Summary",
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "total": "Total",
+      "checkout": "Checkout"
+    }
   },
   "category-filter": {
     "title": "Category",

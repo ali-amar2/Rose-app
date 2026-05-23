@@ -53,7 +53,8 @@ export default async function AuthLayout({ children, params }: Props) {
           <Image
             src="/assets/banner.png"
             alt="Rose App Gifts"
-            className="object-fill"
+            className="object-cover"
+            fill
             sizes="100vw"
           />
         </div>

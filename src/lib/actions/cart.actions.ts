@@ -1,27 +1,38 @@
 "use server";
 
-import { AddToCartItem, CartResponse } from "../types/cart";
+import {
+  AddToCartPayload,
+  CartErrorResponse,
+  CartResponse,
+} from "../types/cart";
 import { getToken } from "../utils/manage-token";
 
-export async function addToCartAction(item: AddToCartItem) {
-  const tokenObj = await getToken();
-  const token = tokenObj?.accesstoken;
+export async function addToCartAction(
+  payload: AddToCartPayload
+): Promise<CartResponse | CartErrorResponse> {
+  const token = await getToken();
 
-  const res = await fetch(`${process.env.API}/cart`, {
+  if (!token?.accessToken) {
+    throw new Error("Unauthorized");
+  }
+
+  const response = await fetch(`${process.env.API}/cart`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token.accessToken}`,
     },
-
-    body: JSON.stringify(item),
+    body: JSON.stringify(payload),
+    cache: "no-store",
   });
 
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(err);
+  const data: CartResponse | CartErrorResponse = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      "error" in data ? data.error : "Failed to add product to cart"
+    );
   }
 
-  const cart: CartResponse = await res.json();
-  return cart;
+  return data;
 }

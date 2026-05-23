@@ -4,7 +4,6 @@ import Rating from "@/components/ui/rating";
 import ProductBadge from "./product-badge";
 import { useTranslations, useLocale } from "next-intl";
 import AddToCartButton from "./add-to-cart-button";
-import { ShoppingCart } from "lucide-react";
 import { ProductCardProps } from "@/lib/types/product";
 import { Link } from "@/i18n/navigation";
 
@@ -17,8 +16,12 @@ export default function ProductCard({
   quantity,
   sold,
   rateAvg,
+  createdAt,
 }: ProductCardProps) {
+  // Translations
   const t = useTranslations("product");
+
+  // Locale
   const locale = useLocale();
   const isRTL = locale === "ar";
 
@@ -37,11 +40,11 @@ export default function ProductCard({
             src={img}
             alt={title}
             fill
-            className="object-fill"
+            className="object-fill md:object-cover"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw,25vw"
           />
 
-          <ProductBadge quantity={quantity} sold={sold} />
+          <ProductBadge quantity={quantity} sold={sold} createdAt={createdAt} />
         </Link>
 
         {/* CONTENT */}
@@ -66,13 +69,7 @@ export default function ProductCard({
             </div>
 
             {/* cart */}
-            <AddToCartButton
-              className="flex justify-center items-center w-11 h-11 rounded-full"
-              productId={id!}
-              quantityInStock={quantity}
-            >
-              <ShoppingCart size={24} />
-            </AddToCartButton>
+            <AddToCartButton productId={id!} quantityInStock={quantity} />
           </div>
         </div>
       </CardContent>

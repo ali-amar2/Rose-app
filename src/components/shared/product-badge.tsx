@@ -5,25 +5,28 @@ import { useTranslations } from "next-intl";
 export default function ProductBadge({
   quantity,
   sold = 0,
+  createdAt,
 }: ProductBadgeProps) {
-  // Translation
+  // Translations
   const t = useTranslations("product.badge");
 
-  const isHot = sold >= 50;
+  // Variables
   const isOutOfStock = quantity <= 0;
-  const showHot = isHot;
-  const showNew = !isHot;
-  const showOutOfStock = isOutOfStock;
+  const isHot = sold >= 30;
+  const createdDate = new Date(createdAt!);
+  const now = new Date();
+  const diffInDays = Math.floor(
+    (now.getTime() - createdDate.getTime()) / (1000 * 60 * 60 * 24)
+  );
+  const isNew = diffInDays <= 30;
 
   return (
-    <div className="absolute top-2 right-2 flex gap-1 z-10">
-      {showNew && !showOutOfStock && <Badge variant="new">{t("new")}</Badge>}
+    <div className="absolute right-2 top-2 z-10 flex flex-wrap gap-1">
+      {isNew && !isOutOfStock && <Badge variant="new">{t("new")}</Badge>}
 
-      {showHot && <Badge variant="hot">{t("hot")}</Badge>}
+      {isHot && <Badge variant="hot">{t("hot")} 🔥</Badge>}
 
-      {showOutOfStock && (
-        <Badge variant="outOfStock">{t("out-of-stock")}</Badge>
-      )}
+      {isOutOfStock && <Badge variant="outOfStock">{t("out-of-stock")}</Badge>}
     </div>
   );
 }

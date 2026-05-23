@@ -39,6 +39,7 @@ export default async function ProductList({
                 quantity={product.quantity}
                 sold={product.sold}
                 rateAvg={product.rateAvg}
+                createdAt={product.createdAt}
               />
             ))}
           </div>

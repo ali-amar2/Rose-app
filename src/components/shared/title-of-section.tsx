@@ -17,10 +17,7 @@ export default function TitleOfSection({
 }: TitleOfSectionProps) {
   return (
     <div
-      className={cn(
-        "flex flex-col items-center py-6 sm:py-8 text-center",
-        className
-      )}
+      className={cn("flex flex-col items-center py-4 text-center", className)}
     >
       {title && (
         <h2

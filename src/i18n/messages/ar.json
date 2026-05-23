@@ -216,14 +216,20 @@
     "title": "السلة",
     "empty": "مسح السلة",
     "empty-cart": "سلة التسوق الخاصة بك فارغة، هل ترغب في تجربة التسوق؟ ",
-    "products": "المنتجات",
+    "products": "منتجات",
     "continue-shopping": "متابعة التسوق",
     "products-you-may-like": "منتجات قد تعجبك",
     "remove-product": "إزالة المنتج",
     "rating": "التقييم",
     "ratings": "التقييمات",
     "currency": "ج.م",
-    "loading": "جاري التحميل ..."
+    "summary": {
+      "title": "ملخص الطلب",
+      "subtotal": "المجموع الفرعي",
+      "discount": "الخصم",
+      "total": "الإجمالي",
+      "checkout": "إتمام الشراء"
+     }
   },
   "category-filter": {
     "title": "الفئة",

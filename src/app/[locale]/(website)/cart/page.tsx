@@ -1,13 +1,35 @@
-import SyncGuestCart from "@/components/shared/sync-guest-cart";
-import CartData from "./_components/cart-data/cart-data";
+import { getProducts } from "@/lib/services/products.service";
+import TitleOfSection from "@/components/shared/title-of-section";
+import CartPageView from "./_components/cart-page-view";
+import { BestSellingCarousel } from "../(homepage)/_components/best-selling-section/best-selling-carousel";
+import ContinueShoppingBtn from "./_components/continue-shopping-btn";
+import { getTranslations } from "next-intl/server";
 
-export default function page() {
+export default async function CartPage() {
+  // translations
+  const t = await getTranslations("cart");
+
+  // Queries
+  const data = await getProducts({
+    sort: "-sold",
+  });
+
   return (
-    <>
-      <SyncGuestCart />
-      <div className="text-center text-2xl text-maroon-400 capitalize">
-        <CartData />
+    <section className="space-y-8 pb-10 mt-6 px-6 md:px-8 lg:px-10 xl:px-14">
+      <CartPageView />
+      <ContinueShoppingBtn />
+
+      <div aria-labelledby="recommended-products" className="">
+        <TitleOfSection
+          title=""
+          subtitle={t("products-you-may-like")}
+          className="justify-start items-start mb-2"
+        />
+
+        <div>
+          <BestSellingCarousel products={data.products} />
+        </div>
       </div>
-    </>
+    </section>
   );
 }

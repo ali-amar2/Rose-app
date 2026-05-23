@@ -33,6 +33,7 @@ type ProductCardProps = {
   quantity: number;
   sold: number;
   rateAvg: number;
+  createdAt;
 };
 type ProductsParams = {
   sort?: string;
@@ -52,6 +53,7 @@ type MostPopularProductsProps = {
 type ProductBadgeProps = {
   quantity: number;
   sold?: number;
+  createdAt?: string;
 };
 
 type ProductRatingProps = {
@@ -64,4 +66,6 @@ declare type ProductDetailsResponse = {
 };
 
 export type ProductFields = z.infer<ReturnType<typeof productSchema>>;
-export type ProductUpdateFields = z.infer<ReturnType<typeof productUpdateSchema>>;
+export type ProductUpdateFields = z.infer<
+  ReturnType<typeof productUpdateSchema>
+>;

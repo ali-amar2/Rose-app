@@ -2,14 +2,23 @@
 
 import Image from "next/image";
 import logo from "@public/images/logo1.svg";
-import { Heart, MapPinPen, Menu, ShoppingCart, User, X } from "lucide-react";
+import {
+  Heart,
+  Loader,
+  Loader2,
+  MapPinPen,
+  Menu,
+  ShoppingCart,
+  User,
+  X,
+} from "lucide-react";
 import Navbar from "../navbar";
 import Notifications from "@/components/skeletons/notifications/Notifications";
 import ToggleLanguage from "@/components/features/toggle-language";
 import LoginPopup from "@/components/skeletons/login-popup/login-popup";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
-import { useGetCart } from "../../../products/[id]/_hooks/use-get-cart";
+import { useGetCart } from "../../../../../../hooks/use-get-cart";
 import { DeliveryLocationDialog } from "@/app/[locale]/checkout/_components/address-dialog";
 import { Address } from "@/lib/types/address";
 import { useTranslations } from "next-intl";
@@ -158,7 +167,9 @@ export default function Header({ session }: HeaderProps) {
                 </Link>
 
                 <span className="absolute -end-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-[10px] font-semibold text-white">
-                  {cart?.numOfCartItems ?? 0}
+                  {cart?.numOfCartItems ?? (
+                    <Loader2 className="animate-spin" size={10} />
+                  )}
                 </span>
               </div>
 
