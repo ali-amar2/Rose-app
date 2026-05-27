@@ -8,7 +8,8 @@ import EmptyCart from "./empty-cart";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { useClearCart } from "@/hooks/use-clear-cart";
-import { LoaderCircle } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import ContinueShoppingBtn from "./continue-shopping-btn";
 
 export default function CartPageView() {
   // Translations
@@ -54,15 +55,13 @@ export default function CartPageView() {
             </span>
           </div>
           <Button
-            variant={"inactive"}
-            disabled={isClearingCart}
+            variant={"default"}
             onClick={() => clearCart()}
             className="bg-maroon-50 px-10 text-maroon-500 rounded-xl hover:bg-maroon-100 hover:text-maroon-600 transition-colors duration-300 "
           >
             {isClearingCart ? (
               <>
-                <LoaderCircle className="animate-spin" />
-                {t("loading")}
+                <Loader2 className="animate-spin" />
               </>
             ) : (
               t("empty")
@@ -77,6 +76,7 @@ export default function CartPageView() {
       </div>
 
       <CartSummary cart={cart.cart} />
+      <ContinueShoppingBtn />
     </section>
   );
 }

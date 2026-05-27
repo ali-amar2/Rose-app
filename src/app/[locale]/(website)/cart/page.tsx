@@ -17,7 +17,6 @@ export default async function CartPage() {
   return (
     <section className="space-y-8 pb-10 mt-6 px-6 md:px-8 lg:px-10 xl:px-14">
       <CartPageView />
-      <ContinueShoppingBtn />
 
       <div aria-labelledby="recommended-products" className="">
         <TitleOfSection

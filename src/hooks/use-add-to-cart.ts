@@ -26,7 +26,7 @@ export function useAddToCart(options?: UseAddToCartOptions) {
     onSuccess: async (data) => {
       queryClient.setQueryData(["cart", userId], data);
       await queryClient.invalidateQueries({
-        queryKey: ["cart", userId],
+        queryKey: ["cart"],
       });
 
       toast({

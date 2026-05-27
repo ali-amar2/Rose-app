@@ -25,7 +25,7 @@ const buttonVariants = cva(
           "py-2 px-4 rounded-[0.625rem] bg-maroon-50 text-maroon-600 shadow-sm hover:bg-maroon-100 disabled:bg-zinc-300 disabled:text-zinc-500",
 
         inactive:
-          "rounded-lg rounded-l-none border-l-none border-zinc-300 bg-zinc-50 text-zinc-800",
+          "rounded-lg rounded-l-none border-l-none border-zinc-300 bg-zinc-50 text-zinc-800 focus:shadow-[0_0_0_4px_#741C2140]",
       },
       size: {
         default: "h-11 px-4 py-2",

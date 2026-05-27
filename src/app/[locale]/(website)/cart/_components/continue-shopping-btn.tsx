@@ -10,7 +10,7 @@ export default function ContinueShoppingBtn() {
 
   return (
     <>
-      <Button asChild size="lg" className="mt-8 rounded-xl px-8">
+      <Button asChild size="lg" className="rounded-xl px-8">
         <Link
           href="/products"
           aria-label={t("continue-shopping")}

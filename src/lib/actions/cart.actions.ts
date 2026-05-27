@@ -61,8 +61,6 @@ export async function clearCartAction(): Promise<
   if (!response.ok) {
     throw new Error("error" in data ? data.error : "Failed to clear cart");
   }
-  console.log(data);
-
   return data;
 }
 

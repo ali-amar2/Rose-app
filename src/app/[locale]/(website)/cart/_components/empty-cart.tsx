@@ -7,7 +7,7 @@ export default function EmptyCart() {
   const t = useTranslations("cart");
 
   return (
-    <section className="flex min-h-[70vh] flex-col items-center justify-center px-4 py-10 text-center">
+    <section className="flex min-h-[70vh] flex-col items-center justify-center px-4 text-center">
       {/* Empty cart Header  */}
       <header className="space-y-2">
         <div className="flex items-end justify-center gap-3">
