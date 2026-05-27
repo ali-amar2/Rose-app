@@ -7,6 +7,8 @@ import CartPageSkeleton from "./cart-page-skeleton";
 import EmptyCart from "./empty-cart";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { useClearCart } from "@/hooks/use-clear-cart";
+import { LoaderCircle } from "lucide-react";
 
 export default function CartPageView() {
   // Translations
@@ -14,6 +16,7 @@ export default function CartPageView() {
 
   // Queries
   const { cart, isPending, isError } = useGetCart();
+  const { mutate: clearCart, isPending: isClearingCart } = useClearCart();
 
   if (isPending) {
     return <CartPageSkeleton />;
@@ -52,9 +55,18 @@ export default function CartPageView() {
           </div>
           <Button
             variant={"inactive"}
-            className="bg-maroon-50 px-10 text-maroon-500 rounded-xl hover:bg-maroon-100 hover:text-maroon-600 transition-colors duration-300"
+            disabled={isClearingCart}
+            onClick={() => clearCart()}
+            className="bg-maroon-50 px-10 text-maroon-500 rounded-xl hover:bg-maroon-100 hover:text-maroon-600 transition-colors duration-300 "
           >
-            {t("empty")}
+            {isClearingCart ? (
+              <>
+                <LoaderCircle className="animate-spin" />
+                {t("loading")}
+              </>
+            ) : (
+              t("empty")
+            )}
           </Button>
         </header>
         <div className="space-y-4">

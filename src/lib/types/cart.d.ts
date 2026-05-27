@@ -34,3 +34,9 @@ export type CartErrorResponse = {
 };
 
 export type CartProduct = Product;
+
+export type ClearCartResponse = {
+  message: string;
+};
+
+export type CartMutationResponse = CartResponse | CartErrorResponse;
